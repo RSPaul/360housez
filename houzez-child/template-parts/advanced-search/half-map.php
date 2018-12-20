@@ -72,19 +72,30 @@ if ($adv_show_hide['keyword'] != 1) {
 }
 ?>
 
+
+
 <!-- SEARCHING NAVBAR -->
-    <div class="navbar searching-navbar">
+    <div class="navbar searching-navbar" id="sticky_navbar">
         <form>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xxs-12">
-                        <!-- Class .show to make .mini-logo always visible in this template -->
-                        <div class="mini-logo show">
-                            <!--SIDENAV link--><!-- Condensed logo/menu image -->
-                            <a href="#!" class="sidenav-trigger" data-target="sidenav-menu">
-                                <img src="<?php bloginfo('template_url'); ?>/images/condensed-logo-menu.svg" alt="Menu" title="Menu"/>
-                            </a>
-                        </div>
+                        <?php
+                            if (is_page('3221')) { ?>
+                            <div class="navbar-header listing_hide_logo mini-logo">
+                                <?php get_template_part('inc/header/logo'); ?>
+                            </div>
+                            <?php  } else {  ?>
+
+                                <div class="mini-logo show">
+                                    <a href="#!" class="sidenav-trigger" data-target="sidenav-menu">
+                                        <img src="<?php echo bloginfo('template_url'); ?>/images/condensed-logo-menu.svg" alt="Menu" title="Menu"/>
+                                    </a>
+                                </div> 
+                            
+
+                        <?php  }     ?>                        
+                        
                         <div class="main-search-inputs flex-container">
                             <div class="input-field no-label action-filter">
                                <!--  <select required id="search_action">
@@ -178,9 +189,12 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <a href="#!" role="button" id="half_map_update" class="bd-black waves-effect waves-color-1">
                                     <i class="tz-search-sm" title="Find"></i>
                                 </a>
+                                <?php
+                                if (!is_page('3221')) { ?>
                                 <a href="#" role="button" id="toggle-map" class="toggle_map_right bd-black waves-effect waves-color-1 active">
                                     <i class="tz-map" title="Map"></i>
                                 </a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -498,9 +512,9 @@ if ($adv_show_hide['keyword'] != 1) {
                                                         // if( $features_limit != -1 ) {
                                                         //     if ( $count == $features_limit ) break;
                                                         // }
-                                                        echo '<li><label class="checkbox-inline">';
+                                                        echo '<li><label>';
                                                         echo '<input name="feature[]" class="filled-in" type="checkbox" '.checked( $checked_feature, $feature->slug, false ).' value="' . esc_attr( $feature->slug ) . '">';
-                                                        echo esc_attr( $feature->name );
+                                                        echo '<span>' . esc_attr( $feature->name ). '</span>';
                                                         echo '</label></li>';
                                                         $count++;
                                                     endforeach;
@@ -547,3 +561,25 @@ if ($adv_show_hide['keyword'] != 1) {
             </div>
         </form>
     </div>  
+
+
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("sticky_navbar");
+        var sticky = header.offsetTop;
+        console.log(window.pageYOffset , sticky);
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky_sec");
+          } else {
+            header.classList.remove("sticky_sec");
+          }           
+    
+        }
+
+        setTimeout(function () {
+            var header2 = document.getElementById("houzez-gmap-main");
+            header2.className += " stick_map";
+        },3000);
+    </script>

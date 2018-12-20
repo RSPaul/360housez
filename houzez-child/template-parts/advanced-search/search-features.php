@@ -36,9 +36,9 @@ if( taxonomy_exists('property_feature') ) {
             }
 
 
-            echo '<li><label class="checkbox-inline">';
-            echo '<input name="feature[]" type="checkbox" '.checked( $checked_feature, $feature->slug, false ).' value="' . esc_attr( $feature->slug ) . '">';
-            echo esc_attr( $feature->name );
+            echo '<li><label>';
+            echo '<input class="filled-in" name="feature[]" type="checkbox" '.checked( $checked_feature, $feature->slug, false ).' value="' . esc_attr( $feature->slug ) . '">';
+            echo '<span>' . esc_attr( $feature->name ). '</span>';
             echo '</label></li>';
             $count++;
         endforeach;
