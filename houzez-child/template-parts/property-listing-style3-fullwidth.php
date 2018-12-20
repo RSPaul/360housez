@@ -31,14 +31,13 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
 <!-- <?php //get_template_part('template-parts/properties-head'); ?> -->
 	
-	<div class="navbar searching-navbar" id="sticky_navbar">
+	<!-- <div class="navbar searching-navbar" id="sticky_navbar">
 		<form>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-xxs-12">
 						<div class="navbar-header listing_hide_logo mini-logo">
 							<?php get_template_part('inc/header/logo'); ?>
-						<!-- 	<span class="site-description txt-sm"> | <?php echo get_bloginfo();?></span> -->
 						</div>
 						<div class="main-search-inputs flex-container">
 							<div class="input-field no-label action-filter">
@@ -61,7 +60,7 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 								<label for="search_type">Type</label>
 							</div>
 							<div class="form-group flex-container price-filter">
-								<!-- Price /labelAfterPrice -->
+								
 								<span>Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>										
 								<div class="input-field no-label">
 									<input id="search_min_price" class="money-format" type="text" placeholder="Min.">
@@ -86,10 +85,8 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 				<div class="row">
 					<div class="col-xxs-12">
 						<div id="advanced-search-menu" class="collapse"  aria-expanded="false">
-							<!-- Use class to show filters according to the action .for-rent-living-filters / .for-rent-vacations-filters / .for-sale-filters  -->
 							<div class="advanced-search-filters flex-container flex-wrap">
 								<div class="search-col one flex-container">
-									<!-- Inner field for Type in mobile-->
 									<div class="input-field no-label multiple-select inner-type-filter">
 										<select multiple id="inner_search_type">
 											<option value="" disabled selected>Type</option>
@@ -100,9 +97,7 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 										</select>
 										<label for="inner_search_type">Type</label>
 									</div>
-									<!-- Inner field for Price in mobile-->
 									<div class="form-group flex-container inner-price-filter">
-										<!-- Price /labelAfterPrice -->
 										<span>Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>										
 										<div class="input-field no-label">
 											<input id="inner_search_min_price" class="money-format" type="text" placeholder="Min.">
@@ -366,7 +361,9 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 				</div>
 			</div>
 		</form>
-	</div> 
+	</div>  -->
+
+	<?php get_template_part('template-parts/advanced-search/half-map'); ?>
 
 	<div class="property_listing">
 		<div class="container-fluid">
@@ -429,120 +426,6 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		                <!--end featured property items-->
 
 
-		        <? /*        
-            <!--start property items-->
-            <div class="flex-container flex-wrap">
-              <!--Property Card Featured with .featured-property class-->
-							<div class="property-card featured-property">
-								<div class="property-card-wrapper flex-container">
-									<div class="property-card-header">
-										<ul class="card-header-labels flex-container flex-wrap txt-h-medium txt-xs text-uppercase">
-											<li class="label1">Label 1</li>
-											<li class="label2">Label 2</li>
-											<li class="label3">Label 3</li>
-											<li class="label4">Label 4</li>
-											<li class="label5">Label 5</li>
-										</ul>
-										<!-- Use class .saved when user save a property and change tooltip text-->
-										<a href="#!" role="button" class="card-save no-style" title="Save" data-toggle="tooltip" data-placement="left">
-											<i class="tz-treasure-full waves-effect waves-circle"></i>
-										</a>
-										<!-- Link to Property Detail Page-->
-										<a href="#!" class="go-detail waves-effect waves-light">
-											<img src="<?php bloginfo('template_url'); ?>/images/arch_img.jpg" alt="" title="">
-										</a>
-									</div>
-									<div class="property-card-body">
-										<p class="card-title txt-h-medium h4">
-											<a href="#!">Title</a>
-										</p>
-										<p class="card-type-status txt-h-medium txt-sm txt-gray-1 text-uppercase">
-											Type | <span class="txt-h-light">Status</span>
-										</p>
-										<ul class="card-main-features last-child-no-border flex-container txt-sm text-center">
-											<li class="flex-item">
-												<span class="txt-h-medium txt-txt">0</span> <span class="text-uppercase">Rooms</span>
-											</li>
-											<li class="flex-item">
-												<span class="txt-h-medium txt-txt">0</span> <span class="text-uppercase">Baths</span>
-											</li>
-											<li class="flex-item">
-												<span class="txt-h-medium txt-txt">0</span> <span class="text-uppercase">Guests</span>
-											</li>
-											<li class="flex-item">
-												<span class="txt-h-medium txt-txt">0 <span class="txt-h-light txt-sm">m&#178</span></span> <span class="text-uppercase">Area</span>
-											</li>
-										</ul>
-										<p class="card-price txt-h-light txt-txt">
-											Before-price-label <span class="txt-h-medium">000,000</span> CURRENCY / after-price-label
-											<!-- Use this icon with tooltip when the property has been marked (in backend) as an opportunity -->
-											<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="right"></i>									
-										</p>
-									</div>
-									<div class="property-card-footer">
-										<div class="flex-container">
-											<ul class="card-reviews list-inline">
-												<li>
-													<div>
-														<i class="tz-ratting-empty-sm"></i>
-														<i class="tz-ratting-empty-sm"></i>
-														<i class="tz-ratting-empty-sm"></i>
-														<i class="tz-ratting-empty-sm"></i>
-														<i class="tz-ratting-empty-sm"></i>
-													</div>
-												</li>
-												<li>
-													<span class="txt-h-light txt-xs">no reviews</span>
-												</li>
-											</ul>
-											<a href="#!" class="card-compare no-style" role="button" title="Compare" data-toggle="tooltip" data-placement="left">
-												<i class="tz-compare waves-effect waves-circle"></i>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--ends Property Card-->
-						</div>
-
-		                <!-- <div class="property-listing grid-view grid-view-3-col">
-		                    <div class="row">
-
-		                        <?php
-		                        global $wp_query, $paged;
-		                        if(!$fave_prop_no){
-		                            $posts_per_page  = 9;
-		                        } else {
-		                            $posts_per_page = $fave_prop_no;
-		                        }
-		                        $latest_listing_args = array(
-		                            'post_type' => 'property',
-		                            'posts_per_page' => $posts_per_page,
-		                            'paged' => $paged,
-		                            'post_status' => 'publish'
-		                        );
-
-		                        $latest_listing_args = apply_filters( 'houzez_property_filter', $latest_listing_args );
-
-		                        $latest_listing_args = houzez_prop_sort ( $latest_listing_args );
-		                        $wp_query = new WP_Query( $latest_listing_args );
-
-		                        if ( $wp_query->have_posts() ) :
-		                            while ( $wp_query->have_posts() ) : $wp_query->the_post();
-
-		                                get_template_part('template-parts/property-for-listing-v3');
-
-		                            endwhile;
-		                        else:
-		                            get_template_part('template-parts/property', 'none');
-		                        endif;
-		                        ?>
-
-		                    </div>
-		                </div> -->
-		                <!--end property items-->
-		                 */ ?>
-		                 
 		                <div class="flex-container flex-wrap">
 
 		                        <?php
@@ -575,8 +458,8 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		                        endif;
 		                        ?>
 
-		                    </div>
 		                </div>
+		               
 
 		                <hr>
 
@@ -622,6 +505,12 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 			</div>					
 		</div>
 	</div>
+	<style type="text/css">
+		.btn-group.bootstrap-select {
+		    display: none !important;
+		}
+
+	</style>
 
 	<script>
 		window.onscroll = function() {myFunction()};
