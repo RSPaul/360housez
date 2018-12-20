@@ -10388,3 +10388,34 @@ a.map-control span {
 	transform: scale(1) translateY(0) translateX(0);
     margin-top: 23px;
 }
+.property_listing .container-fluid .row > [class*="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+
+
+
+
+/*responsive css start here*/
+
+@media (min-width: 1367px) and (max-width: 1440px){
+	.property-detail-header .hd-wrapper .header-info h1.txt-header{
+		font-size: 38px !important;
+	}
+}
+
+
+@media (min-width: 1441px) and (max-width: 1600px){
+	.property-detail-header .hd-wrapper .header-info h1.txt-header{
+		font-size: 42px !important;
+	}
+}
+
+@media (min-width: 1601px) and (max-width: 1680px){
+	.property-detail-header .hd-wrapper .header-info h1.txt-header{
+		font-size: 45px !important;
+	}
+}
