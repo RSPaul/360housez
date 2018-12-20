@@ -429,10 +429,10 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		                <!--end featured property items-->
 
 
-
-		                <!--start property items-->
-		                <div class="flex-container flex-wrap">
-			                <!--Property Card Featured with .featured-property class-->
+		        <? /*        
+            <!--start property items-->
+            <div class="flex-container flex-wrap">
+              <!--Property Card Featured with .featured-property class-->
 							<div class="property-card featured-property">
 								<div class="property-card-wrapper flex-container">
 									<div class="property-card-header">
@@ -541,6 +541,42 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		                    </div>
 		                </div> -->
 		                <!--end property items-->
+		                 */ ?>
+		                 
+		                <div class="flex-container flex-wrap">
+
+		                        <?php
+		                        global $wp_query, $paged;
+		                        if(!$fave_prop_no){
+		                            $posts_per_page  = 9;
+		                        } else {
+		                            $posts_per_page = $fave_prop_no;
+		                        }
+		                        $latest_listing_args = array(
+		                            'post_type' => 'property',
+		                            'posts_per_page' => $posts_per_page,
+		                            'paged' => $paged,
+		                            'post_status' => 'publish'
+		                        );
+
+		                        $latest_listing_args = apply_filters( 'houzez_property_filter', $latest_listing_args );
+
+		                        $latest_listing_args = houzez_prop_sort ( $latest_listing_args );
+		                        $wp_query = new WP_Query( $latest_listing_args );
+
+		                        if ( $wp_query->have_posts() ) :
+		                            while ( $wp_query->have_posts() ) : $wp_query->the_post();
+
+		                                get_template_part('template-parts/property-listing-v3-new');
+
+		                            endwhile;
+		                        else:
+		                            get_template_part('template-parts/property', 'none');
+		                        endif;
+		                        ?>
+
+		                    </div>
+		                </div>
 
 		                <hr>
 

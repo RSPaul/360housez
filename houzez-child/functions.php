@@ -2823,3 +2823,76 @@ add_action( 'init', 'wpse163434_init' );
 function wpse163434_init() {
   remove_filter( 'houzez_theme_meta', 'houzez_theme_meta_rental_filter' );
 }
+
+if ( !function_exists( 'houzez_get_agent_info_bottom_v2' ) ) {
+    function houzez_get_agent_info_bottom_v2( $args, $type, $is_single = true ) {
+
+        ob_start();
+
+        // get agent categories (language)
+        $categories = get_the_terms( $args['agent_id'], 'agent_category' );
+        $args['language'] = $categories[0]->slug;
+        
+        // return back if current agent language do not match with user language 
+        if ( !empty(ICL_LANGUAGE_CODE) && $args['language'] != ICL_LANGUAGE_CODE ) {
+            
+            return;
+        }
+        
+        ?>
+        <div class="agent-info-block">
+            <div class="agent-thumb">
+                <img src="<?php echo esc_url( $args[ 'picture' ] ); ?>" alt="<?php echo esc_attr( $args['agent_name'] ); ?>" width="80" height="80">
+                <?php if ( $is_single == false ) { ?>
+                <input type="checkbox" class="multiple-agent-check" name="target_email[]" value="<?php echo $args['agent_email']; ?>" >
+                <?php } ?>
+            </div>
+            
+            <ul class="agent-info">
+                <li class="agent-name">
+                    <?php if( !empty( $args['agent_name'] ) ) { ?>
+                        <i class="fa fa-user"></i> <?php echo esc_attr( $args['agent_name'] ); ?>
+                    <?php } ?>
+                </li>
+                <li class="agent-mobile">
+                    <?php if( !empty( $args['agent_mobile'] ) ) { ?>
+                        <i class="fa fa-mobile"></i> <?php echo esc_attr( $args['agent_mobile'] );?>
+                    <?php } ?>
+                </li>
+                <li class="agent-phone">
+                    <?php if( !empty( $args['agent_phone'] ) ) { ?>
+                        <i class="fa fa-phone"></i> <?php echo esc_attr( $args['agent_phone'] );?>
+                    <?php } ?>
+                </li>
+            </ul>
+            <ul class="profile-social">
+                <?php if( !empty( $args['facebook'] ) ) { ?>
+                    <li><a class="btn-facebook" target="_blank" href="<?php echo esc_url( $args['facebook'] ); ?>"><i class="fa fa-facebook-square"></i></a></li>
+                <?php } ?>
+
+                <?php if( !empty( $args['twitter'] ) ) { ?>
+                    <li><a class="btn-twitter" target="_blank" href="<?php echo esc_url( $args['twitter'] ); ?>"><i class="fa fa-twitter-square"></i></a></li>
+                <?php } ?>
+
+                <?php if( !empty( $args['linkedin'] ) ) { ?>
+                    <li><a class="btn-linkedin" target="_blank" href="<?php echo esc_url( $args['linkedin'] ); ?>"><i class="fa fa-linkedin-square"></i></a></li>
+                <?php } ?>
+
+                <?php if( !empty( $args['googleplus'] ) ) { ?>
+                    <li><a class="btn-google-plus" target="_blank" href="<?php echo esc_url( $args['googleplus'] ); ?>"><i class="fa fa-google-plus-square"></i></a></li>
+                <?php } ?>
+
+                <?php if( !empty( $args['youtube'] ) ) { ?>
+                    <li><a class="btn-youtube" target="_blank" href="<?php echo esc_url( $args['youtube'] ); ?>"><i class="fa fa-youtube-square"></i></a></li>
+                <?php } ?>
+            </ul>
+            <a class="view-link" href="<?php echo esc_url($args[ 'link' ]); ?>"><?php esc_html_e( 'View listings', 'houzez' ); ?></a>
+        </div>
+        <?php
+        $data = ob_get_contents();
+        ob_clean();
+
+        return $data;
+
+    }
+}
