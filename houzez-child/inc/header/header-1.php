@@ -239,7 +239,7 @@ if( houzez_is_dashboard() ) {
 					<li class="active"><a href="#!" class="waves-effect waves-light">EN</a></li>
 					<li><a href="#!" class="waves-effect waves-light">IT</a></li>
 					<li><a href="#!" class="waves-effect waves-light">FR</a></li>
-				</ul>
+				</ul> 
 			</div>
 			<div class="sidenav-body text-center txt-lg">
 				<?php
