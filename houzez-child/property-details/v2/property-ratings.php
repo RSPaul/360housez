@@ -32,7 +32,7 @@ $check_comment = $wpdb->get_row( $check_comment_query );
 $prop_total_reviews = sizeof( $get_comments );
 
 ?>
-
+<h1>Hello</h1>
 <div class="property-reviews detail-block">
     <div class="detail-title" data-score="<?php echo round($rating, 2); ?>" itemprop="aggregateRating" itemscope itemtype="<?php echo houzez_http_or_https(); ?>://schema.org/AggregateRating">
         <h2 class="title-left">

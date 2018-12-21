@@ -415,15 +415,22 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-status-filters" class="collapse in">
-                                            <li>
-                                                <label for="status1"><input type="checkbox" id="status1" class="filled-in"><span>Estatus 1</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="status2"><input type="checkbox" id="status2" class="filled-in"><span>Estatus 2</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="status3"><input type="checkbox" id="status3" class="filled-in"><span>Estatus 3</span></label>
-                                            </li>
+                                            <?php
+                                            $terms = get_terms( array(
+                                                'taxonomy' => 'property_status',
+                                                'hide_empty' => false,
+                                            ) );    
+                                            if(count($terms)) {
+                                                foreach ($terms as $key => $value) { ?>
+                                                    <li>
+                                                        <label for="status1">
+                                                            <input type="checkbox" name="status[]"  id="status<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
+                                                            <span><?php echo $value->name; ?> </span>
+                                                        </label>
+                                                    </li>
+                                                <?php }
+                                            }
+                                            ?>  
                                         </ul>
                                     </div>
                                     <div  class="furniture-filters">
@@ -457,30 +464,22 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-services-filters" class="collapse in">
-                                            <li>
-                                                <label for="service1"><input type="checkbox" id="service1" class="filled-in"><span>Service 1</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service2"><input type="checkbox" id="service2" class="filled-in"><span>Service 2</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service3"><input type="checkbox" id="service3" class="filled-in"><span>Service 3</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service4"><input type="checkbox" id="service4" class="filled-in"><span>Service 4</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service5"><input type="checkbox" id="service5" class="filled-in"><span>Service 5</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service6"><input type="checkbox" id="service6" class="filled-in"><span>Service 6</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service7"><input type="checkbox" id="service7" class="filled-in"><span>Service 7</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service"><input type="checkbox" id="service8" class="filled-in"><span>Service 8</span></label>
-                                            </li>
+                                             <?php
+                                            $terms = get_terms( array(
+                                                'taxonomy' => 'services',
+                                                'hide_empty' => false,
+                                            ) );    
+                                            if(count($terms)) {
+                                                foreach ($terms as $key => $value) { ?>
+                                                    <li>
+                                                        <label for="status1">
+                                                            <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
+                                                            <span><?php echo $value->name; ?> </span>
+                                                        </label>
+                                                    </li>
+                                                <?php }
+                                            }
+                                            ?> 
                                         </ul>
                                     </div>
                                 </div>
