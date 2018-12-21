@@ -190,7 +190,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                 </div>
                             </div>
                             <div>
-                                <a href="#advanced-search-menu" role="button" class="bd-black waves-effect waves-color-1 collapsed" data-toggle="collapse" aria-expanded="false">
+                                <a href="#advanced-search-menu" role="button" id="formSale" class="bd-black waves-effect waves-color-1 collapsed" data-toggle="collapse" aria-expanded="false">
                                     <i class="tz-filter-sm" title="Advanced filters"></i>
                                 </a>
                                 <!-- <a href="#!" role="button" id="half_map_update" class="bd-black waves-effect waves-color-1">
