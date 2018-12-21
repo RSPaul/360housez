@@ -466,11 +466,11 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		                <div class="row">
 		                	<div class="pagination-results flex-container flex-wrap col-xxs-12">
 			                	<div class="show-per-page">
-									<select>
-										<option value="" disabled selected>Show</option>
-										<option value="12">12</option>
-										<option value="25">25</option>
-										<option value="50">50</option>
+									<select name="per_page" id="perPageId" onchange="per_page()">
+										<option value="" disabled  <?=$_GET['per_page'] == '' ? 'selected' : ''?> >Show</option>
+										<option value="12" <?=$_GET['per_page'] == '12' ? 'selected' : ''?> >12</option>
+										<option value="25" <?=$_GET['per_page'] == '25' ? 'selected' : ''?> >25</option>
+										<option value="50" <?=$_GET['per_page'] == '50' ? 'selected' : ''?> >50</option>
 									</select>
 								</div>
 			                	<div class="listing_pagination_style">
@@ -524,6 +524,24 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		  } else {
 		    header.classList.remove("sticky_sec");
 		  }
+		}
+
+
+		function per_page() {
+			
+			var key = 'per_page';
+			var value = document.getElementById('perPageId').value;
+			var uri = window.location.href;
+			
+		  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+		  var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+		  if (uri.match(re)) {
+		    window.location.href = uri.replace(re, '$1' + key + "=" + value + '$2');
+		  }
+		  else {
+		    window.location.href = uri + separator + key + "=" + value;
+		  }
+		
 		}
 	</script>
 

@@ -76,7 +76,7 @@ if ($adv_show_hide['keyword'] != 1) {
 
 <!-- SEARCHING NAVBAR -->
     <div class="navbar searching-navbar" id="sticky_navbar">
-        <form>
+        <form action="" method="get">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xxs-12">
@@ -109,7 +109,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <?php if( $adv_show_hide['status'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
                                         <div class="form-group">
-                                            <select class="selectpicker" name="status" data-live-search="false" data-live-search-style="begins">
+                                            <select class="selectpicker status-right" name="status" data-live-search="false" data-live-search-style="begins">
                                                 <?php
                                                 // All Option
                                                 echo '<option value="">What do you need?</option>';
@@ -124,7 +124,12 @@ if ($adv_show_hide['keyword'] != 1) {
                                                         'parent' => 0
                                                     )
                                                 );
-                                                houzez_hirarchical_options('property_status', $prop_status, $status );
+                                                // houzez_hirarchical_options('property_status', $prop_status, $status );
+
+                                                foreach ($prop_status as $term) {
+                                                    $selected = urldecode($term->slug) == 'for-rent-living' ? 'selected="selected"' : '';
+                                                    echo '<option value="' . urldecode($term->slug) . '" '.$selected.'>' . $prefix . $term->name . '</option>';
+                                                }
                                                 ?>
                                             </select>
                                         </div>
@@ -171,24 +176,28 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <!-- Price /labelAfterPrice -->
                                 <span>Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>                                     
                                 <div class="input-field no-label">
-                                    <input id="search_min_price" class="money-format" name="min-price" type="text" placeholder="Min.">
+                                    <input class="money-format" name="min-price" type="text" placeholder="Min.">
                                     <?php // houzez_adv_searches_min_price(); ?>
                                     <label for="search_min_price">Price Min.</label>
                                     
                                 </div>
                                 <div class="input-field no-label">
-                                    <input id="search_max_price" class="money-format" name="max_price" type="text" placeholder="Max.">
+                                    <input class="money-format" name="max_price" type="text" placeholder="Max.">
                                     <?php //houzez_adv_searches_max_price(); ?>
                                     <label for="search_max_price">Price Max.</label>
                                 </div>
                             </div>
                             <div>
-                                <a href="#advanced-search-menu" role="button" class="bd-black waves-effect waves-color-1 collapsed" data-toggle="collapse" aria-expanded="false">
+                                <a href="#advanced-search-menu2" role="button" class="bd-black waves-effect waves-color-1 collapsed" data-toggle="collapse" aria-expanded="false">
                                     <i class="tz-filter-sm" title="Advanced filters"></i>
                                 </a>
-                                <a href="#!" role="button" id="half_map_update" class="bd-black waves-effect waves-color-1">
+                                <!-- <a href="#!" role="button" id="half_map_update" class="bd-black waves-effect waves-color-1">
                                     <i class="tz-search-sm" title="Find"></i>
-                                </a>
+                                </a> -->
+
+                                <button type="submit" role="button" class="bd-black waves-effect waves-color-1">
+                                    <i class="tz-search-sm" title="Find"></i>
+                                </button>
 
                                 <?php
                                     if (is_page('1672')) { ?>
@@ -209,7 +218,7 @@ if ($adv_show_hide['keyword'] != 1) {
                 </div>
                 <div class="row">
                     <div class="col-xxs-12">
-                        <div id="advanced-search-menu" class="collapse"  aria-expanded="false">
+                        <div id="advanced-search-menu2" class="collapse"  aria-expanded="false">
                             <!-- Use class to show filters according to the action .for-rent-living-filters / .for-rent-vacations-filters / .for-sale-filters  -->
                             <div class="advanced-search-filters flex-container flex-wrap">
                                 <div class="search-col one flex-container">
@@ -254,16 +263,16 @@ if ($adv_show_hide['keyword'] != 1) {
                                         <!-- Price /labelAfterPrice -->
                                         <span>Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>                                     
                                         <div class="input-field no-label">
-                                            <input id="search_min_price" class="money-format" name="min-price" type="text" placeholder="Min.">
+                                            <input class="money-format" name="min-price" type="text" placeholder="Min.">
                                             <label for="inner_search_min_price">Price Min.</label>
                                         </div>
                                         <div class="input-field no-label">
-                                            <input id="search_max_price" class="money-format" name="max_price" type="text" placeholder="Max.">
+                                            <input class="money-format" name="max_price" type="text" placeholder="Max.">
                                             <label for="inner_search_max_price">Price Max.</label>
                                         </div>
                                     </div>
                                     <div class="input-field no-label guests-filter">
-                                        <select id="search_guests">
+                                        <select>
                                             <option value="" disabled selected>Guests</option>
                                             <option value="any">Any</option>
                                             <option value="1">1</option>
@@ -284,7 +293,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <option value="">Rooms</option>
                                             <?php houzez_number_list('bedrooms'); ?>
                                         </select>
-                                        <!-- <select id="search_rooms">
+                                        <!-- <select>
                                             <option value="" disabled selected>Rooms</option>
                                             <option value="any">Any</option>
                                             <option value="1">1</option>
@@ -305,7 +314,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <option value="">Baths</option>
                                             <?php houzez_number_list('bathrooms'); ?>
                                         </select>
-                                        <!-- <select id="search_baths">
+                                        <!-- <select>
                                             <option value="" disabled selected>Baths</option>
                                             <option value="any">Any</option>
                                             <option value="1">1</option>
@@ -324,20 +333,20 @@ if ($adv_show_hide['keyword'] != 1) {
                                     <div class="form-group flex-container area-filter">
                                         <span>Area <span class="txt-xs txt-op-60">(m&#178)</span></span>
                                         <div class="input-field no-label">
-                                            <!-- <input id="search_min_area" type="text" placeholder="Min."> -->
+                                            <!-- <input type="text" placeholder="Min."> -->
 
                                             <input type="text" class="form-control" value="<?php echo isset ( $_GET['min-area'] ) ? $_GET['min-area'] : ''; ?>" name="min-area" placeholder="Min.">
 
                                             <label for="search_min_area">Min. <span class="txt-xs txt-op-60">(m&#178)</span></label>
                                         </div>
                                         <div class="input-field no-label">
-                                            <!-- <input id="search_max_area" type="text" placeholder="Max."> -->
+                                            <!-- <input type="text" placeholder="Max."> -->
                                             <input type="text" class="form-control" value="<?php echo isset ( $_GET['max-area'] ) ? $_GET['max-area'] : ''; ?>" name="max-area" placeholder="Max.">
                                             <label for="search_max_area">Max. <span class="txt-xs txt-op-60">(m&#178)</span></label>
                                         </div>
                                     </div>
                                     <div class="input-field no-label sea-distance-filter">
-                                        <select id="search_sea_distance">
+                                        <select>
                                             <option value="" disabled selected>Distance to the sea</option>
                                             <option value="any">Any</option>
                                             <option value="1">- 100 m </option>
@@ -353,10 +362,10 @@ if ($adv_show_hide['keyword'] != 1) {
                                         <p class="filter-title txt-h-medium txt-md">Rules</p>
                                         <ul>
                                             <li>
-                                                <label for="rule1"><input type="checkbox" id="rule1" class="filled-in"><span>Pets allowed</span></label>
+                                                <label for="rule1"><input type="checkbox" class="filled-in"><span>Pets allowed</span></label>
                                             </li>
                                             <li>
-                                                <label for="rule2"><input type="checkbox" id="rule2" class="filled-in"><span>No security deposit</span></label>
+                                                <label for="rule2"><input type="checkbox" class="filled-in"><span>No security deposit</span></label>
                                             </li>
                                         </ul>
                                     </div>
@@ -373,34 +382,34 @@ if ($adv_show_hide['keyword'] != 1) {
                                         <ul id="collapse-feature-filters" class="collapse in">
                                             <?php get_template_part('template-parts/advanced-search/search-features'); ?>
                                            <!--  <li>
-                                                <label for="feature1"><input type="checkbox" id="feature1" class="filled-in"><span>Feature 1</span></label>
+                                                <label for="feature1"><input type="checkbox" class="filled-in"><span>Feature 1</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature2"><input type="checkbox" id="feature2" class="filled-in"><span>Feature 2 larga</span></label>
+                                                <label for="feature2"><input type="checkbox" class="filled-in"><span>Feature 2 larga</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature3"><input type="checkbox" id="feature3" class="filled-in"><span>Feature 3</span></label>
+                                                <label for="feature3"><input type="checkbox" class="filled-in"><span>Feature 3</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature4"><input type="checkbox" id="feature4" class="filled-in"><span>Feature 4 long...</span></label>
+                                                <label for="feature4"><input type="checkbox" class="filled-in"><span>Feature 4 long...</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature5"><input type="checkbox" id="feature5" class="filled-in"><span>Feature 5</span></label>
+                                                <label for="feature5"><input type="checkbox" class="filled-in"><span>Feature 5</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature6"><input type="checkbox" id="feature6" class="filled-in"><span>Feature 6 long long long feature</span></label>
+                                                <label for="feature6"><input type="checkbox" class="filled-in"><span>Feature 6 long long long feature</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature7"><input type="checkbox" id="feature7" class="filled-in"><span>Feature 7</span></label>
+                                                <label for="feature7"><input type="checkbox" class="filled-in"><span>Feature 7</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature8"><input type="checkbox" id="feature8" class="filled-in"><span>Feature 8</span></label>
+                                                <label for="feature8"><input type="checkbox" class="filled-in"><span>Feature 8</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature9"><input type="checkbox" id="feature9" class="filled-in"><span>Feature 9</span></label>
+                                                <label for="feature9"><input type="checkbox" class="filled-in"><span>Feature 9</span></label>
                                             </li>
                                             <li>
-                                                <label for="feature10"><input type="checkbox" id="feature10" class="filled-in"><span>Feature 10</span></label>
+                                                <label for="feature10"><input type="checkbox" class="filled-in"><span>Feature 10</span></label>
                                             </li> -->
                                         </ul>
                                     </div>
@@ -415,22 +424,15 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-status-filters" class="collapse in">
-                                            <?php
-                                            $terms = get_terms( array(
-                                                'taxonomy' => 'property_status',
-                                                'hide_empty' => false,
-                                            ) );    
-                                            if(count($terms)) {
-                                                foreach ($terms as $key => $value) { ?>
-                                                    <li>
-                                                        <label for="status1">
-                                                            <input type="checkbox" name="status[]"  id="status<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
-                                                            <span><?php echo $value->name; ?> </span>
-                                                        </label>
-                                                    </li>
-                                                <?php }
-                                            }
-                                            ?>  
+                                            <li>
+                                                <label for="status1"><input type="checkbox" class="filled-in"><span>Estatus 1</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="status2"><input type="checkbox" class="filled-in"><span>Estatus 2</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="status3"><input type="checkbox" class="filled-in"><span>Estatus 3</span></label>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div  class="furniture-filters">
@@ -443,13 +445,13 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </div>
                                         <ul id="collapse-furniture-filters" class="collapse in">
                                             <li>
-                                                <label for="furnished"><input type="checkbox" id="furnished" class="filled-in"><span>Furnished</span></label>
+                                                <label for="furnished"><input type="checkbox" class="filled-in"><span>Furnished</span></label>
                                             </li>
                                             <li>
-                                                <label for="unfurnished"><input type="checkbox" id="unfurnished" class="filled-in"><span>Unfurnished</span></label>
+                                                <label for="unfurnished"><input type="checkbox" class="filled-in"><span>Unfurnished</span></label>
                                             </li>
                                             <li>
-                                                <label for="semifurnished"><input type="checkbox" id="semifurnished" class="filled-in"><span>Semi Furnished</span></label>
+                                                <label for="semifurnished"><input type="checkbox" class="filled-in"><span>Semi Furnished</span></label>
                                             </li>
                                         </ul>
                                     </div>
@@ -464,22 +466,30 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-services-filters" class="collapse in">
-                                             <?php
-                                            $terms = get_terms( array(
-                                                'taxonomy' => 'services',
-                                                'hide_empty' => false,
-                                            ) );    
-                                            if(count($terms)) {
-                                                foreach ($terms as $key => $value) { ?>
-                                                    <li>
-                                                        <label for="status1">
-                                                            <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
-                                                            <span><?php echo $value->name; ?> </span>
-                                                        </label>
-                                                    </li>
-                                                <?php }
-                                            }
-                                            ?> 
+                                            <li>
+                                                <label for="service1"><input type="checkbox" class="filled-in"><span>Service 1</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="service2"><input type="checkbox" class="filled-in"><span>Service 2</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="service3"><input type="checkbox" class="filled-in"><span>Service 3</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="service4"><input type="checkbox" class="filled-in"><span>Service 4</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="service5"><input type="checkbox" class="filled-in"><span>Service 5</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="service6"><input type="checkbox" class="filled-in"><span>Service 6</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="service7"><input type="checkbox" class="filled-in"><span>Service 7</span></label>
+                                            </li>
+                                            <li>
+                                                <label for="service"><input type="checkbox" class="filled-in"><span>Service 8</span></label>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -534,22 +544,22 @@ if ($adv_show_hide['keyword'] != 1) {
 
                                         <!-- <ul id="collapse-homeAppliances-filters" class="collapse in">
                                             <li>
-                                                <label for="appliance1"><input type="checkbox" id="electrodomesticos1" class="filled-in"><span>Appliance 1</span></label>
+                                                <label for="appliance1"><input type="checkbox" class="filled-in"><span>Appliance 1</span></label>
                                             </li>
                                             <li>
-                                                <label for="appliance2"><input type="checkbox" id="electrodomesticos2" class="filled-in"><span>Appliance 2</span></label>
+                                                <label for="appliance2"><input type="checkbox" class="filled-in"><span>Appliance 2</span></label>
                                             </li>
                                             <li>
-                                                <label for="appliance3"><input type="checkbox" id="electrodomesticos3" class="filled-in"><span>Appliance 3</span></label>
+                                                <label for="appliance3"><input type="checkbox" class="filled-in"><span>Appliance 3</span></label>
                                             </li>
                                             <li>
-                                                <label for="appliance4"><input type="checkbox" id="electrodomesticos4" class="filled-in"><span>Appliance 4</span></label>
+                                                <label for="appliance4"><input type="checkbox" class="filled-in"><span>Appliance 4</span></label>
                                             </li>
                                             <li>
-                                                <label for="appliance5"><input type="checkbox" id="electrodomesticos5" class="filled-in"><span>Appliance 5</span></label>
+                                                <label for="appliance5"><input type="checkbox" class="filled-in"><span>Appliance 5</span></label>
                                             </li>
                                             <li>
-                                                <label for="appliance6"><input type="checkbox" id="electrodomesticos6" class="filled-in"><span>Appliance 6</span></label>
+                                                <label for="appliance6"><input type="checkbox" class="filled-in"><span>Appliance 6</span></label>
                                             </li>
                                         </ul> -->
                                     </div>
@@ -571,7 +581,7 @@ if ($adv_show_hide['keyword'] != 1) {
 
 
     <script>
-        window.onscroll = function() {myFunction()};
+/*        window.onscroll = function() {myFunction()};
 
         var header = document.getElementById("sticky_navbar");
         var sticky = header.offsetTop;
@@ -589,4 +599,5 @@ if ($adv_show_hide['keyword'] != 1) {
             var header2 = document.getElementById("houzez-gmap-main");
             header2.className += " stick_map";
         },3000);
+*/
     </script>
