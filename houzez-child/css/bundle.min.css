@@ -10524,3 +10524,77 @@ body.home .property-card .property-card-body {
 	}
 
 }
+
+
+@media (min-width: 768px) and (max-width: 991px){
+	body #toggle-map.toggle_map_right {
+	    display: none !important;
+	}
+	.map-search-results.show-map.col-xs-12.col-sm-6.col-lg-5 {
+	    display: none;
+	}
+	.property-card.featured-property {
+	    width: 32%;
+	    margin: 0 8px 15px 0px;
+	}
+
+
+
+
+
+}
+
+@media (max-width: 767px){
+	body #toggle-map.toggle_map_right {
+	    display: none !important;
+	}
+	.map-search-results.show-map.col-xs-12.col-sm-6.col-lg-5 {
+	    display: none;
+	}
+	.mini-logo {
+	    margin-top: 5px;
+	    width: 46px;
+	}
+	.searching-navbar #advanced-search-menu{
+		position: relative;
+	}
+	.module-title h2{
+		font-size: 17px;
+	}
+	body.home .property-card.featured-property {
+	    width: 100%;
+	    margin: 0 0px 15px 0px;
+	    float: left;
+	}
+	
+	
+
+	
+
+}
+
+
+@media (max-width: 480px){
+	.navbar.searching-navbar.sticky_sec .navbar-header.listing_hide_logo.mini-logo{
+		margin-top: 25px;
+		width: 50px;
+		margin-left: 0px;
+	}
+	.property-card.featured-property {
+	    width: 100%;
+	    margin: 0 0px 15px 0px;
+	}
+	.navbar-header img {
+	    margin-top: -11px;
+	    margin-left: 10px;
+	}
+
+
+
+
+
+
+
+}
+
+
