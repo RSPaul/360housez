@@ -272,6 +272,7 @@ if( houzez_is_dashboard() ) {
 			</div>
 		</div>
 	</div>
+	
 
 	<div class="property-detail-header">
 		<div class="row">
@@ -299,27 +300,29 @@ if( houzez_is_dashboard() ) {
 				</div>
 			</div>
 		</div>
-	</div>  
+	</div> 
+
+
 	
 	<!--PROPERTY DETAIL FIXED NAV--> 
-	<div class="property-detail-fixed-nav bg-white sticky-navbar" id="sticky_navbar">
+	<!-- <div class="property-detail-fixed-nav bg-white sticky-navbar" id="sticky_navbar"> -->
 		<!-- <div class="container-fluid"> -->
-			<div class="row">
+		<!-- 	<div class="row">
 				<div class="col-xxs-12">
 					<div class="fixed-inner-wrapp bg-black">
-						<div class="flex-container">
+						<div class="flex-container"> -->
 							<!--Previus Property-->
-							<div class="flex-item">
+							<!-- <div class="flex-item">
 								<a href="" data-toggle="tooltip" data-placement="right" title="Previous property"><i class="tz-chevron-left"></i></a>
 							</div>
 							<div class="flex-item">
-								<ul class="list-block flex-container">
+								<ul class="list-block flex-container"> -->
 									<!--Title-->
-									<li>
+									<!-- <li>
 										<span class="txt-h-medium txt-md txt-white">Beautiful house in the mountains</span>
-									</li>
+									</li> -->
 									<!--Property Type-->
-									<li>
+									<!-- <li>
 										<span class="txt-h-medium txt-sm txt-gray-1 text-uppercase">Type</span>
 									</li>
 								</ul>
@@ -333,17 +336,17 @@ if( houzez_is_dashboard() ) {
 										<a href="#online-booking" class="btn waves-effect waves-color-1 z-depth-0 bd-gradient">Online Booking</a>
 									</li>
 								</ul>
-							</div>
+							</div> -->
 							<!--Next Property-->
-							<div class="flex-item">
+							<!-- <div class="flex-item">
 								<a href="" data-toggle="tooltip" data-placement="left" title="Next property"><i class="tz-chevron-right"></i></a>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		<!-- </div> -->
-	</div>
+	<!-- </div> -->
 </section>
 <!--end section header-->
 
