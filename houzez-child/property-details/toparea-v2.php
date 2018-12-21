@@ -56,7 +56,7 @@ $prop_images          = get_post_meta( get_the_ID(), 'fave_property_images', fal
 $prop_video_img       = get_post_meta( get_the_ID(), 'fave_video_image', true );
 $prop_video_url       = get_post_meta( get_the_ID(), 'fave_video_url', true );
 ?>
-<section class="detail-top detail-top-full <?php echo esc_attr($property_top_area.' '.$layout_class);?>">
+<!-- <section class="detail-top detail-top-full <?php echo esc_attr($property_top_area.' '.$layout_class);?>">
     <div class="detail-media">
     <div class="tab-content">
 
@@ -147,4 +147,4 @@ $prop_video_url       = get_post_meta( get_the_ID(), 'fave_video_url', true );
 
     </div>    
     </div>
-</section>
+</section> -->
