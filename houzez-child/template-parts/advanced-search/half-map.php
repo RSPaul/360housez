@@ -81,11 +81,7 @@ if ($adv_show_hide['keyword'] != 1) {
                 <div class="row">
                     <div class="col-xxs-12">
                         <?php
-                            if (is_page('3221')) { ?>
-                            <div class="navbar-header listing_hide_logo mini-logo">
-                                <?php get_template_part('inc/header/logo'); ?>
-                            </div>
-                            <?php  } else {  ?>
+                            if (is_page('1672')) { ?>
 
                                 <div class="mini-logo show">
                                     <a href="#!" class="sidenav-trigger" data-target="sidenav-menu">
@@ -93,6 +89,10 @@ if ($adv_show_hide['keyword'] != 1) {
                                     </a>
                                 </div> 
                             
+                            <?php  } else {  ?>
+                                <div class="navbar-header listing_hide_logo mini-logo">
+                                    <?php get_template_part('inc/header/logo'); ?>
+                                </div>                                                          
 
                         <?php  }     ?>                        
                         
@@ -189,12 +189,20 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <a href="#!" role="button" id="half_map_update" class="bd-black waves-effect waves-color-1">
                                     <i class="tz-search-sm" title="Find"></i>
                                 </a>
+
                                 <?php
-                                if (!is_page('3221')) { ?>
-                                <a href="#" role="button" id="toggle-map" class="toggle_map_right bd-black waves-effect waves-color-1 active">
-                                    <i class="tz-map" title="Map"></i>
-                                </a>
-                                <?php } ?>
+                                    if (is_page('1672')) { ?>
+
+                                       <a href="#" role="button" id="toggle-map" class="toggle_map_right bd-black waves-effect waves-color-1 active">
+                                            <i class="tz-map" title="Map"></i>
+                                        </a> 
+                                    
+                                    <?php  } else {  ?>
+
+                                <?php  }     ?>
+
+
+                                
                             </div>
                         </div>
                     </div>

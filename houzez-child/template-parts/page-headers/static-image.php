@@ -105,9 +105,13 @@ if (!empty($img_url[0])) {
         <?php } ?>
         opacity: <?php echo esc_attr($page_image_opacity); ?>;
     }
+    .btn-group.bootstrap-select {
+        display: none !important;
+    }
     
 </style>
 
+<?php get_template_part('template-parts/advanced-search/half-map'); ?>
 
 <div class="header-media-wrap">
     <div class="header-media">
