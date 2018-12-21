@@ -144,7 +144,7 @@ houzez_count_property_views( $post->ID );
             </div>
 
         <?php } else { ?>
-        <div class="container-fluid">
+        <div class="">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 no-padding">
                     <div class="detail-bar detail-bar-full houzez-single-property-v2">

@@ -29,7 +29,8 @@ if( !function_exists('houzez_container_needed') ) {
             'template/properties-parallax.php',
             'template-parts/search_result_template.php',
             'template-parts/property_detail_template.php',
-            'template-parts/property-listing-style3-fullwidth.php'
+            'template-parts/property-listing-style3-fullwidth.php',
+           
         ) ) ) {
             return false;
         }

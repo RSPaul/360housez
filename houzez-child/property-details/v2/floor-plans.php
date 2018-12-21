@@ -14,13 +14,13 @@ $icon_prop_size = houzez_option('icon_prop_size', false, 'url' );
 
 if( !empty( $floor_plans ) ) {
 ?>
-<div class="property-plans detail-block custom">
-    <div class="container">
+<div class="container property-detail-floor-plans">
+   
         <!-- <div class="detail-title">
             <h2 class="title-left"><?php esc_html_e( 'Floor plans', 'houzez' ); ?></h2>
         </div> -->
-        <div class="plan-tabber">
-            <ul class="plan-tabs">
+        <div class="plan-tabber swipe-tabs">
+            <ul class="plan-tabs nav nav-tabs flex-container flex-h-center">
                 <?php
                 $i = 0;
                 foreach( $floor_plans as $pln ):
@@ -30,7 +30,7 @@ if( !empty( $floor_plans ) ) {
                     } else {
                         $active = '';
                     }
-                    echo '<li '.$active.'>'.esc_attr( $pln['fave_plan_title'] ).'</li>';
+                    echo '<li '.$active.'>'. '<a>' .esc_attr( $pln['fave_plan_title'] ). '</a>'. '</li>';
                 endforeach;
                 ?>
             </ul>
@@ -79,7 +79,7 @@ if( !empty( $floor_plans ) ) {
                                     <p><?php echo esc_attr( $plan['fave_plan_description'] ); ?></p>
                                 <?php } ?>
 
-                                <div class="row">
+                               
                                     <ul class="floor-characteristics txt-p-light txt-md">
                                         <?php 
                                         $fave_property_land_postfix_area=get_post_meta( get_the_ID(), 'fave_property_size_prefix', true ); 
@@ -91,7 +91,7 @@ if( !empty( $floor_plans ) ) {
                                         <li><span class="txt-p-medium">Baths</span><span> </span><?php echo esc_attr( $plan['fave_plan_bathrooms'] ); ?></li>
                                     </ul>
                                     
-                                </div>
+                              
                             </div>
                         </div>
                     </div>
@@ -102,6 +102,6 @@ if( !empty( $floor_plans ) ) {
                 ?>
             </div>
         </div>
-    </div>
+
 </div>
 <?php } ?>
