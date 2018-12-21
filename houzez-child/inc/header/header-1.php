@@ -1,5 +1,5 @@
 <?php
-if(!is_page(3219)) {
+if(!is_page(419)) {
 global $current_user;
 wp_get_current_user();
 $userID  =  $current_user->ID;
@@ -302,7 +302,7 @@ if( houzez_is_dashboard() ) {
 		</div>
 	</div> 
 
-
+	<!-- <?php //get_template_part('property-details/next-prev'); ?> -->
 	
 	<!--PROPERTY DETAIL FIXED NAV--> 
 	<!-- <div class="property-detail-fixed-nav bg-white sticky-navbar" id="sticky_navbar"> -->

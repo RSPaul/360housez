@@ -10480,6 +10480,32 @@ body.home .property-card .property-card-body {
     padding: 0 .5rem;
     height: 240px;
 }
+.plan-tabs.nav.nav-tabs.flex-container.flex-h-center li {
+    padding: 0;
+}
+.plan-tabber.swipe-tabs .tab-content {
+    margin-top: 0;
+    padding: 0;
+}
+.floor-characteristics.txt-p-light.txt-md li {
+    display: inline-block;
+    margin-right: 30px;
+    font-size: 17px;
+}
+.map #singlePropertyMapSection {
+    min-height: 360px !important;
+}
+.agent_contact_form.btn.waves-effect.waves-color-1 {
+    width: 100%;
+    text-transform: uppercase;
+    margin-top: 20px;
+    color: #fff !important;
+    height: auto !important;
+}
+
+
+
+
 
 
 
@@ -10566,10 +10592,10 @@ body.home .property-card .property-card-body {
 	    margin: 0 0px 15px 0px;
 	    float: left;
 	}
-	
-	
 
-	
+
+
+
 
 }
 

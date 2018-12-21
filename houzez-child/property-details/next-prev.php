@@ -107,7 +107,7 @@
         <!-- </div> -->
     </div>
 
-    <script>
+<script>
     window.onscroll = function() {myFunction()};
 
     var header = document.getElementById("sticky_navbar");
