@@ -10526,7 +10526,9 @@ body.home .property-card .property-card-body {
 .navbar.main-navbar {
     border-radius: 0px;
 }
-
+.advanced-search.advance-search-header.houzez-adv-price-range {
+    display: none;
+}
 
 
 
