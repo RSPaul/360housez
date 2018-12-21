@@ -8,12 +8,19 @@
 global $post_meta_data;
 
 $prop_id = get_post_meta( get_the_ID(), 'fave_property_id', true );
+
 $prop_price = get_post_meta( get_the_ID(), 'fave_property_price', true );
+$prop_living_price = get_post_meta( get_the_ID(), 'fave_property_sec_price', true );
+$prop_vac_price = get_post_meta( get_the_ID(), 'fave_property_third_price', true );
+
+
 $prop_size = get_post_meta( get_the_ID(), 'fave_property_size', true );
 $prop_land = get_post_meta( get_the_ID(), 'fave_property_land', true );
 $prop_land_postfix = get_post_meta( get_the_ID(), 'fave_property_postfix', true );
 $bedrooms = get_post_meta( get_the_ID(), 'fave_property_bedrooms', true );
 $bathrooms = get_post_meta( get_the_ID(), 'fave_property_bathrooms', true );
+$toilet = get_post_meta( get_the_ID(), 'fave_property_toilet', true );
+$guests = get_post_meta( get_the_ID(), 'fave_property_guests', true );
 $year_built = get_post_meta( get_the_ID(), 'fave_property_year', true );
 $garage = get_post_meta( get_the_ID(), 'fave_property_garage', true );
 $garage_size = get_post_meta( get_the_ID(), 'fave_property_garage_size', true );
@@ -21,6 +28,36 @@ $additional_features_enable = get_post_meta( get_the_ID(), 'fave_additional_feat
 $additional_features = get_post_meta( get_the_ID(), 'additional_features', true );
 $prop_details = false;
 $documents_download = houzez_option('documents_download');
+
+// beaches
+$fave_property_sea = get_post_meta( get_the_ID(), 'fave_property_sea', true );
+$near_beach1 = get_post_meta( get_the_ID(), 'near_beach1', true );
+$near_beach2 = get_post_meta( get_the_ID(), 'near_beach2', true );
+$near_beach3 = get_post_meta( get_the_ID(), 'near_beach3', true );
+$terms = get_terms( array(
+    'taxonomy' => 'beaches',
+    'hide_empty' => false,
+) );
+
+$near_beach1_name = "";
+$near_beach2_name = "";
+$near_beach3_name = "";
+
+if(count($terms)) {
+    foreach ($terms as $key => $value) {
+        if($value->term_id == $near_beach1) {
+            $near_beach1_name = $value->name;
+        }
+        if($value->term_id == $near_beach2) {
+            $near_beach2_name = $value->name;
+        }
+        if($value->term_id == $near_beach3) {
+            $near_beach3_name = $value->name;
+        }
+    }
+}
+
+
 
 $icon_prop_id = houzez_option('icon_prop_id', false, 'url' );
 $icon_bedrooms = houzez_option('icon_bedrooms', false, 'url' );
@@ -54,6 +91,7 @@ $rules_pets_enable=get_post_meta(get_the_ID(), 'rules_pets_enable', true);
 $rules_security_deposit=get_post_meta(get_the_ID(),'rules_security', true);
 $own_rules_repeater=get_post_meta(get_the_ID(), 'own_rules', true);
 
+$pro_type = get_the_terms(get_the_ID(), 'property_status');
 
 
 if( !empty( $prop_id ) ||
@@ -74,8 +112,287 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
 
 <?php
     if( $prop_details ) { ?>
-    <div class="property_details">
-    <h3 class="detail-sub-title"><span><?php esc_html_e( 'Detail', 'houzez' ); ?></span></h3>
+
+    <?php get_template_part('property-details/next-prev'); ?>
+    <div class="property_details1">
+
+
+    <section class="property-detail-information">
+        <div class="container">
+            <!-- .row-ref-->
+            <div class="row row-ref">
+                <div class="col-xs-6">
+                    <!--Property ID-->
+                    <p class="txt-h-light txt-md text-uppercase">REF. 123-45</p>
+                </div>
+                <div class="col-xs-6">
+                    <!--Save as Favorite-->
+                    <p class="txt-md text-right">Save <a class="no-style" role="button"><i class="tz-treasure-line waves-effect waves-circle"></i></a></p>
+                </div>
+            </div>
+            <!-- .row-price-->
+            <div class="row row-price">
+                <div class="col-xs-12">
+                    <?php
+                    if($pro_type[0]->slug == "for-rent-living") { ?>
+                        <p class="txt-h-light txt-lg">From <span class="txt-h-medium"><?php echo esc_attr( $prop_living_price ); ?></span> USD</p>
+                    <?php }
+                    if($pro_type[0]->slug == "for-rent-vacations") { ?>
+                         <p class="txt-h-light txt-lg">From <span class="txt-h-medium"><?php echo esc_attr( $prop_vac_price ); ?></span> USD</p>                        
+                    <?php }
+                    if($pro_type[0]->slug == "for-sale") { ?>
+                        <p class="txt-h-light txt-lg">From <span class="txt-h-medium"><?php echo esc_attr( $prop_price ); ?></span> USD</p>
+                    <?php }
+                    ?>
+                    <!-- <p class="txt-h-light txt-lg">From <span class="txt-h-medium">150,00</span> USD / night</p> -->
+                    
+                   
+                    
+                    <div class="input-field">
+                        <ul class="list-inline">
+                            <li>
+                                <label class="txt-h-light txt-info">Show price</label>
+                            </li>
+                            <li>
+                                <select class="txt-xs">
+                                    <option value="" disabled>Select</option>
+                                    <option value="rent_vacations" selected>For Rent: Vacations</option>
+                                    <option value="rent_living">For Rent: Living</option>
+                                    <option value="for_sale">For Sale</option>
+                                </select>
+                            </li>   
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- .row-main-features-->
+            <div class="row row-main-features">
+                <div class="col-xs-12">
+                    <ul class="last-child-no-border flex-container flex-wrap text-center">
+                        <li class="flex-item">
+                            <span class="txt-h-medium txt-lg"><?php echo esc_attr( $guests ); ?></span> <span class="text-uppercase">Guests</span>
+                        </li>
+                        <li class="flex-item">
+                            <span class="txt-h-medium txt-lg"><?php echo esc_attr( $bedrooms ); ?></span> <span class="text-uppercase">Beds</span>
+                        </li>
+                        <li class="flex-item">
+                            <span class="txt-h-medium txt-lg"><?php echo esc_attr( $bedrooms ); ?></span> <span class="text-uppercase">Rooms</span>
+                        </li>
+                        <li class="flex-item">
+                            <span class="txt-h-medium txt-lg"><?php echo esc_attr( $bathrooms ); ?></span> <span class="text-uppercase">Baths</span>
+                        </li>
+                        <li class="flex-item">
+                            <span class="txt-h-medium txt-lg"><?php echo esc_attr( $toilet ); ?></span> <span class="text-uppercase">Toilets</span>
+                        </li>
+                        <li class="flex-item">
+                            <span class="txt-h-medium txt-lg"><?php echo houzez_property_size( 'after' ); ?></span> <span class="text-uppercase">Area</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- .row-user-interactions-->
+           
+            <div class="row row-user-interactions">
+                <div class="col-sm-6">
+                    <?php 
+                    $post_id=get_the_id();    
+                    $comment_data=wp_count_comments($post_id); 
+                    $count_comment= $comment_data->total_comments;
+                    ?>  
+                    <ul class="list-inline">
+                        <li>
+                            <div>
+                                 <?php for($i=1; $i<5; $i++) {?>
+                                    <i class="fa fa-star"></i>
+                                <?php } ?>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="txt-p-light"><?php echo $count_comment; ?> reviews</span>  
+                            <a href="#property-reviews" class="txt-h-light txt-info"><span class="waves-effect">See reviews</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="list-inline">
+                        <li class="share-social">   
+                            <ul>
+                                <li><a href="#!" class="no-style" role="button"><i class="tz-whatsapp waves-effect waves-circle"></i></a></li>
+                                <li><a href="#!" class="no-style" role="button"><i class="tz-facebook waves-effect waves-circle"></i></a></li>
+                                <li><a href="#!" class="no-style" role="button"><i class="tz-twitter waves-effect waves-circle"></i></a></li>
+                                <li><a href="#!" class="no-style" role="button"><i class="tz-googleplus waves-effect waves-circle"></i></a></li>
+                                <li><a href="#!" class="no-style" role="button"><i class="tz-linkedin waves-effect waves-circle"></i></a></li>
+                                <li><a href="#!" class="no-style" role="button"><i class="tz-pinterest waves-effect waves-circle"></i></a></li>
+                                <li><a href="#!" class="no-style" role="button"><i class="tz-mail  waves-effect waves-circle"></i></a></li>
+                            </ul>
+                        </li>
+                        <li class="btn-share-social"><a href="#!" class="no-style" role="button"><i class="tz-share waves-effect waves-circle"></i></a></li>
+                        <li><a href="#!" class="no-style" role="button"><i class="tz-printer waves-effect waves-circle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- .row-description-->
+            <div class="row row-description">
+                <div class="col-xxs-12 txt-md">
+                    <?php the_content(); ?>
+                    <a class="txt-h-light txt-info pull-right" data-toggle="collapse" href="#collapse-description" aria-expanded="false"> 
+                        <span class="waves-effect">Read more <i class="tz-chevron-down-sm"></i></span>
+                        <span class="waves-effect">Read less <i class="tz-chevron-up-sm"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="property-detail-beaches">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <ul class="flex-container txt-md">
+                            <li class="flex-item">
+                                <p><?php echo esc_attr( $fave_property_sea ); ?> m</p>
+                                <p class="text-uppercase">Distance to the sea</p>
+                                <p class="txt-info">Straight line</p>
+                            </li>
+                            <li class="flex-item">
+                                <p><?php echo esc_attr( $near_beach1 );  echo esc_attr(get_post_meta( get_the_ID(), 'near_size_posfix1', true )); ?></p>
+                                <a href="#!" target="_blank"><span></span> <?php echo $near_beach1_name; ?></a>
+                            </li>
+                            <li class="flex-item">
+                                <p><?php echo esc_attr( $near_beach2 ); echo esc_attr(get_post_meta( get_the_ID(), 'near_size_posfix2', true ));?> </p>
+                                <a href="#!" target="_blank"><span></span> <?php echo $near_beach2_name; ?></a>
+                                <p class="txt-info">Nearby beaches</p>
+                            </li>
+                            <li class="flex-item">
+                                <p><?php echo esc_attr( $near_beach3 ); echo esc_attr(get_post_meta( get_the_ID(), 'near_size_posfix3', true )); ?></p>
+                                <a href="#!" target="_blank"><span></span> <?php echo $near_beach3_name; ?></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- /container-->
+
+        <!--AREA-->
+        <section class="container property-detail-area">
+            <div class="row">
+                <div class="col-xxs-12">
+                    <h2 class="txt-lg text-center">Area</h2>
+                    <ul class="flex-container flex-h-around txt-md">
+                        <li class="flex-item"><p>Area <span><?php echo esc_attr( $prop_size ); ?>  <?php echo esc_attr(get_post_meta( get_the_ID(), 'fave_property_size_prefix', true ));?></span></p></li>
+                        <li class="flex-item"><p>Land area <span><?php echo esc_attr( $prop_land ); ?> <?php echo esc_attr(get_post_meta( get_the_ID(), 'fave_property_land_postfix', true ));?></span></p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!--OTHER FEATURES-->
+        <section class="container property-detail-other-features">
+            <hr>
+            <div class="row">
+                <div class="col-xxs-12 sub-features">
+                    <h2 class="txt-lg text-center">Features</h2>
+                    <div class="flex-container flex-wrap txt-md text-center">
+
+                        <?php 
+                        $terms = get_terms( array(
+                            'taxonomy' => 'property_feature',
+                            'hide_empty' => false,
+                        ) );         
+                        ?>
+
+                        <?php foreach ($terms as $key => $cat_feature) { ?>
+                            <?php $term_id= $cat_feature->term_id;  ?> 
+                            <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
+                            <div class="feature_<?php echo $term_id; ?>">
+                                <i class="fa fa-<?php echo $get_feature_icons; ?>"></i>
+                                <p class="title"><?php echo $cat_feature->name; ?></p>
+                            </div>
+                        <?php } ?>                       
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="row collapse" id="collapse-other-features">
+                <!-- Home Appliance Services -->
+                <div class="col-xxs-12 sub-services">
+                    <h2 class="txt-lg text-center">Services</h2>
+                    <div class="flex-container flex-wrap txt-md text-center">
+                        <?php 
+                        $terms = get_terms( array(
+                            'taxonomy' => 'services',
+                            'hide_empty' => false,
+                        ) );         
+                        ?>
+                        <?php foreach ($terms as $key => $cat_feature) { ?>
+                            <?php $term_id= $cat_feature->term_id;  ?> 
+                            <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
+                            <div class="feature_<?php echo $term_id; ?>">
+                                <i class="fa fa-<?php echo $get_feature_icons; ?>"></i>
+                                <p><?php echo $cat_feature->name; ?></p>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                
+                <!-- Home Appliance Sub-section -->
+                <div class="col-xxs-12 sub-appliances">
+                    <h2 class="txt-lg text-center">Featured Home Appliances</h2>
+                    <div class="flex-container flex-wrap txt-md text-center">
+
+                        <?php 
+                        $terms = get_terms( array(
+                            'taxonomy' => 'home_appliances',
+                            'hide_empty' => false,
+                        ) );         
+                        ?>                      
+                        <?php foreach ($terms as $key => $cat_feature) { ?>
+                            <?php $term_id= $cat_feature->term_id;  ?> 
+                            <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
+                            <div class="feature_<?php echo $term_id; ?>">
+                                <i class="fa fa-<?php echo $get_feature_icons; ?>"></i>
+                                <p><?php echo $cat_feature->name; ?></p>
+                            </div>
+                        <?php } ?>                      
+                    </div>
+                </div>
+            </div>
+            <a class="txt-h-light txt-info text-center btn-block" data-toggle="collapse" href="#collapse-other-features" aria-expanded="false">
+                <span class="waves-effect">Show all <i class="tz-chevron-down-sm"></i></span>
+                <span class="waves-effect">Show less <i class="tz-chevron-up-sm"></i></span>                        
+            </a>
+        </section> <!-- /container-->
+
+        <?php if($rules_setting!="disable"){ ?>
+        <section class="container property-detail-rules">
+            <hr>
+            <div class="row">
+                <div class="col-xxs-12">
+                    <h2 class="txt-lg text-center">Rules</h2>
+                    <ul class="flex-container flex-wrap txt-md">
+                        <li class="flex-item">
+                            <p>Pets <?php if($rules_pets_enable=="allowed") { echo "Allowed"; } else { echo "Not Allowed"; } ?></p>
+                        </li>
+                        <li class="flex-item">
+                            <p><?php if($rules_security_deposit=="no") { echo "No"; } else { echo "Yes"; } ?> security deposit</p>
+                        </li>
+                    </ul>
+                    <a class="txt-h-light txt-info text-center btn-block" data-toggle="collapse" href="#" aria-expanded="false">
+                        <span class="waves-effect">Show all <i class="tz-chevron-down-sm"></i></span>
+                        <span class="waves-effect">Show less <i class="tz-chevron-up-sm"></i></span>
+                    </a>
+                </div>
+            </div>    
+        </section>
+   
+    <?php }   ?>
+
+
+
+
+
+    <!-- old -->
+
+    <!-- <h3 class="detail-sub-title"><span><?php esc_html_e( 'Detail', 'houzez' ); ?></span></h3>
     <ul class="detail-amenities-list">
         <?php if( !empty( $prop_id ) && $hide_detail_prop_fields['prop_id'] != 1 ) { ?>
         <li class="media">
@@ -140,32 +457,6 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
         </li>
         <?php } ?>
 
-        <?php
-            //Custom Fields
-            if(class_exists('Houzez_Fields_Builder')) {
-            $fields_array = Houzez_Fields_Builder::get_form_fields(); 
-
-                if(!empty($fields_array)) {
-                    foreach ( $fields_array as $value ) {
-                        $data_value = get_post_meta( get_the_ID(), 'fave_'.$value->field_id, true );
-                        $field_title = $value->label;
-                        $icon = $value->options;
-                        if (function_exists('icl_translate') ){
-                            $field_title = icl_translate('houzez_cfield', 'houzez_custom_field_'.sanitize_title($field_title), $field_title );
-                                              
-                        }
-                        if(!empty($data_value) && $hide_detail_prop_fields[$value->field_id] != 1) {
-                            echo '<li class="media '.$value->field_id.'">';
-                            if(!empty($icon)) {
-                                echo '<div class="media-left media-middle"><img src="'.esc_url($icon).'" width="50" height="50" alt="Icon"></div>';
-                            }
-                            echo '<div class="media-body">'.esc_attr( $data_value ).'<br>'.$field_title.'</div>';
-                            echo '</li>';
-                        }
-                    }
-                }
-            }
-        ?>
 
         <?php if( !empty( $year_built ) && $hide_detail_prop_fields['year_built'] != 1 ) { ?>
         <li class="media">
@@ -175,201 +466,5 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
             <div class="media-body"> <?php esc_html_e( 'Year Built', 'houzez' ); ?><br> <?php echo esc_attr( $year_built ); ?> </div>
         </li>
         <?php } ?>
-    </ul>
+    </ul> -->
     <?php } ?>
-
-    <?php if( $hide_detail_prop_fields['updated_date'] != 1 ) { ?>
-        <p class="update-text"><?php esc_html_e( 'Updated on', 'houzez' ); ?> <?php the_modified_time('F j, Y'); ?> <?php esc_html_e( 'at', 'houzez' ); ?> <?php the_modified_time('g:i a'); ?> </p>
-    <?php } ?>
-</div>
-
-
-
-
-<?php if( $property_reviews != 0 ) { ?>
-    <?php if($review_setting=="yes" && $single_top_area=="v2"){ ?>
-    <div class="count_review">
-        <?php 
-        $post_id=get_the_id();    
-        $comment_data=wp_count_comments($post_id); 
-        $count_comment= $comment_data->total_comments;
-        ?>  
-
-        <?php for($i=1; $i<5; $i++) {?>
-            <i class="fa fa-star"></i>
-        <?php } ?>
-        <span><?php echo $count_comment; ?> Reviews <a id="scroll_down" href="javascript:void(0)">See Reviews</a></span>
-    </div>
-    <?php } ?>
-<?php } ?>
-
-
-<div class="property-description detail-block">
-    <div class="detail-title">
-        <h2 class="title-left"><?php esc_html_e( 'Description', 'houzez' ); ?></h2>
-    </div>
-    <?php the_content(); ?>
-
-    <?php if( !empty($post_meta_data['fave_attachments']) ): ?>
-        <div class="detail-title-inner">
-            <h4 class="title-inner"><?php esc_html_e( 'Property Documents', 'houzez' ); ?></h4>
-        </div>
-        <ul class="document-list">
-
-            <?php foreach( $post_meta_data['fave_attachments'] as $attachment_id ): ?>
-                <?php $attachment_meta = houzez_get_attachment_metadata($attachment_id);?>
-                <li>
-                    <div class="pull-left">
-                        <i class="fa fa-file-o"></i> <?php echo esc_attr( $attachment_meta->post_title ); ?>
-                    </div>
-                    <div class="pull-right">
-                        <?php if( $documents_download == 1 ) {
-                            if( is_user_logged_in() ) { ?>
-                                <a href="<?php echo esc_url( $attachment_meta->guid ); ?>" download><?php esc_html_e( 'DOWNLOAD', 'houzez' ); ?></a>
-                            <?php } else { ?>
-                                <a href="#" data-toggle="modal" data-target="#pop-login"><?php esc_html_e( 'DOWNLOAD', 'houzez' ); ?></a>
-                            <?php } ?>
-                        <?php } else { ?>
-                            <a href="<?php echo esc_url( $attachment_meta->guid ); ?>" download><?php esc_html_e( 'DOWNLOAD', 'houzez' ); ?></a>
-                        <?php } ?>
-                    </div>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
-</div>
-
-<?php if($near_distance1!="" || $near_distance2!="" || $near_distance3 !=""){ ?>
-<div class="near_beach_distance">
-    <ul>
-        <li>
-            <p>0 m</p>
-            <p>Distance to the sea</p>
-        </li>
-        <?php if($near_distance1!=""){ ?>
-            <li>
-                <p><?php echo $near_distance1; ?> <?php echo $near_size_posfix1; ?></p>
-                <p>Distance to the sea</p>
-            </li>
-        <?php } ?>
-        <?php if($near_distance2!=""){ ?>
-            <li>
-                <p><?php echo $near_distance2; ?> <?php echo $near_size_posfix2; ?></p>
-                <p>Distance to the sea</p>
-            </li>
-        <?php } ?>
-        <?php if($near_distance3!=""){ ?>
-            <li>
-                <p><?php echo $near_distance3; ?> <?php echo $near_size_posfix3; ?></p>
-                <p>Distance to the sea</p>
-            </li>
-        <?php } ?>        
-    </ul>
-</div>
-<?php } ?>
-
-
-
-<div class="other_features">
-    <?php if($single_area_property!="" || $single_area_features!=""){ ?>
-    <div class="property_data area_data">
-        <h2>Area</h2>
-        <ul>
-            <?php if($single_area_property!=""){ ?>
-                <li>Area <?php echo $single_area_property ." ". $fave_property_land_postfix_area; ?></li>
-            <?php } ?>
-
-            <?php if($single_area_features!=""){ ?>
-                <li>Land Area <?php echo $single_area_features ." ". $fave_property_land_postfix_features; ?> </li>
-            <?php } ?>
-        </ul>
-    </div>
-    <?php } ?>
-    <div class="property_data features_data">
-        <h2>Features</h2>
-        <?php 
-        $terms = get_terms( array(
-            'taxonomy' => 'property_feature',
-            'hide_empty' => false,
-        ) );         
-        ?>
-
-        <ul>
-            <?php foreach ($terms as $key => $cat_feature) { ?>
-                <?php $term_id= $cat_feature->term_id;  ?> 
-                <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
-                <li class="feature_<?php echo $term_id; ?>">
-                    <span class="icons"><i class="fa fa-<?php echo $get_feature_icons; ?>"></i></span>
-                    <span class="title"><?php echo $cat_feature->name; ?></span>
-                </li>
-            <?php } ?>
-        </ul>
-        
-    </div>
-    <div class="property_data rules_data">
-        <h2>Services</h2>
-        <?php 
-        $terms = get_terms( array(
-            'taxonomy' => 'services',
-            'hide_empty' => false,
-        ) );         
-        ?>
-
-        <ul>
-            <?php foreach ($terms as $key => $cat_feature) { ?>
-                <?php $term_id= $cat_feature->term_id;  ?> 
-                <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
-                <li class="feature_<?php echo $term_id; ?>">
-                    <span class="icons"><i class="fa fa-<?php echo $get_feature_icons; ?>"></i></span>
-                    <span class="title"><?php echo $cat_feature->name; ?></span>
-                </li>
-            <?php } ?>
-        </ul>
-    </div>
-
-    <div class="property_data rules_data">
-        <h2>Featured Home Appliances</h2>
-        <?php 
-        $terms = get_terms( array(
-            'taxonomy' => 'home_appliances',
-            'hide_empty' => false,
-        ) );         
-        ?>
-
-        <ul>
-            <?php foreach ($terms as $key => $cat_feature) { ?>
-                <?php $term_id= $cat_feature->term_id;  ?> 
-                <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
-                <li class="feature_<?php echo $term_id; ?>">
-                    <span class="icons"><i class="fa fa-<?php echo $get_feature_icons; ?>"></i></span>
-                    <span class="title"><?php echo $cat_feature->name; ?></span>
-                </li>
-            <?php } ?>
-        </ul>
-    </div>
-
-    <?php if($rules_setting!="disable"){ ?>
-
-    <div class="property_data rules_data">
-        <h2><?php echo $rules_section_title; ?></h2>        
-        <ul class="static_rules">
-            <li><span class="title">Pets <?php if($rules_pets_enable=="allowed") { echo "Allowed"; } else { echo "Not Allowed"; } ?></span></li>
-            <li><span class="title"><?php if($rules_security_deposit=="no") { echo "No"; } else { echo "Yes"; } ?> security deposit</span></li>
-        </ul>  
-
-        <?php if(!empty($own_rules_repeater)){ ?>
-            <ul class="repeater_own_rules">
-                <?php foreach ($own_rules_repeater as $key => $own_rep_rules) { ?>
-                    <li>                        
-                        <span><?php echo $own_rep_rules['fave_new_rules']; ?></span>
-                    </li>
-                <?php } ?>
-            </ul>
-        <?php } ?>
-
-    </div>
-    <?php }   ?>
-
-</div>
-
-

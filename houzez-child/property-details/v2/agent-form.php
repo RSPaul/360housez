@@ -63,7 +63,7 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
             else :
                 $agent_args[ 'picture' ] = $prop_agent_photo_url;
             endif;
-            $listing_agent .= houzez_get_agent_info_bottom_v2( $agent_args, 'agent_form', $is_single_agent );
+            $listing_agent .= houzez_get_agent_info_bottom_new_v2( $agent_args, 'agent_form', $is_single_agent );
 
         endif;
 
@@ -100,7 +100,7 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
     else :
         $agent_args[ 'picture' ] = $prop_agent_photo_url;
     endif;
-    $listing_agent .= houzez_get_agent_info_bottom_v2( $agent_args, 'agent_form', $is_single_agent );
+    $listing_agent .= houzez_get_agent_info_bottom_new_v2( $agent_args, 'agent_form', $is_single_agent );
 
 } elseif( $agent_display_option == 'author_info' ) {
 
@@ -126,40 +126,25 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
     } else {
         $author_args[ 'picture' ] = $prop_agent_photo_url;
     }
-    $listing_agent .= houzez_get_agent_info_bottom_v2( $author_args, 'agent_form', true );
+    $listing_agent .= houzez_get_agent_info_bottom_new_v2( $author_args, 'agent_form', true );
 }
 
 $agent_email = is_email($prop_agent_email);
 $user_info = get_userdata(get_the_author_meta('ID'));
 $user_role = implode(', ', $user_info->roles);
+
+$schedule_time_slots = houzez_option('schedule_time_slots');
+
 ?>
-<div class="detail-contact detail-block">
-    <div class="detail-contact-inner">
-        <div class="detail-title">
-            <h2 class="title-left"> <?php esc_html_e('Contact Agent', 'houzez' ); ?> </h2>
-        </div>
 
-        <form method="post" action="#">
-            <?php echo $listing_agent; ?>
-            <div class="inquiry-form">
-                <h3 class="inquiry-title"><?php esc_html_e( 'Enquire about this property', 'houzez' ); ?></h3>
-                <?php
-                    if( $enable_contact_form_7_prop_detail != 1 ) {
-                    if( $is_single_agent == true && is_user_logged_in() && $enable_direct_messages != 0 ) {
-                        ?>
-                        <input type="hidden" name="start_thread_form_ajax"
-                               value="<?php echo wp_create_nonce('start-thread-form-nonce'); ?>"/>
-                        <input type="hidden" name="property_id" value="<?php echo $post->ID; ?>"/>
-                        <input type="hidden" name="action" value="houzez_start_thread">
-                        <div class="form-group">
-                            <textarea class="form-control" name="message" rows="13" placeholder="<?php esc_html_e('Description', 'houzez'); ?>"><?php esc_html_e("Hello, I am interested in", "houzez"); ?> [<?php echo get_the_title(); ?>]</textarea>
-                        </div>
 
-                        <button class="start_thread_form btn btn-secondary btn-block"><?php esc_html_e('Request info', 'houzez'); ?></button>
-                        <div class="form_messages"></div>
-                        <?php
-                    } else {
-                    if ($agent_email) { ?>
+<!--CONTACT AN AGENT-->  
+        <section class="property-detail-contact-agent">
+            <div id="contact-agent" class="id-link"></div>
+            <div class="container">
+                <?php echo $listing_agent; ?>
+                <div class="row">
+                    <form class="col-xxs-12 col-xxs-offset-0 col-md-8 col-md-offset-2 col-xl-6 col-xl-offset-3" method="post" action="#">
                         <?php if ($is_single_agent == true) : ?>
                             <input type="hidden" name="target_email" value="<?php echo antispambot($agent_email); ?>">
                         <?php endif; ?>
@@ -172,62 +157,103 @@ $user_role = implode(', ', $user_info->roles);
                         <input type="hidden" name="action" value="houzez_agent_send_message">
 
                         <div class="row">
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="name" value="<?php echo $current_user->display_name; ?>" 
-                                           placeholder="<?php esc_html_e('Your Name', 'houzez'); ?>" type="text">
-                                </div>
+                            <div class="input-field col-xxs-6">
+                                <select disabled>
+                                    <option value="" disabled>Select</option>
+                                    <option value="english" selected>English</option>
+                                    <option value="spanish">Español</option>
+                                    <option value="italian">Italiano</option>
+                                    <option value="french">François</option>
+                                </select>
+                                <label>Language</label>
                             </div>
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="phone" value="<?php if(isset($all_meta_for_user['fave_author_phone'][0])) { echo $all_meta_for_user['fave_author_phone'][0]; }?>" 
-                                           placeholder="<?php esc_html_e('Phone', 'houzez'); ?>" type="text">
-                                </div>
+                            <div class="input-field col-xxs-6">
+                                <input id="form-ref" type="text" class="validate" value="REF. 123-45" disabled>
+                                <label for="form-ref">Reference</label>
                             </div>
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="email" value="<?php echo $current_user->user_email; ?>" 
-                                           placeholder="<?php esc_html_e('Email', 'houzez'); ?>" type="email">
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                 <textarea class="form-control" name="message" rows="5" placeholder="<?php esc_html_e('Message', 'houzez'); ?>"><?php esc_html_e("Hello, I am interested in", "houzez"); ?> [<?php echo get_the_title(); ?>]</textarea>
-                                </div>
-                            </div>
+                        </div>
+                        <!--Only for non-logged users-->
+                        <div class="row">
+                            <div class="input-field col-xxs-12">
 
-                            <?php if($agent_forms_terms != 0) { ?>
-                            <div class="col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input name="term_condition" type="checkbox">
-                                            <?php echo $agent_forms_terms_text; ?>
-                                        </label>
+                                <input id="form-client-name" name="name" type="text" class="validate" value="<?php echo $current_user->display_name; ?>"  required="" aria-required="true">
+                                <label for="form-client-name">Full name</label>
+                                <span class="helper-text" data-error="Error" data-success="Good!">Required</span>
+                            </div>
+                            <div class="input-field col-xxs-6">
+                                <input id="form-client-phone" type="text" class="validate" name="phone" value="<?php if(isset($all_meta_for_user['fave_author_phone'][0])) { echo $all_meta_for_user['fave_author_phone'][0]; }?>">
+                                <label for="form-client-phone">Phone</label>
+                                <span class="helper-text">Add international code</span>
+                            </div>
+                            <div class="input-field col-xxs-6">
+                                <input id="form-client-email" type="email" class="validate" required="" aria-required="true" name="email" value="<?php echo $current_user->user_email; ?>" >
+                                <label for="form-client-email">Email</label>                                
+                                <span class="helper-text" data-error="Error" data-success="Good!">Required</span>
+                            </div>
+                        </div>
+                        <!--fields for non-logged users end here-->
+                        <div class="row">
+                            <div class="input-field col-xxs-12">
+                                <input id="form-subjet" type="text" class="validate" required="" aria-required="true">
+                                <label for="form-subjet">Subjet</label>
+                                <span class="helper-text" data-error="Error" name="subjet" data-success="Good!">Required</span>
+                            </div>
+                            <div class="input-field col-xxs-12">
+                                
+                                <textarea id="form-message" class="materialize-textarea" " name="message" required="" aria-required="true" data-length="400"></textarea>
+                                    <label class="active" for="form-message">Message</label>
+                                <span class="helper-text" data-error="Error" data-success="Good!">Required</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xxs-12">                              
+
+                                <div class="visit-form">
+                                    <h4 class="txt-md">Schedule a Tour</h4>
+                                    <a data-toggle="collapse" href="#collapse-book-visit" aria-expanded="false">
+                                        <span><i class="tz-plus waves-effect waves-circle"></i></span>
+                                        <span><i class="tz-minus-sm waves-effect waves-circle"></i></span>
+                                    </a>
+                                    <div class="row collapse" id="collapse-book-visit">
+                                        <div class="input-field col-xs-6">
+                                            <input name="schedule_date" class="input_date datepicker" type="text">
+                                            <label for="form-visit-date">Date</label>
+                                        </div>
+                                        <div class="input-field col-xs-6">
+                                            <select name="schedule_time" class="timepicker">
+                                                <?php 
+                                                $time_slots = explode(',', $schedule_time_slots); 
+                                                foreach ($time_slots as $time) {
+                                                    echo '<option value="'.trim($time).'">'.$time.'</option>';
+                                                }
+                                                ?>                                                
+                                            </select>
+                                            <label for="form-visit-time">Time</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
-                
-                            <div class="col-sm-12 col-xs-12">
-                                <?php get_template_part('template-parts/google', 'reCaptcha'); ?>
+                        </div>
+                        <div class="row">
+                            <div class="col-xxs-12">
+                                <div class="data-protection-eu-checkbox">
+                                    <label for="form-accept-privacy-policy">
+                                        <input id="form-accept-privacy-policy" type="checkbox" required=""  name="term_condition" aria-required="true"/>
+                                        <!-- <input name="term_condition" type="checkbox"> -->
+                                        <span>I have read and accept the <a href="" target="_blank">privacy policy</a>.</span>
+                                    </label>
+                                </div>
+                                <!-- <a type="button" class="waves-effect waves-color-1 btn">Send request</a> -->
+                                <button class="agent_contact_form btn waves-effect waves-color-1 btn">Send request</button>
+                                <div class="data-protection-eu-alert">
+                                    <h6>Basic information about data protection:</h6>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore aliquid expedita nemo, esse, sapiente velit aut a rerum fugit sequi voluptates. Provident nam error, nihil quaerat. Read <a href="#" target="_blank">privacy policy</a>.
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <button class="agent_contact_form btn btn-secondary btn-block"><?php esc_html_e('Request info', 'houzez'); ?></button>
-
-                        <?php if( $is_single_agent == true  && $enable_direct_messages != 0 ) { ?>
-                            <button type="button" class="btn btn-secondary btn-trans btn-block" data-toggle="modal" data-target="#pop-login"> <?php esc_html_e('Send Direct Message', 'houzez'); ?> </button>
-                        <?php } ?>
-                        <div class="form_messages"></div>
-                </form>
-            <?php }
-            }
-            } else {
-                if( !empty($contact_form_agent_bottom) ) {
-                    echo do_shortcode($contact_form_agent_bottom);
-                }
-            }?>
+                    </form>                 
+                </div>
             </div>
-        </form>
-    </div>
-</div>
+        </section> <!-- /container-->
