@@ -1,5 +1,3 @@
-
-
 <div class="property-detail-fixed-nav bg-white sticky-navbar" id="sticky_navbar">
         <!-- <div class="container-fluid"> -->
             <div class="row">
