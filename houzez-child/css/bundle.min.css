@@ -8752,8 +8752,13 @@ body.property-detail .main-navbar {
 .property-detail-fixed-nav {
 	border-width: 1px 0 1px 0;
 	border-color: #000;
-	border-style: solid
+	border-style: solid;
+	left: 0;
+	padding: 0 15px;
 }
+.property-detail-fixed-nav.sticky_sec{
+	padding: 0px;
+} 
 
 .property-detail-fixed-nav .fixed-inner-wrapp {
 	color: #fff;
@@ -10502,7 +10507,28 @@ body.home .property-card .property-card-body {
     color: #fff !important;
     height: auto !important;
 }
-
+.second_header .property-detail-header .hd-wrapper {
+    height: auto !important;
+}
+.second_header .property-detail-header .hd-wrapper .header-info {
+    height: 600px;
+}
+#property_myModal {
+    padding: 0 !important;
+    background: none;
+    box-shadow: none;
+    overflow: hidden;
+}
+#property_myModal .modal-body {
+    padding: 0;
+    margin-top: 20px;
+}
+.navbar.main-navbar {
+    border-radius: 0px;
+}
+.advanced-search.advance-search-header.houzez-adv-price-range {
+    display: none;
+}
 
 
 
