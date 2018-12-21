@@ -10466,21 +10466,25 @@ a.map-control span {
 .module-half.map-module-half.listing-search-result.remove_scroller {
     overflow: hidden;
 }
-/*.map-search-results {
-    position: fixed;
-    top: auto;
-    margin-top: 0px;
-}*/
-
-/*.map-wrap {
-    position: fixed;
+body.home .property-card.featured-property {
+    width: 24%;
+    margin: 0 11px 15px 0px;
+    float: left;
 }
-*/
 #houzez-gmap-main.stick_map {
     position: fixed;
     width: 33%;
     top: 90px;
 }
+body.home .property-card .property-card-body {
+    padding: 0 .5rem;
+    height: 240px;
+}
+
+
+
+
+
 
 
 
