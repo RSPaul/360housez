@@ -27,7 +27,7 @@ global $houzez_local;
 
     <div class="footer-bottom">
 
-    	<div class="container">
+        <div class="container">
             <div class="row">
                 <?php if( !empty($copy_rights) ) { ?>
                 <div class="col-md-3 col-sm-3">
@@ -39,20 +39,20 @@ global $houzez_local;
                 <div class="col-md-6 col-sm-6">
                     <div class="footer-col">
                         <div class="navi">
-	                        <?php
-							// Pages Menu
-							if ( has_nav_menu( 'footer-menu' ) ) :
-								wp_nav_menu( array (
-									'theme_location' => 'footer-menu',
-									'container' => '',
-									'container_class' => '',
-									'menu_class' => '',
-									'menu_id' => 'footer-menu',
-									'depth' => 1
-								));
-							endif;
-							?>
-						</div>
+                            <?php
+                            // Pages Menu
+                            if ( has_nav_menu( 'footer-menu' ) ) :
+                                wp_nav_menu( array (
+                                    'theme_location' => 'footer-menu',
+                                    'container' => '',
+                                    'container_class' => '',
+                                    'menu_class' => '',
+                                    'menu_id' => 'footer-menu',
+                                    'depth' => 1
+                                ));
+                            endif;
+                            ?>
+                        </div>
 
                     </div>
                 </div>
@@ -64,32 +64,30 @@ global $houzez_local;
                             <?php echo $houzez_local['follow_us']; ?>
                            
                             <?php if( houzez_option('fs-facebook') != '' ){ ?>
-					        	<a target="_blank" href="<?php echo esc_url(houzez_option('fs-facebook')); ?>"><i class="fa fa-facebook-square"></i></a>
-					        <?php } ?>
+                                <a target="_blank" href="<?php echo esc_url(houzez_option('fs-facebook')); ?>"><i class="fa fa-facebook-square"></i></a>
+                            <?php } ?>
 
-					        <?php if( houzez_option('fs-twitter') != '' ){ ?>
-					            <a target="_blank" href="<?php echo esc_url(houzez_option('fs-twitter')); ?>"><i class="fa fa-twitter-square"></i></a>
-					        <?php } ?>
+                            <?php if( houzez_option('fs-twitter') != '' ){ ?>
+                                <a target="_blank" href="<?php echo esc_url(houzez_option('fs-twitter')); ?>"><i class="fa fa-twitter-square"></i></a>
+                            <?php } ?>
 
-					        <?php if( houzez_option('fs-linkedin') != '' ){ ?>
-					            <a target="_blank" href="<?php echo esc_url(houzez_option('fs-linkedin')); ?>"><i class="fa fa-linkedin-square"></i></a>
-					        <?php } ?>
+                            <?php if( houzez_option('fs-linkedin') != '' ){ ?>
+                                <a target="_blank" href="<?php echo esc_url(houzez_option('fs-linkedin')); ?>"><i class="fa fa-linkedin-square"></i></a>
+                            <?php } ?>
 
-					        <?php if( houzez_option('fs-googleplus') != '' ){ ?>
-					            <a target="_blank" href="<?php echo esc_url(houzez_option('fs-googleplus')); ?>"><i class="fa fa-google-plus-square"></i></a>
-					        <?php } ?>
+                            <?php if( houzez_option('fs-googleplus') != '' ){ ?>
+                                <a target="_blank" href="<?php echo esc_url(houzez_option('fs-googleplus')); ?>"><i class="fa fa-google-plus-square"></i></a>
+                            <?php } ?>
 
-					        <?php if( houzez_option('fs-instagram') != '' ){ ?>
-					            <a target="_blank" href="<?php echo esc_url(houzez_option('fs-instagram')); ?>"><i class="fa fa-instagram"></i></a>
-					        <?php } ?>
+                            <?php if( houzez_option('fs-instagram') != '' ){ ?>
+                                <a target="_blank" href="<?php echo esc_url(houzez_option('fs-instagram')); ?>"><i class="fa fa-instagram"></i></a>
+                            <?php } ?>
 
-                            <a href="whatsapp://send?text=<?php echo site_url(); ?>" data-action="share/whatsapp/share"><i class="fa fa-whatsapp"></i></a>
+                            <?php if( houzez_option('fs-pinterest') != '' ){ ?>
+                                <a target="_blank" href="<?php echo esc_url(houzez_option('fs-pinterest')); ?>"><i class="fa fa-pinterest"></i></a>
+                            <?php } ?>
 
-					        <?php if( houzez_option('fs-pinterest') != '' ){ ?>
-					            <a target="_blank" href="<?php echo esc_url(houzez_option('fs-pinterest')); ?>"><i class="fa fa-pinterest"></i></a>
-					        <?php } ?>
-
-					        <?php if( houzez_option('fs-yelp') != '' ){ ?>
+                            <?php if( houzez_option('fs-yelp') != '' ){ ?>
                                 <a target="_blank" href="<?php echo esc_url(houzez_option('fs-yelp')); ?>"><i class="fa fa-yelp"></i></a>
                             <?php } ?>
                             <?php if( houzez_option('fs-youtube') != '' ){ ?>
@@ -113,6 +111,20 @@ global $houzez_local;
 <?php } ?>
 
 <?php wp_footer(); ?>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('#formSale').click(function () {
+            jQuery('.full-area').toggleClass('scrollTop');
+            jQuery('.banner-parallax').toggleClass('parallax_height');
+        });
 
+        jQuery('#rent_toggle_id').click(function () {
+            jQuery('.full-area').toggleClass('scrollTop');
+            jQuery('.banner-parallax').toggleClass('parallax_height');
+        });
+    })
+
+
+</script>
 </body>
 </html>

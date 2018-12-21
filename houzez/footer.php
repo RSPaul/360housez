@@ -125,7 +125,6 @@ global $houzez_local;
     })
 
 
-    
 </script>
 </body>
 </html>
