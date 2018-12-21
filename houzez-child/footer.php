@@ -83,6 +83,8 @@ global $houzez_local;
                                 <a target="_blank" href="<?php echo esc_url(houzez_option('fs-instagram')); ?>"><i class="fa fa-instagram"></i></a>
                             <?php } ?>
 
+                            <a href="whatsapp://send?text=<?php echo site_url(); ?>" data-action="share/whatsapp/share"><i class="fa fa-whatsapp"></i></a>
+
                             <?php if( houzez_option('fs-pinterest') != '' ){ ?>
                                 <a target="_blank" href="<?php echo esc_url(houzez_option('fs-pinterest')); ?>"><i class="fa fa-pinterest"></i></a>
                             <?php } ?>
