@@ -112,7 +112,8 @@
     var sticky = header.offsetTop;
 
     function myFunction() {
-      if (window.pageYOffset > sticky) {
+        console.log('here ', sticky , window.pageYOffset);
+      if (window.pageYOffset > 740) {
         header.classList.add("sticky_sec");
       } else {
         header.classList.remove("sticky_sec");
