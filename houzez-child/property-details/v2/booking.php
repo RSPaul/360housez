@@ -4,7 +4,6 @@ $booking_shortcode = get_post_meta($post->ID, 'fave_booking_shortcode', true);
 
 if(!empty($booking_shortcode)) {
 ?>
-
 <section class="property-detail-booking">
         <div id="online-booking" class="id-link"></div>
         <div class="container">
@@ -29,5 +28,5 @@ if(!empty($booking_shortcode)) {
             <hr>
         </div>
     </section> <!-- /container-->
-<?php } ?>
+<?php  } ?>
 
