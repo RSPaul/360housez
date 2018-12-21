@@ -10874,6 +10874,9 @@ body.home .property-card .property-card-body {
     overflow: hidden;
     height: 820px;
 }
+body.property-template-default .advanced-search.advance-search-header.houzez-adv-price-range {
+    display: none;
+}
 
 
 
