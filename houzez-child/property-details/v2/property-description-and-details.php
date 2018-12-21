@@ -127,7 +127,9 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                 </div>
                 <div class="col-xs-6">
                     <!--Save as Favorite-->
-                    <p class="txt-md text-right">Save <a class="no-style" role="button"><i class="tz-treasure-line waves-effect waves-circle"></i></a></p>
+                    <p class="txt-md text-right">
+                        Save <a role="button" class="no-style add_fav" role="button" data-propid="<?php echo get_the_ID(); ?>"><i class="tz-treasure-line waves-effect waves-circle"></i></a>
+                    </p>
                 </div>
             </div>
             <!-- .row-price-->
