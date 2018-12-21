@@ -10529,7 +10529,23 @@ body.home .property-card .property-card-body {
 .advanced-search.advance-search-header.houzez-adv-price-range {
     display: none;
 }
-
+.carousel .figure-block .item-thumb {
+    margin: 0 5px !important;
+}
+#site .section-revslider .pl-area-wrap {
+-webkit-transform: none !important;
+   -moz-transform: none !important;
+    -ms-transform: none !important;
+     -o-transform: none !important;
+        transform: none !important;
+}
+ #site .section-pageheader .pl-ph-container {
+-webkit-transform: none;
+   -moz-transform: none;
+    -ms-transform: none;
+     -o-transform: none;
+        transform: none;
+}
 
 
 
