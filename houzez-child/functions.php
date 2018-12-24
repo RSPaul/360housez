@@ -96,6 +96,10 @@ function special_nav_class($classes, $item){
      return $classes;
 }
 
+
+
+
+
 // let's add our custom class to the actual link tag    
 
 function tz_menu_classes($classes, $item, $args) {
