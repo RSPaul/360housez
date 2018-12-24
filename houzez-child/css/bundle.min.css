@@ -10877,8 +10877,12 @@ body.home .property-card .property-card-body {
 body.property-template-default .advanced-search.advance-search-header.houzez-adv-price-range {
     display: none;
 }
-
-
+.main-navbar nav .navbar-nav > li.login-btn > a{
+	text-transform: uppercase !important;
+}
+.tabs a:hover{
+	background: #ebebeb !important;
+}
 
 
 
