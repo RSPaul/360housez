@@ -5,24 +5,7 @@
 get_header(); ?>
 
 <style type="text/css">
-	.navbar.main-navbar{
-		display: none;
-	}
-	.navbar.searching-navbar {
-	    position: fixed;
-	    width: 100%;
-	    top: 0;
-	    z-index: 999;
-	}
-	.map-active {
-	    margin-top: 80px;
-	}
-	.map-search-result .map-wrap{
-		margin-top: 10px;
-	}
-	#footer-section{
-		display: none;
-	}
+	
 
 </style>
 
@@ -408,9 +391,11 @@ get_header(); ?>
 										<a href="#!" role="button" class="card-save no-style saved" title="Saved" data-toggle="tooltip" data-placement="left">
 											<i class="tz-treasure-full waves-effect waves-circle"></i>
 										</a>
+										
 										<a href="#!" class="go-detail waves-effect waves-light">
-											<img src="<?php bloginfo('template_url'); ?>/images/arch_img.jpg" alt="" title="">
+											<img src="<?php echo bloginfo('template_url'); ?>/images/arch_img.jpg" alt="arch" title="arch">
 										</a>
+										
 									</div>
 									<div class="property-card-body">
 										<p class="card-title txt-h-medium h4">
@@ -474,9 +459,11 @@ get_header(); ?>
 										<a href="#!" role="button" class="card-save no-style" title="Save" data-toggle="tooltip" data-placement="left">
 											<i class="tz-treasure-full waves-effect waves-circle"></i>
 										</a>
+									
 										<a href="#!" class="go-detail waves-effect waves-light">
-											<img src="<?php bloginfo('template_url'); ?>/images/arch_img.jpg" alt="" title="">
+											<img src="<?php echo bloginfo('template_url'); ?>/images/arch_img.jpg" alt="arch" title="arch">
 										</a>
+									
 									</div>
 									<div class="property-card-body">
 										<p class="card-title txt-h-medium h4">
@@ -538,9 +525,11 @@ get_header(); ?>
 										<a href="#!" role="button" class="card-save no-style" title="Save" data-toggle="tooltip" data-placement="left">
 											<i class="tz-treasure-full waves-effect waves-circle"></i>
 										</a>
+										
 										<a href="#!" class="go-detail waves-effect waves-light">
-											<img src="<?php bloginfo('template_url'); ?>/images/arch_img.jpg" alt="" title="">
+											<img src="<?php echo bloginfo('template_url'); ?>/images/arch_img.jpg" alt="arch" title="arch">
 										</a>
+										
 									</div>
 									<div class="property-card-body">
 										<p class="card-title txt-h-medium h4">
@@ -602,9 +591,11 @@ get_header(); ?>
 										<a href="#!" role="button" class="card-save no-style" title="Save" data-toggle="tooltip" data-placement="left">
 											<i class="tz-treasure-full waves-effect waves-circle"></i>
 										</a>
+										
 										<a href="#!" class="go-detail waves-effect waves-light">
-											<img src="<?php bloginfo('template_url'); ?>/images/arch_img.jpg" alt="" title="">
+											<img src="<?php echo bloginfo('template_url'); ?>/images/arch_img.jpg" alt="arch" title="arch">
 										</a>
+										
 									</div>
 									<div class="property-card-body">
 										<p class="card-title txt-h-medium h4">
@@ -666,9 +657,10 @@ get_header(); ?>
 										<a href="#!" role="button" class="card-save no-style" title="Save" data-toggle="tooltip" data-placement="left">
 											<i class="tz-treasure-full waves-effect waves-circle"></i>
 										</a>
+										
 										<a href="#!" class="go-detail waves-effect waves-light">
-											<img src="<?php bloginfo('template_url'); ?>/images/arch_img.jpg" alt="" title="">
-										</a>									
+											<img src="<?php echo bloginfo('template_url'); ?>/images/arch_img.jpg" alt="arch" title="arch">
+										</a>
 									</div>
 									<div class="property-card-body">
 										<p class="card-title txt-h-medium h4">
@@ -761,9 +753,9 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-				<div class="map-search-result show-map col-xs-12 col-sm-6 col-lg-5">
+				<div class="map-search-result show-map col-xxs-12 col-sm-6 col-lg-5">
 					<div class="map-wrap">							
-						<iframe id="gMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.591552726884!2d-69.47671746779709!3d-50.744671020778185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb82576698cee31%3A0xe213934c1d810259!2shotel+restaurant!5e1!3m2!1ses!2scl!4v1542984329814" width="100px" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.591552726884!2d-69.47671746779709!3d-50.744671020778185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb82576698cee31%3A0xe213934c1d810259!2shotel+restaurant!5e1!3m2!1ses!2scl!4v1542984329814" width="200" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
 					</div>
 				</div>
 			</div>

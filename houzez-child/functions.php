@@ -78,19 +78,42 @@ add_action('restrict_manage_comments', 'my_comments_filter');
 
 require get_stylesheet_directory() . '/inc/header/custom-navbar.php';
 
-add_action('wp_enqueue_scripts', 'my_custom_script_load');
-
-function my_custom_script_load() {
+//included css and js files
+function my_scripts_and_styles() { 
+    wp_enqueue_style('bootstrap.min', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all');
+    wp_enqueue_style('bundle', get_stylesheet_directory_uri() . '/css/bundle.min.css', array(), '3.3.7', 'all');
+    wp_enqueue_style('font-awesome.min', get_stylesheet_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all');
     wp_enqueue_script('swipe', get_stylesheet_directory_uri() . '/js/jquery.touchSwipe.min.js', array('jquery'));
     wp_enqueue_script('my-custom-script', get_stylesheet_directory_uri() . '/js/bundle.min.js', array('jquery'));
 }
+add_action( 'wp_enqueue_scripts', 'my_scripts_and_styles' );
 
-
-add_action('wp_footer', 'my_custom_style_load');
-function my_custom_style_load(){
-    wp_enqueue_style('font-awesome', get_stylesheet_directory_uri(). '/css/font-awesome.min.css' , array('style'));
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+function special_nav_class($classes, $item){
+     if( in_array('current-menu-item', $classes) ){
+             $classes[] = 'active ';
+     }
+     return $classes;
 }
 
+
+
+
+
+// let's add our custom class to the actual link tag    
+
+function tz_menu_classes($classes, $item, $args) {
+  if($args->theme_location == 'main-menu') {
+    $classes[] = 'waves-effect';
+  }
+  return $classes;
+}
+add_filter('nav_menu_css_class', 'tz_menu_classes', 1, 3);
+
+function add_menuclass($ulclass) {
+   return preg_replace('/<a /', '<a class="waves-effect"', $ulclass);
+}
+add_filter('wp_nav_menu','add_menuclass');
 
 
 add_action('admin_enqueue_scripts', 'houzez_custom_scripts', 99);

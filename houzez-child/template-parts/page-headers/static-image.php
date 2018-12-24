@@ -67,50 +67,6 @@ if (!empty($img_url[0])) {
 }
 ?>
 
-<style type="text/css" scoped>
-    .default_show.half-part-left h3 {
-
-    padding: 10px;
-    box-shadow: 0px 1px 2px #a7a7a7;
-
-}
-.default_show.half-part-left .half-area p {padding: 10px 0 0;}
-.default_show.half-part-left h3 span {
-
-    font-size: 15px;
-
-}
-.default_show.half-part-left .full-area form {margin: 10px;padding: 10px 10px 25px;
-}
- .default_show.half-part-left h3 {margin:0;}
-    .default_show.half-part-left{
-
-  position:absolute;  width:100%;
-
-}
-.default_show.half-part-left .full-area {
-    background: rgba(255,255,255,0.5); text-align: center; 
-    max-width: 80%; width: 100%; margin:15% auto 0;
-}
-.default_show.half-part-left .half-area  {
-    text-align: center;     background: rgba(255,255,255,0.5);   right:0; float:right;  max-width: 80%; width: 100%; margin-top:30%;
-   
-}
-
-    .advanced-search {padding: 0; box-shadow: none;}
-    .banner-inner-content .container {width:100%; position: absolute;}
-    .banner-inner-content .banner-inner:before {
-        <?php if ($page_image_overlay != '') { ?>
-            background-color: <?php echo esc_attr($page_image_overlay); ?>;
-        <?php } ?>
-        opacity: <?php echo esc_attr($page_image_opacity); ?>;
-    }
-    .btn-group.bootstrap-select {
-        display: none !important;
-    }
-    
-</style>
-
 <?php //get_template_part('template-parts/advanced-search/half-map'); ?>
 
 <div class="header-media-wrap">
@@ -129,7 +85,7 @@ if (!empty($img_url[0])) {
             </div>-->
 
             <div class="banner-bg-wrap">
-                <div class="banner_inner banner-inner-left" style="background-image:url(<?php echo esc_url($img_url[0]); ?>); background-size: 100% 100%;">                    
+                <div class="banner_inner banner-inner-left" style="background-image:url(<?php echo esc_url($img_url[0]); ?>); background-size: cover;">                    
                     <div class="banner-inner-content search-bar search-salebar">
                         <?php
                         if (houzez_search_needed()) {
@@ -172,7 +128,7 @@ if (!empty($img_url[0])) {
                     </div>
                 </div>
 
-                <div class="banner_inner banner-inner-right" style="background-image:url(<?php echo site_url(); ?>/wp-content/uploads/revslider/home-hero/49.jpg); background-size: 100% 100%;">                    
+                <div class="banner_inner banner-inner-right" style="background-image:url(<?php echo site_url(); ?>/wp-content/uploads/revslider/home-hero/49.jpg); background-size: cover;">                    
                     <div class="banner-inner-content search-bar search-rentbar">
                         <div class="right_rent_part">
                             <?php
@@ -282,10 +238,4 @@ if (!empty($img_url[0])) {
 
     });
 </script>
-<style type="text/css">
-    .banner_inner {
-        float: left;
-        width: 50%;
-        height: 100vh;
-    }
-</style>
+

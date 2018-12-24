@@ -2,15 +2,7 @@
 /**
  * Template Name: Property Detail Template
  */
-//get_header('new'); 
-//if(is_page(10)) {
- get_header();
-//}
-//else {
- //get_header('new');
-//}
-// wp_head();
-?>
+ get_header(); ?>
 
 	
 
