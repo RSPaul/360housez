@@ -37,7 +37,7 @@ if( houzez_is_dashboard() ) {
 	$header_layout = 'container-fluid';
 }
 ?>
-<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/bundle.min.css">
+
 
 <!--start section header-->
 <!--MAIN NAVBAR-->

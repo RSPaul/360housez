@@ -12578,6 +12578,7 @@ label[for="gdpr_agreement"] {
 .banner-parallax {
   overflow: hidden;
   height: 700px;
+  width: 100%;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
