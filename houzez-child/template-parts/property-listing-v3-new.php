@@ -194,7 +194,7 @@ if ( sizeof( $get_comments ) != 0 ) {
 							$count = $rating; 
 							for ($i=0; $i < 5; $i++) { 
 									
-								echo $count > 0 ? '<i class="fa fa-star rated"></i>' : '<i class="fa fa-star-o"></i>';
+								echo $count > 0 ? '<i class="tz-ratting-full-sm rated"></i>' : '<i class="tz-ratting-empty-sm"></i>';
 								
 								$count--;
 							}
@@ -203,7 +203,7 @@ if ( sizeof( $get_comments ) != 0 ) {
 					</li>
 					<li>
 						<span class="txt-h-light txt-xs">
-							<?php echo $voters > 0 ? $rating." out of 5" : "no reviews" ?>
+							<?php echo $voters > 0 ? $rating." out of 5" : "No reviews" ?>
 						</span>	
 					</li>
 				</ul>

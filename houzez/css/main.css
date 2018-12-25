@@ -1155,7 +1155,7 @@ table {
   line-height: 22px;
   padding: 0 7px;
   font-size: 12px;
-  font-family: roboto;
+  font-family: aileronsemibold, "Helvetica Neue", Helvetica, Arial !important;
 }
 
 .gm-marker {
@@ -18523,7 +18523,7 @@ h4.ihf-price {
 	background: transparent;
 
 }
-button.sidenav-btn:not(.toggle-active) .top {
+/*button.sidenav-btn:not(.toggle-active) .top {
     -webkit-transform: translateY(6px) translateX(0) rotate(45deg) !important;
     -ms-transform: translateY(6px) translateX(0) rotate(45deg) !important;
     transform: translateY(6px) translateX(0) rotate(45deg) !important;
@@ -18547,7 +18547,7 @@ button.sidenav-btn:not(.toggle-active) .bottom {
     -webkit-transform: translateY(-14px) translateX(0) rotate(-45deg) !important;
     -ms-transform: translateY(-14px) translateX(0) rotate(-45deg) !important;
     transform: translateY(-14px) translateX(0) rotate(-45deg) !important;
-}
+}*/
 /*#collapse-feature-filters {
     display: block;
 }*/

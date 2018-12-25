@@ -48,7 +48,7 @@ if( houzez_is_dashboard() ) {
 				<div class="col-xxs-12">
 					<nav class="flex-container">
 						<div class="navbar-header">
-							<button type="button" class="sidenav-btn sidenav-trigger" data-target="sidenav-menu">
+							<button type="button" id="mobileNavBtn" class="sidenav-btn sidenav-trigger" data-target="sidenav-menu">
 								<span class="bar top"></span>
 								<span class="bar middle"></span>
 								<span class="bar bottom"></span>	
@@ -88,8 +88,8 @@ if( houzez_is_dashboard() ) {
 	  
 	<!-- Mobile Menu : Sidenav-->
 	<!-- Class .open-right to open sidenav (it will be the default option for the entire site) -->
-	<div role="nav" id="sidenav-menu" class="sidenav open-left">
-		<button type="button" class="sidenav-btn sidenav-close">
+	<div role="nav" id="sidenav-menu" class="sidenav open-right">
+		<button type="button" id="mobileBtn" class="sidenav-btn sidenav-close">
 			<span class="bar top"></span>
 			<span class="bar middle"></span>
 			<span class="bar bottom"></span>
@@ -112,7 +112,7 @@ if( houzez_is_dashboard() ) {
 							'container' => '',
 							'container_class' => '',
 							'menu_class' => '',
-							'menu_id' => '',
+							'menu_id' => 'menu-main-menu',
 							'depth' => 4
 						));
 					endif;
@@ -276,8 +276,8 @@ if( houzez_is_dashboard() ) {
 
 	<!-- Mobile Menu : Sidenav-->
 	<!-- Class .open-right to open sidenav (it will be the default option for the entire site) -->
-	<div role="nav" id="sidenav-menu" class="sidenav open-left">
-		<button type="button" class="sidenav-btn sidenav-close">
+	<div role="nav" id="sidenav-menu" class="sidenav open-right">
+		<button type="button" id="mobileBtn" class="sidenav-btn sidenav-close">
 			<span class="bar top"></span>
 			<span class="bar middle"></span>
 			<span class="bar bottom"></span>
