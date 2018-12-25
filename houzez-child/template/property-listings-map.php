@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Property Listing Half Map - child
+ * Template Name: Property Listing TZ Map
  * Created by PhpStorm.
  * User: waqasriaz
  * Date: 11/06/16
