@@ -7070,7 +7070,7 @@ span.waves-effect:hover {
 	content: '[';
 	padding-right: .625rem;
 	font-size: 2.5rem;
-	font-family: aileronsemibold;
+	font-family: aileronsemibold !important;
 	font-weight: 600;
 	position: relative;
 	top: .375rem;
@@ -7083,7 +7083,7 @@ span.waves-effect:hover {
 	content: ']';
 	padding-left: .625rem;
 	font-size: 2.5rem;
-	font-family: aileronsemibold;
+	font-family: aileronsemibold !important;
 	font-weight: 600;
 	position: relative;
 	top: .375rem;
@@ -7124,7 +7124,7 @@ span.waves-effect:hover {
 .property-detail-reviews .write-review .input-field label,
 .property-detail-reviews .write-review label:not(.active) {
 	padding: 0 15px 0 15px;
-	font-family: aileronlight;
+	font-family: aileronlight !important;
 	font-weight: 400!important;
 	color: #000
 }
@@ -7135,7 +7135,7 @@ span.waves-effect:hover {
 .property-detail-reviews .write-review .input-field>input,
 .property-detail-reviews .write-review .input-field>texarea::-webkit-input-placeholder,
 .property-detail-reviews .write-review .input-field>textarea {
-	font-family: aileronlight;
+	font-family: aileronlight !important;
 	font-size: 1rem
 }
 
@@ -7145,7 +7145,7 @@ span.waves-effect:hover {
 .property-detail-reviews .write-review .input-field>input,
 .property-detail-reviews .write-review .input-field>texarea::-ms-input-placeholder,
 .property-detail-reviews .write-review .input-field>textarea {
-	font-family: aileronlight;
+	font-family: aileronlight !important;
 	font-size: 1rem
 }
 
@@ -7155,7 +7155,7 @@ span.waves-effect:hover {
 .property-detail-reviews .write-review .input-field>input,
 .property-detail-reviews .write-review .input-field>texarea::placeholder,
 .property-detail-reviews .write-review .input-field>textarea {
-	font-family: aileronlight;
+	font-family: aileronlight !important;
 	font-size: 1rem
 }
 
@@ -7187,12 +7187,16 @@ span.waves-effect:hover {
 /*! === Classes === */
 
 body {
-	font-family: aileronlight, "Helvetica Neue", Helvetica, Arial;
-	font-size: 1rem
+	font-family: aileronlight, "Helvetica Neue", Helvetica, Arial !important;
+	font-size: 1rem;
 }
 
 p {
 	font-family: exolight, "Helvetica Neue", Helvetica, Arial
+}
+
+button, input, optgroup, select, textarea {
+    font-family: aileronlight, "Helvetica Neue", Helvetica, Arial !important;
 }
 
 .h1,
@@ -7207,32 +7211,32 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: aileronsemibold, "Helvetica Neue", Helvetica, Arial;
+	font-family: aileronsemibold, "Helvetica Neue", Helvetica, Arial !important;
 	font-weight: 400
 }
 
 .txt-p-light {
-	font-family: exolight;
+	font-family: exolight !important;
 	font-weight: 400
 }
 
 .txt-p-medium {
-	font-family: exomedium;
+	font-family: exomedium !important;
 	font-weight: 400
 }
 
 .txt-h-light {
-	font-family: aileronlight;
+	font-family: aileronlight !important;
 	font-weight: 400
 }
 
 .txt-h-regular {
-	font-family: aileronregular;
+	font-family: aileronregular !important;
 	font-weight: 400
 }
 
 .txt-h-medium {
-	font-family: aileronsemibold;
+	font-family: aileronsemibold !important;
 	font-weight: 400
 }
 
@@ -7376,7 +7380,7 @@ strong.txt-bold-p {
 
 .txt-bold-h,
 strong.txt-bold-h {
-	font-family: aileronsemibold
+	font-family: aileronsemibold !important;
 }
 
 .txt-info,
@@ -9270,7 +9274,7 @@ body.property-detail .main-navbar {
 
 .property-detail-floor-plans ul.nav-tabs li.active a {
 	color: #000;
-	font-family: aileronsemibold;
+	font-family: aileronsemibold !important;
 	border-color: transparent
 }
 
@@ -9436,7 +9440,7 @@ body.property-detail .main-navbar {
 
 .property-detail-reviews h2 span::after,
 .property-detail-reviews h2 span::before {
-	font-family: aileronlight;
+	font-family: aileronlight !important;
 	font-weight: 400
 }
 
