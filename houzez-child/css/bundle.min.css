@@ -10917,7 +10917,7 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
     max-width: 80%; width: 100%; margin:15% auto 0;
 }
 .default_show.half-part-left .half-area  {
-    text-align: center;     background: rgba(255,255,255,0.5);   right:0; float:right;  max-width: 80%; width: 100%; margin-top:30%;
+    text-align: center; background: rgba(255,255,255,0.5);   right:0; float:right;  max-width: 80%; width: 100%; margin-top:30%;
 }
 .banner-inner-content .container {width:100%; position: absolute;}
 .banner-parallax .btn-group.bootstrap-select {
@@ -10931,6 +10931,10 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 }
 #menu-main-menu li {
     width: 100%;
+}
+ul.list-inline.mobile-login .user i {
+    font-size: 18px !important;
+    margin-right: 7px;
 }
 
 
