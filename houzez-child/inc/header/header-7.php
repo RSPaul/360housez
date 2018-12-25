@@ -300,7 +300,7 @@ if( houzez_is_dashboard() ) {
 							'container' => '',
 							'container_class' => '',
 							'menu_class' => '',
-							'menu_id' => '',
+							'menu_id' => 'menu-main-menu',
 							'depth' => 4
 						));
 					endif;
