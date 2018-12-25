@@ -10929,6 +10929,13 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 	width: 50%;
 	height: 100vh;
 }
+#menu-main-menu li {
+    width: 100%;
+}
+
+
+
+
 
 
 /*responsive css start here*/
@@ -11011,6 +11018,9 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 	    width: 100%;
 	    margin: 0 0px 15px 0px;
 	    float: left;
+	}
+	#sidenav-menu.sidenav{
+		width: 100% !important;
 	}
 
 
