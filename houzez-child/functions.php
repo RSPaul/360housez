@@ -138,6 +138,7 @@ if (!function_exists('houzez_register_metaboxes')) {
         global $meta_boxes, $wpdb;
 
         $houzez_prefix = 'fave_';
+        $db_prefix = 'wp_';
 
         $meta_boxes = array();
         $beachs = get_terms( array(
@@ -1100,6 +1101,7 @@ if (!function_exists('houzez_register_metaboxes')) {
                     'columns' => 12,
                     'tab' => 'home_slider',
                 ),
+
                 //Multi Units / Sub Properties
                 array(
                     'id' => "{$houzez_prefix}multiunit_plans_enable",
@@ -3156,3 +3158,36 @@ return $sections;
 // In this example OPT_NAME is the returned opt_name.
 //add_filter("redux/options/OPT_NAME/sections", 'add_another_section_bl');
 add_filter("redux/options/houzez_options/sections", 'add_header_type');
+
+
+
+function add_gdpr_agreement($sections){
+
+    $arr = array(
+        "id" => "agent_forms_terms_gdpr_agreement",
+        "type" => "textarea",
+        "title" => "Basic information about data protection",
+        "subtitle" => "Add title, excerpt and link",
+        "default" => "",
+        "section_id" => "property-page",
+        "priority" => "304"
+    );
+
+    array_push($sections[30]["fields"], $arr); 
+
+    return $sections;
+}
+// In this example OPT_NAME is the returned opt_name.
+//add_filter("redux/options/OPT_NAME/sections", 'add_another_section_bl');
+add_filter("redux/options/houzez_options/sections", 'add_gdpr_agreement');
+
+function add_tz_map_option($sections){
+
+    $new_desc = '<strong>Normal Page:</strong> Create page using "Advanced Search Result" template.<br/><strong>Half Map:</strong> Create page using "Property Listings Half Map" template.<br/><strong>TZ Map:</strong> Create page using "Property Listings TZ Map" template.';;
+
+    $sections[65]["fields"][519]["description"] = $new_desc;
+    $sections[65]["fields"][519]["options"]["TZ_Map"] = "TZ Map";
+    return $sections;
+}
+
+add_filter("redux/options/houzez_options/sections", 'add_tz_map_option');
