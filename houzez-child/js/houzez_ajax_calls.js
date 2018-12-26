@@ -1297,7 +1297,7 @@ jQuery(document).ready(function ($) {
         var houzez_init_remove_favorite = function() {
             $(".remove_fav").click(function () {
                 var curnt = $(this);
-                var propID = $(this).attr('data-propid');
+                var propID = $(this).attr('data-propid');                
                 add_to_favorite( propID, curnt );
                 var itemWrap = curnt.parents('.item-wrap').remove();
             });
@@ -1321,6 +1321,7 @@ jQuery(document).ready(function ($) {
                         curnt.addClass('faa-pulse animated');
                     },
                     success: function( data ) {
+                        console.log("data", data)
                         if( data.added ) {
                             curnt.parent('a').addClass('saved');
                         } else {
