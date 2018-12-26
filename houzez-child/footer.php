@@ -113,7 +113,7 @@ global $houzez_local;
 <?php } ?>
 
 <?php wp_footer(); ?>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery('#formSale').click(function () {
             jQuery('.full-area').toggleClass('scrollTop');
@@ -127,6 +127,6 @@ global $houzez_local;
     })
 
 
-</script>
+</script> -->
 </body>
 </html>

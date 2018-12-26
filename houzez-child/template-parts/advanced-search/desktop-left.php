@@ -23,6 +23,8 @@ global $status,
 
 $search_template = houzez_get_search_template_link();
 $measurement_unit_adv_search = houzez_option('measurement_unit_adv_search');
+$tz_left_button_text = get_post_meta($post->ID, 'fave_tz_left_button_text', true);
+$tz_left_info_text = get_post_meta($post->ID, 'fave_tz_left_info_text', true);
 
 if( $measurement_unit_adv_search == 'sqft' ) {
     $measurement_unit_adv_search = houzez_option('measurement_unit_sqft_text');
@@ -173,14 +175,19 @@ $checked = true;
     <div class="<?php echo esc_attr($search_width); ?>">
         <div class="default_show half-part-left">
             <div class="half-area">
-                <h3>For Sale</h3>
-                <p>Some Text</p>
+                <h3><?php echo $tz_left_button_text; ?></h3>
+                <p><?php echo $tz_left_info_text; ?></p>
             </div>
             <div class="full-area" style="display: none;">
-                <h3>For Sale <span>Some Text</span></h3>
+                <h3><?php echo $tz_left_button_text; ?> 
+                <span><?php echo $tz_left_info_text; ?></span>
+                </h3>
                 <form method="get" autocomplete="off" action="<?php echo esc_url($search_template); ?>">
-                    <?php get_template_part('template-parts/advanced-search/half-map-non-ajax'); $search_style = 'test'; ?>
+                    <?php get_template_part('template-parts/advanced-search/half-map-non-ajax'); ?>
                 </form>
+                <div class="go_back left" id="go_left">
+                    <i class="tz-arrow-left"></i> <span class="txt-xs txt-h-light">go back</span>
+                </div>
             </div>
         </div>
     </div>
