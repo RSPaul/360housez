@@ -11,6 +11,10 @@ $page_head_search = get_post_meta($post->ID, 'fave_page_header_search', true);
 $page_image_overlay = get_post_meta($post->ID, 'fave_page_header_image_overlay', true);
 $page_image_opacity = get_post_meta($post->ID, 'fave_page_header_image_opacity', true);
 
+
+$tz_left_image = wp_get_attachment_url (get_post_meta($post->ID, 'fave_tz_left_image', true) );
+$tz_right_image = wp_get_attachment_url (get_post_meta($post->ID, 'fave_tz_right_image', true) );
+
 $header_full_screen_type = 'screen_fix';
 
 
@@ -85,7 +89,7 @@ if (!empty($img_url[0])) {
             </div>-->
 
             <div class="banner-bg-wrap">
-                <div class="banner_inner banner-inner-left" style="background-image:url(<?php echo esc_url($img_url[0]); ?>); background-size: cover;">                    
+                <div class="banner_inner banner-inner-left" style="background-image:url(<?php echo $tz_left_image; ?>); background-size: cover;">                    
                     <div class="banner-inner-content search-bar search-salebar">
                         <?php
                         if (houzez_search_needed()) {
@@ -132,7 +136,7 @@ if (!empty($img_url[0])) {
                     </div>
                 </div>
 
-                <div class="banner_inner banner-inner-right" style="background-image:url(<?php echo site_url(); ?>/wp-content/uploads/revslider/home-hero/49.jpg); background-size: cover;">                    
+                <div class="banner_inner banner-inner-right" style="background-image:url(<?php echo $tz_right_image; ?>); background-size: cover;">
                     <div class="banner-inner-content search-bar search-rentbar">
                         <div class="right_rent_part">
                             <?php
