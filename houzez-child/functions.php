@@ -2329,17 +2329,19 @@ if (!function_exists('houzez_register_metaboxes')) {
             'context' => 'normal',
             'fields' => array(
                 array(
-                    'name' => esc_html__('TZ Header Type', 'houzez'),
+                    'name' => esc_html__('Header Type', 'houzez'),
                     'id' => $houzez_prefix . 'header_type',
                     'type' => 'select',
                     'options' => array(
                         'none' => esc_html__('None', 'houzez'),
+                        'property_slider' => esc_html__('Properties Slider', 'houzez'),
                         'property_slider' => esc_html__('Properties Slider', 'houzez'),
                         'rev_slider' => esc_html__('Revolution Slider', 'houzez'),
                         'property_map' => esc_html__('Properties Google Map', 'houzez'),
                         'static_image' => esc_html__('Image', 'houzez'),
                         'video' => esc_html__('Video', 'houzez'),
                         'property_search' => esc_html__('Properties Search', 'houzez'),
+                        'tz_header_style' => esc_html__('TZ Header Type', 'houzez'),
                     ),
                     'std' => array('none'),
                     'desc' => esc_html__('Choose page header type', 'houzez'),
@@ -2490,6 +2492,78 @@ if (!function_exists('houzez_register_metaboxes')) {
                     'desc' => esc_html__('Choose city for proeprties on map header, you can select multiple cities or keep all un-select to show from all cities', 'houzez'),
                     'multiple' => true
                 ),
+                array(
+                    'name' => esc_html__('Left Side', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-left-heading',
+                    'type' => 'heading',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Left side configurations', 'houzez')
+                ),
+                array(
+                    'name' => esc_html__('Image', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-left-image',
+                    'type' => 'image_advanced',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add left image (Sale)', 'houzez'),
+                    'max_file_uploads' => 1
+                ),
+                array(
+                    'name' => esc_html__('Button Text', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-left-button-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add/Modify left button text', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Info Text', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-left-info-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add/Modify left informative text', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Right Side', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-heading',
+                    'type' => 'heading',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Right side configurations', 'houzez')
+                ),
+                array(
+                    'name' => esc_html__('Image', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-image',
+                    'type' => 'image_advanced',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add left image (Sale)', 'houzez'),
+                    'max_file_uploads' => 1
+                ),
+                array(
+                    'name' => esc_html__('Button Text', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-button-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add/Modify right button text', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Info Text', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-info-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add/Modify right informative text', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Secondary Text 1', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-button-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Text for vacation rental', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Secondary Text 2', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-info-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Text for long term rental', 'houzez'),
+                )
             )
         );
 
@@ -3148,6 +3222,7 @@ return $sections;
 }
 add_filter("redux/options/houzez_options/sections", 'add_header_style');
 
+/* HEADER TYPE NOT NEEDED IN THEME OPTIONS
 // Add custom header type in theme options
 function add_header_type($sections){
 
@@ -3274,7 +3349,7 @@ return $sections;
 // In this example OPT_NAME is the returned opt_name.
 //add_filter("redux/options/OPT_NAME/sections", 'add_another_section_bl');
 add_filter("redux/options/houzez_options/sections", 'add_header_type');
-
+*/
 
 
 function add_gdpr_agreement($sections){
