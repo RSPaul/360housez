@@ -221,6 +221,7 @@ jQuery(document).ready(function ($) {
                     });
                 }
             } else if( document.getElementById('mapViewHalfListings') ) {
+
                 houzezMap = new google.maps.Map(document.getElementById('mapViewHalfListings'), houzezMapoptions);
                 if( houzez_is_mobile ) {
                     houzezMap.setOptions({
@@ -2204,33 +2205,77 @@ jQuery(document).ready(function ($) {
                 }
 
                 var infoboxContent = document.createElement("div");
-                infoboxContent.className = 'property-item item-grid map-info-box';
+                infoboxContent.className = 'property-item property-card-map item-grid map-info-box';
+                // old
+                // infoboxContent.innerHTML = '' +
+                //     '<div class="figure-block">' +
+                //     '<figure class="item-thumb">' +
+                //     '<div class="price hide-on-list">' +
+                //     '<span class="item-price">'+prop.price+'</span>' +
+                //     '</div>' +
+                //     '<a href="'+prop.url+'" class="hover-effect" tabindex="0">' + prop.thumbnail + '</a>' +
+                //     '</figure>' +
+                //     '</div>' +
+                //     '<div class="item-body">' +
+                //     '<div class="body-left">' +
+                //     '<div class="info-row">' +
+                //     '<h2><a href="'+prop.url+'">'+prop_title+'</a></h2>' +
+                //     '<h4>'+prop.address+'</h4>' +
+                //     '</div>' +
+                //     '<div class="table-list full-width info-row">' +
+                //     '<div class="cell">' +
+                //     '<div class="info-row amenities">' + propMeta +
+                //     '<p>'+prop.type+'</p>' +
+                //     '</div>' +
+                //     '</div>' +
+                //     '</div>' +
+                //     '</div>' +
+                //     '</div>';
+                console.log("prop>>>>>>>>>>>>>>", prop)
                 infoboxContent.innerHTML = '' +
-                    '<div class="figure-block">' +
-                    '<figure class="item-thumb">' +
-                    '<div class="price hide-on-list">' +
-                    '<span class="item-price">'+prop.price+'</span>' +
-                    '</div>' +
-                    '<a href="'+prop.url+'" class="hover-effect" tabindex="0">' + prop.thumbnail + '</a>' +
+                    '<div class="property-card-wrapper flex-container">' +
+                    '<div class="property-card-header">' +
+                    '<a href="#!" role="button" class="btn-close" title="Close">' +
+                    '<i class="tz-close-sm"></i>' +
+                    '</a>' +
+                    '<figure>' +
+                    // '<a href="'+prop.url+'" class="go-detail waves-effect waves-light">' + prop.thumbnail+ '</a>' +
                     '</figure>' +
                     '</div>' +
-                    '<div class="item-body">' +
-                    '<div class="body-left">' +
-                    '<div class="info-row">' +
-                    '<h2><a href="'+prop.url+'">'+prop_title+'</a></h2>' +
-                    '<h4>'+prop.address+'</h4>' +
-                    '</div>' +
-                    '<div class="table-list full-width info-row">' +
-                    '<div class="cell">' +
-                    '<div class="info-row amenities">' + propMeta +
-                    '<p>'+prop.type+'</p>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
+                    '<div class="property-card-body">' +
+                    '<p class="card-title txt-h-medium">' +
+                    '<a href="'+prop.url+'">'+prop_title+'</a>' +
+                    '</p>' +
+                    '<ul class="card-main-features last-child-no-border flex-container text-center">' +
+                    '<li class="flex-item">' +
+                    '<span class="txt-h-medium">'+prop.bedrooms +'</span> <span class="text-uppercase">Rooms</span>' +
+                    '</li>' +
+                    '<li class="flex-item">' +
+                    '<span class="txt-h-medium">'+prop.bathrooms +'</span> <span class="text-uppercase">Baths</span>' +
+                    '</li>' +
+                    '<li class="flex-item">' +
+                    '<span class="txt-h-medium">'+prop.property_size+' <span class="txt-h-light">'+prop.area_prefix+'</span></span> <span class="text-uppercase">Area</span>' +
+                    '</li>' +
+                    '</ul>' +
+                    '<p class="card-price txt-h-light">';
+
+                    if(prop.status == "For Sale") {
+                        infoboxContent.innerHTML += 'From <span class="txt-h-medium">'+prop.for_sale+'</span> USD';
+                    }
+                    if(prop.status == "For Rent : Living") {
+                        infoboxContent.innerHTML += 'From <span class="txt-h-medium">'+prop.for_rent_living+'</span> USD / month';
+                    }
+                    if(prop.status == "For Rent : Vacations") {
+                        infoboxContent.innerHTML += 'From <span class="txt-h-medium">'+prop.for_rent_vacations+'</span> USD / night';
+                    }
+                    if(prop.oppurtunity && prop.oppurtunity == 1) {
+                        infoboxContent.innerHTML += '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="left"></i>';   
+                    }
+
+                    infoboxContent.innerHTML += '</p>' +'</div>' +
                     '</div>';
 
-
+   
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
                             var scale = Math.pow(2, map.getZoom());
@@ -3359,16 +3404,17 @@ jQuery(document).ready(function ($) {
 
         var houzez_infobox_trigger = function() {
             $('.infobox_trigger').each(function(i) {
+
                 $(this).on('mouseenter', function() {
                     if(houzezMap) {
                         if( houzezMap.getZoom() < 15 ){
                             houzezMap.setZoom(15);
                         }
-                        google.maps.event.trigger(markers[i], 'click');
-                        
+                        google.maps.event.trigger(markers[i], 'click');                        
                     }
                 });
                 $(this).on('mouseleave', function() {
+
                     infobox.open(null,null);
                     
                 });

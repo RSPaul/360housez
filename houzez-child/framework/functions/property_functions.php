@@ -2542,6 +2542,7 @@ add_action( 'wp_ajax_nopriv_houzez_half_map_listings', 'houzez_half_map_listings
 add_action( 'wp_ajax_houzez_half_map_listings', 'houzez_half_map_listings' );
 if( !function_exists('houzez_half_map_listings') ) {
     function houzez_half_map_listings() {
+
         //check_ajax_referer('houzez_map_ajax_nonce', 'security');
         $meta_query = array();
         $tax_query = array();
@@ -2995,6 +2996,16 @@ if( !function_exists('houzez_half_map_listings') ) {
             $prop->images_count = count( $prop_images );
             $prop->price = houzez_listing_price_v1();
             $prop->pricePin = houzez_listing_price_map_pins();
+
+            $prop->for_sale = get_post_meta( get_the_ID(), 'fave_property_price', true );
+            $prop->for_rent_living = get_post_meta( get_the_ID(), 'fave_property_sec_price', true );
+            $prop->for_rent_vacations = get_post_meta( get_the_ID(), 'fave_property_third_price', true );
+            
+            $prop->property_size = get_post_meta( get_the_ID(), 'fave_property_size', true );
+            $prop->status = houzez_taxonomy_simple('property_status');
+            $prop->area_prefix = houzez_option('area_prefix_default');
+            $prop->search_status = $status;
+            $prop->oppurtunity = get_post_meta( get_the_ID(), 'fave_property_oppurtunity', true );
 
             $prop->icon = $prop->retinaIcon = get_template_directory_uri() . '/images/map/pin-single-family.png';
             foreach( $prop_type as $term_id ) {

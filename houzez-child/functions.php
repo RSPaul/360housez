@@ -1,5 +1,7 @@
 <?php
 
+require_once( get_theme_file_path() . '/framework/functions/property_functions.php' );
+
 function tft_change_taxonomy_property_status_label() {
     $t = get_taxonomy('property_status');
     $t->labels->singular_name = 'Action';
