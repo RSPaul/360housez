@@ -9951,6 +9951,27 @@ a.map-control span {
 }
 
 
+button.map-control {
+	display: inline-block;
+	padding: .375rem .5rem .25rem;
+	background-color: #000;
+	color: #fff
+}
+button.map-control:active,
+button.map-control:focus,
+button.map-control:hover {
+	background-color: rgba(0, 0, 0, .8);
+	color: #bf0e5d!important
+}
+button.map-control i {
+	font-size: 24px
+}
+button.map-control span {
+	font-size: 16px;
+	display: block;
+	padding: 3px 0
+}
+
 /*! === PROPERTY LISTING STYLE 2 FULLWIDTH === */
 
 .property-listing-widget-area {
@@ -11026,9 +11047,9 @@ ul.list-inline.mobile-login .user i {
 	    height: 66vh;
 	    overflow-x: hidden;
 	}
-	
 
-	
+
+
 }
 
 @media (min-width: 768px) and (max-width: 991px){
