@@ -54,7 +54,7 @@ if( houzez_is_dashboard() ) {
 								<span class="bar bottom"></span>	
 							</button>
 							<?php get_template_part('inc/header/logo'); ?>
-							<span class="site-description txt-sm"> | <?php echo get_bloginfo();?></span>
+							<span class="site-description txt-sm"> | <?php echo get_bloginfo('description');?></span>
 						</div>
 							<?php
 							// Pages Menu
@@ -136,7 +136,7 @@ if( houzez_is_dashboard() ) {
 	</div>
 <!--end section header-->
 
-<?php get_template_part( 'inc/header/mobile-header' ); 
+<?php //get_template_part( 'inc/header/mobile-header' ); 
 } else {
 	global $current_user;
 	wp_get_current_user();
@@ -300,7 +300,7 @@ if( houzez_is_dashboard() ) {
 							'container' => '',
 							'container_class' => '',
 							'menu_class' => '',
-							'menu_id' => '',
+							'menu_id' => 'menu-main-menu',
 							'depth' => 4
 						));
 					endif;

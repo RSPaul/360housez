@@ -526,10 +526,10 @@ function tz_menu_classes($classes, $item, $args) {
 }
 add_filter('nav_menu_css_class', 'tz_menu_classes', 1, 3);
 
-function add_menuclass($ulclass) {
-   return preg_replace('/<a /', '<a class="waves-effect"', $ulclass);
-}
-add_filter('wp_nav_menu','add_menuclass');
+// function add_menuclass($ulclass) {
+//    return preg_replace('/<a /', '<a class="waves-effect"', $ulclass);
+// }
+// add_filter('wp_nav_menu','add_menuclass');
 
 
 add_action('admin_enqueue_scripts', 'houzez_custom_scripts', 99);
@@ -3569,6 +3569,122 @@ function add_header_type($sections){
 
 $sections[21]['fields'][173]['options']['tzHeaderType']  = 'TZ Header Type';
 
+for ($i=174; $i <= 238; $i++) { 
+    
+    $sections[21]['fields'][$i]['required'][]  = 'styling_headers_type';
+    $sections[21]['fields'][$i]['required'][]  = '!=';
+    $sections[21]['fields'][$i]['required'][]  = 'tzHeaderType';
+}
+
+for ($i=216; $i <= 222; $i++) { 
+    
+    $sections[21]['fields'][$i]['required'] = [];
+    $sections[21]['fields'][$i]['required'][] = array('styling_headers_type', '!=', 'header-4');
+    $sections[21]['fields'][$i]['required'][] = array('styling_headers_type', '!=', 'tzHeaderType');
+}
+
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_left_heading',
+            'type'   => 'info',
+            'notice' => false,
+            'required' => array('styling_headers_type', '=', 'tzHeaderType'),
+            'style'  => 'info',
+            'title'  => 'Left Side',
+            'desc'   => ''
+        );
+
+$sections[21]["fields"][] = array(
+            'id'        => 'tz_left_image',
+            'url'       => true,
+            'type'      => 'media',
+            'title'     => 'Image',
+            'read-only' => false,
+            'default'   => array( 'url' => site_url() .'/wp-content/uploads/2016/03/miami-beach.jpg' ),
+            'subtitle'  => 'Add left image (Sale)',
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_left_button_text',
+            'type'   => 'text',
+            "title" => "Button Text",
+            "subtitle" => "Add/Modify left button text",
+            "default" => "For Sale",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_left_info_text',
+            'type'   => 'text',
+            "title" => "Info Text",
+            "subtitle" => "Add/Modify left informative text",
+            "default" => "Some text 1",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+// TZ header right side fields 
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_heading',
+            'type'   => 'info',
+            'notice' => false,
+            'required' => array('styling_headers_type', '=', 'tzHeaderType'),
+            'style'  => 'info',
+            'title'  => 'Right Side',
+            'desc'   => ''
+        );
+
+$sections[21]["fields"][] = array(
+            'id'        => 'tz_right_image',
+            'url'       => true,
+            'type'      => 'media',
+            'title'     => 'Image',
+            'read-only' => false,
+            'default'   => array( 'url' => site_url() .'/wp-content/uploads/revslider/home-hero/49.jpg' ),
+            'subtitle'  => 'Add right image (Rent)',
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_button_text',
+            'type'   => 'text',
+            "title" => "Button Text",
+            "subtitle" => "Add/Modify right button text",
+            "default" => "For Sale",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_info_text',
+            'type'   => 'text',
+            "title" => "Info Text",
+            "subtitle" => "Add/Modify right informative text",
+            "default" => "Some text 1",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_sec_text_1',
+            'type'   => 'text',
+            "title" => "Secondary Text 1",
+            "subtitle" => "Text for vacation rental",
+            "default" => "Vacations",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_sec_text_2',
+            'type'   => 'text',
+            "title" => "Secondary Text 2",
+            "subtitle" => "Text for long term rental",
+            "default" => "Residence",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
 return $sections;
 }
 // In this example OPT_NAME is the returned opt_name.
@@ -3607,3 +3723,19 @@ function add_tz_map_option($sections){
 }
 
 add_filter("redux/options/houzez_options/sections", 'add_tz_map_option');
+
+// Add active class to anchor tag in menu items
+add_filter( 'nav_menu_link_attributes', function($atts) {
+
+    $current_url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].''.$_SERVER['REQUEST_URI'];
+
+    if ( $current_url ==  $atts['href']) {
+        
+        $atts['class'] = "active waves-effect";
+    } else {
+        
+        $atts['class'] = "waves-effect";
+    }
+
+    return $atts;
+}, 100, 1 );
