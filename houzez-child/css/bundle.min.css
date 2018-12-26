@@ -10913,11 +10913,11 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
   position:absolute;  width:100%;
 }
 .default_show.half-part-left .full-area {
-    background: rgba(255,255,255,0.5); text-align: center; 
-    max-width: 80%; width: 100%; margin:15% auto 0;
+    /*background: rgba(255,255,255,0.5);*/ text-align: center; 
+    max-width: 80%; width: 100%; margin:8% auto 0;
 }
 .default_show.half-part-left .half-area  {
-    text-align: center; background: rgba(255,255,255,0.5);   right:0; float:right;  max-width: 80%; width: 100%; margin-top:30%;
+    text-align: center; background: rgba(255,255,255,0.5);   right:0; float:right;  max-width: 80%; width: 100%; margin-top:41%;
 }
 .banner-inner-content .container {width:100%; position: absolute;}
 .banner-parallax .btn-group.bootstrap-select {
@@ -10929,6 +10929,9 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 	width: 50%;
 	height: 100vh;
 }
+.banner-parallax{
+	height: 100vh !important;
+}
 #menu-main-menu li {
     width: 100%;
 }
@@ -10936,6 +10939,42 @@ ul.list-inline.mobile-login .user i {
     font-size: 18px !important;
     margin-right: 7px;
 }
+.full-area #advanced-search-menu .advanced-search-filters {
+    padding: 0px 0px;
+}
+.full-area #advanced-search-menu2 .advanced-search-filters {
+    padding: 0 !important;
+}
+.go_back {
+    margin-top: 10px;
+    text-align: left !important;
+    cursor: pointer;
+    float: left !important;
+}
+.go_back.left {
+	z-index: 999;
+}
+.go_back.right {
+	z-index: 999;
+}
+.go_back i{
+	position: relative;
+	top: 5px;
+}
+.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2{
+	position: relative;
+}
+.default_show.half-part-left .full-area h3 {
+    background: rgba(255,255,255,0.5);
+}
+.select-dropdown.dropdown-content {
+    top: 32px !important;
+}
+
+
+
+
+
 
 
 
@@ -10991,6 +11030,12 @@ ul.list-inline.mobile-login .user i {
 	    width: 32%;
 	    margin: 0 8px 15px 0px;
 	}
+	.banner_inner .advanced-search {
+	    display: block;
+	}
+	.banner_inner form #sticky_navbar button.bd-black.waves-effect.waves-color-1 {
+	    padding: 0.4rem;
+	}
 
 
 
@@ -11026,7 +11071,12 @@ ul.list-inline.mobile-login .user i {
 	#sidenav-menu.sidenav{
 		width: 100% !important;
 	}
-
+	.banner_inner .advanced-search {
+	    display: block;
+	}
+	.banner_inner form #sticky_navbar button.bd-black.waves-effect.waves-color-1 {
+	    padding: 0.4rem;
+	}
 
 
 

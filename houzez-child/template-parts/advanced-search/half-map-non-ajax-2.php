@@ -109,7 +109,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <?php if( $adv_show_hide['status'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
                                         <div class="form-group">
-                                            <select class="selectpicker status-right" name="status" data-live-search="false" data-live-search-style="begins">
+                                            <select class="selectpicker1 status-right1" name="status" data-live-search="false" data-live-search-style="begins">
                                                 <?php
                                                 // All Option
                                                 echo '<option value="">What do you need?</option>';

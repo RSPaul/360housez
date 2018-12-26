@@ -181,6 +181,9 @@ $checked = true;
                 <form method="get" autocomplete="off" action="<?php echo esc_url($search_template); ?>">
                     <?php get_template_part('template-parts/advanced-search/half-map-non-ajax'); $search_style = 'test'; ?>
                 </form>
+                <div class="go_back left" id="go_left">
+                    <i class="tz-arrow-left"></i> <span class="txt-xs txt-h-light">go back</span>
+                </div>
             </div>
         </div>
     </div>

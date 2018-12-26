@@ -260,7 +260,7 @@ if( !function_exists('houzez_scripts') ) {
 
         /* Register Styles
          * ----------------------*/
-        wp_enqueue_style('child-theme', get_stylesheet_directory_uri() . '/css/font-awesome.min.css', array('parent-theme'), '4.7.0', 'all');
+        //wp_enqueue_style('child-theme', get_stylesheet_directory_uri() . '/css/font-awesome.min.css', array('parent-theme'), '4.7.0', 'all');
         wp_enqueue_style('houzez-all', get_template_directory_uri() . '/css/all.min.css', array(), HOUZEZ_THEME_VERSION, 'all');
         wp_enqueue_style('houzez-main', get_template_directory_uri() . '/css/main' . $css_minify_prefix . '.css', array(), HOUZEZ_THEME_VERSION, 'all');
 
