@@ -129,6 +129,10 @@ if (!empty($img_url[0])) {
                         //     }
                         // }
                         ?>
+
+                        
+
+
                     </div>
                 </div>
 
@@ -205,8 +209,16 @@ if (!empty($img_url[0])) {
 
 <script>
     jQuery(function ($) {
+        document.getElementById('go_left').addEventListener('click', function (event){
+            event.stopPropagation();
+        });
+        document.getElementById('go_right').addEventListener('click', function (event){
+            event.stopPropagation();
+        });
+
+
         $(".banner-inner-left").click(function () {
-            $(".half-area").hide();
+            $(".half-area").hide('slow');
 
             $(this).animate({
                 width: '100%'
@@ -225,7 +237,7 @@ if (!empty($img_url[0])) {
         });
 
         $(".banner-inner-right").click(function () {
-            $(".half-area").hide();
+            $(".half-area").hide('slow');
             $(this).animate({
                 width: '100%'
             }, 1200);
@@ -238,6 +250,50 @@ if (!empty($img_url[0])) {
                 $(".banner-inner-left").hide();
                 $(".full-area").fadeIn("slow");
             }, 1100);
+        });
+
+        $(".go_back.left").click(function(){
+            
+            $(".banner-inner-right").animate({
+                width: '50%'
+            }, 1100);
+            
+            $('.banner-inner-left').animate({
+                width: '50%'
+            }, 1200);
+            
+            $(".banner-inner-right").show();
+            
+            setTimeout(function () {
+                 $(".full-area").fadeOut("fast");
+            },50);
+
+            setTimeout(function () {               
+                $(".half-area").show('slow');
+            }, 1100);          
+
+        });
+
+        $(".go_back.right").click(function(){
+            
+            $(".banner-inner-right").animate({
+                width: '50%'
+            }, 1100);
+            
+            $('.banner-inner-left').animate({
+                width: '50%'
+            }, 1200);
+            
+            $(".banner-inner-left").show();
+            
+            setTimeout(function () {
+                 $(".full-area").fadeOut("fast");
+            },50);
+
+            setTimeout(function () {               
+                $(".half-area").show('slow');
+            }, 1100);          
+
         });
 
     });
