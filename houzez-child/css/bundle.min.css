@@ -11036,6 +11036,19 @@ ul.list-inline.mobile-login .user i {
 	.banner_inner form #sticky_navbar button.bd-black.waves-effect.waves-color-1 {
 	    padding: 0.4rem;
 	}
+	.default_show.half-part-left{
+		left: 0px;
+	}
+	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu {
+	    height: 360px;
+	    overflow-x: hidden;
+	}
+	.searching-navbar #advanced-search-menu div.search-col.six{
+		padding-bottom: 30px;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col.six{
+		padding-bottom: 30px;	
+	}
 
 
 
@@ -11076,6 +11089,19 @@ ul.list-inline.mobile-login .user i {
 	}
 	.banner_inner form #sticky_navbar button.bd-black.waves-effect.waves-color-1 {
 	    padding: 0.4rem;
+	}
+	.default_show.half-part-left{
+		left: 0px;
+	}
+	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu {
+	    height: 360px;
+	    overflow-x: hidden;
+	}
+	.searching-navbar #advanced-search-menu div.search-col.six{
+		padding-bottom: 30px;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col.six{
+		padding-bottom: 30px;	
 	}
 
 
