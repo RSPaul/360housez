@@ -122,16 +122,17 @@ jQuery(document).ready(function($) {
     }
 
     $('#fave_default_template_settings .inside .rwmb-meta-box > div:gt(2):lt(3)').wrapAll('<div id="default_template_background_option">');
-    $('#fave_advanced_search .inside .rwmb-meta-box > div:gt(0):lt(2)').wrapAll('<div id="fave_advanced_search_option">');
+    $('#fave_advanced_search .inside .rwmb-meta-box > div:not(.tz-field):gt(0):lt(2)').wrapAll('<div id="fave_advanced_search_option">');
 
-    $('#fave_page_settings .inside .rwmb-meta-box > div:gt(0):lt(1)').wrapAll('<div id="page_header_fix_screen_settings">');
-    $('#fave_page_settings .inside .rwmb-meta-box > div:gt(1):lt(1)').wrapAll('<div id="page_header_fix_screen_type_settings">');
-    $('#fave_page_settings .inside .rwmb-meta-box > div:gt(2):lt(3)').wrapAll('<div id="page_header_common_settings">');
-    $('#fave_page_settings .inside .rwmb-meta-box > div:gt(3):lt(1)').wrapAll('<div id="page_header_slider_settings">');
-    $("#fave_page_settings .inside .rwmb-meta-box > div:gt(4):lt(4)").wrapAll('<div id="page_header_image_settings">');
-    $("#fave_page_settings .inside .rwmb-meta-box > div:gt(5):lt(6)").wrapAll('<div id="page_header_video_settings">');
-    $("#fave_page_settings .inside .rwmb-meta-box > div:gt(6):lt(7)").wrapAll('<div id="page_header_map_settings">');    
-    $("#fave_page_settings .inside .rwmb-meta-box > div:gt(7):lt(8)").wrapAll('<div id="page_header_searchpage_settings">');
+    $('#fave_page_settings .inside .rwmb-meta-box > div:not(.tz-field):gt(0):lt(1)').wrapAll('<div id="page_header_fix_screen_settings">');
+    $('#fave_page_settings .inside .rwmb-meta-box > div:not(.tz-field):gt(1):lt(1)').wrapAll('<div id="page_header_fix_screen_type_settings">');
+    $('#fave_page_settings .inside .rwmb-meta-box > div:not(.tz-field):gt(2):lt(3)').wrapAll('<div id="page_header_common_settings">');
+    $('#fave_page_settings .inside .rwmb-meta-box > div:not(.tz-field):gt(3):lt(1)').wrapAll('<div id="page_header_slider_settings">');
+    $("#fave_page_settings .inside .rwmb-meta-box > div:not(.tz-field):gt(4):lt(4)").wrapAll('<div id="page_header_image_settings">');
+    $("#fave_page_settings .inside .rwmb-meta-box > div:not(.tz-field):gt(5):lt(6)").wrapAll('<div id="page_header_video_settings">');
+    $("#fave_page_settings .inside .rwmb-meta-box > div:not(.tz-field):gt(6):lt(7)").wrapAll('<div id="page_header_map_settings">');    
+    $("#fave_page_settings .inside .rwmb-meta-box > div:not(.tz-field):gt(7):lt(8)").wrapAll('<div id="page_header_searchpage_settings">');
+    $("#fave_page_settings .inside .rwmb-meta-box > div.tz-field").wrapAll('<div id="page_tzheader_settings">');
 
     $("#additional-details .inside .rwmb-meta-box > div:gt(0):lt(1)").wrapAll('<div id="additional_details_settings">');
     $("#floor-plans .inside .rwmb-meta-box > div:gt(0):lt(1)").wrapAll('<div id="floor_plans_settings">');
@@ -159,24 +160,28 @@ jQuery(document).ready(function($) {
         
         if( header_type == 'rev_slider' ) {
             jQuery('#page_header_slider_settings, #fave_menu_settings').stop(true,true).fadeIn(500);
-            //jQuery('#page_header_fix_screen_settings').hide();
+            jQuery('#page_tzheader_settings').hide();
 
         } else if( header_type == 'static_image' ) {
             jQuery('#page_header_image_settings, #page_header_common_settings, #page_header_fix_screen_settings, #page_header_fix_screen_type_settings, #fave_menu_settings').stop(true,true).fadeIn(500);
-
+            jQuery('#page_tzheader_settings').hide();
         } else if( header_type == 'video' ) {
             jQuery('#page_header_video_settings, #page_header_common_settings, #page_header_fix_screen_settings, #fave_menu_settings').stop(true,true).fadeIn(500);
-
+            jQuery('#page_tzheader_settings').hide();
         } else if ( header_type == 'property_slider' ) {
-            jQuery('#page_header_common_settings, #page_header_fix_screen_type_settings, #fave_menu_settings, #page_header_map_settings').hide();
+            jQuery('#page_header_common_settings, #page_tzheader_settings, #page_header_fix_screen_type_settings, #fave_menu_settings, #page_header_map_settings').hide();
             jQuery('#page_header_fix_screen_settings').stop(true,true).fadeIn(500);
 
         } else if ( header_type == 'property_map' ) {
             jQuery('#page_header_fix_screen_settings, #page_header_map_settings').stop(true,true).fadeIn(500);
-            jQuery('#fave_menu_settings').hide();
+            jQuery('#fave_menu_settings, #page_tzheader_settings').hide();
         } else if(header_type=='property_search'){
             $("#page_header_searchpage_settings").fadeIn(500);
-            jQuery('#fave_menu_settings').hide();
+            jQuery('#fave_menu_settings, #page_tzheader_settings').hide();
+        } else if(header_type=='tz_header_style'){
+            
+            $("#page_tzheader_settings").fadeIn(500);
+            jQuery('#fave_menu_settings, #page_header_searchpage_settings, #page_header_image_settings, #page_header_common_settings, #page_header_fix_screen_settings, #page_header_fix_screen_type_settings').hide();
         }
         
         

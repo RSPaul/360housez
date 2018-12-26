@@ -110,10 +110,10 @@ function tz_menu_classes($classes, $item, $args) {
 }
 add_filter('nav_menu_css_class', 'tz_menu_classes', 1, 3);
 
-function add_menuclass($ulclass) {
-   return preg_replace('/<a /', '<a class="waves-effect"', $ulclass);
-}
-add_filter('wp_nav_menu','add_menuclass');
+// function add_menuclass($ulclass) {
+//    return preg_replace('/<a /', '<a class="waves-effect"', $ulclass);
+// }
+// add_filter('wp_nav_menu','add_menuclass');
 
 
 add_action('admin_enqueue_scripts', 'houzez_custom_scripts', 99);
@@ -2329,17 +2329,19 @@ if (!function_exists('houzez_register_metaboxes')) {
             'context' => 'normal',
             'fields' => array(
                 array(
-                    'name' => esc_html__('TZ Header Type', 'houzez'),
+                    'name' => esc_html__('Header Type', 'houzez'),
                     'id' => $houzez_prefix . 'header_type',
                     'type' => 'select',
                     'options' => array(
                         'none' => esc_html__('None', 'houzez'),
+                        'property_slider' => esc_html__('Properties Slider', 'houzez'),
                         'property_slider' => esc_html__('Properties Slider', 'houzez'),
                         'rev_slider' => esc_html__('Revolution Slider', 'houzez'),
                         'property_map' => esc_html__('Properties Google Map', 'houzez'),
                         'static_image' => esc_html__('Image', 'houzez'),
                         'video' => esc_html__('Video', 'houzez'),
                         'property_search' => esc_html__('Properties Search', 'houzez'),
+                        'tz_header_style' => esc_html__('TZ Header Type', 'houzez'),
                     ),
                     'std' => array('none'),
                     'desc' => esc_html__('Choose page header type', 'houzez'),
@@ -2490,6 +2492,78 @@ if (!function_exists('houzez_register_metaboxes')) {
                     'desc' => esc_html__('Choose city for proeprties on map header, you can select multiple cities or keep all un-select to show from all cities', 'houzez'),
                     'multiple' => true
                 ),
+                array(
+                    'name' => esc_html__('Left Side', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-left-heading',
+                    'type' => 'heading',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Left side configurations', 'houzez')
+                ),
+                array(
+                    'name' => esc_html__('Image', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-left-image',
+                    'type' => 'image_advanced',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add left image (Sale)', 'houzez'),
+                    'max_file_uploads' => 1
+                ),
+                array(
+                    'name' => esc_html__('Button Text', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-left-button-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add/Modify left button text', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Info Text', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-left-info-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add/Modify left informative text', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Right Side', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-heading',
+                    'type' => 'heading',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Right side configurations', 'houzez')
+                ),
+                array(
+                    'name' => esc_html__('Image', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-image',
+                    'type' => 'image_advanced',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add left image (Sale)', 'houzez'),
+                    'max_file_uploads' => 1
+                ),
+                array(
+                    'name' => esc_html__('Button Text', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-button-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add/Modify right button text', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Info Text', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-info-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Add/Modify right informative text', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Secondary Text 1', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-button-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Text for vacation rental', 'houzez'),
+                ),
+                array(
+                    'name' => esc_html__('Secondary Text 2', 'houzez'),
+                    'id' => $houzez_prefix . 'tz-right-info-text',
+                    'type' => 'text',
+                    'class' => 'tz-field',
+                    'desc' => esc_html__('Text for long term rental', 'houzez'),
+                )
             )
         );
 
@@ -3148,17 +3222,134 @@ return $sections;
 }
 add_filter("redux/options/houzez_options/sections", 'add_header_style');
 
+/* HEADER TYPE NOT NEEDED IN THEME OPTIONS
 // Add custom header type in theme options
 function add_header_type($sections){
 
 $sections[21]['fields'][173]['options']['tzHeaderType']  = 'TZ Header Type';
+
+for ($i=174; $i <= 238; $i++) { 
+    
+    $sections[21]['fields'][$i]['required'][]  = 'styling_headers_type';
+    $sections[21]['fields'][$i]['required'][]  = '!=';
+    $sections[21]['fields'][$i]['required'][]  = 'tzHeaderType';
+}
+
+for ($i=216; $i <= 222; $i++) { 
+    
+    $sections[21]['fields'][$i]['required'] = [];
+    $sections[21]['fields'][$i]['required'][] = array('styling_headers_type', '!=', 'header-4');
+    $sections[21]['fields'][$i]['required'][] = array('styling_headers_type', '!=', 'tzHeaderType');
+}
+
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_left_heading',
+            'type'   => 'info',
+            'notice' => false,
+            'required' => array('styling_headers_type', '=', 'tzHeaderType'),
+            'style'  => 'info',
+            'title'  => 'Left Side',
+            'desc'   => ''
+        );
+
+$sections[21]["fields"][] = array(
+            'id'        => 'tz_left_image',
+            'url'       => true,
+            'type'      => 'media',
+            'title'     => 'Image',
+            'read-only' => false,
+            'default'   => array( 'url' => site_url() .'/wp-content/uploads/2016/03/miami-beach.jpg' ),
+            'subtitle'  => 'Add left image (Sale)',
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_left_button_text',
+            'type'   => 'text',
+            "title" => "Button Text",
+            "subtitle" => "Add/Modify left button text",
+            "default" => "For Sale",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_left_info_text',
+            'type'   => 'text',
+            "title" => "Info Text",
+            "subtitle" => "Add/Modify left informative text",
+            "default" => "Some text 1",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+// TZ header right side fields 
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_heading',
+            'type'   => 'info',
+            'notice' => false,
+            'required' => array('styling_headers_type', '=', 'tzHeaderType'),
+            'style'  => 'info',
+            'title'  => 'Right Side',
+            'desc'   => ''
+        );
+
+$sections[21]["fields"][] = array(
+            'id'        => 'tz_right_image',
+            'url'       => true,
+            'type'      => 'media',
+            'title'     => 'Image',
+            'read-only' => false,
+            'default'   => array( 'url' => site_url() .'/wp-content/uploads/revslider/home-hero/49.jpg' ),
+            'subtitle'  => 'Add right image (Rent)',
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_button_text',
+            'type'   => 'text',
+            "title" => "Button Text",
+            "subtitle" => "Add/Modify right button text",
+            "default" => "For Sale",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_info_text',
+            'type'   => 'text',
+            "title" => "Info Text",
+            "subtitle" => "Add/Modify right informative text",
+            "default" => "Some text 1",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_sec_text_1',
+            'type'   => 'text',
+            "title" => "Secondary Text 1",
+            "subtitle" => "Text for vacation rental",
+            "default" => "Vacations",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
+
+$sections[21]["fields"][] = array(
+            'id'     => 'tz_right_sec_text_2',
+            'type'   => 'text',
+            "title" => "Secondary Text 2",
+            "subtitle" => "Text for long term rental",
+            "default" => "Residence",
+            "section_id" => "styling-headers",
+            'required' => array('styling_headers_type', '=', 'tzHeaderType')
+        );
 
 return $sections;
 }
 // In this example OPT_NAME is the returned opt_name.
 //add_filter("redux/options/OPT_NAME/sections", 'add_another_section_bl');
 add_filter("redux/options/houzez_options/sections", 'add_header_type');
-
+*/
 
 
 function add_gdpr_agreement($sections){
@@ -3191,3 +3382,19 @@ function add_tz_map_option($sections){
 }
 
 add_filter("redux/options/houzez_options/sections", 'add_tz_map_option');
+
+// Add active class to anchor tag in menu items
+add_filter( 'nav_menu_link_attributes', function($atts) {
+
+    $current_url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].''.$_SERVER['REQUEST_URI'];
+
+    if ( $current_url ==  $atts['href']) {
+        
+        $atts['class'] = "active waves-effect";
+    } else {
+        
+        $atts['class'] = "waves-effect";
+    }
+
+    return $atts;
+}, 100, 1 );
