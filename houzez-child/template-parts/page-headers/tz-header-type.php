@@ -238,6 +238,7 @@ if (!empty($img_url[0])) {
 
         $(".show-rent-options").click(function () {
 
+            $("p.show-rent-options").addClass('residence_vacation');
             $(".rent-info-text").hide();
             $(".rent-options").fadeIn('slow');
 
@@ -258,7 +259,7 @@ if (!empty($img_url[0])) {
 
                 $('.rent-price').html('Price /month <span class="txt-xs txt-op-60">(USD $)</span>');
             }
-            
+
             $(".half-area").hide('slow');
             $('.banner-inner-right').animate({
                 width: '100%'
