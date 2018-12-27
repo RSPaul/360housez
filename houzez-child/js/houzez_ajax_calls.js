@@ -2262,7 +2262,12 @@ jQuery(document).ready(function ($) {
                     infoboxContent.innerHTML += '</p></div>' +
                     '</div>';
 
-   
+                    setInterval(function() {
+                        $('.gm-ui-hover-effect').html('<i class="tz-close-sm"></i>')
+                    }, 300)
+
+                        
+
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
                             var scale = Math.pow(2, map.getZoom());
@@ -4132,5 +4137,22 @@ jQuery(document).ready(function ($) {
 
 
     }// typeof HOUZEZ_ajaxcalls_vars
+
+     $('.account-action > li').on('click',function(e){
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+        }else{
+            $(this).addClass('active');
+        }
+    });
+    // $(".header-right .account-action > li").on({
+    //     mouseenter: function (e) {
+    //         $(this).addClass('active');
+    //     },
+    //     mouseleave: function (e) {
+    //         $(this).removeClass('active');
+    //     }
+    // });
+
 
 }); // end document ready

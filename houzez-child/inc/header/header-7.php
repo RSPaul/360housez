@@ -84,12 +84,17 @@ if( houzez_is_dashboard() ) {
 		</div>
 	</div>
 
+	<?php 
+	$search_result_page = get_page_template_slug();
+	$css_class = ($search_result_page == "template/property-listings-map.php") ? "sidenav open-left left-aligned" : "sidenav open-right";
+	$css_close_class = ($search_result_page == "TZ_Map") ? "toggle-active" : "";
 
+	?>
 	  
 	<!-- Mobile Menu : Sidenav-->
 	<!-- Class .open-right to open sidenav (it will be the default option for the entire site) -->
-	<div role="nav" id="sidenav-menu" class="sidenav open-right">
-		<button type="button" id="mobileBtn" class="sidenav-btn sidenav-close">
+	<div role="nav" id="sidenav-menu" class="<?php echo $css_class;?>">
+		<button type="button" id="mobileBtn" class="sidenav-btn sidenav-close toggle-active">
 			<span class="bar top"></span>
 			<span class="bar middle"></span>
 			<span class="bar bottom"></span>
@@ -273,11 +278,15 @@ if( houzez_is_dashboard() ) {
 			</div>	
 		</div>
 	</div>
-
+	<?php 
+	$search_result_page = get_page_template_slug();
+	$css_class = ($search_result_page == "TZ_Map") ? "sidenav open-left left-aligned" : "sidenav open-right";
+	$css_close_class = ($search_result_page == "TZ_Map") ? "toggle-active" : "";
+	?>
 	<!-- Mobile Menu : Sidenav-->
 	<!-- Class .open-right to open sidenav (it will be the default option for the entire site) -->
-	<div role="nav" id="sidenav-menu" class="sidenav open-right">
-		<button type="button" id="mobileBtn" class="sidenav-btn sidenav-close">
+	<div role="nav" id="sidenav-menu" class="<?php echo $css_class; ?>">
+		<button type="button" id="mobileBtn" class="sidenav-btn sidenav-close toggle-active">
 			<span class="bar top"></span>
 			<span class="bar middle"></span>
 			<span class="bar bottom"></span>
