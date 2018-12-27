@@ -5236,7 +5236,7 @@ input[type=range]::-ms-thumb {
 .sidenav li>a>i.material-icons {
 	float: left;
 	height: 48px;
-	line-height: 48px;
+	line-height: 32px;
 	margin: 0 32px 0 0;
 	width: 24px;
 	color: rgba(0, 0, 0, .54)
@@ -11096,7 +11096,17 @@ button.gm-control-active.gm-fullscreen-control{
 .rent-info-text {
     cursor: pointer;
 }
-
+ul.list-inline.mobile-login span {
+    color: #fff;
+}
+.account-dropdown.action-profile-menu li {
+    margin: 0 !important;
+}
+.account-dropdown.action-profile-menu li a {
+    line-height: 10px !important;
+    font-size: 15px;
+    padding: 0 !important;
+}
 
 
 
