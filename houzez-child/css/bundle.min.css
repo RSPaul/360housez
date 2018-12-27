@@ -9813,9 +9813,10 @@ main:not(.map-active) .property-card {
 
 .property-card-map {
 	position: relative;
-	width: 260px;
+	width: 260px !important;
 	height: 315px;
-	line-height: normal
+	line-height: normal;
+	top: 2px !important;
 }
 
 .property-card-map::before {
@@ -11066,7 +11067,7 @@ ul.list-inline.mobile-login .user i {
 .gm-style-iw div {
     overflow: visible !important;
     background: none !important;
-    max-height: 330px !important;
+    max-height: 340px !important;
 }
 .property-card-map{
 	overflow: visible !important;
