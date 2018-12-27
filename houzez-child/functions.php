@@ -1,6 +1,7 @@
 <?php
 
 require_once( get_theme_file_path() . '/framework/functions/property_functions.php' );
+// require_once( get_theme_file_path() . '/framework/functions/helper_functions.php' );
 
 function tft_change_taxonomy_property_status_label() {
     $t = get_taxonomy('property_status');
@@ -3816,3 +3817,33 @@ add_filter( 'nav_menu_link_attributes', function($atts) {
 
     return $atts;
 }, 100, 1 );
+
+
+if( !function_exists('houzez_get_search_template_link') ) {
+    function houzez_get_search_template_link() {
+
+        $search_result_page = houzez_option('search_result_page');
+
+        if( $search_result_page == 'half_map' ) {
+            $template = 'template/property-listings-map.php';
+        } elseif ($search_result_page == "TZ_Map") {
+            $template = 'template/property-listings-map.php';
+        } else {
+            $template = 'template/template-search.php';
+        }
+
+        $args = array(
+            'meta_key' => '_wp_page_template',
+            'sort_order' => 'desc',
+            'sort_column' => 'ID',
+            'meta_value' => $template
+        );
+        $pages = get_pages($args);
+        if( $pages ) {
+            $add_link = get_permalink( $pages[0]->ID );
+        } else {
+            $add_link = home_url('/');
+        }
+        return $add_link;
+    }
+}
