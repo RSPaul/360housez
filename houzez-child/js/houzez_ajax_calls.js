@@ -2205,7 +2205,7 @@ jQuery(document).ready(function ($) {
                 }
 
                 var infoboxContent = document.createElement("div");
-                infoboxContent.className = 'property-item property-card-map item-grid map-info-box';
+                infoboxContent.className = 'property-item property-card-map item-grid map-info-box real-map-grid';
                 // old
                 // infoboxContent.innerHTML = '' +
                 //     '<div class="figure-block">' +
@@ -2238,9 +2238,7 @@ jQuery(document).ready(function ($) {
                     '<a href="#!" role="button" class="btn-close" title="Close">' +
                     '<i class="tz-close-sm"></i>' +
                     '</a>' +
-                    '<figure>' +
-                    '<a href="'+prop.url+'" class="go-detail waves-effect waves-light">' + prop.thumbnail+ '</a>' +
-                    '</figure>' +
+                    '<a href="'+prop.url+'" class="go-detail map_image_issue waves-effect waves-light">' + prop.thumbnail+ '</a>' +
                     '</div>' +
                     '<div class="property-card-body">' +
                     '<p class="card-title txt-h-medium">' +
@@ -2260,7 +2258,7 @@ jQuery(document).ready(function ($) {
                     '<p class="card-price txt-h-light">';
 
                     if(prop.status == "For Sale") {
-                        infoboxContent.innerHTML += 'From <span class="txt-h-medium">'+prop.for_sale+'</span> USD';
+                        var abc = 'From <span class="txt-h-medium">'+prop.for_sale+'</span> USD';
                     }
                     if(prop.status == "For Rent : Living") {
                         infoboxContent.innerHTML += 'From <span class="txt-h-medium">'+prop.for_rent_living+'</span> USD / month';
@@ -2272,8 +2270,9 @@ jQuery(document).ready(function ($) {
                         infoboxContent.innerHTML += '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="left"></i>';   
                     }
 
-                    infoboxContent.innerHTML += '</p>' +'</div>' +
+                    infoboxContent.innerHTML += abc +'</p>' +'</div>' +
                     '</div>';
+                    console.log('infoboxContent.innerHTML,',infoboxContent.innerHTML );
 
    
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
