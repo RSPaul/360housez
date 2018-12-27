@@ -217,10 +217,10 @@ if (!empty($img_url[0])) {
         });
 
 
-        $(".banner-inner-left").click(function () {
+        $(".sale-options").click(function () {
             $(".half-area").hide('slow');
 
-            $(this).animate({
+            $(".banner-inner-left").animate({
                 width: '100%'
             }, 1200);
             
@@ -236,9 +236,23 @@ if (!empty($img_url[0])) {
             }, 1100);
         });
 
-        $(".banner-inner-right").click(function () {
+        $(".show-rent-options").click(function () {
+
+            $(".rent-info-text").hide();
+            $(".rent-options").fadeIn('slow');
+
+        });
+
+        $(document).on("click", ".rent-options", function () {
+
+            let status = $(this).attr('data-val');
+            $('.selectpicker1').selectpicker();
+            $('.status-select').hide();
+            $('.'+status).show();
+            $('.selectpicker1').selectpicker('val', status);
+
             $(".half-area").hide('slow');
-            $(this).animate({
+            $('.banner-inner-right').animate({
                 width: '100%'
             }, 1200);
             $(".banner-inner-left").animate({
