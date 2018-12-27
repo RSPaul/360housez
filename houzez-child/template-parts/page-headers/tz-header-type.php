@@ -250,7 +250,15 @@ if (!empty($img_url[0])) {
             $('.status-select').hide();
             $('.'+status).show();
             $('.selectpicker1').selectpicker('val', status);
+            
+            if ( status == 'for-rent-vacations' ) {
 
+                $('.rent-price').html('Price /night <span class="txt-xs txt-op-60">(USD $)</span>');
+            } else {
+
+                $('.rent-price').html('Price /month <span class="txt-xs txt-op-60">(USD $)</span>');
+            }
+            
             $(".half-area").hide('slow');
             $('.banner-inner-right').animate({
                 width: '100%'
