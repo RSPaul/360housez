@@ -9813,8 +9813,8 @@ main:not(.map-active) .property-card {
 
 .property-card-map {
 	position: relative;
-	width: 280px;
-	height: 305px;
+	width: 260px;
+	height: 315px;
 	line-height: normal
 }
 
@@ -9822,9 +9822,9 @@ main:not(.map-active) .property-card {
 	content: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' encoding='utf-8'?%3e%3csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 232 278' enable-background='new 0 0 232 278' xml:space='preserve'%3e%3cg%3e%3cpolygon fill='%23FFFFFF' points='231.667,2 1.667,2 1.667,265 104.749,265 116.667,277 128.584,265 231.667,265 '/%3e%3cpath d='M116.167,277.21L104.041,265H0.667V1h231v264H128.292L116.167,277.21z M1.667,264h102.79l11.71,11.79L127.876,264h102.791 V2h-229V264z'/%3e%3c/g%3e%3c/svg%3e");
 	position: absolute;
 	z-index: -1;
-	top: -4px;
-	left: -3px;
-	width: 285px
+	top: 0px;
+	left: 0px;
+	width: 275px;
 }
 
 .property-card-map.featured-property::before {
@@ -9832,12 +9832,13 @@ main:not(.map-active) .property-card {
 }
 
 .property-card-map .property-card-wrapper {
-	padding: 4px;
+	padding: 0px 2px;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-ms-flex-direction: column;
 	flex-direction: column;
-	font-size: 14px
+	font-size: 14px;
+	width: 262px;
 }
 
 .property-card-map .property-card-wrapper p {
@@ -9904,7 +9905,7 @@ main:not(.map-active) .property-card {
 	-ms-flex-positive: 0;
 	flex-grow: 0;
 	padding: 0 .4375rem 0 .4375rem;
-	border-right: 1px #b5b5b5 solid
+	border-right: 1px #b5b5b5 solid !important;
 }
 
 .property-card-map .property-card-wrapper .property-card-body .card-main-features li:last-child {
@@ -11034,12 +11035,12 @@ ul.list-inline.mobile-login .user i {
 .property-card-map .property-card-wrapper .property-card-header > a.go-detail.map_image_issue img{
 	height: auto;
 }
-.property-item.property-card-map.item-grid.map-info-box.real-map-grid {
+/*.property-item.property-card-map.item-grid.map-info-box.real-map-grid {
     height: 305px;
 	background: none !important;
 	width: 280px !important;
 	overflow: visible !important;
-}
+}*/
 #houzez-gmap-main .map-btn:hover, #houzez-gmap-main .map-btn:active, #houzez-gmap-main .map-btn:focus{
 	background-color: rgba(0,0,0,.8) !important;
     color: #bf0e5d !important;
@@ -11049,7 +11050,7 @@ ul.list-inline.mobile-login .user i {
 	z-index: 4 !important;
 	padding: 3px !important;
 	top: 39px !important;
-	right: 46px !important;
+	right: 56px !important;
 	background: #000 !important;
 	color: #fff !important;
 }
@@ -11062,7 +11063,16 @@ ul.list-inline.mobile-login .user i {
     z-index: 99999 !important;
     top: 0;
 }
-
+.gm-style-iw div {
+    overflow: visible !important;
+    background: none !important;
+    max-height: 330px !important;
+}
+.property-card-map{
+	overflow: visible !important;
+	background: #fff !important;
+/*	padding: 0px !important;*/
+}
 
 
 
