@@ -2239,7 +2239,7 @@ jQuery(document).ready(function ($) {
                     '<i class="tz-close-sm"></i>' +
                     '</a>' +
                     '<figure>' +
-                    // '<a href="'+prop.url+'" class="go-detail waves-effect waves-light">' + prop.thumbnail+ '</a>' +
+                    '<a href="'+prop.url+'" class="go-detail waves-effect waves-light">' + prop.thumbnail+ '</a>' +
                     '</figure>' +
                     '</div>' +
                     '<div class="property-card-body">' +
