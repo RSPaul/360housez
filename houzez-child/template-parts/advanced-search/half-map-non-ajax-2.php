@@ -108,7 +108,7 @@ if ($adv_show_hide['keyword'] != 1) {
 
                                 <?php if( $adv_show_hide['status'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
-                                        <div class="form-group">
+                                        <div class="form-group for-rent-living status-select" style="display: none;">
                                             <select class="selectpicker1 status-right1" name="status" data-live-search="false" data-live-search-style="begins">
                                                 <?php
                                                 // All Option
@@ -133,6 +133,32 @@ if ($adv_show_hide['keyword'] != 1) {
                                                 ?>
                                             </select>
                                         </div>
+
+                                        <div class="form-group status-select for-rent-vacations" style="display: none;">
+                                            <select class="selectpicker1 status-right1" name="status" data-live-search="false" data-live-search-style="begins">
+                                                <?php
+                                                // All Option
+                                                echo '<option value="">What do you need?</option>';
+                                                $prop_status = get_terms (
+                                                    array(
+                                                        "property_status"
+                                                    ),
+                                                    array(
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => false,
+                                                        'parent' => 0
+                                                    )
+                                                );
+                                                // houzez_hirarchical_options('property_status', $prop_status, $status );
+
+                                                foreach ($prop_status as $term) {
+                                                    $selected = urldecode($term->slug) == 'for-rent-vacations' ? 'selected="selected"' : '';
+                                                    echo '<option value="' . urldecode($term->slug) . '" '.$selected.'>' . $prefix . $term->name . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>                                        
                                     <!-- </div> -->
                                     <?php } ?>
 
