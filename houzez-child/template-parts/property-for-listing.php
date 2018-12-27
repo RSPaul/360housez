@@ -122,7 +122,8 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                 <?php if (!empty($prop_size)): ?>
                     <li class="flex-item">
                         <span class="txt-h-medium txt-txt"><?php echo houzez_get_listing_area_size( $post->ID ); ?> 
-                        <span class="txt-h-light txt-sm"><!-- m&#178 --><?php echo houzez_get_listing_size_unit( $post->ID ); ?></span>
+                        <!-- <span class="txt-h-light txt-sm"><?php // echo houzez_get_listing_size_unit( $post->ID ); ?></span> -->
+                         <span class="txt-h-light txt-sm"><?php echo houzez_option('area_prefix_default'); ?></span> 
                         </span> 
                         <span class="text-uppercase">Area</span>
                     </li>
