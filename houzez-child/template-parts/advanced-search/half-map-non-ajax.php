@@ -109,7 +109,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <?php if( $adv_show_hide['status'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
                                         <div class="form-group">
-                                            <select class="selectpicker status-left" name="status" data-live-search="false" data-live-search-style="begins">
+                                            <select class="selectpicker status-left disabled-status" name="status" data-live-search="false" data-live-search-style="begins" disabled="">
                                                 <?php
                                                 // All Option
                                                 echo '<option value="">What do you need?</option>';
@@ -151,7 +151,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <?php if( $adv_show_hide['type'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
                                         <div class="form-group">
-                                            <select class="selectpicker" name="type" data-live-search="false" data-live-search-style="begins">
+                                            <select class="selectpicker multiple" name="type" data-live-search="false" data-live-search-style="begins">
                                                 <?php
                                                 // All Option
                                                 echo '<option value="">Type</option>';
@@ -426,23 +426,24 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-status-filters" class="collapse in">
-                                            <?php
-                                            $terms = get_terms( array(
-                                                'taxonomy' => 'property_status',
-                                                'hide_empty' => false,
-                                            ) );    
-                                            if(count($terms)) {
-                                                foreach ($terms as $key => $value) { ?>
-                                                    <li>
-                                                        <label for="status1">
-                                                            <input type="checkbox" name="status[]"  id="status<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
-                                                            <span><?php echo $value->name; ?> </span>
-                                                        </label>
-                                                    </li>
-                                                <?php }
-                                            }
-                                            ?>  
-
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="New"><span>New</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Newly Remodeled"><span>Newly Remodeled</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Renovated"><span>Renovated</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Used"><span>Used</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Under Construction"><span>Under Construction</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Project"><span>Project</span></label>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div  class="furniture-filters">

@@ -415,7 +415,25 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-status-filters" class="collapse in">
-                                            <?php
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="New"><span>New</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Newly Remodeled"><span>Newly Remodeled</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Renovated"><span>Renovated</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Used"><span>Used</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Under Construction"><span>Under Construction</span></label>
+                                            </li>
+                                            <li>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Project"><span>Project</span></label>
+                                            </li>                                            
+                                            <?php /*
                                             $terms = get_terms( array(
                                                 'taxonomy' => 'property_status',
                                                 'hide_empty' => false,
@@ -429,7 +447,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                                         </label>
                                                     </li>
                                                 <?php }
-                                            }
+                                            } */
                                             ?>  
                                         </ul>
                                     </div>
