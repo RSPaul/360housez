@@ -2231,9 +2231,8 @@ jQuery(document).ready(function ($) {
                 //     '</div>' +
                 //     '</div>' +
                 //     '</div>';
-                console.log("prop>>>>>>>>>>>>>>", prop)
-                infoboxContent.innerHTML = '' +
-                    '<div class="property-card-wrapper flex-container">' +
+                // console.log("prop>>>>>>>>>>>>>>", prop)
+                infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' +
                     '<div class="property-card-header">' +
                     '<a href="#!" role="button" class="btn-close" title="Close">' +
                     '<i class="tz-close-sm"></i>' +
@@ -2255,24 +2254,13 @@ jQuery(document).ready(function ($) {
                     '<span class="txt-h-medium">'+prop.property_size+' <span class="txt-h-light">'+prop.area_prefix+'</span></span> <span class="text-uppercase">Area</span>' +
                     '</li>' +
                     '</ul>' +
-                    '<p class="card-price txt-h-light">';
+                    '<p class="card-price txt-h-light">'+((prop.status == "For Sale") ? 'From <span class="txt-h-medium">'+prop.for_sale+'</span> USD' : "" ) + 
+                    ((prop.status == "For Rent : Living") ? 'From <span class="txt-h-medium">'+prop.for_rent_living+'</span> USD / month' : "" ) + '' +
+                    ((prop.status == "For Rent : Vacations") ? 'From <span class="txt-h-medium">'+prop.for_rent_vacations+'</span> USD / night' : "" )  + '' +
+                    ((prop.oppurtunity && prop.oppurtunity == 1) ? '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="left"></i>' : "" );                 
 
-                    if(prop.status == "For Sale") {
-                        var abc = 'From <span class="txt-h-medium">'+prop.for_sale+'</span> USD';
-                    }
-                    if(prop.status == "For Rent : Living") {
-                        infoboxContent.innerHTML += 'From <span class="txt-h-medium">'+prop.for_rent_living+'</span> USD / month';
-                    }
-                    if(prop.status == "For Rent : Vacations") {
-                        infoboxContent.innerHTML += 'From <span class="txt-h-medium">'+prop.for_rent_vacations+'</span> USD / night';
-                    }
-                    if(prop.oppurtunity && prop.oppurtunity == 1) {
-                        infoboxContent.innerHTML += '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="left"></i>';   
-                    }
-
-                    infoboxContent.innerHTML += abc +'</p>' +'</div>' +
+                    infoboxContent.innerHTML += '</p></div>' +
                     '</div>';
-                    console.log('infoboxContent.innerHTML,',infoboxContent.innerHTML );
 
    
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
