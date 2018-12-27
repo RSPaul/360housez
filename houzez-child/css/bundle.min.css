@@ -10753,9 +10753,9 @@ button.map-control span {
     height: 335px;
     width: 100%;
 }
-.property-card.featured-property:nth-child(4n) {
+/*.property-card.featured-property:nth-child(4n) {
     margin-right: 0px;
-}
+}*/
 .inner_pop_detail {
     background: none;
     box-shadow: none;
