@@ -201,8 +201,7 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
                     </div>
                 </div>
 
-                <div class="map-search-results show-map col-xs-12 col-sm-6 col-lg-5">
-                    <div class="inner_map_fixed">
+                <div class="map-search-result show-map col-xs-12 col-sm-6 col-lg-5">
                         <div class="map-wrap">                          
                             <div id="houzez-gmap-main" class="fave-screen-fix">
                                 <div id="mapViewHalfListings" class="map-half">
@@ -255,7 +254,6 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
                             </div>
                             <!-- <iframe id="gMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.591552726884!2d-69.47671746779709!3d-50.744671020778185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb82576698cee31%3A0xe213934c1d810259!2shotel+restaurant!5e1!3m2!1ses!2scl!4v1542984329814" width="100px" height="600" frameborder="0" style="border:0" allowfullscreen></iframe> -->
                         </div>
-                    </div>
                 </div>
 
 
