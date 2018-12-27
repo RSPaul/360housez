@@ -9813,9 +9813,10 @@ main:not(.map-active) .property-card {
 
 .property-card-map {
 	position: relative;
-	width: 260px;
-	height: 315px;
-	line-height: normal
+	width: 260px !important;
+	height: 320px;
+	line-height: normal;
+	top: 6px !important;
 }
 
 .property-card-map::before {
@@ -11049,8 +11050,8 @@ ul.list-inline.mobile-login .user i {
     position: absolute !important;
 	z-index: 4 !important;
 	padding: 3px !important;
-	top: 39px !important;
-	right: 56px !important;
+	top: 45px !important;
+	right: 40px !important;
 	background: #000 !important;
 	color: #fff !important;
 }
@@ -11066,13 +11067,22 @@ ul.list-inline.mobile-login .user i {
 .gm-style-iw div {
     overflow: visible !important;
     background: none !important;
-    max-height: 330px !important;
+    max-height: 340px !important;
 }
 .property-card-map{
 	overflow: visible !important;
 	background: #fff !important;
 /*	padding: 0px !important;*/
 }
+.modal-body.login-block.class-for-register-msg {
+    padding: 0;
+}
+button.gm-control-active.gm-fullscreen-control{
+	display: none !important;
+}
+
+
+
 
 
 
@@ -11163,6 +11173,12 @@ ul.list-inline.mobile-login .user i {
 	.full-area #advanced-search-menu .advanced-search-filters {
 	    padding: 10px 0px;
 	}
+	.searching-navbar #advanced-search-menu div.search-col:not(.one) .filter-title{
+		text-align: left;
+	}
+	.map-search-result {
+	    display: none !important;
+	}
 
 
 
@@ -11216,6 +11232,12 @@ ul.list-inline.mobile-login .user i {
 	}
 	.searching-navbar #advanced-search-menu2 div.search-col.six{
 		padding-bottom: 30px;	
+	}
+	.searching-navbar #advanced-search-menu div.search-col:not(.one) .filter-title{
+		text-align: left;
+	}
+	.map-search-result {
+	    display: none !important;
 	}
 
 

@@ -15,7 +15,7 @@
                     <li class="houzez_register"><?php esc_html_e( 'Register', 'houzez' ); ?></li>
 
                 </ul>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="tz-close-sm"></i></button>
 
             </div>
             <div class="modal-body login-block class-for-register-msg">
@@ -31,7 +31,7 @@
                 <ul class="login-tabs">
                     <li class="active"><?php esc_html_e( 'Reset Password', 'houzez' ); ?></li>
                 </ul>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="tz-close-sm"></i></button>
 
             </div>
             <div class="modal-body login-block">

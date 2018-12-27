@@ -67,7 +67,7 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
                                 <?php } ?>
                             <?php } ?>
                             <li class="lightbox-close">
-                                <span><i class="fa fa-close"></i></span>
+                                <span><i class="tz-close-sm"></i></span>
                             </li>
                         </ul>
                     </div>
@@ -114,7 +114,7 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
                             <div class="header-actions">
                                 <ul class="actions">
                                     <li class="lightbox-close">
-                                        <span><i class="fa fa-close"></i></span>
+                                        <span><i class="tz-close-sm"></i></span>
                                     </li>
                                 </ul>
                             </div>
