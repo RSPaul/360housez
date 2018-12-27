@@ -178,8 +178,26 @@ $checked = true;
     <div class="<?php echo esc_attr($search_width); ?>">
         <div class="default_show half-part-left">
             <div class="half-area">
-                <h3><?php echo $tz_right_button_text; ?></h3>
-                <p><?php echo $tz_right_info_text; ?></p>
+                <h3 class="show-rent-options"><?php echo $tz_right_button_text; ?></h3>
+                <p class="show-rent-options">
+                  <span class="rent-info-text">
+                    <?php echo $tz_right_info_text; ?>
+                  </span>
+                  <span class="rent-vacation rent-options" style="display: none;" data-val="for-rent-vacations">
+                    <?php echo $tz_right_sec_text_1; ?>
+                  </span>
+                  <span class="rent-residence rent-options" style="display: none;" data-val="for-rent-living">
+                    <?php echo $tz_right_sec_text_2; ?>
+                  </span>
+                </p>
+                <!-- <p class="rent-options" style="display: none;">
+                  <span class="rent-vacation">
+                    <?php echo $tz_right_sec_text_1; ?>
+                  </span>
+                  <span class="rent-residence">
+                    <?php echo $tz_right_sec_text_1; ?>
+                  </span>
+                </p> -->
             </div>
             <div class="full-area" style="display: none;">
                 <h3><?php echo $tz_right_button_text; ?>

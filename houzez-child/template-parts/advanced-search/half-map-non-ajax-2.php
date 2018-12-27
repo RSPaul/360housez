@@ -108,7 +108,7 @@ if ($adv_show_hide['keyword'] != 1) {
 
                                 <?php if( $adv_show_hide['status'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
-                                        <div class="form-group">
+                                        <div class="form-group for-rent-living status-select" style="display: none;">
                                             <select class="selectpicker1 status-right1" name="status" data-live-search="false" data-live-search-style="begins">
                                                 <?php
                                                 // All Option
@@ -133,6 +133,32 @@ if ($adv_show_hide['keyword'] != 1) {
                                                 ?>
                                             </select>
                                         </div>
+
+                                        <div class="form-group status-select for-rent-vacations" style="display: none;">
+                                            <select class="selectpicker1 status-right1" name="status" data-live-search="false" data-live-search-style="begins">
+                                                <?php
+                                                // All Option
+                                                echo '<option value="">What do you need?</option>';
+                                                $prop_status = get_terms (
+                                                    array(
+                                                        "property_status"
+                                                    ),
+                                                    array(
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => false,
+                                                        'parent' => 0
+                                                    )
+                                                );
+                                                // houzez_hirarchical_options('property_status', $prop_status, $status );
+
+                                                foreach ($prop_status as $term) {
+                                                    $selected = urldecode($term->slug) == 'for-rent-vacations' ? 'selected="selected"' : '';
+                                                    echo '<option value="' . urldecode($term->slug) . '" '.$selected.'>' . $prefix . $term->name . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>                                        
                                     <!-- </div> -->
                                     <?php } ?>
 
@@ -174,7 +200,7 @@ if ($adv_show_hide['keyword'] != 1) {
                             </div>
                             <div class="form-group flex-container price-filter">
                                 <!-- Price /labelAfterPrice -->
-                                <span>Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>                                     
+                                <span class="rent-price">Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>                                     
                                 <div class="input-field no-label">
                                     <input class="money-format" name="min-price" type="text" placeholder="Min.">
                                     <?php // houzez_adv_searches_min_price(); ?>
@@ -424,15 +450,23 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-status-filters" class="collapse in">
-                                            <li>
-                                                <label for="status1"><input type="checkbox" class="filled-in"><span>Estatus 1</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="status2"><input type="checkbox" class="filled-in"><span>Estatus 2</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="status3"><input type="checkbox" class="filled-in"><span>Estatus 3</span></label>
-                                            </li>
+                                            <?php
+                                            $terms = get_terms( array(
+                                                'taxonomy' => 'property_status',
+                                                'hide_empty' => false,
+                                            ) );    
+                                            if(count($terms)) {
+                                                foreach ($terms as $key => $value) { ?>
+                                                    <li>
+                                                        <label for="status1">
+                                                            <input type="checkbox" name="status[]"  id="status<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
+                                                            <span><?php echo $value->name; ?> </span>
+                                                        </label>
+                                                    </li>
+                                                <?php }
+                                            }
+                                            ?>  
+
                                         </ul>
                                     </div>
                                     <div  class="furniture-filters">
@@ -466,30 +500,22 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-services-filters" class="collapse in">
-                                            <li>
-                                                <label for="service1"><input type="checkbox" class="filled-in"><span>Service 1</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service2"><input type="checkbox" class="filled-in"><span>Service 2</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service3"><input type="checkbox" class="filled-in"><span>Service 3</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service4"><input type="checkbox" class="filled-in"><span>Service 4</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service5"><input type="checkbox" class="filled-in"><span>Service 5</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service6"><input type="checkbox" class="filled-in"><span>Service 6</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service7"><input type="checkbox" class="filled-in"><span>Service 7</span></label>
-                                            </li>
-                                            <li>
-                                                <label for="service"><input type="checkbox" class="filled-in"><span>Service 8</span></label>
-                                            </li>
+                                             <?php
+                                            $terms = get_terms( array(
+                                                'taxonomy' => 'services',
+                                                'hide_empty' => false,
+                                            ) );    
+                                            if(count($terms)) {
+                                                foreach ($terms as $key => $value) { ?>
+                                                    <li>
+                                                        <label for="status1">
+                                                            <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
+                                                            <span><?php echo $value->name; ?> </span>
+                                                        </label>
+                                                    </li>
+                                                <?php }
+                                            }
+                                            ?> 
                                         </ul>
                                     </div>
                                 </div>
