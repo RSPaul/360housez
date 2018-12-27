@@ -5,7 +5,7 @@
  * Date: 16/12/15
  * Time: 6:21 PM
  */
-global $post, $prop_images, $current_page_template, $prop_featured, $houzez_local;
+global $post, $prop_images, $current_page_template, $prop_featured, $houzez_local, $wpdb;
 $post_meta_data     = get_post_custom($post->ID);
 $prop_images        = get_post_meta( get_the_ID(), 'fave_property_images', false );
 $prop_address       = get_post_meta( get_the_ID(), 'fave_property_map_address', true );
@@ -27,10 +27,41 @@ if( $prop_featured == 1 ) {
 $prop_sale_price = get_post_meta( get_the_ID(), 'fave_property_price', true );
 $prop_rent_price = get_post_meta( get_the_ID(), 'fave_property_sec_price', true );
 
+$current_user = wp_get_current_user();
+$userID = $current_user->ID;
+
+$comments_table          = $wpdb->comments;
+$comments_meta_table = $wpdb->commentmeta;
+
+$comments_query = "SELECT * FROM $comments_table as comment INNER JOIN $comments_meta_table AS meta WHERE comment.comment_post_ID = $post->ID AND meta.meta_key = 'rating' AND meta.comment_id = comment.comment_ID AND ( comment.comment_approved = 1 OR comment.user_id = $userID )";
+
+$get_comments = $wpdb->get_results( $comments_query );
+
+$prop_total_reviews = 0;
+$voters = 0;
+$totalStars = 0;
+$rating = 0;
+
+
+if ( sizeof( $get_comments ) != 0 ) {
+    foreach ( $get_comments as $comment ) {
+        if ( $comment->comment_approved == 1 ) {
+            $prop_total_reviews++;
+            $voters++;
+            $totalStars += $comment->meta_value;
+        }
+    }
+    
+    if ( $voters != 0 ) {
+        $rating = ( $totalStars / $voters );
+    }
+}
+
+
+
 if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigger = 'infobox_trigger'; }
 ?>
-
-<div class="property-card featured-property">
+<div id="ID-<?php the_ID(); ?>" class="property-card featured-property infobox_trigger <?php echo esc_attr($feat_class); ?> item-<?php echo sanitize_title(get_the_title())?>">
     <div class="property-card-wrapper flex-container">
         <div class="property-card-header">
             <ul class="card-header-labels flex-container flex-wrap txt-h-medium txt-xs text-uppercase">
@@ -91,7 +122,8 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                 <?php if (!empty($prop_size)): ?>
                     <li class="flex-item">
                         <span class="txt-h-medium txt-txt"><?php echo houzez_get_listing_area_size( $post->ID ); ?> 
-                        <span class="txt-h-light txt-sm"><!-- m&#178 --><?php echo houzez_get_listing_size_unit( $post->ID ); ?></span>
+                        <!-- <span class="txt-h-light txt-sm"><?php // echo houzez_get_listing_size_unit( $post->ID ); ?></span> -->
+                         <span class="txt-h-light txt-sm"><?php echo houzez_option('area_prefix_default'); ?></span> 
                         </span> 
                         <span class="text-uppercase">Area</span>
                     </li>
@@ -154,21 +186,31 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                 <ul class="card-reviews list-inline">
                     <li>
                         <div>
-                            <i class="tz-ratting-empty-sm"></i>
-                            <i class="tz-ratting-empty-sm"></i>
-                            <i class="tz-ratting-empty-sm"></i>
-                            <i class="tz-ratting-empty-sm"></i>
-                            <i class="tz-ratting-empty-sm"></i>
+                            <?php
+                            $count = $rating; 
+                            for ($i=0; $i < 5; $i++) {                                     
+                                echo $count > 0 ? '<i class="tz-ratting-full-sm rated"></i>' : '<i class="tz-ratting-empty-sm"></i>';                                
+                                $count--;
+                            }
+                            ?>
                         </div>
                     </li>
                     <li>
-                        <span class="txt-h-light txt-xs">no reviews</span>
+                        <span class="txt-h-light txt-xs">
+                            <?php echo $voters > 0 ? $rating." out of 5" : "No reviews" ?>
+                        </span> 
                     </li>
                 </ul>
-                <a href="#!" class="card-compare no-style" role="button" title="Compare" data-toggle="tooltip" data-placement="left">
-                    <i class="tz-compare waves-effect waves-circle"></i>
-                </a>
+                <?php
+                $disable_compare = houzez_option('disable_compare');
+                if( $disable_compare != 0 ) { ?>
+                    <a class="card-compare no-style compare-property" role="button"  title="<?php esc_html_e( 'Compare', 'houzez' ); ?>" data-toggle="tooltip" data-placement="left" data-propid="<?php echo esc_attr( $post->ID ); ?>">
+                        <i class="tz-compare waves-effect waves-circle"></i>
+                    </a>
+                <?php } ?>
             </div>
         </div>
+
+        
     </div>
 </div>

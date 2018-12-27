@@ -1,4 +1,5 @@
 <?php
+die("HEllo");
 /**
  * Enqueue scripts and styles.
  */

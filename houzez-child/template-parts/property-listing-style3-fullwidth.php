@@ -33,7 +33,7 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 	
 	<?php get_template_part('template-parts/advanced-search/half-map'); ?>
 
-	<div class="property_listing">
+	<div class="property_listing inner_card_property_listing">
 		<div class="container-fluid">
 		    <div class="row">
 		        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list-grid-area">
@@ -93,40 +93,41 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		                ?>
 		                <!--end featured property items-->
 
+		                <div class="row propery_margin_added">
+			                <div class="flex-container flex-wrap">
 
-		                <div class="flex-container flex-wrap">
+			                        <?php
+			                        global $wp_query, $paged;
+			                        if(!$fave_prop_no){
+			                            $posts_per_page  = 9;
+			                        } else {
+			                            $posts_per_page = $fave_prop_no;
+			                        }
+			                        $latest_listing_args = array(
+			                            'post_type' => 'property',
+			                            'posts_per_page' => $posts_per_page,
+			                            'paged' => $paged,
+			                            'post_status' => 'publish'
+			                        );
 
-		                        <?php
-		                        global $wp_query, $paged;
-		                        if(!$fave_prop_no){
-		                            $posts_per_page  = 9;
-		                        } else {
-		                            $posts_per_page = $fave_prop_no;
-		                        }
-		                        $latest_listing_args = array(
-		                            'post_type' => 'property',
-		                            'posts_per_page' => $posts_per_page,
-		                            'paged' => $paged,
-		                            'post_status' => 'publish'
-		                        );
+			                        $latest_listing_args = apply_filters( 'houzez_property_filter', $latest_listing_args );
 
-		                        $latest_listing_args = apply_filters( 'houzez_property_filter', $latest_listing_args );
+			                        $latest_listing_args = houzez_prop_sort ( $latest_listing_args );
+			                        $wp_query = new WP_Query( $latest_listing_args );
 
-		                        $latest_listing_args = houzez_prop_sort ( $latest_listing_args );
-		                        $wp_query = new WP_Query( $latest_listing_args );
+			                        if ( $wp_query->have_posts() ) :
+			                            while ( $wp_query->have_posts() ) : $wp_query->the_post();
 
-		                        if ( $wp_query->have_posts() ) :
-		                            while ( $wp_query->have_posts() ) : $wp_query->the_post();
+			                                get_template_part('template-parts/property-listing-v3-new');
 
-		                                get_template_part('template-parts/property-listing-v3-new');
+			                            endwhile;
+			                        else:
+			                            get_template_part('template-parts/property', 'none');
+			                        endif;
+			                        ?>
 
-		                            endwhile;
-		                        else:
-		                            get_template_part('template-parts/property', 'none');
-		                        endif;
-		                        ?>
-
-		                </div>
+			                </div>
+			            </div>
 		               
 
 		                <hr>

@@ -2542,6 +2542,7 @@ add_action( 'wp_ajax_nopriv_houzez_half_map_listings', 'houzez_half_map_listings
 add_action( 'wp_ajax_houzez_half_map_listings', 'houzez_half_map_listings' );
 if( !function_exists('houzez_half_map_listings') ) {
     function houzez_half_map_listings() {
+        
         //check_ajax_referer('houzez_map_ajax_nonce', 'security');
         $meta_query = array();
         $tax_query = array();

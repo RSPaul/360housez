@@ -201,8 +201,7 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
                     </div>
                 </div>
 
-                <div class="map-search-results show-map col-xs-12 col-sm-6 col-lg-5">
-                    <div class="inner_map_fixed">
+                <div class="map-search-result show-map col-xs-12 col-sm-6 col-lg-5">
                         <div class="map-wrap">                          
                             <div id="houzez-gmap-main" class="fave-screen-fix">
                                 <div id="mapViewHalfListings" class="map-half">
@@ -218,9 +217,9 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
                                 <?php wp_nonce_field('houzez_header_map_ajax_nonce', 'securityHouzezHeaderMap', true); ?>
 
                                 <div  class="map-arrows-actions">
-                                    <button id="listing-mapzoomin" class="map-btn"><i class="fa fa-plus"></i> </button>
-                                    <button id="listing-mapzoomout" class="map-btn"><i class="fa fa-minus"></i></button>
-                                    <input type="text" id="google-map-search" placeholder="<?php esc_html_e('Google Map Search', 'houzez'); ?>" class="map-search">
+                                    <button id="listing-mapzoomin" class="map-btn map-control"><i class="tz-plus"></i></button>
+                                    <button id="listing-mapzoomout" class="map-btn map-control"><i class="tz-minus"></i></button>
+                                    <!-- <input type="text" id="google-map-search" placeholder="<?php esc_html_e('Google Map Search', 'houzez'); ?>" class="map-search"> -->
                                 </div>
                                 <div class="map-next-prev-actions">
                                     <ul class="dropdown-menu" aria-labelledby="houzez-gmap-view">
@@ -229,24 +228,32 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
                                         <li><a href="#" class="houzezMapType" data-maptype="hybrid"><span><?php esc_html_e( 'Hybrid', 'houzez' ); ?></span></a></li>
                                         <li><a href="#" class="houzezMapType" data-maptype="terrain"><span><?php esc_html_e( 'Terrain', 'houzez' ); ?></span></a></li>
                                     </ul>
-                                    <button id="houzez-gmap-view" class="map-btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-globe"></i> <span><?php esc_html_e( 'View', 'houzez' ); ?></span></button>
+                                    <button id="houzez-gmap-view" class="map-btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="tz-setting"></i></button>
+                                    <button id="houzez-gmap-prev" class="map-btn"><i class="tz-chevron-left"></i></button>
+                                    <button id="houzez-gmap-next" class="map-btn"><i class="tz-chevron-right"></i></button>
 
-                                    <button id="houzez-gmap-prev" class="map-btn"><i class="fa fa-chevron-left"></i> <span><?php esc_html_e('Prev', 'houzez'); ?></span></button>
-                                    <button id="houzez-gmap-next" class="map-btn"><span><?php esc_html_e('Next', 'houzez'); ?></span> <i class="fa fa-chevron-right"></i></button>
+                                    <span class="map-zoom-actions">
+                                        <?php if( $geo_location != 0 ) { ?>
+                                            <span id="houzez-gmap-location" class="map-btn"><i class="fa fa-map-marker"></i> <span><?php esc_html_e('My location', 'houzez'); ?></span></span>
+                                        <?php } ?>
+                                        <?php if( $map_fullscreen != 0 ) { ?>
+                                            <span id="houzez-gmap-full"  class="map-btn"><i class="tz-expand"></i> <span></span></span>
+                                        <?php } ?>                                        
+                                    </span>
+
                                 </div>
-                                <div  class="map-zoom-actions">
+                                <!-- <div  class="map-zoom-actions">
                                     <?php if( $geo_location != 0 ) { ?>
                                         <span id="houzez-gmap-location" class="map-btn"><i class="fa fa-map-marker"></i> <span><?php esc_html_e('My location', 'houzez'); ?></span></span>
                                     <?php } ?>
                                     <?php if( $map_fullscreen != 0 ) { ?>
                                         <span id="houzez-gmap-full"  class="map-btn"><i class="fa fa-arrows-alt"></i> <span><?php esc_html_e('Fullscreen', 'houzez'); ?></span></span>
                                     <?php } ?>
-                                </div>
+                                </div> -->
 
                             </div>
                             <!-- <iframe id="gMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.591552726884!2d-69.47671746779709!3d-50.744671020778185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb82576698cee31%3A0xe213934c1d810259!2shotel+restaurant!5e1!3m2!1ses!2scl!4v1542984329814" width="100px" height="600" frameborder="0" style="border:0" allowfullscreen></iframe> -->
                         </div>
-                    </div>
                 </div>
 
 
