@@ -172,7 +172,30 @@ if ($adv_show_hide['keyword'] != 1) {
                                     <option value="land">Land</option>
                                 </select>
                                 <label for="search_type">Type</label> -->
-                                <?php if( $adv_show_hide['type'] != 1 ) { ?>
+                                        <select multiple name="type">
+                                            <option value="" disabled selected>Type</option>
+                                            <?php
+                                                // All Option
+                                                echo '<option value="">Type</option>';
+
+                                                $prop_type = get_terms (
+                                                    array(
+                                                        "property_type"
+                                                    ),
+                                                    array(
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => false,
+                                                        'parent' => 0
+                                                    )
+                                                );
+                                                houzez_hirarchical_options('property_type', $prop_type, $type );
+                                                ?>
+
+                                        </select>
+                                        <label for="search_type">Type</label>
+
+                                <?php /* if( $adv_show_hide['type'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
                                         <div class="form-group">
                                             <select class="selectpicker" name="type" data-live-search="false" data-live-search-style="begins">
@@ -196,7 +219,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </select>
                                         </div>
                                     <!-- </div> -->
-                                <?php } ?>
+                                <?php } */?>
                             </div>
                             <div class="form-group flex-container price-filter">
                                 <!-- Price /labelAfterPrice -->
@@ -221,7 +244,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                     <i class="tz-search-sm" title="Find"></i>
                                 </a> -->
 
-                                <button type="submit" role="button" class="bd-black waves-effect waves-color-1">
+                                <button type="submit" role="button" class="bd-black waves-effect waves-color-1" name="maintain_advance_search">
                                     <i class="tz-search-sm" title="Find"></i>
                                 </button>
 
@@ -250,6 +273,29 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <div class="search-col one flex-container">
                                     <!-- Inner field for Type in mobile-->
                                     <div class="input-field no-label multiple-select inner-type-filter">
+                                        <select multiple name="type">
+                                            <option value="" disabled selected>Type</option>
+                                            <?php
+                                                // All Option
+                                                echo '<option value="">Type</option>';
+
+                                                $prop_type = get_terms (
+                                                    array(
+                                                        "property_type"
+                                                    ),
+                                                    array(
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => false,
+                                                        'parent' => 0
+                                                    )
+                                                );
+                                                houzez_hirarchical_options('property_type', $prop_type, $type );
+                                                ?>
+
+                                        </select>
+                                        <label for="search_type">Type</label>
+
                                         <!-- <select multiple id="inner_search_type">
                                             <option value="" disabled selected>Type</option>
                                             <option value="villa">Villa</option>
@@ -258,7 +304,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <option value="land">Land</option>
                                         </select>
                                         <label for="inner_search_type">Type</label> -->
-                                        <?php if( $adv_show_hide['type'] != 1 ) { ?>
+                                        <?php /*if( $adv_show_hide['type'] != 1 ) { ?>
                                             <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
                                                 <div class="form-group">
                                                     <select class="selectpicker" name="type" data-live-search="false" data-live-search-style="begins">
@@ -282,7 +328,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                                     </select>
                                                 </div>
                                             <!-- </div> -->
-                                        <?php } ?>
+                                        <?php } */?>
                                     </div>
                                     <!-- Inner field for Price in mobile-->
                                     <div class="form-group flex-container inner-price-filter">
