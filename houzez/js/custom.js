@@ -1577,25 +1577,25 @@ var nice = false;
     /*  ACCOUNT DROPDOWN
     /* ------------------------------------------------------------------------ */
 
-    function accountDropdown(){
-        $('.header-user .account-action > li').on('click',function(e){
-            if($(this).hasClass('active')){
-                $(this).removeClass('active');
-            }else{
-                $(this).addClass('active');
-            }
-        });
-        $(".header-right .account-action > li").on({
-            mouseenter: function (e) {
-                $(this).addClass('active');
-            },
-            mouseleave: function (e) {
-                $(this).removeClass('active');
-            }
-        });
-    }
+    // function accountDropdown(){
+    //     $('.header-user .account-action > li').on('click',function(e){
+    //         if($(this).hasClass('active')){
+    //             $(this).removeClass('active');
+    //         }else{
+    //             $(this).addClass('active');
+    //         }
+    //     });
+    //     $(".header-right .account-action > li").on({
+    //         mouseenter: function (e) {
+    //             $(this).addClass('active');
+    //         },
+    //         mouseleave: function (e) {
+    //             $(this).removeClass('active');
+    //         }
+    //     });
+    // }
 
-    accountDropdown();
+    // accountDropdown();
 
     /* ------------------------------------------------------------------------ */
     /*  MOBILE MENU

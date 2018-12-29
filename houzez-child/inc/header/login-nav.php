@@ -96,69 +96,127 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
 ?>
 
 <?php if( is_user_logged_in() ) { ?>
-    <ul class="account-action">
+
+   <li class="dropdown account-actions"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo esc_attr( $display_name ); ?> <i class="tz-user"></i></a>
+        
+        <ul class="dropdown-menu">
+            <?php
+            if( !empty( $dash_profile_link ) ) {
+                echo '<li ' .esc_attr( $ac_profile ). '> <a href="' . esc_url($dash_profile_link) . '">' . esc_html__('My profile', 'houzez') . '</a>';
+                if ( in_array('houzez_agency', (array)$current_user->roles) ) {
+                    echo '<ul class="sub-menu">
+                <li ' . esc_attr($ac_agents) . '><a href="' . esc_url($agency_agents) . '">' . esc_html__('Agents', 'houzez') . '</a></li>
+                <li ' . esc_attr($ac_agent_new) . '><a href="' . esc_url($agency_agent_add) . '" ' . esc_attr($ac_agent_new) . '>' . esc_html__('Add New Agent', 'houzez') . '</a></li>
+            </ul>';
+                }
+                echo '</li>';
+            }
+            if( !empty( $dashboard_listings ) && houzez_check_role() ) {
+                echo '<li class="dropdown-submenu" ' .esc_attr( $ac_props ). '> <a href="javascript:void(0);" class="test">' . esc_html__('My Properties', 'houzez') . '</a>
+            <ul class="dropdown-menu">
+                <li '.esc_attr( $ac_all ).'><a href="' . esc_url($all) . '">'.$houzez_local['all'].'</a></li>
+                <li '.esc_attr( $ac_approved ).'><a href="'.esc_url($approved).'" '.esc_attr($ac_approved).'>'.$houzez_local['published'].'</a></li>
+                <li '.esc_attr( $ac_pending ).'><a href="'.esc_url($pending).'" '.esc_attr($ac_pending).'>'.$houzez_local['pending'].'</a></li>
+                <li '.esc_attr( $ac_expired ).'><a href="'.esc_url($expired).'" '.esc_attr($ac_expired).'>'.$houzez_local['expired'].'</a></li>
+                <li '.esc_attr( $ac_draft ).'><a href="'.esc_url($draft).'" '.esc_attr($ac_draft).'>'.$houzez_local['draft'].'</a></li>
+            </ul>
+            </li>';
+            }
+            if( !empty( $dashboard_add_listing ) && houzez_check_role() ) {
+                echo '<li ' .esc_attr( $ac_add_prop ). '> <a href="' . esc_url($dashboard_add_listing) . '">' . esc_html__('Add new property', 'houzez') . '</a></li>';
+            }
+            if( !empty( $dashboard_favorites ) ) {
+                echo '<li ' .esc_attr( $ac_fav ). '> <a href="' . esc_url($dashboard_favorites) . '">' . esc_html__('Favourite properties', 'houzez') . '</a></li>';
+            }
+            if( !empty( $dashboard_search ) ) {
+                echo '<li ' .esc_attr( $ac_search ). '> <a href="' . esc_url($dashboard_search) . '">' . esc_html__('Saved Searches', 'houzez') . '</a></li>';
+            }
+            if( !empty( $dashboard_invoices ) && houzez_check_role() ) {
+                echo '<li ' .esc_attr(  $ac_invoices ). '> <a href="' . esc_url($dashboard_invoices) . '">' . esc_html__('Invoices', 'houzez') . '</a></li>';
+            }
+            if( !empty($dashboard_msgs) ) {
+                echo '<li ' . esc_attr($ac_msgs) . '> <a href="' . esc_url($dashboard_msgs) . '">' . esc_html__('Messages', 'houzez') . houzez_messages_notification() . '</a></li>';
+            }
+            if( !empty($dashboard_membership) && $enable_paid_submission == 'membership' ) {
+                echo '<li ' . esc_attr($ac_mem) . '> <a href="' . esc_url($dashboard_membership) . '">' . esc_html__('Membership', 'houzez').'</a></li>';
+            }
+            if( !empty($dashboard_gdpr) ) {
+                echo '<li ' . esc_attr($ac_gdpr) . '> <a href="' . esc_url($dashboard_gdpr) . '">' . esc_html__('GDPR Data Request', 'houzez').'</a></li>';
+            }
+            echo '<li><a href="' . wp_logout_url(home_url('/')) . '">' . esc_html__('Log out', 'houzez') . '</a></li>';
+            ?>
+
+        </ul>
+    </li> 
+
+
+   <!--  <ul class="account-action">
         <li>
-            <!-- <div class="dropdown-toggle" id="action-profile-btn"> -->
-                <span class="user-name"><span><?php echo esc_attr( $display_name ); ?></span> <i class="fa fa-angle-down"></i></span>
-                <span class="user-image">
-                    <?php echo houzez_messages_notification( 'user-alert' ); ?>
-                    <img src="<?php echo esc_url( $user_custom_picture ); ?>" width="36" height="36" class="img-circle" alt="profile image">
-                </span>
-            <!-- </div> -->
+            <div class="user_menu_dropdown">
+                <div class="account_main_user">
+                        <span class="user-name"><span><?php echo esc_attr( $display_name ); ?></span> <i class="fa fa-angle-down"></i></span>
+                        <span class="user-image">
+                            <?php echo houzez_messages_notification( 'user-alert' ); ?>
+                            <i class="tz-user"></i>
+                        </span>
+                </div>
 
-            <div class="account-dropdown action-profile-menu">
-                <ul >
-                    <?php
-                    if( !empty( $dash_profile_link ) ) {
-                        echo '<li ' .esc_attr( $ac_profile ). '> <a href="' . esc_url($dash_profile_link) . '"><i class="fa fa-user"></i>' . esc_html__('My profile', 'houzez') . '</a>';
-                        if ( in_array('houzez_agency', (array)$current_user->roles) ) {
-                            echo '<ul class="sub-menu">
-                        <li ' . esc_attr($ac_agents) . '><a href="' . esc_url($agency_agents) . '">' . esc_html__('Agents', 'houzez') . '</a></li>
-                        <li ' . esc_attr($ac_agent_new) . '><a href="' . esc_url($agency_agent_add) . '" ' . esc_attr($ac_agent_new) . '>' . esc_html__('Add New Agent', 'houzez') . '</a></li>
-                    </ul>';
+                <div class="account-dropdown action-profile-menu">
+                    <ul >
+                        <?php
+                        if( !empty( $dash_profile_link ) ) {
+                            echo '<li ' .esc_attr( $ac_profile ). '> <a href="' . esc_url($dash_profile_link) . '"><i class="fa fa-user"></i>' . esc_html__('My profile', 'houzez') . '</a>';
+                            if ( in_array('houzez_agency', (array)$current_user->roles) ) {
+                                echo '<ul class="sub-menu">
+                            <li ' . esc_attr($ac_agents) . '><a href="' . esc_url($agency_agents) . '">' . esc_html__('Agents', 'houzez') . '</a></li>
+                            <li ' . esc_attr($ac_agent_new) . '><a href="' . esc_url($agency_agent_add) . '" ' . esc_attr($ac_agent_new) . '>' . esc_html__('Add New Agent', 'houzez') . '</a></li>
+                        </ul>';
+                            }
+                            echo '</li>';
                         }
-                        echo '</li>';
-                    }
-                    if( !empty( $dashboard_listings ) && houzez_check_role() ) {
-                        echo '<li ' .esc_attr( $ac_props ). '> <a href="' . esc_url($dashboard_listings) . '"><i class="fa fa-building"></i>' . esc_html__('My Properties', 'houzez') . '</a>
-                    <ul class="sub-menu">
-                        <li '.esc_attr( $ac_all ).'><a href="' . esc_url($all) . '">'.$houzez_local['all'].'</a></li>
-                        <li '.esc_attr( $ac_approved ).'><a href="'.esc_url($approved).'" '.esc_attr($ac_approved).'>'.$houzez_local['published'].'</a></li>
-                        <li '.esc_attr( $ac_pending ).'><a href="'.esc_url($pending).'" '.esc_attr($ac_pending).'>'.$houzez_local['pending'].'</a></li>
-                        <li '.esc_attr( $ac_expired ).'><a href="'.esc_url($expired).'" '.esc_attr($ac_expired).'>'.$houzez_local['expired'].'</a></li>
-                        <li '.esc_attr( $ac_draft ).'><a href="'.esc_url($draft).'" '.esc_attr($ac_draft).'>'.$houzez_local['draft'].'</a></li>
-                    </ul>
-                    </li>';
-                    }
-                    if( !empty( $dashboard_add_listing ) && houzez_check_role() ) {
-                        echo '<li ' .esc_attr( $ac_add_prop ). '> <a href="' . esc_url($dashboard_add_listing) . '"><i class="fa fa-plus-circle"></i>' . esc_html__('Add new property', 'houzez') . '</a></li>';
-                    }
-                    if( !empty( $dashboard_favorites ) ) {
-                        echo '<li ' .esc_attr( $ac_fav ). '> <a href="' . esc_url($dashboard_favorites) . '"><i class="fa fa-heart"></i>' . esc_html__('Favourite properties', 'houzez') . '</a></li>';
-                    }
-                    if( !empty( $dashboard_search ) ) {
-                        echo '<li ' .esc_attr( $ac_search ). '> <a href="' . esc_url($dashboard_search) . '"><i class="fa fa-search-plus"></i>' . esc_html__('Saved Searches', 'houzez') . '</a></li>';
-                    }
-                    if( !empty( $dashboard_invoices ) && houzez_check_role() ) {
-                        echo '<li ' .esc_attr(  $ac_invoices ). '> <a href="' . esc_url($dashboard_invoices) . '"><i class="fa fa-file"></i>' . esc_html__('Invoices', 'houzez') . '</a></li>';
-                    }
-                    if( !empty($dashboard_msgs) ) {
-                        echo '<li ' . esc_attr($ac_msgs) . '> <a href="' . esc_url($dashboard_msgs) . '"> <i class="fa fa-comments-o"></i>' . esc_html__('Messages', 'houzez') . houzez_messages_notification() . '</a></li>';
-                    }
-                    if( !empty($dashboard_membership) && $enable_paid_submission == 'membership' ) {
-                        echo '<li ' . esc_attr($ac_mem) . '> <a href="' . esc_url($dashboard_membership) . '"> <i class="fa fa-address-card-o"></i>' . esc_html__('Membership', 'houzez').'</a></li>';
-                    }
-                    if( !empty($dashboard_gdpr) ) {
-                        echo '<li ' . esc_attr($ac_gdpr) . '> <a href="' . esc_url($dashboard_gdpr) . '"> <i class="fa fa-envelope"></i>' . esc_html__('GDPR Data Request', 'houzez').'</a></li>';
-                    }
-                    echo '<li><a href="' . wp_logout_url(home_url('/')) . '"> <i class="fa fa-unlock"></i>' . esc_html__('Log out', 'houzez') . '</a></li>';
-                    ?>
+                        if( !empty( $dashboard_listings ) && houzez_check_role() ) {
+                            echo '<li class="property_submenu" ' .esc_attr( $ac_props ). '> <a href="javascript:void(0);"><i class="fa fa-building"></i>' . esc_html__('My Properties', 'houzez') . '</a>
+                        <ul class="sub-menu">
+                            <li '.esc_attr( $ac_all ).'><a href="' . esc_url($all) . '">'.$houzez_local['all'].'</a></li>
+                            <li '.esc_attr( $ac_approved ).'><a href="'.esc_url($approved).'" '.esc_attr($ac_approved).'>'.$houzez_local['published'].'</a></li>
+                            <li '.esc_attr( $ac_pending ).'><a href="'.esc_url($pending).'" '.esc_attr($ac_pending).'>'.$houzez_local['pending'].'</a></li>
+                            <li '.esc_attr( $ac_expired ).'><a href="'.esc_url($expired).'" '.esc_attr($ac_expired).'>'.$houzez_local['expired'].'</a></li>
+                            <li '.esc_attr( $ac_draft ).'><a href="'.esc_url($draft).'" '.esc_attr($ac_draft).'>'.$houzez_local['draft'].'</a></li>
+                        </ul>
+                        </li>';
+                        }
+                        if( !empty( $dashboard_add_listing ) && houzez_check_role() ) {
+                            echo '<li ' .esc_attr( $ac_add_prop ). '> <a href="' . esc_url($dashboard_add_listing) . '"><i class="fa fa-plus-circle"></i>' . esc_html__('Add new property', 'houzez') . '</a></li>';
+                        }
+                        if( !empty( $dashboard_favorites ) ) {
+                            echo '<li ' .esc_attr( $ac_fav ). '> <a href="' . esc_url($dashboard_favorites) . '"><i class="fa fa-heart"></i>' . esc_html__('Favourite properties', 'houzez') . '</a></li>';
+                        }
+                        if( !empty( $dashboard_search ) ) {
+                            echo '<li ' .esc_attr( $ac_search ). '> <a href="' . esc_url($dashboard_search) . '"><i class="fa fa-search-plus"></i>' . esc_html__('Saved Searches', 'houzez') . '</a></li>';
+                        }
+                        if( !empty( $dashboard_invoices ) && houzez_check_role() ) {
+                            echo '<li ' .esc_attr(  $ac_invoices ). '> <a href="' . esc_url($dashboard_invoices) . '"><i class="fa fa-file"></i>' . esc_html__('Invoices', 'houzez') . '</a></li>';
+                        }
+                        if( !empty($dashboard_msgs) ) {
+                            echo '<li ' . esc_attr($ac_msgs) . '> <a href="' . esc_url($dashboard_msgs) . '"> <i class="fa fa-comments-o"></i>' . esc_html__('Messages', 'houzez') . houzez_messages_notification() . '</a></li>';
+                        }
+                        if( !empty($dashboard_membership) && $enable_paid_submission == 'membership' ) {
+                            echo '<li ' . esc_attr($ac_mem) . '> <a href="' . esc_url($dashboard_membership) . '"> <i class="fa fa-address-card-o"></i>' . esc_html__('Membership', 'houzez').'</a></li>';
+                        }
+                        if( !empty($dashboard_gdpr) ) {
+                            echo '<li ' . esc_attr($ac_gdpr) . '> <a href="' . esc_url($dashboard_gdpr) . '"> <i class="fa fa-envelope"></i>' . esc_html__('GDPR Data Request', 'houzez').'</a></li>';
+                        }
+                        echo '<li><a href="' . wp_logout_url(home_url('/')) . '"> <i class="fa fa-unlock"></i>' . esc_html__('Log out', 'houzez') . '</a></li>';
+                        ?>
 
-                </ul>
+                    </ul>
+                </div>
+
             </div>
 
+
         </li>
-    </ul>
+    </ul> -->
 <?php } else { ?>
     <div class="user">
 
@@ -178,3 +236,5 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
             }?>
     </div>
 <?php } ?>
+
+
