@@ -349,7 +349,7 @@ if( houzez_is_dashboard() ) {
 						?>
 						<ul class="header-labels flex-container flex-wrap txt-h-medium text-uppercase">
 							<?php
-								if(count($property_label)) {
+								if($property_label && count($property_label)) {
 									foreach ($property_label as $key => $value) {
 										echo '<li class="label1 bg-label">'.$value->name.'</li>';
 									}

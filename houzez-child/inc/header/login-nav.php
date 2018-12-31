@@ -107,7 +107,7 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
             <!-- </div> -->
 
             <div class="account-dropdown action-profile-menu">
-                <ul >
+                <ul>
                     <?php
                     if( !empty( $dash_profile_link ) ) {
                         echo '<li ' .esc_attr( $ac_profile ). '> <a href="' . esc_url($dash_profile_link) . '"><i class="fa fa-user"></i>' . esc_html__('My profile', 'houzez') . '</a>';

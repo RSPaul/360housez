@@ -29,10 +29,17 @@ $year_built = get_post_meta( get_the_ID(), 'fave_property_year', true );
 $garage = get_post_meta( get_the_ID(), 'fave_property_garage', true );
 $garage_size = get_post_meta( get_the_ID(), 'fave_property_garage_size', true );
 $single_top_area = get_post_meta( get_the_ID(), 'fave_single_top_area', true );
+
+
 $review_setting=get_post_meta(get_the_ID(), 'fave_disablereviews_area', true);
 $single_content_area = get_post_meta( get_the_ID(), 'fave_single_content_area', true );
 $property_top_area = houzez_option('prop-top-area');
 $property_layout = houzez_option('prop-content-layout');
+
+// echo $property_layout;
+// echo $property_top_area;
+
+
 $property_reviews = houzez_option('property_reviews');
 $enable_next_prev_prop = houzez_option('enable_next_prev_prop');
 $map_in_section = houzez_option('map_in_section');
@@ -108,6 +115,8 @@ houzez_count_property_views( $post->ID );
     ?>
 
     <?php   
+
+
 
     if( $property_top_area == 'v1' ) {
         get_template_part('property-details/toparea', 'v1');

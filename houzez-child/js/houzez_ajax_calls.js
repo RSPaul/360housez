@@ -4145,14 +4145,14 @@ jQuery(document).ready(function ($) {
             $(this).addClass('active');
         }
     });
-    // $(".header-right .account-action > li").on({
-    //     mouseenter: function (e) {
-    //         $(this).addClass('active');
-    //     },
-    //     mouseleave: function (e) {
-    //         $(this).removeClass('active');
-    //     }
-    // });
+    $(".account-dropdown ul > li").on({
+        mouseenter: function (e) {
+            $(this).addClass('active');
+        },
+        mouseleave: function (e) {
+            $(this).removeClass('active');
+        }
+    });
 
 
 }); // end document ready
