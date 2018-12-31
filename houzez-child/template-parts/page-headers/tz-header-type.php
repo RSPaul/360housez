@@ -92,15 +92,15 @@ if (!empty($img_url[0])) {
                 <div class="banner_inner banner-inner-left" style="background-image:url(<?php echo $tz_left_image; ?>); background-size: cover;">                    
                     <div class="banner-inner-content search-bar search-salebar">
                         <?php
-                        if (houzez_search_needed()) {
-                            if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
-                                if ($adv_search_pos == 'under_banner') {
-                                    if ($adv_search == 'show' || $adv_search == 'hide_show') {
-                                        get_template_part('template-parts/advanced-search/desktop-left');
-                                    }
-                                }
-                            }
-                        }
+                        get_template_part('template-parts/advanced-search/desktop-left');
+                        // if (houzez_search_needed()) {
+                        //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
+                        //         if ($adv_search_pos == 'under_banner') {
+                        //             if ($adv_search == 'show' || $adv_search == 'hide_show') {
+                        //             }
+                        //         }
+                        //     }
+                        // }
 
                         // if (houzez_search_needed()) {
                         //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
@@ -140,15 +140,15 @@ if (!empty($img_url[0])) {
                     <div class="banner-inner-content search-bar search-rentbar">
                         <div class="right_rent_part">
                             <?php
-                            if (houzez_search_needed()) {
-                                if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
-                                    if ($adv_search_pos == 'under_banner') {
-                                        if ($adv_search == 'show' || $adv_search == 'hide_show') {
-                                            get_template_part('template-parts/advanced-search/desktop-right');
-                                        }
-                                    }
-                                }
-                            }
+                            get_template_part('template-parts/advanced-search/desktop-right');
+                            // if (houzez_search_needed()) {
+                            //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
+                            //         if ($adv_search_pos == 'under_banner') {
+                            //             if ($adv_search == 'show' || $adv_search == 'hide_show') {
+                            //             }
+                            //         }
+                            //     }
+                            // }
                             // if (houzez_search_needed()) {
                             //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
                             //         if ($adv_search_pos == 'under_banner') {
