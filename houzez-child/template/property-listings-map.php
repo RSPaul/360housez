@@ -199,6 +199,7 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
                             </div>                  
                         </div>
                     </div>
+
                 </div>
 
                 <div class="map-search-result show-map col-xs-12 col-sm-6 col-lg-5">
@@ -234,7 +235,7 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
 
                                     <span class="map-zoom-actions">
                                         <?php if( $geo_location != 0 ) { ?>
-                                            <span id="houzez-gmap-location" class="map-btn"><i class="fa fa-map-marker"></i> <span><?php esc_html_e('My location', 'houzez'); ?></span></span>
+                                            <span id="houzez-gmap-location" class="map-btn"><i class="tz-expand"></i> <span><?php esc_html_e('My location', 'houzez'); ?></span></span>
                                         <?php } ?>
                                         <?php if( $map_fullscreen != 0 ) { ?>
                                             <span id="houzez-gmap-full"  class="map-btn"><i class="tz-expand"></i> <span></span></span>
