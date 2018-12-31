@@ -4175,6 +4175,16 @@ jQuery(document).ready(function ($) {
       });
     });
 
+    // $(".account-dropdown ul > li").on({
+    //     mouseenter: function (e) {
+    //         $(this).addClass('active');
+    //     },
+    //     mouseleave: function (e) {
+    //         $(this).removeClass('active');
+    //     }
+    // });
+
+
     // $(".header-right .account-action > li").on({
     //     mouseenter: function (e) {
     //         $(this).addClass('active');
@@ -4183,6 +4193,19 @@ jQuery(document).ready(function ($) {
     //         $(this).removeClass('active');
     //     }
     // });
+
+
+    $("#selectStatus").on("change", function() {
+       let val = $(this).val();
+       $(".for-rent-living, .for-rent-vacations, .for-sale").hide();
+       $("."+val).show();
+    });
+
+    $("#share-btn").on("click", function(t) {
+        var el = jQuery(".share-social")[0];
+        $(el).toggleClass("active");
+        t.stopPropagation()
+    })
 
 
 }); // end document ready

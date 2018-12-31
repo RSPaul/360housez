@@ -3937,3 +3937,20 @@ if( !function_exists('houzez_get_search_template_link') ) {
         return $add_link;
     }
 }
+
+
+function add_tz_property_detail_header($sections) {
+
+    $sections[30]["fields"][285]["options"]["v5"] = "TZ Property top";
+    return $sections;
+}
+
+add_filter("redux/options/houzez_options/sections", 'add_tz_property_detail_header');
+
+function add_tz_property_detail_content($sections) {
+
+    $sections[30]["fields"][287]["options"]["v5"] = "TZ Content layout";
+    return $sections;
+}
+
+add_filter("redux/options/houzez_options/sections", 'add_tz_property_detail_content');

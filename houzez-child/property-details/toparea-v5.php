@@ -43,8 +43,147 @@ if( $prop_default_active_tab == "image_gallery" ) {
     $gallery_view = 'in active';
 }
 ?>
+
+
+<div class="property-detail-header">
+    <div class="row">
+        <div class="col-xxs-12">
+            <div class="hd-wrapper flex-container" style="background: url('https://placeimg.com/1000/1000/arch')">
+                <div class="header-info flex-container">
+                    <?php 
+                    $status = get_post_meta( get_the_ID(), 'fave_property_status', true );
+                    $pro_type = get_the_terms(get_the_ID(), 'property_type');
+                    $property_label = get_the_terms(get_the_ID(), 'property_label');
+                    $ptype = ""; 
+                    if(count($pro_type)) {
+                        $ptype = $pro_type[0]->name;
+                    }
+                    ?>
+                    <ul class="header-labels flex-container flex-wrap txt-h-medium text-uppercase">
+                        <?php
+                            if($property_label && count($property_label)) {
+                                foreach ($property_label as $key => $value) {
+                                    echo '<li class="label1 bg-label">'.$value->name.'</li>';
+                                }
+                            }
+                        ?>              
+                    </ul>
+                    <h1 class="txt-h-light txt-header">
+                        <?php the_title(); ?>
+                    </h1>
+                    <p class="header-type-status txt-h-medium txt-md txt-gray-1 text-uppercase">
+                        <?php echo $ptype; ?> | <span class="txt-h-light"><?php echo esc_attr( $status ); ?></span>
+                    </p>
+                     <div class="gallery_directory">
+                        <ul class="header-actions list-inline txt-lg ">
+                            <li class="popup-trigger" data-placement="bottom" data-toggle="tooltip" data-original-title="<?php esc_html_e( 'View Photos', 'houzez' ); ?>"> <a href="#gallery" class="bd-black waves-effect waves-color-1" data-toggle="tab">Photos</a></li>
+                            <li class="custom_media"><a id="video" class="bd-black waves-effect waves-color-1" alt="<?php the_title(); ?> Video" href="javascript:void(0)">Video</a></li>
+                            <li class="custom_media"><a id="360" class="bd-black waves-effect waves-color-1" alt="<?php the_title(); ?> 360 Tours" href="javascript:void(0)">360</a></li>
+                        </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="property-detail-fixed-nav bg-white sticky-navbar" id="sticky_navbar">
+    <!-- <div class="container-fluid"> -->
+    <div class="row">
+        <div class="col-xxs-12">
+            <div class="fixed-inner-wrapp bg-black">
+                <div class="flex-container">
+                    <!--Previus Property-->
+                    <?php
+                    $prevPost = get_previous_post(false);
+                    if($prevPost) {
+                        $args = array(
+                            'post_type' => 'property',
+                            'posts_per_page' => 1,
+                            'include' => $prevPost->ID
+                        );
+                        $prevPost = get_posts($args);
+                        foreach ($prevPost as $post) {
+                            setup_postdata($post);
+                            ?>
+                            <div class="flex-item">
+                                <a href="<?php the_permalink(); ?>" data-toggle="tooltip" data-placement="right" title="Previous property"><i class="tz-chevron-left"></i></a>
+                            </div>
+                            <div class="flex-item">
+                                <ul class="list-block flex-container">
+                                    <!--Title-->
+                                    <li>
+                                        <span class="txt-h-medium txt-md txt-white"><?php the_title(); ?></span>
+                                    </li>
+                                    <!--Property Type-->
+                                    <li>
+                                        <span class="txt-h-medium txt-sm txt-gray-1 text-uppercase">Type</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <?php
+                            wp_reset_postdata();
+                        } //end foreach
+                    } // end if
+                    ?>
+                    <?php 
+                        $nextPost = get_next_post(false);
+                        if($nextPost) {
+                            $args = array(
+                                'post_type' => 'property',
+                                'posts_per_page' => 1,
+                                'include' => $nextPost->ID
+                            );
+                            $nextPost = get_posts($args);
+                            foreach ($nextPost as $post) {
+                                setup_postdata($post);
+                                ?>
+                                <div class="flex-item">
+                                    <ul class="list-inline flex-container">
+                                        <li>
+                                            <a href="#contact-agent" class="btn waves-effect waves-color-1 z-depth-0 bd-white">Contact an Agent</a>
+                                        </li>
+                                        <li>
+                                            <a href="#online-booking" class="btn waves-effect waves-color-1 z-depth-0 bd-gradient">Online Booking</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--Next Property-->
+                                <div class="flex-item">
+                                    <a href="<?php the_permalink(); ?>" data-toggle="tooltip" data-placement="left" title="Next property"><i class="tz-chevron-right"></i></a>
+                                </div>
+                                <?php
+                                wp_reset_postdata();
+                            } //end foreach
+                        } // end if
+                        ?>                            
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("sticky_navbar");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        console.log('here ', sticky , window.pageYOffset);
+      if (window.pageYOffset > 740) {
+        header.classList.add("sticky_sec");
+      } else {
+        header.classList.remove("sticky_sec");
+      }
+    }
+</script> 
+
+
 <!--start detail top-->
-<div class="detail-top toparea-v5">
+<!-- <div class="detail-top toparea-v5">
+
     <div class="container-fluid">
         <div class="row">
             <?php
@@ -143,5 +282,5 @@ if( $prop_default_active_tab == "image_gallery" ) {
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!--end detail top-->

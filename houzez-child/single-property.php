@@ -29,10 +29,18 @@ $year_built = get_post_meta( get_the_ID(), 'fave_property_year', true );
 $garage = get_post_meta( get_the_ID(), 'fave_property_garage', true );
 $garage_size = get_post_meta( get_the_ID(), 'fave_property_garage_size', true );
 $single_top_area = get_post_meta( get_the_ID(), 'fave_single_top_area', true );
+
+
 $review_setting=get_post_meta(get_the_ID(), 'fave_disablereviews_area', true);
 $single_content_area = get_post_meta( get_the_ID(), 'fave_single_content_area', true );
 $property_top_area = houzez_option('prop-top-area');
 $property_layout = houzez_option('prop-content-layout');
+
+// echo $property_layout;
+// echo $property_top_area;
+// echo $single_top_area;
+
+
 $property_reviews = houzez_option('property_reviews');
 $enable_next_prev_prop = houzez_option('enable_next_prev_prop');
 $map_in_section = houzez_option('map_in_section');
@@ -109,6 +117,8 @@ houzez_count_property_views( $post->ID );
 
     <?php   
 
+
+
     if( $property_top_area == 'v1' ) {
         get_template_part('property-details/toparea', 'v1');
     } elseif ( $property_top_area == 'v2' ) {
@@ -164,6 +174,24 @@ houzez_count_property_views( $post->ID );
         </div>
         <?php } ?>
 
+        <?php } elseif ($property_layout == 'v5') { ?>
+
+            <?php
+            if($logged_in_to_view == 1 && !is_user_logged_in()) { ?>
+
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 no-padding">
+                        <?php get_template_part( 'property-details/login_required'); ?>
+                    </div>
+                </div>
+            </div>
+
+        <?php } else { ?>
+            
+            <?php get_template_part( 'property-details/v5/property-description-and-details'); ?>
+
+        <?php } ?>  
         <?php } else { ?>
 
         <div class="container">

@@ -5,22 +5,17 @@ $userID  =  $current_user->ID;
 $first_name  =  $current_user->first_name;
 $last_name  =  $current_user->last_name;
 $display_name = $current_user->display_name;
-
 //$user_custom_picture =  get_the_author_meta( 'fave_author_custom_picture' , $userID );
 $author_picture_id      =   get_the_author_meta( 'fave_author_picture_id' , $userID );
 $user_custom_picture = wp_get_attachment_image_src( $author_picture_id, array( 270, 270 ) );
 $user_custom_picture = $user_custom_picture[0];
-
 $header_type = houzez_option('header_style');
-
 if( !empty($first_name) && !empty($last_name) ) {
     $display_name = $first_name.' '.$last_name;
 }
-
 if( empty( $user_custom_picture )) {
     $user_custom_picture = get_template_directory_uri().'/images/profile-avatar.png';
 }
-
 $dash_profile_link = houzez_get_template_link_2('template/user_dashboard_profile.php');
 $dashboard_listings = houzez_get_template_link_2('template/user_dashboard_properties.php');
 $dashboard_add_listing = houzez_get_template_link_2('template/submit_property.php');
@@ -34,13 +29,10 @@ $dashboard_seen_msgs = add_query_arg( 'view', 'seen', $dashboard_msgs );
 $dashboard_unseen_msgs = add_query_arg( 'view', 'unseen', $dashboard_msgs );
 $home_link = home_url('/');
 $enable_paid_submission = houzez_option('enable_paid_submission');
-
 $header_create_listing_template = houzez_get_template_link('template/submit_property.php');
 $create_listing_button_required_login = houzez_option('create_listing_button');
 $create_lisiting_enable = houzez_option('create_lisiting_enable');
-
 $home_link = home_url('/');
-
 $ac_profile = $ac_props = $ac_add_prop = $ac_fav = $ac_search = $ac_invoices = $ac_msgs = $ac_mem = $ac_gdpr = '';
 if( is_page_template( 'template/user_dashboard_profile.php' ) ) {
     $ac_profile = 'class=active';
@@ -61,23 +53,18 @@ if( is_page_template( 'template/user_dashboard_profile.php' ) ) {
 } elseif ( is_page_template( 'template/user_dashboard_gdpr.php' ) ) {
     $ac_gdpr = 'class=active';
 }
-
 $agency_agents = add_query_arg( 'agents', 'list', $dash_profile_link );
 $agency_agent_add = add_query_arg( 'agent', 'add_new', $dash_profile_link );
-
 $all = add_query_arg( 'prop_status', 'all', $dashboard_listings );
 $approved = add_query_arg( 'prop_status', 'approved', $dashboard_listings );
 $pending = add_query_arg( 'prop_status', 'pending', $dashboard_listings );
 $expired = add_query_arg( 'prop_status', 'expired', $dashboard_listings );
 $draft = add_query_arg( 'prop_status', 'draft', $dashboard_listings );
 $ac_approved = $ac_pending = $ac_expired = $ac_all = $ac_draft = $ac_agents = $ac_agent_new = '';
-
 if( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'approved' ) {
     $ac_approved = 'class=active';
-
 } elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'pending' ) {
     $ac_pending = 'class=active';
-
 } elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'expired' ) {
     $ac_expired = 'class=active';
 } elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'approved' ) {
@@ -87,7 +74,6 @@ if( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'approved' ) {
 } else {
     $ac_all = 'class=active';
 }
-
 if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
     $ac_agents = 'class=active';
 } elseif( isset( $_GET['agent'] ) && $_GET['agent'] == 'add_new' ) {
@@ -160,7 +146,6 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
                             <i class="tz-user"></i>
                         </span>
                 </div>
-
                 <div class="account-dropdown action-profile-menu">
                     <ul >
                         <?php
@@ -208,13 +193,9 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
                         }
                         echo '<li><a href="' . wp_logout_url(home_url('/')) . '"> <i class="fa fa-unlock"></i>' . esc_html__('Log out', 'houzez') . '</a></li>';
                         ?>
-
                     </ul>
                 </div>
-
             </div>
-
-
         </li>
     </ul> -->
 <?php } else { ?>
@@ -227,7 +208,6 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
             if( $create_lisiting_enable != 0 ) {
                 if( $create_listing_button_required_login == 'yes' ) {
                     echo '<a href="#" data-toggle="modal" data-target="#pop-login" class="btn btn-default hidden-xs hidden-sm">'.esc_html__( 'Create Listing', 'houzez' ).'</a>';
-
                 } else {
                     if( !empty($header_create_listing_template) && $header_create_listing_template != $home_link ) {
                         echo '<a href="'.esc_url( $header_create_listing_template ).'" class="btn btn-default hidden-xs hidden-sm">'.esc_html__( 'Create Listing', 'houzez' ).'</a>';
@@ -236,5 +216,3 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
             }?>
     </div>
 <?php } ?>
-
-
