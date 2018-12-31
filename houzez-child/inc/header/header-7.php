@@ -332,7 +332,7 @@ if( houzez_is_dashboard() ) {
 		</div>
 	</div>
 	
-
+<!-- 
 	<div class="property-detail-header">
 		<div class="row">
 			<div class="col-xxs-12">
@@ -373,7 +373,7 @@ if( houzez_is_dashboard() ) {
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>  -->
 
 	<!-- <?php //get_template_part('property-details/next-prev'); ?> -->
 	

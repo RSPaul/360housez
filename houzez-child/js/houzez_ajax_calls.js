@@ -4195,5 +4195,17 @@ jQuery(document).ready(function ($) {
     // });
 
 
+    $("#selectStatus").on("change", function() {
+       let val = $(this).val();
+       $(".for-rent-living, .for-rent-vacations, .for-sale").hide();
+       $("."+val).show();
+    });
+
+    $("#share-btn").on("click", function(t) {
+        var el = jQuery(".share-social")[0];
+        $(el).toggleClass("active");
+        t.stopPropagation()
+    })
+
 
 }); // end document ready

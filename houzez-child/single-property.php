@@ -38,6 +38,7 @@ $property_layout = houzez_option('prop-content-layout');
 
 // echo $property_layout;
 // echo $property_top_area;
+// echo $single_top_area;
 
 
 $property_reviews = houzez_option('property_reviews');
@@ -173,6 +174,24 @@ houzez_count_property_views( $post->ID );
         </div>
         <?php } ?>
 
+        <?php } elseif ($property_layout == 'v5') { ?>
+
+            <?php
+            if($logged_in_to_view == 1 && !is_user_logged_in()) { ?>
+
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 no-padding">
+                        <?php get_template_part( 'property-details/login_required'); ?>
+                    </div>
+                </div>
+            </div>
+
+        <?php } else { ?>
+            
+            <?php get_template_part( 'property-details/v5/property-description-and-details'); ?>
+
+        <?php } ?>  
         <?php } else { ?>
 
         <div class="container">
