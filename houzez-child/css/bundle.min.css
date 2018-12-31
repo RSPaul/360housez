@@ -9807,6 +9807,20 @@ main:not(.map-active) .property-card {
 	flex-basis: 92%;
 	margin: 0 4% 30px 4%
 }
+.property-listing.grid-view.grid-view-3-col .property-card {
+	-ms-flex-preferred-size: 92%;
+	flex-basis: 92%;
+	margin: 0 4% 30px 4%
+}
+.property-listing.grid-view.grid-view-3-col {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    clear: both !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
 
 
 /*! === MAP ELEMENTS === */
@@ -10210,6 +10224,16 @@ button.map-control span {
 		flex-basis: 47%;
 		margin: 0 1.5% 20px 1.5%
 	}
+	.property-listing.grid-view.grid-view-3-col .property-card {
+		-ms-flex-preferred-size: 47%;
+		flex-basis: 47%;
+		margin: 0 1.5% 20px 1.5%
+	}
+	
+	
+
+
+	
 }
 
 @media screen and (min-width:768px) {
@@ -10543,6 +10567,15 @@ button.map-control span {
 		flex-basis: 31%;
 		margin: 0 1.16667% 30px 1.16667%
 	}
+	.property-listing.grid-view.grid-view-3-col .property-card {
+		-ms-flex-preferred-size: 31%;
+		flex-basis: 31%;
+		margin: 0 1.16667% 30px 1.16667%
+	}
+
+
+	
+
 }
 
 @media screen and (min-width:1568px) {
@@ -10815,11 +10848,11 @@ button.map-control span {
 .module-half.map-module-half.listing-search-result.remove_scroller {
     overflow: hidden;
 }
-body.home .property-card.featured-property {
+/*body.home .property-card.featured-property {
     width: 24%;
     margin: 0 11px 15px 0px;
     float: left;
-}
+}*/
 #houzez-gmap-main.stick_map {
     position: fixed;
     width: 33%;
@@ -11186,6 +11219,12 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
     background: #333;
     color: #fff;
 }
+.btn.btn-primary.panel-btn.left_icon_btn {
+    padding: 0;
+}
+
+
+
 
 
 
