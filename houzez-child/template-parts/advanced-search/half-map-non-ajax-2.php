@@ -555,7 +555,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             if(count($terms)) {
                                                 foreach ($terms as $key => $value) { ?>
                                                     <li>
-                                                        <label for="status1">
+                                                        <label>
                                                             <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
                                                             <span><?php echo $value->name; ?> </span>
                                                         </label>

@@ -237,7 +237,17 @@ if ($adv_show_hide['keyword'] != 1) {
                                                 'parent' => 0
                                             )
                                         );
-                                        houzez_hirarchical_options('property_type', $prop_type, $type );
+                                        // houzez_hirarchical_options('property_type', $prop_type, $type );
+
+
+                                        foreach ($prop_type as $term) {
+
+                                            if ( in_array($term->slug, $type) ) {
+                                                echo '<option value="' . urldecode($term->slug) . '" selected="selected">' . $prefix . $term->name . '</option>';
+                                            } else {
+                                                echo '<option value="' . urldecode($term->slug) . '">' . $prefix . $term->name .'</option>';
+                                            }
+                                        }                                        
                                         ?>
 
                                 </select>
@@ -366,15 +376,6 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <option value="<?=$i?>" <?php if($i == $guest ) { echo 'selected'; } ?> ><?=$i?></option>
                                                 
                                             <?php } ?>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
                                         </select>
                                         <label for="search_guests">Guests</label>
                                     </div>
@@ -574,7 +575,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             if(count($terms)) {
                                                 foreach ($terms as $key => $value) { ?>
                                                     <li>
-                                                        <label for="status1">
+                                                        <label>
                                                             <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>" <?php if ( in_array($value->slug, $services) ) { echo "checked"; } ?> >
                                                             <span><?php echo $value->name; ?> </span>
                                                         </label>

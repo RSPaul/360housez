@@ -3813,15 +3813,15 @@ add_action( 'init', 'maintain_advance_search' );
 function maintain_advance_search() {
   if (isset($_GET['maintain_advance_search'])) {
         
-        echo "<pre>";
-        print_r($_GET);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($_GET);
+        // echo "</pre>";
         foreach ($_GET as $key => $value) {
             if ( !empty($value) ) {
                 
                 $_SESSION[$key] = $value;
             }
-        }      
+        }
         // die('here');
   }
 }
