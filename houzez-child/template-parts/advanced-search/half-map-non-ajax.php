@@ -14,7 +14,7 @@ if( $measurement_unit_adv_search == 'sqft' ) {
 }
 
 $adv_search_price_slider = houzez_option('adv_search_price_slider');
-$status = $type = $location = $area = $searched_country = $state = $label = '';
+$status = $guest = $type = $location = $area = $searched_country = $state = $label = '';
 $adv_show_hide = houzez_option('adv_show_hide_halmap');
 $enable_disable_save_search = houzez_option('enable_disable_save_search');
 
@@ -25,26 +25,82 @@ if( $state_city_area_dropdowns != 0 ) {
     $hide_empty = false;
 }
 
-if( isset( $_GET['status'] ) ) {
+if( isset($_SESSION['status']) && !empty($_SESSION['status']) ) {
+    $status = $_SESSION['status'];
+} else if( isset( $_GET['status'] ) ) {
     $status = $_GET['status'];
+} else {
+    $status = 'for-sale';
 }
-if( isset( $_GET['type'] ) ) {
+
+if( isset($_SESSION['guest']) && !empty($_SESSION['guest']) ) {
+    $guest = $_SESSION['guest'];
+} else if( isset( $_GET['guest'] ) ) {
+    $guest = $_GET['guest'];
+}
+
+if( isset($_SESSION['type']) && !empty($_SESSION['type']) ) {
+    $type = $_SESSION['type'];
+} else if( isset( $_GET['type'] ) ) {
     $type = $_GET['type'];
 }
-if( isset( $_GET['location'] ) ) {
+
+if( isset($_SESSION['location']) && !empty($_SESSION['location']) ) {
+    $location = $_SESSION['location'];
+} else if( isset( $_GET['location'] ) ) {
     $location = $_GET['location'];
 }
-if( isset( $_GET['area'] ) ) {
+
+if( isset($_SESSION['area']) && !empty($_SESSION['area']) ) {
+    $area = $_SESSION['area'];
+} else if( isset( $_GET['area'] ) ) {
     $area = $_GET['area'];
 }
-if( isset( $_GET['state'] ) ) {
+
+if( isset($_SESSION['state']) && !empty($_SESSION['state']) ) {
+    $state = $_SESSION['state'];
+} else if( isset( $_GET['state'] ) ) {
     $state = $_GET['state'];
 }
-if( isset( $_GET['label'] ) ) {
+
+if( isset($_SESSION['label']) && !empty($_SESSION['label']) ) {
+    $label = $_SESSION['label'];
+} else if( isset( $_GET['label'] ) ) {
     $label = $_GET['label'];
 }
-if( isset( $_GET['country'] ) ) {
+
+if( isset($_SESSION['country']) && !empty($_SESSION['country']) ) {
+    $searched_country = $_SESSION['country'];
+} else if( isset( $_GET['country'] ) ) {
     $searched_country = $_GET['country'];
+}
+
+$propStatus = array();
+if( isset($_SESSION['prop-status']) && !empty($_SESSION['prop-status']) ) {
+    $propStatus = $_SESSION['prop-status'];
+} else if( isset( $_GET['prop-status'] ) ) {
+    $propStatus = $_GET['prop-status'];
+}
+
+$furniture = array();
+if( isset($_SESSION['furniture']) && !empty($_SESSION['furniture']) ) {
+    $furniture = $_SESSION['furniture'];
+} else if( isset( $_GET['furniture'] ) ) {
+    $furniture = $_GET['furniture'];
+}
+
+$services = array();
+if( isset($_SESSION['service']) && !empty($_SESSION['service']) ) {
+    $services = $_SESSION['service'];
+} else if( isset( $_GET['service'] ) ) {
+    $services = $_GET['service'];
+}
+
+$appliances = array();
+if( isset($_SESSION['appliance']) && !empty($_SESSION['appliance']) ) {
+    $appliances = $_SESSION['appliance'];
+} else if( isset( $_GET['appliance'] ) ) {
+    $appliances = $_GET['appliance'];
 }
 
 $keyword_field = houzez_option('keyword_field');
@@ -98,16 +154,40 @@ if ($adv_show_hide['keyword'] != 1) {
                         
                         <div class="main-search-inputs flex-container">
                             <div class="input-field no-label action-filter">
-                               <!--  <select required id="search_action">
-                                    <option value="" disabled selected>What do you need?</option>
-                                    <option value="rent_vacations">For Rent: Vacations</option>
-                                    <option value="rent_living">For Rent: Living</option>
-                                    <option value="for_sale">For Sale</option>
-                                </select>
-                                <label for="search_action">What do you need?</label> -->
+                                <select required name="status" class="status-left disabled-status">
+                                    <?php
+                                    // All Option
+                                    echo '<option value="">What do you need?</option>';
+                                    $prop_status = get_terms (
+                                        array(
+                                            "property_status"
+                                        ),
+                                        array(
+                                            'orderby' => 'name',
+                                            'order' => 'ASC',
+                                            'hide_empty' => false,
+                                            'parent' => 0
+                                        )
+                                    );
+                                    // houzez_hirarchical_options('property_status', $prop_status, $status );
 
-                                <?php if( $adv_show_hide['status'] != 1 ) { ?>
+                                    // foreach ($prop_status as $term) {
+                                    //     $selected = urldecode($term->slug) == 'for-sale' ? 'selected="selected"' : '';
+                                        
+                                    //     $selected = urldecode($term->slug) == $_SESSION['status'] ? 'selected="selected"' : '';
+
+                                    //     echo '<option value="' . urldecode($term->slug) . '" '.$selected.'>' . $prefix . $term->name . '</option>';
+                                    // }
+                                        houzez_hirarchical_options('property_status', $prop_status, $status );
+
+
+                                    ?>
+                                </select>
+                                <label for="search_action">What do you need?</label>
+
+                                <?php /*if( $adv_show_hide['status'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
+                                        
                                         <div class="form-group">
                                             <select class="selectpicker status-left disabled-status" name="status" data-live-search="false" data-live-search-style="begins" disabled="">
                                                 <?php
@@ -136,43 +216,42 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </select>
                                         </div>
                                     <!-- </div> -->
-                                    <?php } ?>
+                                    <?php } */?>
 
                             </div>
                             <div class="input-field no-label multiple-select type-filter">
-                                <!-- <select multiple id="search_type">
+                                <select multiple name="type">
                                     <option value="" disabled selected>Type</option>
-                                    <option value="villa">Villa</option>
-                                    <option value="department">Department</option>
-                                    <option value="business_premises">Business premises</option>
-                                    <option value="land">Land</option>
-                                </select>
-                                <label for="search_type">Type</label> -->
-                                <?php if( $adv_show_hide['type'] != 1 ) { ?>
-                                    <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
-                                        <div class="form-group">
-                                            <select class="selectpicker multiple" name="type" data-live-search="false" data-live-search-style="begins">
-                                                <?php
-                                                // All Option
-                                                echo '<option value="">Type</option>';
+                                    <?php
+                                        // All Option
+                                        echo '<option value="">Type</option>';
 
-                                                $prop_type = get_terms (
-                                                    array(
-                                                        "property_type"
-                                                    ),
-                                                    array(
-                                                        'orderby' => 'name',
-                                                        'order' => 'ASC',
-                                                        'hide_empty' => false,
-                                                        'parent' => 0
-                                                    )
-                                                );
-                                                houzez_hirarchical_options('property_type', $prop_type, $type );
-                                                ?>
-                                            </select>
-                                        </div>
-                                    <!-- </div> -->
-                                <?php } ?>
+                                        $prop_type = get_terms (
+                                            array(
+                                                "property_type"
+                                            ),
+                                            array(
+                                                'orderby' => 'name',
+                                                'order' => 'ASC',
+                                                'hide_empty' => false,
+                                                'parent' => 0
+                                            )
+                                        );
+                                        // houzez_hirarchical_options('property_type', $prop_type, $type );
+
+
+                                        foreach ($prop_type as $term) {
+
+                                            if ( in_array($term->slug, $type) ) {
+                                                echo '<option value="' . urldecode($term->slug) . '" selected="selected">' . $prefix . $term->name . '</option>';
+                                            } else {
+                                                echo '<option value="' . urldecode($term->slug) . '">' . $prefix . $term->name .'</option>';
+                                            }
+                                        }                                        
+                                        ?>
+
+                                </select>
+                                <label for="search_type">Type</label>
                             </div>
                             <div class="form-group flex-container price-filter">
                                 <!-- Price /labelAfterPrice -->
@@ -226,15 +305,30 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <div class="search-col one flex-container">
                                     <!-- Inner field for Type in mobile-->
                                     <div class="input-field no-label multiple-select inner-type-filter">
-                                        <!-- <select multiple id="inner_search_type">
+                                        <select multiple name="type">
                                             <option value="" disabled selected>Type</option>
-                                            <option value="villa">Villa</option>
-                                            <option value="department">Department</option>
-                                            <option value="business_premises">Business premises</option>
-                                            <option value="land">Land</option>
+                                            <?php
+                                                // All Option
+                                                echo '<option value="">Type</option>';
+
+                                                $prop_type = get_terms (
+                                                    array(
+                                                        "property_type"
+                                                    ),
+                                                    array(
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => false,
+                                                        'parent' => 0
+                                                    )
+                                                );
+                                                houzez_hirarchical_options('property_type', $prop_type, $type );
+                                                ?>
+
                                         </select>
-                                        <label for="inner_search_type">Type</label> -->
-                                        <?php if( $adv_show_hide['type'] != 1 ) { ?>
+                                        <label for="search_type">Type</label>
+
+                                        <?php /*if( $adv_show_hide['type'] != 1 ) { ?>
                                             <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
                                                 <div class="form-group">
                                                     <select class="selectpicker" name="type" data-live-search="false" data-live-search-style="begins">
@@ -258,7 +352,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                                     </select>
                                                 </div>
                                             <!-- </div> -->
-                                        <?php } ?>
+                                        <?php } */ ?>
                                     </div>
                                     <!-- Inner field for Price in mobile-->
                                     <div class="form-group flex-container inner-price-filter">
@@ -274,19 +368,14 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </div>
                                     </div>
                                     <div class="input-field no-label guests-filter">
-                                        <select>
+                                        <select name="guest">
                                             <option value="" disabled selected>Guests</option>
                                             <option value="any">Any</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
+                                            <?php for ($i=1; $i <= 10; $i++) { 
+                                                ?>
+                                            <option value="<?=$i?>" <?php if($i == $guest ) { echo 'selected'; } ?> ><?=$i?></option>
+                                                
+                                            <?php } ?>
                                         </select>
                                         <label for="search_guests">Guests</label>
                                     </div>
@@ -427,22 +516,23 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </div>
                                         <ul id="collapse-status-filters" class="collapse in">
                                             <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="New"><span>New</span></label>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="new" <?php if ( in_array('new', $propStatus) ) { echo "checked"; } ?> >
+                                                    <span>New</span></label>
                                             </li>
                                             <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Newly Remodeled"><span>Newly Remodeled</span></label>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="newlyremodeled" <?php if ( in_array('newlyremodeled', $propStatus) ) { echo "checked"; } ?> ><span>Newly Remodeled</span></label>
                                             </li>
                                             <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Renovated"><span>Renovated</span></label>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="renovated" <?php if ( in_array('renovated', $propStatus) ) { echo "checked"; } ?> ><span>Renovated</span></label>
                                             </li>
                                             <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Used"><span>Used</span></label>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="used" <?php if ( in_array('used', $propStatus) ) { echo "checked"; } ?> ><span>Used</span></label>
                                             </li>
                                             <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Under Construction"><span>Under Construction</span></label>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="underconstruction" <?php if ( in_array('underconstruction', $propStatus) ) { echo "checked"; } ?> ><span>Under Construction</span></label>
                                             </li>
                                             <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Project"><span>Project</span></label>
+                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="project" <?php if ( in_array('project', $propStatus) ) { echo "checked"; } ?> ><span>Project</span></label>
                                             </li>
                                         </ul>
                                     </div>
@@ -456,13 +546,13 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </div>
                                         <ul id="collapse-furniture-filters" class="collapse in">
                                             <li>
-                                                <label for="furnished"><input type="checkbox" class="filled-in"><span>Furnished</span></label>
+                                                <label><input type="checkbox" name="furniture[]" value="furnished" <?php if ( in_array('furnished', $furniture) ) { echo "checked"; } ?>  class="filled-in"><span>Furnished</span></label>
                                             </li>
                                             <li>
-                                                <label for="unfurnished"><input type="checkbox" class="filled-in"><span>Unfurnished</span></label>
+                                                <label><input type="checkbox" name="furniture[]" value="unfurnished" <?php if ( in_array('unfurnished', $furniture) ) { echo "checked"; } ?>  class="filled-in"><span>Unfurnished</span></label>
                                             </li>
                                             <li>
-                                                <label for="semifurnished"><input type="checkbox" class="filled-in"><span>Semi Furnished</span></label>
+                                                <label><input type="checkbox" name="furniture[]" value="semifurnished" <?php if ( in_array('semifurnished', $furniture) ) { echo "checked"; } ?>  class="filled-in"><span>Semi Furnished</span></label>
                                             </li>
                                         </ul>
                                     </div>
@@ -485,8 +575,8 @@ if ($adv_show_hide['keyword'] != 1) {
                                             if(count($terms)) {
                                                 foreach ($terms as $key => $value) { ?>
                                                     <li>
-                                                        <label for="status1">
-                                                            <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
+                                                        <label>
+                                                            <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>" <?php if ( in_array($value->slug, $services) ) { echo "checked"; } ?> >
                                                             <span><?php echo $value->name; ?> </span>
                                                         </label>
                                                     </li>
@@ -532,8 +622,9 @@ if ($adv_show_hide['keyword'] != 1) {
                                                         // if( $features_limit != -1 ) {
                                                         //     if ( $count == $features_limit ) break;
                                                         // }
-                                                        echo '<li><label>';
-                                                        echo '<input name="feature[]" class="filled-in" type="checkbox" '.checked( $checked_feature, $feature->slug, false ).' value="' . esc_attr( $feature->slug ) . '">';
+                                                        echo '<li><label>'; ?>
+                                                        <input name="appliance[]" class="filled-in" type="checkbox" <?php if ( in_array(esc_attr( $feature->slug ), $appliances) ) { echo "checked"; } ?>  value="<?= esc_attr( $feature->slug )?>">
+                                                        <?php 
                                                         echo '<span>' . esc_attr( $feature->name ). '</span>';
                                                         echo '</label></li>';
                                                         $count++;

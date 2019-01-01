@@ -49,31 +49,31 @@ $houzez_local = houzez_get_localization();
                 $search_position = $_GET['search_pos'];
             }
 
-            if (houzez_search_needed()) {
-                if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
-                    if ($adv_search_pos == 'under_menu') {
-                        if ($adv_search == 'show' || $adv_search == 'hide_show') {
-                            get_template_part('template-parts/advanced-search', 'undermenu');
-                        }
-                    }
-                } else {
-                    if (!is_home() && !is_singular('post')) {
-                        if ($search_enable != 0 && $search_position == 'under_nav') {
-                            if ($search_pages == 'only_home') {
-                                if (is_front_page()) {
-                                    get_template_part('template-parts/advanced-search', 'undermenu');
-                                }
-                            } elseif ($search_pages == 'all_pages') {
-                                get_template_part('template-parts/advanced-search', 'undermenu');
-                            } elseif ($search_pages == 'only_innerpages') {
-                                if (!is_front_page()) {
-                                    get_template_part('template-parts/advanced-search', 'undermenu');
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            // if (houzez_search_needed()) {
+            //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
+            //         if ($adv_search_pos == 'under_menu') {
+            //             if ($adv_search == 'show' || $adv_search == 'hide_show') {
+            //                 get_template_part('template-parts/advanced-search', 'undermenu');
+            //             }
+            //         }
+            //     } else {
+            //         if (!is_home() && !is_singular('post')) {
+            //             if ($search_enable != 0 && $search_position == 'under_nav') {
+            //                 if ($search_pages == 'only_home') {
+            //                     if (is_front_page()) {
+            //                         get_template_part('template-parts/advanced-search', 'undermenu');
+            //                     }
+            //                 } elseif ($search_pages == 'all_pages') {
+            //                     get_template_part('template-parts/advanced-search', 'undermenu');
+            //                 } elseif ($search_pages == 'only_innerpages') {
+            //                     if (!is_front_page()) {
+            //                         get_template_part('template-parts/advanced-search', 'undermenu');
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
 
             if (houzez_search_needed()) {
                 $adv_search_enable = get_post_meta($post->ID, 'fave_adv_search_enable', true);

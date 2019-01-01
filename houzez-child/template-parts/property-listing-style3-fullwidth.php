@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Property Listing Template (Style 3) Fullwidth new
+ * Template Name: Listing Template (Style 3) Full Width
  * Created by PhpStorm.
  * User: waqasriaz
  * Date: 05/04/17
