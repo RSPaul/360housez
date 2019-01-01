@@ -5,7 +5,7 @@
  * Date: 27/09/16
  * Time: 4:52 PM
  */
-global $post_meta_data;
+global $post_meta_data ,$post;
 
 $prop_id = get_post_meta( get_the_ID(), 'fave_property_id', true );
 
@@ -31,9 +31,15 @@ $documents_download = houzez_option('documents_download');
 
 // beaches
 $fave_property_sea = get_post_meta( get_the_ID(), 'fave_property_sea', true );
-$near_beach1 = get_post_meta( get_the_ID(), 'near_beach1', true );
-$near_beach2 = get_post_meta( get_the_ID(), 'near_beach2', true );
-$near_beach3 = get_post_meta( get_the_ID(), 'near_beach3', true );
+$near_beach1 = get_post_meta( get_the_ID(), 'wp_near_distance1', true );
+$near_beach2 = get_post_meta( get_the_ID(), 'wp_near_distance2', true );
+$near_beach3 = get_post_meta( get_the_ID(), 'wp_near_distance3', true );
+
+$near_beach1_id = get_post_meta( get_the_ID(), 'wp_near_beach1', true );
+$near_beach2_id = get_post_meta( get_the_ID(), 'wp_near_beach2', true );
+$near_beach3_id = get_post_meta( get_the_ID(), 'wp_near_beach3', true );
+
+
 $terms = get_terms( array(
     'taxonomy' => 'beaches',
     'hide_empty' => false,
@@ -45,13 +51,13 @@ $near_beach3_name = "";
 
 if(count($terms)) {
     foreach ($terms as $key => $value) {
-        if($value->term_id == $near_beach1) {
+        if($value->term_id == $near_beach1_id) {
             $near_beach1_name = $value->name;
         }
-        if($value->term_id == $near_beach2) {
+        if($value->term_id == $near_beach2_id) {
             $near_beach2_name = $value->name;
         }
-        if($value->term_id == $near_beach3) {
+        if($value->term_id == $near_beach3_id) {
             $near_beach3_name = $value->name;
         }
     }
@@ -93,7 +99,6 @@ $own_rules_repeater=get_post_meta(get_the_ID(), 'own_rules', true);
 
 $pro_type = get_the_terms(get_the_ID(), 'property_status');
 
-
 if( !empty( $prop_id ) ||
     !empty( $prop_price ) ||
     !empty( $prop_size ) ||
@@ -123,7 +128,7 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
             <div class="row row-ref">
                 <div class="col-xs-6">
                     <!--Property ID-->
-                    <p class="txt-h-light txt-md text-uppercase">REF. 123-45</p>
+                    <p class="txt-h-light txt-md text-uppercase">REF. <?php echo $prop_id; ?></p>
                 </div>
                 <div class="col-xs-6">
                     <!--Save as Favorite-->
@@ -136,19 +141,13 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
             <div class="row row-price">
                 <div class="col-xs-12">
                     <?php
-                    if($pro_type[0]->slug == "for-rent-living") { ?>
-                        <p class="txt-h-light txt-lg">From <span class="txt-h-medium"><?php echo esc_attr( $prop_living_price ); ?></span> USD</p>
-                    <?php }
-                    if($pro_type[0]->slug == "for-rent-vacations") { ?>
-                         <p class="txt-h-light txt-lg">From <span class="txt-h-medium"><?php echo esc_attr( $prop_vac_price ); ?></span> USD</p>                        
-                    <?php }
-                    if($pro_type[0]->slug == "for-sale") { ?>
-                        <p class="txt-h-light txt-lg">From <span class="txt-h-medium"><?php echo esc_attr( $prop_price ); ?></span> USD</p>
-                    <?php }
+                    $cond1 = ($pro_type[0]->slug == "for-rent-living") ? "block" : "none";  
+                    $cond2 = ($pro_type[0]->slug == "for-rent-vacations") ? "block" : "none";
+                    $cond3 = ($pro_type[0]->slug == "for-sale") ? "block" : "none";
                     ?>
-                    <!-- <p class="txt-h-light txt-lg">From <span class="txt-h-medium">150,00</span> USD / night</p> -->
-                    
-                   
+                    <p class="txt-h-light txt-lg for-rent-living" style="display: <?php echo $cond1;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_living_price ); ?></span> USD</p>
+                    <p class="txt-h-light txt-lg for-rent-vacations" style="display: <?php echo $cond2;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_vac_price ); ?></span> USD</p>
+                    <p class="txt-h-light txt-lg for-sale" style="display: <?php echo $cond3;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_price ); ?></span> USD</p>
                     
                     <div class="input-field">
                         <ul class="list-inline">
@@ -156,11 +155,13 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                                 <label class="txt-h-light txt-info">Show price</label>
                             </li>
                             <li>
-                                <select class="txt-xs">
+                                <select class="txt-xs" id="selectStatus">
                                     <option value="" disabled>Select</option>
-                                    <option value="rent_vacations" selected>For Rent: Vacations</option>
-                                    <option value="rent_living">For Rent: Living</option>
-                                    <option value="for_sale">For Sale</option>
+                                    <?php foreach ($pro_type as $key => $value) {
+                                       echo  '<option value="'.$value->slug.'">'.$value->name.'</option>';                                        
+                                    } ?>
+                                    <!-- <option value="rent_vacations" selected>For Rent: Vacations</option>
+                                    <option value="for_sale">For Sale</option> -->
                                 </select>
                             </li>   
                         </ul>
@@ -171,24 +172,36 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
             <div class="row row-main-features">
                 <div class="col-xs-12">
                     <ul class="last-child-no-border flex-container flex-wrap text-center">
-                        <li class="flex-item">
-                            <span class="txt-h-medium txt-lg"><?php echo esc_attr( $guests ); ?></span> <span class="text-uppercase">Guests</span>
-                        </li>
+                        <?php if($guests) { ?>
+                            <li class="flex-item">
+                                <span class="txt-h-medium txt-lg"><?php echo esc_attr( $guests ); ?></span> <span class="text-uppercase">Guests</span>
+                            </li>
+                        <?php } ?>
+                        <?php if($bedrooms) { ?>
                         <li class="flex-item">
                             <span class="txt-h-medium txt-lg"><?php echo esc_attr( $bedrooms ); ?></span> <span class="text-uppercase">Beds</span>
                         </li>
+                        <?php } ?>
+                        <?php if($bedrooms) { ?>
                         <li class="flex-item">
                             <span class="txt-h-medium txt-lg"><?php echo esc_attr( $bedrooms ); ?></span> <span class="text-uppercase">Rooms</span>
                         </li>
+                         <?php } ?>
+                        <?php if($bathrooms) { ?>
                         <li class="flex-item">
                             <span class="txt-h-medium txt-lg"><?php echo esc_attr( $bathrooms ); ?></span> <span class="text-uppercase">Baths</span>
                         </li>
+                         <?php } ?>
+                        <?php if($toilet) { ?>
                         <li class="flex-item">
                             <span class="txt-h-medium txt-lg"><?php echo esc_attr( $toilet ); ?></span> <span class="text-uppercase">Toilets</span>
                         </li>
+                         <?php } ?>
+                        <?php if(houzez_property_size( 'after' )) { ?>
                         <li class="flex-item">
                             <span class="txt-h-medium txt-lg"><?php echo houzez_property_size( 'after' ); ?></span> <span class="text-uppercase">Area</span>
                         </li>
+                         <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -217,30 +230,51 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                 </div>
                 <div class="col-sm-6">
                     <ul class="list-inline">
-                        <li class="share-social">   
-                            <ul>
-                                <li><a href="#!" class="no-style" role="button"><i class="tz-whatsapp waves-effect waves-circle"></i></a></li>
-                                <li><a href="#!" class="no-style" role="button"><i class="tz-facebook waves-effect waves-circle"></i></a></li>
-                                <li><a href="#!" class="no-style" role="button"><i class="tz-twitter waves-effect waves-circle"></i></a></li>
-                                <li><a href="#!" class="no-style" role="button"><i class="tz-googleplus waves-effect waves-circle"></i></a></li>
-                                <li><a href="#!" class="no-style" role="button"><i class="tz-linkedin waves-effect waves-circle"></i></a></li>
-                                <li><a href="#!" class="no-style" role="button"><i class="tz-pinterest waves-effect waves-circle"></i></a></li>
-                                <li><a href="#!" class="no-style" role="button"><i class="tz-mail  waves-effect waves-circle"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="btn-share-social"><a href="#!" class="no-style" role="button"><i class="tz-share waves-effect waves-circle"></i></a></li>
-                        <li><a href="#!" class="no-style" role="button"><i class="tz-printer waves-effect waves-circle"></i></a></li>
+                        <?php $prop_detail_share = houzez_option('prop_detail_share'); 
+                        $print_property_button = houzez_option('print_property_button');
+                        $image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+                        $twitter_user = '';
+                        if( $prop_detail_share != 0 ) { ?>
+                            <li class="share-social">   
+                                <ul>
+                                    <li><a href="#!" class="no-style" role="button"><i class="tz-whatsapp waves-effect waves-circle"></i></a></li>
+                                    <li><a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink())?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-facebook waves-effect waves-circle"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?text=<?php echo urlencode(get_the_title()); ?>&url=<?php echo urlencode(get_permalink()); ?>&via=<?php echo urlencode($twitter_user ? $twitter_user : get_bloginfo('name')) ?>" onclick="if(!document.getElementById(\'td_social_networks_buttons\')){window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;}" class="no-style" role="button"><i class="tz-twitter waves-effect waves-circle"></i></a></li>
+                                    <li><a href="http://plus.google.com/share?url=<?php echo urlencode( get_permalink() ) ?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-googleplus waves-effect waves-circle"></i></a></li>
+                                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode( get_permalink() ) ?>&title=<?php echo urlencode( get_the_title() ) ?>&source=<?php echo urlencode( home_url( '/' ) )?> " onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-linkedin waves-effect waves-circle"></i></a></li>
+                                    <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo urlencode( get_permalink() ) ?>&amp;media=<?php echo (!empty($image[0]) ? $image[0] : '') ?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-pinterest waves-effect waves-circle"></i></a></li>
+                                    <li><a href="mailto:example.com?subject=<?php echo urlencode( get_the_title() )?>&body=<?php echo urlencode( get_permalink() ) ?>" class="no-style" role="button"><i class="tz-mail  waves-effect waves-circle"></i></a></li>
+                                </ul>
+                            </li>
+                        <li class="btn-share-social"><a href="#!" id="share-btn" class="no-style" role="button"><i class="tz-share waves-effect waves-circle"></i></a></li>
+                        <?php } ?>
+                        <?php if( $print_property_button != 0 ) { ?>
+                        <li class="print-btn"><a href="#!" class="no-style" role="button"><i class="tz-printer waves-effect waves-circle houzez-print" data-propid="<?php echo esc_attr( $post->ID );?>"></i></a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
             <!-- .row-description-->
             <div class="row row-description">
                 <div class="col-xxs-12 txt-md">
-                    <?php the_content(); ?>
-                    <a class="txt-h-light txt-info pull-right" data-toggle="collapse" href="#collapse-description" aria-expanded="false"> 
-                        <span class="waves-effect">Read more <i class="tz-chevron-down-sm"></i></span>
-                        <span class="waves-effect">Read less <i class="tz-chevron-up-sm"></i></span>
-                    </a>
+                   
+                    <?php 
+                    $content = get_the_content();
+                    if(strlen($content) > 680) {
+                        $trimmed_content = substr( $content, 0 , 680);
+                        $trimmed_content2 = substr( $content, 680);
+                        echo "<p>".$trimmed_content."</p>"; ?>
+                        <div class="collapse" id="collapse-description" aria-expanded="true" style="">
+                           <?php echo  "<p>".$trimmed_content2."</p>"; ?>
+                        </div>
+                        <a class="txt-h-light txt-info pull-right" data-toggle="collapse" href="#collapse-description" aria-expanded="false"> 
+                            <span class="waves-effect">Read more <i class="tz-chevron-down-sm"></i></span>
+                            <span class="waves-effect">Read less <i class="tz-chevron-up-sm"></i></span>
+                        </a>
+                    <?php } else {
+                        echo "<p>".$content."</p>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -250,22 +284,26 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                 <div class="row">
                     <div class="col-xs-12 text-center">
                         <ul class="flex-container txt-md">
+                            <?php if($fave_property_sea) { ?>
+                                <li class="flex-item">
+                                    <p><?php echo esc_attr( $fave_property_sea ); ?> m</p>
+                                    <p class="text-uppercase">Distance to the sea</p>
+                                    <p class="txt-info">Straight line</p>
+                                </li>
+                            <?php } 
+                            $area_prefix = houzez_option('area_prefix_default');
+                            ?>
                             <li class="flex-item">
-                                <p><?php echo esc_attr( $fave_property_sea ); ?> m</p>
-                                <p class="text-uppercase">Distance to the sea</p>
-                                <p class="txt-info">Straight line</p>
-                            </li>
-                            <li class="flex-item">
-                                <p><?php echo esc_attr( $near_beach1 );  echo esc_attr(get_post_meta( get_the_ID(), 'near_size_posfix1', true )); ?></p>
+                                <p><?php echo esc_attr( $near_beach1 ); echo "&nbsp;"; echo esc_attr($area_prefix); ?></p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach1_name; ?></a>
                             </li>
                             <li class="flex-item">
-                                <p><?php echo esc_attr( $near_beach2 ); echo esc_attr(get_post_meta( get_the_ID(), 'near_size_posfix2', true ));?> </p>
+                                <p><?php echo esc_attr( $near_beach2 ); echo "&nbsp;"; echo esc_attr($area_prefix);?> </p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach2_name; ?></a>
                                 <p class="txt-info">Nearby beaches</p>
                             </li>
                             <li class="flex-item">
-                                <p><?php echo esc_attr( $near_beach3 ); echo esc_attr(get_post_meta( get_the_ID(), 'near_size_posfix3', true )); ?></p>
+                                <p><?php echo esc_attr( $near_beach3 ); echo "&nbsp;"; echo esc_attr($area_prefix); ?></p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach3_name; ?></a>
                             </li>
                         </ul>

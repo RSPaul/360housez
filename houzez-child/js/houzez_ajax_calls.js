@@ -4138,13 +4138,53 @@ jQuery(document).ready(function ($) {
 
     }// typeof HOUZEZ_ajaxcalls_vars
 
-     $('.account-action > li').on('click',function(e){
-        if($(this).hasClass('active')){
-            $(this).removeClass('active');
-        }else{
-            $(this).addClass('active');
-        }
+    // $('.user_menu_dropdown').on('click',function(e){
+    //     if($(this).hasClass('active')){
+    //         $(this).removeClass('active');
+    //     }else{
+    //         $(this).addClass('active');
+    //     }
+    // });
+    // $('.property_submenu').on('click',function(e){
+    //     if($(this).hasClass('active')){
+    //         $(this).removeClass('active');
+    //     }else{
+    //         $(this).addClass('active');
+    //     }
+    // });
+
+
+
+    // (function($){
+    //     $(document).ready(function(){
+    //         $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+    //             event.preventDefault(); 
+    //             event.stopPropagation(); 
+    //             $(this).parent().siblings().removeClass('open');
+    //             $(this).parent().toggleClass('open');
+    //         });
+    //     });
+    // })(jQuery);
+
+
+    $(document).ready(function(){
+      $('.dropdown-submenu a.test').on("click", function(e){
+        $(this).next('ul').toggle();
+        e.stopPropagation();
+        e.preventDefault();
+      });
     });
+
+    // $(".account-dropdown ul > li").on({
+    //     mouseenter: function (e) {
+    //         $(this).addClass('active');
+    //     },
+    //     mouseleave: function (e) {
+    //         $(this).removeClass('active');
+    //     }
+    // });
+
+
     // $(".header-right .account-action > li").on({
     //     mouseenter: function (e) {
     //         $(this).addClass('active');
@@ -4153,6 +4193,19 @@ jQuery(document).ready(function ($) {
     //         $(this).removeClass('active');
     //     }
     // });
+
+
+    $("#selectStatus").on("change", function() {
+       let val = $(this).val();
+       $(".for-rent-living, .for-rent-vacations, .for-sale").hide();
+       $("."+val).show();
+    });
+
+    $("#share-btn").on("click", function(t) {
+        var el = jQuery(".share-social")[0];
+        $(el).toggleClass("active");
+        t.stopPropagation()
+    })
 
 
 }); // end document ready

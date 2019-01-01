@@ -98,11 +98,13 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
 <?php if( is_user_logged_in() ) { ?>
     <ul class="account-action">
         <li>
-            <span class="hidden-sm hidden-xs"><?php echo esc_attr( $display_name ); ?> <i class="fa fa-angle-down"></i></span>
-            <span class="user-image">
-                <?php echo houzez_messages_notification( 'user-alert' ); ?>
-                <img src="<?php echo esc_url( $user_custom_picture ); ?>" width="36" height="36" class="img-circle" alt="profile image">
-            </span>
+            <div class="account_main_user">
+                <span class="hidden-sm hidden-xs"><?php echo esc_attr( $display_name ); ?> <i class="fa fa-angle-down"></i></span>
+                <span class="user-image">
+                    <?php echo houzez_messages_notification( 'user-alert' ); ?>
+                    <img src="<?php echo esc_url( $user_custom_picture ); ?>" width="36" height="36" class="img-circle" alt="profile image">
+                </span>
+            </div>
 
             <div class="account-dropdown">
                 <ul>

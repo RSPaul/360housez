@@ -105,7 +105,7 @@ var nice = false;
     $('.map-zoom-actions #houzez-gmap-full').on('click',function () {
         if($(this).hasClass('active')== true){
             $(this).removeClass('active').children('span').text('Fullscreen');
-            $(this).children('i').removeClass('fa-square-o').addClass('fa-arrows-alt');
+            $(this).children('i').removeClass('tz-minimize').addClass('tz-expand');
             $('#houzez-gmap-main').removeClass('mapfull');
             $('.header-media').delay(1000).queue(function(next){
                 $('.header-media').css('height','auto');
@@ -115,7 +115,7 @@ var nice = false;
         }else{
             $('.header-media').height($('#houzez-gmap-main').height());
             $(this).addClass('active').children('span').text('Default');
-            $(this).children('i').removeClass('fa-arrows-alt').addClass('fa fa-square-o');
+            $(this).children('i').removeClass('tz-expand').addClass('tz-minimize');
             $('#houzez-gmap-main').addClass('mapfull');
         }
     });
@@ -1577,25 +1577,25 @@ var nice = false;
     /*  ACCOUNT DROPDOWN
     /* ------------------------------------------------------------------------ */
 
-    function accountDropdown(){
-        $('.header-user .account-action > li').on('click',function(e){
-            if($(this).hasClass('active')){
-                $(this).removeClass('active');
-            }else{
-                $(this).addClass('active');
-            }
-        });
-        $(".header-right .account-action > li").on({
-            mouseenter: function (e) {
-                $(this).addClass('active');
-            },
-            mouseleave: function (e) {
-                $(this).removeClass('active');
-            }
-        });
-    }
+    // function accountDropdown(){
+    //     $('.header-user .account-action > li').on('click',function(e){
+    //         if($(this).hasClass('active')){
+    //             $(this).removeClass('active');
+    //         }else{
+    //             $(this).addClass('active');
+    //         }
+    //     });
+    //     $(".header-right .account-action > li").on({
+    //         mouseenter: function (e) {
+    //             $(this).addClass('active');
+    //         },
+    //         mouseleave: function (e) {
+    //             $(this).removeClass('active');
+    //         }
+    //     });
+    // }
 
-    accountDropdown();
+    // accountDropdown();
 
     /* ------------------------------------------------------------------------ */
     /*  MOBILE MENU

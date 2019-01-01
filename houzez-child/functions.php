@@ -78,6 +78,94 @@ add_action('restrict_manage_comments', 'my_comments_filter');
 
 require get_stylesheet_directory() . '/inc/header/custom-navbar.php';
 
+
+
+function smallenvelop_widgets_init() {
+   register_sidebar(array(
+        'name' => esc_html__('Property Listing 1', 'houzez'),
+        'id' => 'property-listing-1',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-property-listing-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+   register_sidebar(array(
+        'name' => esc_html__('Property Listing 2', 'houzez'),
+        'id' => 'property-listing-2',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-property-listing-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+   register_sidebar(array(
+        'name' => esc_html__('Property Listing 3', 'houzez'),
+        'id' => 'property-listing-3',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-property-listing-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+   register_sidebar(array(
+        'name' => esc_html__('Search Result 1', 'houzez'),
+        'id' => 'search-result-1',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-search-result-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+   register_sidebar(array(
+        'name' => esc_html__('Search Result 2', 'houzez'),
+        'id' => 'search-result-2',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-search-result-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+   register_sidebar(array(
+        'name' => esc_html__('Search Result 3', 'houzez'),
+        'id' => 'search-result-3',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-search-result-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+   register_sidebar(array(
+        'name' => esc_html__('Property Detail 1', 'houzez'),
+        'id' => 'property-detail-1',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-property-detail-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+   register_sidebar(array(
+        'name' => esc_html__('Property Detail 2', 'houzez'),
+        'id' => 'property-detail-2',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-property-detail-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+   register_sidebar(array(
+        'name' => esc_html__('Property Detail 3', 'houzez'),
+        'id' => 'property-detail-3',
+        'description' => esc_html__('Widgets in this area will be show in footer column four', 'houzez'),
+        'before_widget' => '<div id="%1$s" class="inner-property-detail-widget-area %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<div class="widget-top"><h3 class="widget-title">',
+        'after_title' => '</h3></div>',
+    ));
+}
+add_action( 'widgets_init', 'smallenvelop_widgets_init' );
+
+
 //included css and js files
 function my_scripts_and_styles() { 
 
@@ -348,7 +436,9 @@ function my_scripts_and_styles() {
     }
 
 
-    wp_enqueue_style('bootstrap.min', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all');
+    wp_enqueue_style('bootstrap.min', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.8', 'all');
+    wp_enqueue_style('houzez-all', get_stylesheet_directory_uri() . '/css/all.min.css', array(), HOUZEZ_THEME_VERSION, 'all');
+    wp_enqueue_style('houzez-main', get_stylesheet_directory_uri() . '/css/main' . $css_minify_prefix . '.css', array(), HOUZEZ_THEME_VERSION, 'all');
     wp_enqueue_style('bundle', get_stylesheet_directory_uri() . '/css/bundle.min.css', array(), '3.3.7', 'all');
     //wp_enqueue_style('font-awesome.min', get_stylesheet_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all');
     wp_enqueue_script('swipe', get_stylesheet_directory_uri() . '/js/jquery.touchSwipe.min.js', array('jquery'));
@@ -3735,3 +3825,19 @@ function maintain_advance_search() {
         // die('here');
   }
 }
+
+function add_tz_property_detail_header($sections) {
+
+    $sections[30]["fields"][285]["options"]["v5"] = "TZ Property top";
+    return $sections;
+}
+
+add_filter("redux/options/houzez_options/sections", 'add_tz_property_detail_header');
+
+function add_tz_property_detail_content($sections) {
+
+    $sections[30]["fields"][287]["options"]["v5"] = "TZ Content layout";
+    return $sections;
+}
+
+add_filter("redux/options/houzez_options/sections", 'add_tz_property_detail_content');
