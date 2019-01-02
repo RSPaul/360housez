@@ -165,6 +165,13 @@ function smallenvelop_widgets_init() {
 }
 add_action( 'widgets_init', 'smallenvelop_widgets_init' );
 
+/*add custom class in body*/
+add_filter( 'body_class', 'my_neat_body_class');
+function my_neat_body_class( $classes ) {
+     if ( is_page(1672))
+          $classes[] = 'search-result-page';
+     return $classes; 
+}
 
 //included css and js files
 function my_scripts_and_styles() { 

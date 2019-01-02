@@ -6917,6 +6917,18 @@ span.waves-effect:hover {
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2)
 }
 
+.back-to-top i,
+.property-detail-fixed-nav.menu-fixed .fixed-inner-wrapp,
+.property-detail-header .hd-wrapper .header-info .header-actions li a,
+.property-detail-information .row-user-interactions>div:last-child .share-social li i,
+.searching-navbar #advanced-search-menu3.in,
+.searching-navbar.menu-fixed,
+i.waves-effect:hover,
+span.waves-effect:hover {
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2)
+}
+
 .back-to-top i:hover,
 .property-card:hover,
 .property-detail-header .hd-wrapper .header-info .header-actions li a:hover,
@@ -6992,6 +7004,14 @@ span.waves-effect:hover {
 	background-color: #000
 }
 
+.main-navbar nav .navbar-nav>li.login-btn>a,
+.main-navbar nav .navbar-nav>li.my-profile>a,
+.property-detail-contact-agent form a[type=button],
+.property-detail-fixed-nav .fixed-inner-wrapp>.flex-container>.flex-item:nth-child(3) ul.list-inline li .btn,
+.searching-navbar #advanced-search-menu3 div.search-col.six>div a {
+	background-color: #000
+}
+
 .main-navbar nav .navbar-nav>li.login-btn>a:hover,
 .main-navbar nav .navbar-nav>li.my-profile>a:hover,
 .property-detail-contact-agent form a:hover[type=button],
@@ -7006,6 +7026,15 @@ span.waves-effect:hover {
 .property-detail-contact-agent form a:hover[type=button],
 .property-detail-fixed-nav .fixed-inner-wrapp>.flex-container>.flex-item:nth-child(3) ul.list-inline li .btn:hover,
 .searching-navbar #advanced-search-menu2 div.search-col.six>div a:hover {
+	color: rgba(255, 255, 255, .6);
+	background-color: #1a1a1a
+}
+
+.main-navbar nav .navbar-nav>li.login-btn>a:hover,
+.main-navbar nav .navbar-nav>li.my-profile>a:hover,
+.property-detail-contact-agent form a:hover[type=button],
+.property-detail-fixed-nav .fixed-inner-wrapp>.flex-container>.flex-item:nth-child(3) ul.list-inline li .btn:hover,
+.searching-navbar #advanced-search-menu3 div.search-col.six>div a:hover {
 	color: rgba(255, 255, 255, .6);
 	background-color: #1a1a1a
 }
@@ -7026,6 +7055,14 @@ span.waves-effect:hover {
 	color: rgba(255, 255, 255, .6)
 }
 
+.main-navbar nav .navbar-nav>li.login-btn>a:active,
+.main-navbar nav .navbar-nav>li.my-profile>a:active,
+.property-detail-contact-agent form a:active[type=button],
+.property-detail-fixed-nav .fixed-inner-wrapp>.flex-container>.flex-item:nth-child(3) ul.list-inline li .btn:active,
+.searching-navbar #advanced-search-menu3 div.search-col.six>div a:active {
+	color: rgba(255, 255, 255, .6)
+}
+
 .main-navbar nav .navbar-nav>li.login-btn>a:focus,
 .main-navbar nav .navbar-nav>li.my-profile>a:focus,
 .property-detail-contact-agent form a:focus[type=button],
@@ -7039,6 +7076,14 @@ span.waves-effect:hover {
 .property-detail-contact-agent form a:focus[type=button],
 .property-detail-fixed-nav .fixed-inner-wrapp>.flex-container>.flex-item:nth-child(3) ul.list-inline li .btn:focus,
 .searching-navbar #advanced-search-menu2 div.search-col.six>div a:focus {
+	color: rgba(255, 255, 255, .6)
+}
+
+.main-navbar nav .navbar-nav>li.login-btn>a:focus,
+.main-navbar nav .navbar-nav>li.my-profile>a:focus,
+.property-detail-contact-agent form a:focus[type=button],
+.property-detail-fixed-nav .fixed-inner-wrapp>.flex-container>.flex-item:nth-child(3) ul.list-inline li .btn:focus,
+.searching-navbar #advanced-search-menu3 div.search-col.six>div a:focus {
 	color: rgba(255, 255, 255, .6)
 }
 
@@ -8121,7 +8166,8 @@ span.waves-effect:hover {
 
 .main-navbar nav .navbar-nav>li>a {
 	text-transform: uppercase;
-	padding: .5rem .5rem
+	padding: .5rem .5rem;
+	vertical-align: middle;
 }
 
 .main-navbar nav .navbar-nav>li>a:not(.bd-gradient) {
@@ -8473,7 +8519,8 @@ html, body, #map_canvas {
 	font-size: 14px;
 	line-height: normal;
 	-ms-flex-preferred-size: 100%;
-	flex-basis: 100%
+	flex-basis: 100%;
+	text-align: left;
 }
 
 .searching-navbar .form-group div.input-field {
@@ -8571,6 +8618,13 @@ html, body, #map_canvas {
 	right: 0!important;
 	background-color: #000
 }
+.searching-navbar #advanced-search-menu3 {
+	position: absolute;
+	z-index: 9998;
+	left: 0!important;
+	right: 0!important;
+	background-color: #000
+}
 
 .searching-navbar #advanced-search-menu * {
 	color: #fff
@@ -8579,8 +8633,20 @@ html, body, #map_canvas {
 .searching-navbar #advanced-search-menu2 * {
 	color: #fff
 }
+.searching-navbar #advanced-search-menu3 * {
+	color: #fff
+}
 
 .searching-navbar #advanced-search-menu .advanced-search-filters {
+	max-width: 1530px;
+	margin: 0 auto;
+	padding: 2.125rem 0;
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start
+}
+
+.searching-navbar #advanced-search-menu2 .advanced-search-filters {
 	max-width: 1530px;
 	margin: 0 auto;
 	padding: 3.125rem 0;
@@ -8588,8 +8654,7 @@ html, body, #map_canvas {
 	-ms-flex-pack: start;
 	justify-content: flex-start
 }
-
-.searching-navbar #advanced-search-menu2 .advanced-search-filters {
+.searching-navbar #advanced-search-menu3 .advanced-search-filters {
 	max-width: 1530px;
 	margin: 0 auto;
 	padding: 3.125rem 0;
@@ -8604,6 +8669,9 @@ html, body, #map_canvas {
 }
 
 .searching-navbar #advanced-search-menu2 div.search-col {
+	padding: 0 1.875rem
+}
+.searching-navbar #advanced-search-menu3 div.search-col {
 	padding: 0 1.875rem
 }
 
@@ -8630,6 +8698,17 @@ html, body, #map_canvas {
 	padding-bottom: 25px;
 	border-bottom: 1px solid rgba(255, 255, 255, .3)
 }
+.searching-navbar #advanced-search-menu3 div.search-col.one {
+	-ms-flex-preferred-size: 100%;
+	flex-basis: 100%;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	margin-bottom: 10px;
+	padding-bottom: 25px;
+	border-bottom: 1px solid rgba(255, 255, 255, .3)
+}
 
 .searching-navbar #advanced-search-menu div.search-col.one>.form-group,
 .searching-navbar #advanced-search-menu div.search-col.one>div {
@@ -8640,6 +8719,10 @@ html, body, #map_canvas {
 .searching-navbar #advanced-search-menu2 div.search-col.one>div {
 	margin-bottom: 1.25rem
 }
+.searching-navbar #advanced-search-menu3 div.search-col.one>.form-group,
+.searching-navbar #advanced-search-menu3 div.search-col.one>div {
+	margin-bottom: 1.25rem
+}
 
 .searching-navbar #advanced-search-menu div.search-col:not(.one) {
 	-ms-flex-preferred-size: 100%;
@@ -8647,6 +8730,10 @@ html, body, #map_canvas {
 }
 
 .searching-navbar #advanced-search-menu2 div.search-col:not(.one) {
+	-ms-flex-preferred-size: 100%;
+	flex-basis: 100%
+}
+.searching-navbar #advanced-search-menu3 div.search-col:not(.one) {
 	-ms-flex-preferred-size: 100%;
 	flex-basis: 100%
 }
@@ -8660,6 +8747,10 @@ html, body, #map_canvas {
 	text-align: center;
 	margin: 0 0 1.25rem 0
 }
+.searching-navbar #advanced-search-menu3 div.search-col:not(.one) .filter-title {
+	text-align: center;
+	margin: 0 0 1.25rem 0
+}
 
 .searching-navbar #advanced-search-menu div.search-col.six {
 	-ms-flex-preferred-size: 100%!important;
@@ -8668,6 +8759,11 @@ html, body, #map_canvas {
 }
 
 .searching-navbar #advanced-search-menu2 div.search-col.six {
+	-ms-flex-preferred-size: 100%!important;
+	flex-basis: 100%!important;
+	margin-top: 1.875rem
+}
+.searching-navbar #advanced-search-menu3 div.search-col.six {
 	-ms-flex-preferred-size: 100%!important;
 	flex-basis: 100%!important;
 	margin-top: 1.875rem
@@ -8684,6 +8780,11 @@ html, body, #map_canvas {
 	-ms-flex-pack: center;
 	justify-content: center
 }
+.searching-navbar #advanced-search-menu3 div.search-col.six>div {
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center
+}
 
 .searching-navbar #advanced-search-menu div.search-col.six>div a {
 	padding: .5rem 1.5rem .625rem 1.25rem
@@ -8692,6 +8793,10 @@ html, body, #map_canvas {
 .searching-navbar #advanced-search-menu2 div.search-col.six>div a {
 	padding: .5rem 1.5rem .625rem 1.25rem
 }
+.searching-navbar #advanced-search-menu3 div.search-col.six>div a {
+	padding: .5rem 1.5rem .625rem 1.25rem
+}
+
 
 .searching-navbar #advanced-search-menu div.search-col.six>div a i {
 	padding-right: 5px;
@@ -8704,6 +8809,11 @@ html, body, #map_canvas {
 	display: inline-block;
 	vertical-align: sub
 }
+.searching-navbar #advanced-search-menu3 div.search-col.six>div a i {
+	padding-right: 5px;
+	display: inline-block;
+	vertical-align: sub
+}
 
 .searching-navbar #advanced-search-menu label {
 	margin-bottom: 8px;
@@ -8711,6 +8821,10 @@ html, body, #map_canvas {
 }
 
 .searching-navbar #advanced-search-menu2 label {
+	margin-bottom: 8px;
+	overflow-wrap: break-word
+}
+.searching-navbar #advanced-search-menu3 label {
 	margin-bottom: 8px;
 	overflow-wrap: break-word
 }
@@ -8726,6 +8840,11 @@ html, body, #map_canvas {
 	-ms-flex-pack: justify;
 	justify-content: space-between
 }
+.searching-navbar #advanced-search-menu3 .form-group {
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between
+}
 
 .searching-navbar #advanced-search-menu .form-group legend {
 	margin-left: 0;
@@ -8733,6 +8852,10 @@ html, body, #map_canvas {
 }
 
 .searching-navbar #advanced-search-menu2 .form-group legend {
+	margin-left: 0;
+	margin-bottom: 5px
+}
+.searching-navbar #advanced-search-menu3 .form-group legend {
 	margin-left: 0;
 	margin-bottom: 5px
 }
@@ -8746,6 +8869,10 @@ html, body, #map_canvas {
 	max-width: 45%;
 	margin-top: 3px
 }
+.searching-navbar #advanced-search-menu3 .form-group div.input-field {
+	max-width: 45%;
+	margin-top: 3px
+}
 
 .searching-navbar #advanced-search-menu .select-dropdown.dropdown-content {
 	width: 100%
@@ -8754,12 +8881,18 @@ html, body, #map_canvas {
 .searching-navbar #advanced-search-menu2 .select-dropdown.dropdown-content {
 	width: 100%
 }
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content {
+	width: 100%
+}
 
 .searching-navbar #advanced-search-menu .select-dropdown.dropdown-content li span {
 	color: #000!important
 }
 
 .searching-navbar #advanced-search-menu2 .select-dropdown.dropdown-content li span {
+	color: #000!important
+}
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content li span {
 	color: #000!important
 }
 
@@ -8774,6 +8907,11 @@ html, body, #map_canvas {
 .searching-navbar #advanced-search-menu2 .select-dropdown.dropdown-content li:hover {
 	background-color: #000
 }
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content li.active,
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content li.selected,
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content li:hover {
+	background-color: #000
+}
 
 .searching-navbar #advanced-search-menu .select-dropdown.dropdown-content li.active span,
 .searching-navbar #advanced-search-menu .select-dropdown.dropdown-content li.selected span,
@@ -8786,6 +8924,11 @@ html, body, #map_canvas {
 .searching-navbar #advanced-search-menu2 .select-dropdown.dropdown-content li:hover span {
 	color: #fff!important
 }
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content li.active span,
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content li.selected span,
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content li:hover span {
+	color: #fff!important
+}
 
 .searching-navbar #advanced-search-menu .select-dropdown.dropdown-content:not(.multiple-select-dropdown) li span {
 	padding: .375rem;
@@ -8793,6 +8936,10 @@ html, body, #map_canvas {
 }
 
 .searching-navbar #advanced-search-menu2 .select-dropdown.dropdown-content:not(.multiple-select-dropdown) li span {
+	padding: .375rem;
+	line-height: normal
+}
+.searching-navbar #advanced-search-menu3 .select-dropdown.dropdown-content:not(.multiple-select-dropdown) li span {
 	padding: .375rem;
 	line-height: normal
 }
@@ -8807,6 +8954,13 @@ html, body, #map_canvas {
 
 .searching-navbar #advanced-search-menu2 .dropdown-content,
 .searching-navbar #advanced-search-menu2 .dropdown-content li span {
+	color: #000;
+	-webkit-transition: 0s;
+	-o-transition: 0s;
+	transition: 0s
+}
+.searching-navbar #advanced-search-menu3 .dropdown-content,
+.searching-navbar #advanced-search-menu3 .dropdown-content li span {
 	color: #000;
 	-webkit-transition: 0s;
 	-o-transition: 0s;
@@ -8834,6 +8988,16 @@ html, body, #map_canvas {
 .searching-navbar #advanced-search-menu2 .dropdown-contentspan.selected {
 	color: #fff
 }
+.searching-navbar #advanced-search-menu3 .dropdown-content li span.active,
+.searching-navbar #advanced-search-menu3 .dropdown-content li span:focus,
+.searching-navbar #advanced-search-menu3 .dropdown-content li span:hover,
+.searching-navbar #advanced-search-menu3 .dropdown-content li spanspan.selected,
+.searching-navbar #advanced-search-menu3 .dropdown-content.active,
+.searching-navbar #advanced-search-menu3 .dropdown-content:focus,
+.searching-navbar #advanced-search-menu3 .dropdown-content:hover,
+.searching-navbar #advanced-search-menu3 .dropdown-contentspan.selected {
+	color: #fff
+}
 
 .searching-navbar #advanced-search-menu .select-wrapper input.select-dropdown,
 .searching-navbar #advanced-search-menu input[type=text]:not(.browser-default) {
@@ -8842,6 +9006,11 @@ html, body, #map_canvas {
 
 .searching-navbar #advanced-search-menu2 .select-wrapper input.select-dropdown,
 .searching-navbar #advanced-search-menu2 input[type=text]:not(.browser-default) {
+	border-bottom: 1px solid rgba(255, 255, 255, .5)
+}
+
+.searching-navbar #advanced-search-menu3 .select-wrapper input.select-dropdown,
+.searching-navbar #advanced-search-menu3 input[type=text]:not(.browser-default) {
 	border-bottom: 1px solid rgba(255, 255, 255, .5)
 }
 
@@ -8854,6 +9023,10 @@ html, body, #map_canvas {
 .searching-navbar #advanced-search-menu2 input[type=text]:not(.browser-default):focus:not([readonly]) {
 	border-bottom: 2px solid #fff
 }
+.searching-navbar #advanced-search-menu3 .select-wrapper input.select-dropdown:focus,
+.searching-navbar #advanced-search-menu3 input[type=text]:not(.browser-default):focus:not([readonly]) {
+	border-bottom: 2px solid #fff
+}
 
 .searching-navbar #advanced-search-menu [type=checkbox].filled-in:checked+span:not(.lever)::after,
 .searching-navbar #advanced-search-menu [type=checkbox].filled-in:not(:checked)+span:not(.lever)::after {
@@ -8862,6 +9035,10 @@ html, body, #map_canvas {
 
 .searching-navbar #advanced-search-menu2 [type=checkbox].filled-in:checked+span:not(.lever)::after,
 .searching-navbar #advanced-search-menu2 [type=checkbox].filled-in:not(:checked)+span:not(.lever)::after {
+	border: 1px solid #fff
+}
+.searching-navbar #advanced-search-menu3 [type=checkbox].filled-in:checked+span:not(.lever)::after,
+.searching-navbar #advanced-search-menu3 [type=checkbox].filled-in:not(:checked)+span:not(.lever)::after {
 	border: 1px solid #fff
 }
 
@@ -9516,7 +9693,7 @@ body.property-detail .main-navbar {
 /*! === SEARCH RESULT TEMPLATE === */
 
 body.search-result-page {
-	padding-top: 92px
+	padding-top: 72px;
 }
 
 body.search-result-page .container-fluid .row {
@@ -10048,6 +10225,17 @@ button.map-control span {
 		-ms-flex-pack: justify;
 		justify-content: space-between
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col.one {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between
+	}
 	.searching-navbar #advanced-search-menu div.search-col.one>.form-group,
 	.searching-navbar #advanced-search-menu div.search-col.one>div {
 		-ms-flex-preferred-size: 45%;
@@ -10056,6 +10244,11 @@ button.map-control span {
 
 	.searching-navbar #advanced-search-menu2 div.search-col.one>.form-group,
 	.searching-navbar #advanced-search-menu2 div.search-col.one>div {
+		-ms-flex-preferred-size: 45%;
+		flex-basis: 45%
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col.one>.form-group,
+	.searching-navbar #advanced-search-menu3 div.search-col.one>div {
 		-ms-flex-preferred-size: 45%;
 		flex-basis: 45%
 	}
@@ -10068,12 +10261,20 @@ button.map-control span {
 		-ms-flex-preferred-size: 50%;
 		flex-basis: 50%
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) {
+		-ms-flex-preferred-size: 50%;
+		flex-basis: 50%
+	}
 	.searching-navbar #advanced-search-menu div.search-col:not(.one) .filter-title {
 		text-align: left;
 		margin: 1.875rem 0
 	}
 
 	.searching-navbar #advanced-search-menu2 div.search-col:not(.one) .filter-title {
+		text-align: left;
+		margin: 1.875rem 0
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) .filter-title {
 		text-align: left;
 		margin: 1.875rem 0
 	}
@@ -10084,10 +10285,16 @@ button.map-control span {
 	.searching-navbar #advanced-search-menu2 div.search-col:not(.one) .filter-title>div {
 		cursor: default
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) .filter-title>div {
+		cursor: default
+	}
 	.searching-navbar #advanced-search-menu div.search-col:not(.one) .filter-title i {
 		display: none
 	}
 	.searching-navbar #advanced-search-menu2 div.search-col:not(.one) .filter-title i {
+		display: none
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) .filter-title i {
 		display: none
 	}
 	.property-detail-fixed-nav .fixed-inner-wrapp>.flex-container>.flex-item:nth-child(3) {
@@ -10279,6 +10486,10 @@ button.map-control span {
 		padding: .375rem;
 		line-height: normal
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col .select-dropdown.dropdown-content:not(.multiple-select-dropdown) li span {
+		padding: .375rem;
+		line-height: normal
+	}
 	.property-detail-fixed-nav .fixed-inner-wrapp>.flex-container>.flex-item:nth-child(2) {
 		display: -webkit-inline-box;
 		display: -ms-inline-flexbox;
@@ -10406,12 +10617,22 @@ button.map-control span {
 		flex: 1;
 		padding: 0 1.875rem
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col {
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		padding: 0 1.875rem
+	}
 	.searching-navbar #advanced-search-menu div.search-col .inner-price-filter,
 	.searching-navbar #advanced-search-menu div.search-col .inner-type-filter {
 		display: none
 	}
 	.searching-navbar #advanced-search-menu2 div.search-col .inner-price-filter,
 	.searching-navbar #advanced-search-menu2 div.search-col .inner-type-filter {
+		display: none
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col .inner-price-filter,
+	.searching-navbar #advanced-search-menu3 div.search-col .inner-type-filter {
 		display: none
 	}
 	.searching-navbar #advanced-search-menu div.search-col.one {
@@ -10440,10 +10661,26 @@ button.map-control span {
 		min-width: 230px;
 		border-color: transparent
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col.one {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+		min-width: 230px;
+		border-color: transparent
+	}
 	.searching-navbar #advanced-search-menu div.search-col.one>.no-margin-top {
 		margin-top: 0
 	}
 	.searching-navbar #advanced-search-menu2 div.search-col.one>.no-margin-top {
+		margin-top: 0
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col.one>.no-margin-top {
 		margin-top: 0
 	}
 	.searching-navbar #advanced-search-menu div.search-col:not(.one) {
@@ -10456,10 +10693,18 @@ button.map-control span {
 		-ms-flex: 1;
 		flex: 1
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) {
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1
+	}
 	.searching-navbar #advanced-search-menu div.search-col:not(.one) .filter-title {
 		margin-top: 0
 	}
 	.searching-navbar #advanced-search-menu2 div.search-col:not(.one) .filter-title {
+		margin-top: 0
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) .filter-title {
 		margin-top: 0
 	}
 	.searching-navbar #advanced-search-menu div.search-col.six {
@@ -10468,10 +10713,16 @@ button.map-control span {
 	.searching-navbar #advanced-search-menu2 div.search-col.six {
 		display: none
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col.six {
+		display: none
+	}
 	.searching-navbar #advanced-search-menu div.search-col .furniture-filters {
 		margin-top: 1.875rem
 	}
 	.searching-navbar #advanced-search-menu2 div.search-col .furniture-filters {
+		margin-top: 1.875rem
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col .furniture-filters {
 		margin-top: 1.875rem
 	}
 	.searching-navbar #advanced-search-menu div.search-col .rules-filters {
@@ -10480,10 +10731,16 @@ button.map-control span {
 	.searching-navbar #advanced-search-menu2 div.search-col .rules-filters {
 		margin-top: 1.25rem
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col .rules-filters {
+		margin-top: 1.25rem
+	}
 	.searching-navbar #advanced-search-menu div.search-col .rules-filters .filter-title {
 		margin-bottom: 1.875rem
 	}
 	.searching-navbar #advanced-search-menu2 div.search-col .rules-filters .filter-title {
+		margin-bottom: 1.875rem
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col .rules-filters .filter-title {
 		margin-bottom: 1.875rem
 	}
 	.property-detail-header .hd-wrapper {
@@ -10956,6 +11213,13 @@ body.home .property-card .property-card-body {
     float: left;
     width: 100%;
 }
+.banner_inner form #sticky_navbar #advanced-search-menu3 label {
+    margin-bottom: 8px;
+    overflow-wrap: break-word;
+    text-align: left;
+    float: left;
+    width: 100%;
+}
 .banner_inner form #sticky_navbar .filter-title.txt-h-medium.txt-md {
     text-align: left;
 }
@@ -11003,7 +11267,7 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 }
 .default_show.half-part-left .full-area {
     /*background: rgba(255,255,255,0.5);*/ text-align: center; 
-    max-width: 80%; width: 100%; margin:7% auto 0;
+    max-width: 80%; width: 100%; margin:6% auto 0;
 }
 .default_show.half-part-left .half-area  {
     text-align: center; background: rgba(255,255,255,0.5);   right:0; float:right;  max-width: 80%; width: 100%; margin-top:41%;
@@ -11034,6 +11298,9 @@ ul.list-inline.mobile-login .user i {
 .full-area #advanced-search-menu2 .advanced-search-filters {
     padding: 0 !important;
 }
+.full-area #advanced-search-menu3 .advanced-search-filters {
+    padding: 0 !important;
+}
 .go_back {
     margin-top: 10px;
     text-align: left !important;
@@ -11050,7 +11317,7 @@ ul.list-inline.mobile-login .user i {
 	position: relative;
 	top: 5px;
 }
-.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2{
+.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3{
 	position: relative;
 }
 .default_show.half-part-left .full-area h3 {
@@ -11222,8 +11489,15 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 .btn.btn-primary.panel-btn.left_icon_btn {
     padding: 0;
 }
-
-
+.main-search-inputs button.bd-black.waves-effect.waves-color-1 {
+    padding: .625rem;
+    background: transparent;
+    margin-left: .625rem;
+}
+.map-active.search_map_page.full-map-show {
+    position: relative;
+    z-index: 99999;
+}
 
 
 
@@ -11274,7 +11548,7 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 
 
 @media (min-width: 992px) and (max-width: 1199px){
-	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu {
+	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu3, .searching-navbar #advanced-search-menu {
 	    height: 66vh;
 	    overflow-x: hidden;
 	}
@@ -11303,7 +11577,7 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	.default_show.half-part-left{
 		left: 0px;
 	}
-	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu {
+	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu3, .searching-navbar #advanced-search-menu {
 	    height: 77vh;
 	    overflow-x: hidden;
 	}
@@ -11313,10 +11587,25 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	.searching-navbar #advanced-search-menu2 div.search-col.six{
 		padding-bottom: 30px;	
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col.six{
+		padding-bottom: 30px;	
+	}
 	.full-area #advanced-search-menu .advanced-search-filters {
 	    padding: 10px 0px;
 	}
+	.full-area #advanced-search-menu2 .advanced-search-filters {
+	    padding: 10px 0px;
+	}
+	.full-area #advanced-search-menu3 .advanced-search-filters {
+	    padding: 10px 0px;
+	}
 	.searching-navbar #advanced-search-menu div.search-col:not(.one) .filter-title{
+		text-align: left;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col:not(.one) .filter-title{
+		text-align: left;
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) .filter-title{
 		text-align: left;
 	}
 /*	.map-search-result {
@@ -11346,6 +11635,9 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	.searching-navbar #advanced-search-menu2{
 		position: relative;
 	}
+	.searching-navbar #advanced-search-menu3{
+		position: relative;
+	}
 	.module-title h2{
 		font-size: 17px;
 	}
@@ -11366,7 +11658,7 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	.default_show.half-part-left{
 		left: 0px;
 	}
-	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu {
+	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu3, .searching-navbar #advanced-search-menu {
 	    height: 360px;
 	    overflow-x: hidden;
 	}
@@ -11376,7 +11668,16 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	.searching-navbar #advanced-search-menu2 div.search-col.six{
 		padding-bottom: 30px;	
 	}
+	.searching-navbar #advanced-search-menu3 div.search-col.six{
+		padding-bottom: 30px;	
+	}
 	.searching-navbar #advanced-search-menu div.search-col:not(.one) .filter-title{
+		text-align: left;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col:not(.one) .filter-title{
+		text-align: left;
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) .filter-title{
 		text-align: left;
 	}
 	.map-search-result {
@@ -11398,7 +11699,7 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	    min-width: 59px;
 	}
 	li.dropdown.account-actions ul.dropdown-menu{
-		min-height: 305px;
+		min-height: 265px;
 	}
 
 
