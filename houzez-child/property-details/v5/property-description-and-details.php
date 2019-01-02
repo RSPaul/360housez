@@ -91,11 +91,12 @@ $fave_property_land_postfix_features=get_post_meta( get_the_ID(), 'fave_property
 
 //Rules Meta
 
-$rules_setting=get_post_meta(get_the_ID(), 'rules_enable', true);
+$rules_setting=get_post_meta(get_the_ID(), 'wp_rules_enable', true);
 $rules_section_title=get_post_meta(get_the_ID(), 'rules_section_title', true);
-$rules_pets_enable=get_post_meta(get_the_ID(), 'rules_pets_enable', true);
-$rules_security_deposit=get_post_meta(get_the_ID(),'rules_security', true);
+$rules_pets_enable=get_post_meta(get_the_ID(), 'wp_rules_pets_enable', true);
+$rules_security_deposit=get_post_meta(get_the_ID(),'wp_rules_security', true);
 $own_rules_repeater=get_post_meta(get_the_ID(), 'own_rules', true);
+
 
 $pro_type = get_the_terms(get_the_ID(), 'property_status');
 
@@ -213,12 +214,13 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                     $post_id=get_the_id();    
                     $comment_data=wp_count_comments($post_id); 
                     $count_comment= $comment_data->total_comments;
+                    print_r($count_comment);
                     ?>  
                     <ul class="list-inline">
                         <li>
                             <div>
                                  <?php for($i=1; $i<5; $i++) {?>
-                                    <i class="fa fa-star"></i>
+                                    <i class="tz-ratting-full-sm"></i>
                                 <?php } ?>
                             </div>
                         </li>
@@ -257,7 +259,6 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
             <!-- .row-description-->
             <div class="row row-description">
                 <div class="col-xxs-12 txt-md">
-                   
                     <?php 
                     $content = get_the_content();
                     if(strlen($content) > 680) {
@@ -284,14 +285,16 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                 <div class="row">
                     <div class="col-xs-12 text-center">
                         <ul class="flex-container txt-md">
-                            <?php if($fave_property_sea) { ?>
+                            <?php 
+                            // echo $current_area = houzez_option('measurement_unit');
+                            $area_prefix = houzez_option('area_prefix_default');
+                            if($fave_property_sea) { ?>
                                 <li class="flex-item">
-                                    <p><?php echo esc_attr( $fave_property_sea ); ?> m</p>
+                                    <p><?php echo esc_attr( $fave_property_sea ); echo "&nbsp;"; echo esc_attr($area_prefix); ?></p>
                                     <p class="text-uppercase">Distance to the sea</p>
                                     <p class="txt-info">Straight line</p>
                                 </li>
                             <?php } 
-                            $area_prefix = houzez_option('area_prefix_default');
                             ?>
                             <li class="flex-item">
                                 <p><?php echo esc_attr( $near_beach1 ); echo "&nbsp;"; echo esc_attr($area_prefix); ?></p>
@@ -318,8 +321,8 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                 <div class="col-xxs-12">
                     <h2 class="txt-lg text-center">Area</h2>
                     <ul class="flex-container flex-h-around txt-md">
-                        <li class="flex-item"><p>Area <span><?php echo esc_attr( $prop_size ); ?>  <?php echo esc_attr(get_post_meta( get_the_ID(), 'fave_property_size_prefix', true ));?></span></p></li>
-                        <li class="flex-item"><p>Land area <span><?php echo esc_attr( $prop_land ); ?> <?php echo esc_attr(get_post_meta( get_the_ID(), 'fave_property_land_postfix', true ));?></span></p></li>
+                        <li class="flex-item"><p>Area <span><?php echo houzez_property_size( 'after' ); ?></span></p></li>
+                        <li class="flex-item"><p>Land area <span> <?php echo houzez_property_land_area( 'after' ); ?></span></p></li>
                     </ul>
                 </div>
             </div>
@@ -332,27 +335,44 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                 <div class="col-xxs-12 sub-features">
                     <h2 class="txt-lg text-center">Features</h2>
                     <div class="flex-container flex-wrap txt-md text-center">
-
                         <?php 
                         $terms = get_terms( array(
                             'taxonomy' => 'property_feature',
                             'hide_empty' => false,
+                            'number' => 6,
+                            'offset' => 0
                         ) );         
                         ?>
-
                         <?php foreach ($terms as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
                             <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
                             <div class="feature_<?php echo $term_id; ?>">
-                                <i class="fa fa-<?php echo $get_feature_icons; ?>"></i>
+                                <i class="<?php echo $get_feature_icons; ?>"></i>
                                 <p class="title"><?php echo $cat_feature->name; ?></p>
                             </div>
-                        <?php } ?>                       
-                    
+                        <?php } ?>   
                     </div>
                 </div>
             </div>
             <div class="row collapse" id="collapse-other-features">
+                 <div class="flex-container flex-wrap txt-md text-center">
+                        <?php 
+                        $terms = get_terms( array(
+                            'taxonomy' => 'property_feature',
+                            'hide_empty' => false,
+                            'number' => 1000,
+                            'offset' => 6
+                        ) );         
+                        ?>
+                        <?php foreach ($terms as $key => $cat_feature) { ?>
+                            <?php $term_id= $cat_feature->term_id;  ?> 
+                            <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
+                            <div class="feature_<?php echo $term_id; ?>">
+                                <i class="<?php echo $get_feature_icons; ?>"></i>
+                                <p class="title"><?php echo $cat_feature->name; ?></p>
+                            </div>
+                        <?php } ?>   
+                    </div>
                 <!-- Home Appliance Services -->
                 <div class="col-xxs-12 sub-services">
                     <h2 class="txt-lg text-center">Services</h2>
@@ -367,7 +387,7 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                             <?php $term_id= $cat_feature->term_id;  ?> 
                             <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
                             <div class="feature_<?php echo $term_id; ?>">
-                                <i class="fa fa-<?php echo $get_feature_icons; ?>"></i>
+                                <i class="<?php echo $get_feature_icons; ?>"></i>
                                 <p><?php echo $cat_feature->name; ?></p>
                             </div>
                         <?php } ?>
@@ -378,7 +398,6 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                 <div class="col-xxs-12 sub-appliances">
                     <h2 class="txt-lg text-center">Featured Home Appliances</h2>
                     <div class="flex-container flex-wrap txt-md text-center">
-
                         <?php 
                         $terms = get_terms( array(
                             'taxonomy' => 'home_appliances',
@@ -389,7 +408,7 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                             <?php $term_id= $cat_feature->term_id;  ?> 
                             <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
                             <div class="feature_<?php echo $term_id; ?>">
-                                <i class="fa fa-<?php echo $get_feature_icons; ?>"></i>
+                                <i class="<?php echo $get_feature_icons; ?>"></i>
                                 <p><?php echo $cat_feature->name; ?></p>
                             </div>
                         <?php } ?>                      
@@ -413,10 +432,18 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                             <p>Pets <?php if($rules_pets_enable=="allowed") { echo "Allowed"; } else { echo "Not Allowed"; } ?></p>
                         </li>
                         <li class="flex-item">
-                            <p><?php if($rules_security_deposit=="no") { echo "No"; } else { echo "Yes"; } ?> security deposit</p>
+                            <p><?php if($rules_security_deposit=="no") { echo "Security deposit isn't required"; } else { echo "Security deposit is required"; } ?> </p>
                         </li>
                     </ul>
-                    <a class="txt-h-light txt-info text-center btn-block" data-toggle="collapse" href="#" aria-expanded="false">
+                    <div class="row collapse" id="collapse-other-rules">
+                        <ul class="flex-container flex-wrap txt-md">
+                            <?php foreach ($own_rules_repeater as $key => $value) { ?>
+                                <li class="flex-item"><?php echo $value['fave_new_rules']; ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    
+                    <a class="txt-h-light txt-info text-center btn-block" data-toggle="collapse" href="#collapse-other-rules" aria-expanded="false">
                         <span class="waves-effect">Show all <i class="tz-chevron-down-sm"></i></span>
                         <span class="waves-effect">Show less <i class="tz-chevron-up-sm"></i></span>
                     </a>

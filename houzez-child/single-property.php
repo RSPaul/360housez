@@ -173,24 +173,30 @@ houzez_count_property_views( $post->ID );
             </div>
         </div>
         <?php } ?>
-
         <?php } elseif ($property_layout == 'v5') { ?>
-
             <?php
             if($logged_in_to_view == 1 && !is_user_logged_in()) { ?>
-
                 <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 no-padding">
-                        <?php get_template_part( 'property-details/login_required'); ?>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 no-padding">
+                            <?php get_template_part( 'property-details/login_required'); ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-
         <?php } else { ?>
-            
-            <?php get_template_part( 'property-details/v5/property-description-and-details'); ?>
-
+            <?php
+                $enableDisable_agent_forms = houzez_option('agent_forms');
+                $property_reviews = houzez_option('property_reviews');
+                get_template_part( 'property-details/v5/property-description-and-details');             
+                get_template_part( 'property-details/v5/floor-plans');
+                get_template_part( 'property-details/v5/custom-sections');
+                if($enableDisable_agent_forms == 1) {
+                    get_template_part( 'property-details/v5/agent-form');
+                }
+                if($property_reviews == 1) {
+                    get_template_part( 'property-details/v5/property-ratings');
+                }
+            ?>
         <?php } ?>  
         <?php } else { ?>
 
