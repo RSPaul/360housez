@@ -6,6 +6,7 @@
  * Time: 11:23 PM
  */
 $get_features = array();
+$get_features = isset ( $_SESSION['feature'] ) ? $_SESSION['feature'] : $get_features;
 $get_features = isset ( $_GET['feature'] ) ? $_GET['feature'] : $get_features;
 
 $features_limit = houzez_option('features_limit');
@@ -27,10 +28,10 @@ if( taxonomy_exists('property_feature') ) {
     $count = 0;
     if (!empty($prop_features)) {
         foreach ($prop_features as $feature):
-            /*if( $features_count > $count ) {
+            if( $features_count > $count ) {
                 $checked_feature = $get_features[$count];
             }
-            */
+            
             if( $features_limit != -1 ) {
                 if ( $count == $features_limit ) break;
             }

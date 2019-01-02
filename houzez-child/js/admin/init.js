@@ -155,8 +155,8 @@ jQuery(document).ready(function($) {
         var fave_floor_plans_enable = jQuery('#fave_floor_plans_enable').attr('value');
         var fave_additional_features_enable = jQuery('#fave_additional_features_enable').attr('value');
 
-
-        jQuery('#page_header_slider_settings, #page_header_image_settings, #page_header_video_settings, #page_header_common_settings, #floor_plans_settings, #additional_details_settings, #page_header_fix_screen_settings, #page_header_fix_screen_type_settings, #page_header_map_settings').hide();
+        
+        jQuery('#page_header_slider_settings, #page_header_image_settings, #page_header_video_settings, #page_header_common_settings, #floor_plans_settings, #additional_details_settings, #page_header_fix_screen_settings, #page_header_fix_screen_type_settings, #page_header_map_settings, #page_tzheader_settings').hide();
         
         if( header_type == 'rev_slider' ) {
             jQuery('#page_header_slider_settings, #fave_menu_settings').stop(true,true).fadeIn(500);

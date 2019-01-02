@@ -93,11 +93,7 @@
                                         wp_reset_postdata();
                                     } //end foreach
                                 } // end if
-                                ?>
-                            
-
-
-                            
+                                ?>                            
                         </div>
                     </div>
                 </div>
