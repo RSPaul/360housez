@@ -13,7 +13,8 @@ class WP_houzez_walker_nav_menu extends Walker_Nav_menu {
         $anchor_active = '';
         if( in_array('current-menu-item', $item->classes) ) {
             $active_class = 'active';
-            $anchor_active = 'dropdown-trigger bd-gradient waves-effect';
+            $anchor_active = 'waves-effect';
+            // $anchor_active = 'dropdown-trigger bd-gradient waves-effect';
         }
 
         $dropdown_class = '';

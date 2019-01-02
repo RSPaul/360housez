@@ -81,17 +81,14 @@ if( isset($_SESSION['appliance']) && !empty($_SESSION['appliance']) ) {
  ?>
 
 <!-- SEARCHING NAVBAR fixed with .stycky-navbar class-->
-<div class="navbar searching-navbar sticky-navbar">
+<div class="navbar searching-navbar" id="sticky_navbar">
 	<form method="get" autocomplete="off" action="<?php echo esc_url(houzez_get_search_template_link()); ?>">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xxs-12">
-					<div class="mini-logo">
-						<!--HOME link--><!-- Condensed logo image -->
-						<a href="#!">
-							<img src="img/condensed-logo.svg" alt="Logotipo" title="Home"/>
-						</a>
-					</div>
+					<div class="navbar-header listing_hide_logo mini-logo">
+                        <?php get_template_part('inc/header/logo'); ?>
+                    </div> 
 					<div class="main-search-inputs flex-container">
 						<div class="input-field no-label action-filter">
 							<select required name="status" class="status-left disabled-status">
@@ -556,3 +553,19 @@ if( isset($_SESSION['appliance']) && !empty($_SESSION['appliance']) ) {
 		</div>
 	</form>
 </div>
+
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("sticky_navbar");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky_sec");
+      } else {
+        header.classList.remove("sticky_sec");
+      }
+    }
+</script>
