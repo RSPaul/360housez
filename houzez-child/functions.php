@@ -3510,6 +3510,7 @@ if ( !function_exists( 'houzez_get_agent_info_bottom_new_v2' ) ) {
 
         // get agent categories (language)
         $categories = get_the_terms( $args['agent_id'], 'agent_category' );
+
         $args['language'] = $categories[0]->slug;
         
         // return back if current agent language do not match with user language         
@@ -3954,3 +3955,10 @@ function add_tz_property_detail_content($sections) {
 }
 
 add_filter("redux/options/houzez_options/sections", 'add_tz_property_detail_content');
+
+function my_scripts() {
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_deregister_script( 'jquery-ui-datepicker' );
+}
+
+add_action( 'wp_enqueue_scripts', 'my_scripts' );
