@@ -269,7 +269,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                 </div>
                             </div>
                             <div>
-                                <a href="#advanced-search-menu" role="button" id="formSale" class="bd-black waves-effect waves-color-1 collapsed" data-toggle="collapse" aria-expanded="false">
+                                <a href="#advanced-search-menu3" role="button" id="formSale" class="bd-black waves-effect waves-color-1 collapsed" data-toggle="collapse" aria-expanded="false">
                                     <i class="tz-filter-sm" title="Advanced filters"></i>
                                 </a>
                                 <!-- <a href="#!" role="button" id="half_map_update" class="bd-black waves-effect waves-color-1">
@@ -299,7 +299,7 @@ if ($adv_show_hide['keyword'] != 1) {
                 </div>
                 <div class="row">
                     <div class="col-xxs-12">
-                        <div id="advanced-search-menu" class="collapse"  aria-expanded="false">
+                        <div id="advanced-search-menu3" class="collapse"  aria-expanded="false">
                             <!-- Use class to show filters according to the action .for-rent-living-filters / .for-rent-vacations-filters / .for-sale-filters  -->
                             <div class="advanced-search-filters flex-container flex-wrap">
                                 <div class="search-col one flex-container">

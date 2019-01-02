@@ -1645,6 +1645,10 @@ var nice = false;
         });
     }
 
+    $('#houzez-gmap-full').click(function(){
+        $('.search_map_page').toggleClass('full-map-show');
+    });
+
     // Hide dropdowns when click on body area.
     function element_dropdown_hide(ele,ele_class){
         var nav_dropdown = $('.nav-dropdown');
