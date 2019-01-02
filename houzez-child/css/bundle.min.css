@@ -10983,10 +10983,10 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 
 /*static image page css start here*/
 .banner-inner-content .banner-inner:before {
-        <?php if ($page_image_overlay != '') { ?>
-            background-color: <?php echo esc_attr($page_image_overlay); ?>;
-        <?php } ?>
-        opacity: <?php echo esc_attr($page_image_opacity); ?>;
+    <?php if ($page_image_overlay != '') { ?>
+        background-color: <?php echo esc_attr($page_image_overlay); ?>;
+	    <?php } ?>
+	    opacity: <?php echo esc_attr($page_image_opacity); ?>;
     }
 .default_show.half-part-left h3 {
     padding: 10px;
@@ -11003,7 +11003,7 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 }
 .default_show.half-part-left .full-area {
     /*background: rgba(255,255,255,0.5);*/ text-align: center; 
-    max-width: 80%; width: 100%; margin:8% auto 0;
+    max-width: 80%; width: 100%; margin:7% auto 0;
 }
 .default_show.half-part-left .half-area  {
     text-align: center; background: rgba(255,255,255,0.5);   right:0; float:right;  max-width: 80%; width: 100%; margin-top:41%;
