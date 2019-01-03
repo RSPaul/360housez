@@ -10657,7 +10657,7 @@ label[for="gdpr_agreement"] {
 
 @media (max-width: 767px) {
   .tabs a {
-    width: 84px;
+    width: 100%;
   }
 }
 

@@ -3862,3 +3862,171 @@ function my_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'my_scripts' );
+
+
+/**********Starts adding custom fields in features taxonomy************/
+
+//add extra fields to category edit form hook
+add_action ( 'services_edit_form_fields', 'extra_services_fields');
+add_action ( 'services_add_form_fields', 'extra_services_fields');
+
+//add extra fields to services edit form callback function
+function extra_services_fields( $tag ) {    //check for existing featured ID
+    $t_id = $tag->term_id;
+    $cat_meta = get_option( "category_$t_id");
+?>
+<tr class="form-field">
+<th scope="row" valign="top">
+    <label for="ser_Icon"><?php _e('Icon'); ?></label></th>
+<td>
+<input type="text" name="Cat_meta[icon]" id="Cat_meta[icon]" size="3" style="width:60%;" value="<?php echo $cat_meta['icon'] ? $cat_meta['icon'] : ''; ?>"><br />
+        <span class="description"><?php _e('Please set an icon.'); ?></span>
+    </td>
+</tr>
+
+<?php
+}
+
+// save extra category extra fields hook
+add_action ( 'edited_services', 'save_extra_services_fileds');
+add_action ( 'created_services', 'save_extra_services_fileds');
+
+// save extra services extra fields callback function
+function save_extra_services_fileds( $term_id ) {
+    if ( isset( $_POST['Cat_meta'] ) ) {
+        $t_id = $term_id;
+        $cat_meta = get_option( "category_$t_id");
+        $cat_keys = array_keys($_POST['Cat_meta']);
+            foreach ($cat_keys as $key){
+            if (isset($_POST['Cat_meta'][$key])){
+                $cat_meta[$key] = $_POST['Cat_meta'][$key];
+            }
+        }
+        //save the option array
+        update_option( "category_$t_id", $cat_meta );
+    }
+}
+
+//add extra fields to category edit form hook
+add_action ( 'home_appliances_edit_form_fields', 'extra_home_appliances_fields');
+add_action ( 'home_appliances_add_form_fields', 'extra_home_appliances_fields');
+
+//add extra fields to home_appliances edit form callback function
+function extra_home_appliances_fields( $tag ) {    //check for existing featured ID
+    $t_id = $tag->term_id;
+    $cat_meta = get_option( "category_$t_id");
+?>
+<tr class="form-field">
+<th scope="row" valign="top">
+    <label for="ser_Icon"><?php _e('Icon'); ?></label></th>
+<td>
+<input type="text" name="Cat_meta[icon]" id="Cat_meta[icon]" size="3" style="width:60%;" value="<?php echo $cat_meta['icon'] ? $cat_meta['icon'] : ''; ?>"><br />
+        <span class="description"><?php _e('Please set an icon.'); ?></span>
+    </td>
+</tr>
+
+<?php
+}
+
+// save extra category extra fields hook
+add_action ( 'edited_home_appliances', 'save_extra_home_appliances_fileds');
+add_action ( 'created_home_appliances', 'save_extra_home_appliances_fileds');
+
+// save extra home_appliances extra fields callback function
+function save_extra_home_appliances_fileds( $term_id ) {
+    if ( isset( $_POST['Cat_meta'] ) ) {
+        $t_id = $term_id;
+        $cat_meta = get_option( "category_$t_id");
+        $cat_keys = array_keys($_POST['Cat_meta']);
+            foreach ($cat_keys as $key){
+            if (isset($_POST['Cat_meta'][$key])){
+                $cat_meta[$key] = $_POST['Cat_meta'][$key];
+            }
+        }
+        //save the option array
+        update_option( "category_$t_id", $cat_meta );
+    }
+}
+
+/**********Ends adding custom fields in features taxonomy************/
+
+/* Add metaboxes to beaches */
+
+if ( !function_exists( 'houzez_beaches_add_meta_fields' ) ) :
+    function houzez_beaches_add_meta_fields() {
+        $houzez_meta = houzez_get_property_area_meta();
+        $all_cities = houzez_get_all_cities();
+        ?>
+
+        <div class="form-field">
+            <label><?php _e( 'Which city has this area?', 'houzez' ); ?></label>
+            <select name="fave[parent_city]" class="widefat">
+                <?php echo $all_cities; ?>
+            </select>
+            <p class="description"><?php _e( 'Select city which has this area.', 'houzez' ); ?></p>
+        </div>
+
+
+
+        <?php
+    }
+endif;
+
+add_action( 'beaches_add_form_fields', 'houzez_beaches_add_meta_fields', 10, 2 );
+
+
+/**
+ *   ----------------------------------------------------------------------------------------------------------------------------------------------------
+ *   2.0 - Edit meta field
+ *   ----------------------------------------------------------------------------------------------------------------------------------------------------
+ */
+
+if ( !function_exists( 'houzez_beaches_edit_meta_fields' ) ) :
+    function houzez_beaches_edit_meta_fields( $term ) {
+        $houzez_meta = houzez_get_property_area_meta();
+
+        if(is_object ($term)) {
+            $term_id      =  $term->term_id;
+            $term_meta    =  get_option( "_houzez_beaches_$term_id" );
+            $parent_city  =  $term_meta['parent_city'] ? $term_meta['parent_city'] : '';
+            $all_cities   =  houzez_get_all_cities($parent_city);
+
+        } else {
+            $all_cities   =  houzez_get_all_cities();
+        }
+        ?>
+
+        <tr class="form-field">
+            <th scope="row" valign="top"><label><?php _e( 'Which city has this area?', 'houzez' ); ?></label></th>
+            <td>
+                <select name="fave[parent_city]" class="widefat">
+                    <?php echo $all_cities; ?>
+                </select>
+                <p class="description"><?php _e( 'Select city which has this area.', 'houzez' ); ?></p>
+            </td>
+        </tr>
+
+        <?php
+    }
+endif;
+
+add_action( 'beaches_edit_form_fields', 'houzez_beaches_edit_meta_fields', 10, 2 );
+
+
+if ( !function_exists( 'houzez_save_beaches_meta_fields' ) ) :
+    function houzez_save_beaches_meta_fields( $term_id ) {
+
+        if ( isset( $_POST['fave'] ) ) {
+
+            $houzez_meta = array();
+
+            $houzez_meta['parent_city'] = isset( $_POST['fave']['parent_city'] ) ? $_POST['fave']['parent_city'] : '';
+
+            update_option( '_houzez_beaches_'.$term_id, $houzez_meta );
+        }
+
+    }
+endif;
+
+add_action( 'edited_beaches', 'houzez_save_beaches_meta_fields', 10, 2 );
+add_action( 'create_beaches', 'houzez_save_beaches_meta_fields', 10, 2 );
