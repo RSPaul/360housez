@@ -31,7 +31,7 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
 <!-- <?php //get_template_part('template-parts/properties-head'); ?> -->
 	
-	<?php get_template_part('template-parts/advanced-search/half-map'); ?>
+	<?php //get_template_part('template-parts/advanced-search/half-map'); ?>
 
 	<div class="property_listing inner_card_property_listing">
 		<div class="container-fluid">
