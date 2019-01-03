@@ -40,7 +40,7 @@ if ( sizeof( $get_comments ) != 0 ) {
 }
 ?>
 
-<div class="property-card featured-property">
+<div class="property-card <?php echo $prop_featured ? 'featured-property' : '';?>">
 	<div class="property-card-wrapper flex-container">
 		<div class="property-card-header">
 			<ul class="card-header-labels flex-container flex-wrap txt-h-medium txt-xs text-uppercase">
