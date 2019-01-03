@@ -348,5 +348,5 @@ if (houzez_search_needed()) {
 </section>
 <!--end section header-->
 
-<?php get_template_part( 'inc/header/mobile-header' ); 
+<?php //get_template_part( 'inc/header/mobile-header' ); 
 } ?>
