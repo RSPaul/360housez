@@ -178,7 +178,7 @@ $featured_img = houzez_get_image_url('full');
 
     function myFunction() {
         console.log('here ', sticky , window.pageYOffset);
-      if (window.pageYOffset > 740) {
+      if (window.pageYOffset > 900) {
         header.classList.add("sticky_sec");
       } else {
         header.classList.remove("sticky_sec");

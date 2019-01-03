@@ -9135,7 +9135,7 @@ body.property-detail .main-navbar {
 	border-color: #000;
 	border-style: solid;
 	left: 0;
-	padding: 0 15px;
+	padding: 0px;
 }
 .property-detail-fixed-nav.sticky_sec{
 	padding: 0px;
@@ -10396,7 +10396,7 @@ button.map-control span {
 		border-width: 1px 1px 0 0
 	}
 	.property-detail-floor-plans ul.nav-tabs li a {
-		padding: 1.875rem 3.125rem
+		padding: 1.875rem 1.125rem;
 	}
 	.property-detail-floor-plans .tab-content {
 		padding: 2.5rem 0
@@ -10750,7 +10750,7 @@ button.map-control span {
 	}
 	.property-detail-header .hd-wrapper .header-info {
 		margin-bottom: 0;
-		margin-top: 7.5rem;
+		margin-top: 0px;
 		height: 100vh;
 		width: 50%;
 		padding-left: 2.5rem;
@@ -11498,7 +11498,12 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
     position: relative;
     z-index: 99999;
 }
-
+.header-actions.list-inline.txt-lg {
+    margin-left: 0;
+}
+.property-template-default.single.single-property {
+    background: #fff;
+}
 
 
 
@@ -11551,6 +11556,9 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu3, .searching-navbar #advanced-search-menu {
 	    height: 66vh;
 	    overflow-x: hidden;
+	}
+	.property-detail-header .hd-wrapper .header-info h1.txt-header {
+	    font-size: 2.375rem;
 	}
 
 
@@ -11611,6 +11619,11 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 /*	.map-search-result {
 	    display: none !important;
 	}*/
+	.floor-characteristics.txt-p-light.txt-md li {
+	    display: inline-block;
+	    margin-right: 10px;
+	    font-size: 12px;
+	}
 
 
 
@@ -11700,6 +11713,9 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	}
 	li.dropdown.account-actions ul.dropdown-menu{
 		min-height: 265px;
+	}
+	.floor-characteristics.txt-p-light.txt-md li{
+		font-size: 14px;
 	}
 
 

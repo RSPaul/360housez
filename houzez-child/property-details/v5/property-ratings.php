@@ -86,7 +86,7 @@ $agent_forms_terms_gdpr_agreement = houzez_option('agent_forms_terms_gdpr_agreem
                         <div class="row individual-review">
                             <hr>
                             <div class="col-xxs-12 col-xs-2">
-                                <span class="review-avatar img-circle"><img class="media-object" src="<?php echo esc_url($user_custom_picture); ?>" alt="<?php the_author_meta( 'display_name', $comment->user_id ); ?>" width="60" height="60"></span>
+                                <span class="review-avatar img-circle"><!-- <img class="media-object" src="<?php echo esc_url($user_custom_picture); ?>" alt="<?php the_author_meta( 'display_name', $comment->user_id ); ?>" width="60" height="60"> --><i class="tz-user"></i></span>
                             </div>
                             <div class="col-xxs-12 col-xs-10">
                                 <p class="review user txt-h-light"><?php the_author_meta( 'display_name', $comment->user_id ); ?></p>

@@ -16584,8 +16584,13 @@ h4 {
 .rating-container .star {
   margin-right: 4px;
   text-align: center;
+  color: #000 !important;
 }
-
+.review-value .rating-container.rating-md .star i {
+    font-size: 16px !important;
+    position: relative;
+    top: 4px;
+}
 .rating-container .empty-stars {
   color: #f8b42b;
 }
