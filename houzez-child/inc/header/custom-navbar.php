@@ -28,7 +28,7 @@ class WP_houzez_walker_nav_menu extends Walker_Nav_menu {
 
 
         if( $args->walker->has_children && $depth == 0 ) {
-            $output .= '<a href="' . esc_url($permalink) . '" class="'. $anchor_active.' nav-link ' . $dropdown_link_class . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+            $output .= '<a href="' . esc_url($permalink) . '" class="'. $anchor_active.' nav-link dropdown-trigger ' . $dropdown_link_class . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
         }
         else {
             $output .= '<a href="' . esc_url($permalink) . '" class="'. $anchor_active.' nav-link">';
@@ -164,7 +164,7 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
 
     function start_lvl( &$output, $depth=0, $args = array() ){
         $submenu = ($depth > 0) ? ' sub-menu' : '';
-        $output .= "<ul class='dropdown-menu $submenu depth_$depth'>";
+        $output .= "<ul class='dropdown-content dropdown-menu $submenu depth_$depth'>";
     }
 
 
