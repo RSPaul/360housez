@@ -202,12 +202,12 @@ if($prop_total_reviews != 0) {
                             </div>
                         </div>
                         <div class="input-field col-xxs-12">
-                            <!-- <input id="write-review-title" type="text" class="validate" required="" aria-required="true"> -->
-                            <input class="form-control" id="review_title" name="title" class="validate" required="" aria-required="true">
-                            <label for="write-review-title">Review title</label>
+                            <input id="review_title" name="title" type="text" class="validate" required="true" aria-required="true">
+                            <!-- <input id="review_title" name="title" class="validate" required="" aria-required="true"> -->
+                            <label for="review_title">Review title</label>
                         </div>
                         <div class="input-field col-xxs-12">
-                            <textarea class="materialize-textarea" required="" aria-required="true" data-length="600" name="message"></textarea>
+                            <textarea id="write-review-text" class="materialize-textarea" required="true" aria-required="true" data-length="600" name="message"></textarea>
                             <!-- <textarea id="write-review-text" class="materialize-textarea" required="" aria-required="true" data-length="600"></textarea> -->
                             <label class="active" for="write-review-text">Write your review here</label>
                         </div>
@@ -216,12 +216,12 @@ if($prop_total_reviews != 0) {
                         <div class="col-xxs-12">
                             <div class="data-protection-eu-checkbox">
                                 <label for="review-accept-privacy-policy">
-                                    <input id="review-accept-privacy-policy" type="checkbox" required="" aria-required="true"/>
+                                    <input id="review-accept-privacy-policy" type="checkbox"/>
                                     <span>I have read and accept the <a href="" target="_blank">privacy policy</a>.</span>
                                 </label>
                             </div>
                             <!-- <a type="button" class="waves-effect waves-color-1 btn bd-black">Send review</a> -->
-                            <button class="property_rating waves-effect waves-color-1 btn bd-black"><?php esc_html_e('Send review', 'houzez'); ?></button>
+                            <button type="button" class="property_rating waves-effect waves-color-1 btn bd-black"><?php esc_html_e('Send review', 'houzez'); ?></button>
                             <div class="data-protection-eu-alert">
                                 <h6>Basic information about data protection:</h6>
                                 <p>

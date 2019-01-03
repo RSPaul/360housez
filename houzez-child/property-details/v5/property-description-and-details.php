@@ -13,7 +13,6 @@ $prop_price = get_post_meta( get_the_ID(), 'fave_property_price', true );
 $prop_living_price = get_post_meta( get_the_ID(), 'fave_property_sec_price', true );
 $prop_vac_price = get_post_meta( get_the_ID(), 'fave_property_third_price', true );
 
-
 $prop_size = get_post_meta( get_the_ID(), 'fave_property_size', true );
 $prop_land = get_post_meta( get_the_ID(), 'fave_property_land', true );
 $prop_land_postfix = get_post_meta( get_the_ID(), 'fave_property_postfix', true );
@@ -97,7 +96,6 @@ $rules_pets_enable=get_post_meta(get_the_ID(), 'wp_rules_pets_enable', true);
 $rules_security_deposit=get_post_meta(get_the_ID(),'wp_rules_security', true);
 $own_rules_repeater=get_post_meta(get_the_ID(), 'own_rules', true);
 
-
 $pro_type = get_the_terms(get_the_ID(), 'property_status');
 
 if( !empty( $prop_id ) ||
@@ -110,9 +108,7 @@ if( !empty( $prop_id ) ||
 ) {
     $prop_details = true;
 }
-
 $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
-
 ?>
 
 
@@ -214,7 +210,7 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                     $post_id=get_the_id();    
                     $comment_data=wp_count_comments($post_id); 
                     $count_comment= $comment_data->total_comments;
-                    print_r($count_comment);
+                    
                     ?>  
                     <ul class="list-inline">
                         <li>
