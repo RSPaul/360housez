@@ -77,7 +77,7 @@ jQuery(document).ready(function($) {
 
         var template = jQuery('#page_template').attr('value');
 
-        if( template == 'template/property-listing-template.php' || template == 'template/property-listing-template-style2.php' || template == 'template/property-listing-template-style3.php' || template == 'template/property-listing-fullwidth.php' || template == 'template/property-listing-style2-fullwidth.php' || template == 'template/property-listing-template-style3-fullwidth.php' || template == 'template/property-listings-map.php' || template == 'template/properties-parallax.php' ) {
+        if( template == 'template/property-listing-template.php' || template == 'template/property-listing-template-style2.php' || template == 'template-parts/property-listing-style3-fullwidth.php' || template == 'template/property-listing-template-style3.php' || template == 'template/property-listing-fullwidth.php' || template == 'template/property-listing-style2-fullwidth.php' || template == 'template/property-listing-template-style3-fullwidth.php' || template == 'template/property-listings-map.php' || template == 'template/properties-parallax.php' ) {
             jQuery('#fave_listing_template').stop(true,true).fadeIn(500);
             if( template == 'template/property-listings-map.php' || template == 'template/properties-parallax.php' ) {
                 jQuery('#only_for_listings_templates').hide();
