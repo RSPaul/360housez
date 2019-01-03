@@ -6,7 +6,9 @@ $current_user = wp_get_current_user();
 $all_meta_for_user = get_user_meta( $current_user->ID );
 $post_meta_data       = get_post_custom($post->ID);
 $houzez_prop_id              = get_post_meta( get_the_ID(), 'fave_property_id', true );
+
 $prop_images          = get_post_meta( get_the_ID(), 'fave_property_images', false );
+
 $prop_address         = get_post_meta( get_the_ID(), 'fave_property_map_address', true );
 $prop_featured        = get_post_meta( get_the_ID(), 'fave_featured', true );
 $prop_video_img       = get_post_meta( get_the_ID(), 'fave_video_image', true );
@@ -253,7 +255,14 @@ houzez_count_property_views( $post->ID );
     </div> <!--Start in header, end #section-body-->
 
     <!--start lightbox-->
-    <?php get_template_part( 'property-details/lightbox' ); ?>
+    <?php 
+     if($property_layout == 'v5') {
+        get_template_part( 'property-details/v5/lightbox' ); 
+     }else{
+        get_template_part( 'property-details/lightbox' ); 
+     }
+
+    ?>
     <!-- End Lightbox-->
     <?php } // end expired else?>
 
@@ -299,14 +308,27 @@ houzez_count_property_views( $post->ID );
         <h4 class="modal-title"><?php the_title(); ?> </h4>
       </div>
       <div class="modal-body">
-            <div class="myGallery" id="gallery_photos">
-                <ul class="galllery_content">
-                    <?php 
-                    echo "<pre>";
-                    print_r($prop_images);
-                    ?>
-                </ul>
-            </div>
+            <!-- <div class="myGallery" id="gallery_photos"> -->
+                <!-- <ul class="galllery_content"> -->
+                    <?php if( !empty( $prop_images ) ) { ?>
+                        <?php foreach( $prop_images as $img_id ): ?>
+                            <!-- <div class="item"> <?php echo wp_get_attachment_image( $img_id, 'houzez-imageSize1170_738' ); ?> </div> -->
+                        <?php endforeach; ?>
+                    <?php } ?>
+                <!-- </ul> -->
+            <!-- </div> -->
+            <ul id="lightgallery" class="list-unstyled row">
+                <?php if( !empty( $prop_images ) ) { ?>
+                        <?php foreach( $prop_images as $img_id ): ?>                            
+                            <li>
+                                <a href="#">
+                                    <!-- <img class="img-responsive" src="img/thumb-1.jpg"> -->
+                                    <?php echo wp_get_attachment_image( $img_id, 'houzez-imageSize1170_738' ); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php } ?>
+            </ul>
             <div class="myGallery" id="gallery_video">
                 <iframe id="video_gallery_content" data-src="<?php echo $prop_video_url . '?autoplay=1'; ?>" style="height: 360px; width: 100%;"></iframe>
             </div>
