@@ -13,7 +13,6 @@ $prop_price = get_post_meta( get_the_ID(), 'fave_property_price', true );
 $prop_living_price = get_post_meta( get_the_ID(), 'fave_property_sec_price', true );
 $prop_vac_price = get_post_meta( get_the_ID(), 'fave_property_third_price', true );
 
-
 $prop_size = get_post_meta( get_the_ID(), 'fave_property_size', true );
 $prop_land = get_post_meta( get_the_ID(), 'fave_property_land', true );
 $prop_land_postfix = get_post_meta( get_the_ID(), 'fave_property_postfix', true );
@@ -97,7 +96,6 @@ $rules_pets_enable=get_post_meta(get_the_ID(), 'wp_rules_pets_enable', true);
 $rules_security_deposit=get_post_meta(get_the_ID(),'wp_rules_security', true);
 $own_rules_repeater=get_post_meta(get_the_ID(), 'own_rules', true);
 
-
 $pro_type = get_the_terms(get_the_ID(), 'property_status');
 
 if( !empty( $prop_id ) ||
@@ -110,9 +108,7 @@ if( !empty( $prop_id ) ||
 ) {
     $prop_details = true;
 }
-
 $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
-
 ?>
 
 
@@ -214,7 +210,7 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                     $post_id=get_the_id();    
                     $comment_data=wp_count_comments($post_id); 
                     $count_comment= $comment_data->total_comments;
-                    print_r($count_comment);
+                    
                     ?>  
                     <ul class="list-inline">
                         <li>
@@ -239,7 +235,7 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                         if( $prop_detail_share != 0 ) { ?>
                             <li class="share-social">   
                                 <ul>
-                                    <li><a href="#!" class="no-style" role="button"><i class="tz-whatsapp waves-effect waves-circle"></i></a></li>
+                                    <li><a href="whatsapp://send?text=<?php echo site_url(); ?>"  data-action="share/whatsapp/share" class="no-style" role="button"><i class="tz-whatsapp waves-effect waves-circle"></i></a></li>
                                     <li><a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink())?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-facebook waves-effect waves-circle"></i></a></li>
                                     <li><a href="https://twitter.com/intent/tweet?text=<?php echo urlencode(get_the_title()); ?>&url=<?php echo urlencode(get_permalink()); ?>&via=<?php echo urlencode($twitter_user ? $twitter_user : get_bloginfo('name')) ?>" onclick="if(!document.getElementById(\'td_social_networks_buttons\')){window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;}" class="no-style" role="button"><i class="tz-twitter waves-effect waves-circle"></i></a></li>
                                     <li><a href="http://plus.google.com/share?url=<?php echo urlencode( get_permalink() ) ?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-googleplus waves-effect waves-circle"></i></a></li>
@@ -385,9 +381,11 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                         ?>
                         <?php foreach ($terms as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
-                            <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
+                            <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); 
+                            $cat_meta = get_option( "category_$term_id");
+                            ?>               
                             <div class="feature_<?php echo $term_id; ?>">
-                                <i class="<?php echo $get_feature_icons; ?>"></i>
+                                <i class="<?php echo $cat_meta["icon"]; ?>"></i>
                                 <p><?php echo $cat_feature->name; ?></p>
                             </div>
                         <?php } ?>
@@ -406,9 +404,12 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                         ?>                      
                         <?php foreach ($terms as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
-                            <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
+                            <?php 
+                            $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); 
+                            $cat_meta = get_option( "category_$term_id");
+                            ?>               
                             <div class="feature_<?php echo $term_id; ?>">
-                                <i class="<?php echo $get_feature_icons; ?>"></i>
+                                <i class="<?php echo $cat_meta["icon"]; ?>"></i>
                                 <p><?php echo $cat_feature->name; ?></p>
                             </div>
                         <?php } ?>                      

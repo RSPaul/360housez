@@ -42,13 +42,19 @@ if( $prop_default_active_tab == "image_gallery" ) {
 } else {
     $gallery_view = 'in active';
 }
+$featured_img = houzez_get_image_url('full');
+    if( !empty($featured_img) ) {
+        $featured_img = $featured_img[0];
+    } else {
+        $featured_img = '';
+    }
 ?>
 
 
 <div class="property-detail-header">
     <div class="row">
         <div class="col-xxs-12">
-            <div class="hd-wrapper flex-container" style="background: url('https://placeimg.com/1000/1000/arch')">
+            <div class="hd-wrapper flex-container" style="background: url('<?php echo esc_url( $featured_img ); ?>')">
                 <div class="header-info flex-container">
                     <?php 
                     $status = get_post_meta( get_the_ID(), 'fave_property_status', true );
@@ -172,7 +178,7 @@ if( $prop_default_active_tab == "image_gallery" ) {
 
     function myFunction() {
         console.log('here ', sticky , window.pageYOffset);
-      if (window.pageYOffset > 740) {
+      if (window.pageYOffset > 900) {
         header.classList.add("sticky_sec");
       } else {
         header.classList.remove("sticky_sec");

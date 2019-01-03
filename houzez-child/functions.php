@@ -444,12 +444,14 @@ function my_scripts_and_styles() {
 
 
     wp_enqueue_style('bootstrap.min', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.8', 'all');
+    wp_enqueue_style('lightgallery.min', get_stylesheet_directory_uri() . '/css/lightgallery.min.css', array(), '3.3.8', 'all');
     wp_enqueue_style('houzez-all', get_stylesheet_directory_uri() . '/css/all.min.css', array(), HOUZEZ_THEME_VERSION, 'all');
     wp_enqueue_style('houzez-main', get_stylesheet_directory_uri() . '/css/main' . $css_minify_prefix . '.css', array(), HOUZEZ_THEME_VERSION, 'all');
     wp_enqueue_style('bundle', get_stylesheet_directory_uri() . '/css/bundle.min.css', array(), '3.3.7', 'all');
     //wp_enqueue_style('font-awesome.min', get_stylesheet_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all');
     wp_enqueue_script('swipe', get_stylesheet_directory_uri() . '/js/jquery.touchSwipe.min.js', array('jquery'));
     wp_enqueue_script('my-custom-script', get_stylesheet_directory_uri() . '/js/bundle.min.js', array('jquery'));
+    wp_enqueue_script('lightgallery-all.min', get_stylesheet_directory_uri() . '/js/lightgallery-all.min.js', array('jquery'));
 
     $after_login_redirect = houzez_option('login_redirect');
     $googlemap_ssl = houzez_option('googlemap_ssl');
@@ -465,6 +467,7 @@ function my_scripts_and_styles() {
 
     // Ajax Calls
     wp_enqueue_script('houzez_ajax_calls', get_stylesheet_directory_uri() . '/js/houzez_ajax_calls' . $js_minify_prefix . '.js', array('jquery'), HOUZEZ_THEME_VERSION, true);
+    wp_enqueue_script('houzez-plugins', get_stylesheet_directory_uri() . '/js/plugins.js', array('jquery'), HOUZEZ_THEME_VERSION, true);
     wp_localize_script('houzez_ajax_calls', 'HOUZEZ_ajaxcalls_vars',
         array(
             'admin_url' => get_admin_url(),
@@ -3518,7 +3521,9 @@ if ( !function_exists( 'houzez_get_agent_info_bottom_new_v2' ) ) {
         // get agent categories (language)
         $categories = get_the_terms( $args['agent_id'], 'agent_category' );
 
-        $args['language'] = $categories[0]->slug;
+        if($categories) {
+            $args['language'] = $categories[0]->slug;
+        }
         
         // return back if current agent language do not match with user language         
         if(defined('ICL_LANGUAGE_CODE') && $args['language'] != ICL_LANGUAGE_CODE) {
