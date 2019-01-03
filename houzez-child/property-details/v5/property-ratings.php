@@ -33,7 +33,7 @@ if ( sizeof( $get_comments ) != 0 ) {
     }
 }
 $agent_forms_terms_gdpr_agreement = houzez_option('agent_forms_terms_gdpr_agreement');
-if($prop_total_reviews != 0) {
+
 ?>
 
 <!--REVIEWS-->
@@ -41,6 +41,7 @@ if($prop_total_reviews != 0) {
     <div id="property-reviews" class="id-link"></div>
     <hr>
     <div class="row">
+        <?php if($prop_total_reviews != 0) { ?>
         <div class="col-xxs-12 col-xxs-offset-0 col-md-8 col-md-offset-2 col-xl-6 col-xl-offset-3">
 
             <h2 class="txt-lg text-center"><span class="txt-h-light"><?php
@@ -166,8 +167,8 @@ if($prop_total_reviews != 0) {
                 }
             ?>
         </div>
+        <?php } ?>
         <!--Reviews container ends here-->
-
         <!-- Write a review -->
         <div class="col-xxs-12 col-xxs-offset-0 col-md-8 col-md-offset-2 col-xl-6 col-xl-offset-3">
             <div id="review-this-property" class="id-link"></div>
@@ -248,5 +249,4 @@ if($prop_total_reviews != 0) {
     </div>
 </section> <!-- /container-->
 
-<?php } ?>
 
