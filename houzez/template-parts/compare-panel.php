@@ -9,7 +9,7 @@
 <!--start compare panel-->
 <div id="compare-controller" class="compare-panel">
     <div class="compare-panel-header">
-        <h4 class="title"> <?php esc_html_e( 'Compare Listings', 'houzez' ); ?> <span class="panel-btn-close pull-right"><i class="fa fa-times"></i></span></h4>
+        <h4 class="title"> <?php esc_html_e( 'Compare Listings', 'houzez' ); ?> <span class="panel-btn-close pull-right"><i class="tz-close-sm"></i></span></h4>
     </div>
     <?php do_action('houzez_show_compare', $args = '' );  ?>
 </div>

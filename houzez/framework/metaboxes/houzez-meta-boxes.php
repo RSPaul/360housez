@@ -403,7 +403,7 @@ if( !function_exists( 'houzez_register_metaboxes' ) ) {
         * ============================================================================================*/
         $meta_boxes[] = array(
             'id' => 'property-meta-box',
-            'title' => esc_html__('Property', 'houzez'),
+            'title' => esc_html__('Property Data', 'houzez'),
             'pages' => array('property'),
             'tabs' => array(
                 'property_details' => array(

@@ -105,7 +105,7 @@ var nice = false;
     $('.map-zoom-actions #houzez-gmap-full').on('click',function () {
         if($(this).hasClass('active')== true){
             $(this).removeClass('active').children('span').text('Fullscreen');
-            $(this).children('i').removeClass('fa-square-o').addClass('fa-arrows-alt');
+            $(this).children('i').removeClass('tz-minimize').addClass('tz-expand');
             $('#houzez-gmap-main').removeClass('mapfull');
             $('.header-media').delay(1000).queue(function(next){
                 $('.header-media').css('height','auto');
@@ -115,7 +115,7 @@ var nice = false;
         }else{
             $('.header-media').height($('#houzez-gmap-main').height());
             $(this).addClass('active').children('span').text('Default');
-            $(this).children('i').removeClass('fa-arrows-alt').addClass('fa fa-square-o');
+            $(this).children('i').removeClass('tz-expand').addClass('tz-minimize');
             $('#houzez-gmap-main').addClass('mapfull');
         }
     });
@@ -470,26 +470,26 @@ var nice = false;
     /* ------------------------------------------------------------------------
      /*  parallax
      ------------------------------------------------------------------------- */
-    function parallax(){
+    // function parallax(){
 
-        if($('.header-media .banner-parallax').length){
-            var banner_distance = $('.header-media').offset().top;
-            var start_scroll = banner_distance + 15;
-            var scrolled = $(window).scrollTop() - start_scroll;
-            if($(window).scrollTop() >= start_scroll){
+    //     if($('.header-media .banner-parallax').length){
+    //         var banner_distance = $('.header-media').offset().top;
+    //         var start_scroll = banner_distance + 15;
+    //         var scrolled = $(window).scrollTop() - start_scroll;
+    //         if($(window).scrollTop() >= start_scroll){
 
-                //$('.banner-inner').css('background-position-y', (scrolled*-0.9)+'px');
-                $('.banner-bg-wrap').css("transform","translate3d(0,"+-scrolled*-0.3+"px,0)");
-            }else if($(window).scrollTop() < start_scroll){
-                $('.banner-bg-wrap').css("transform","translate3d(0,0px,0)");
-            }
-        }
+    //             //$('.banner-inner').css('background-position-y', (scrolled*-0.9)+'px');
+    //             $('.banner-bg-wrap').css("transform","translate3d(0,"+-scrolled*-0.3+"px,0)");
+    //         }else if($(window).scrollTop() < start_scroll){
+    //             $('.banner-bg-wrap').css("transform","translate3d(0,0px,0)");
+    //         }
+    //     }
 
-    }
-    parallax();
-    $(window).scroll(function(e){
-        parallax();
-    });
+    // }
+    // parallax();
+    // $(window).scroll(function(e){
+    //     parallax();
+    // });
     
     /* ------------------------------------------------------------------------ */
     /*  DETAIL LIGHT BOX SLIDE SHOW
@@ -696,11 +696,11 @@ var nice = false;
     /* ------------------------------------------------------------------------ */
     /*  BOOTSTRAP SELECT PICKER
      /* ------------------------------------------------------------------------ */
-    if($('.selectpicker').length > 0){
-        $('.selectpicker').selectpicker({
-            dropupAuto: false
-        });
-    }
+    // if($('.selectpicker').length > 0){
+    //     $('.selectpicker').selectpicker({
+    //         dropupAuto: false
+    //     });
+    // }
 
     /* ------------------------------------------------------------------------ */
     /*  POST CARDS MASONRY
@@ -1577,25 +1577,25 @@ var nice = false;
     /*  ACCOUNT DROPDOWN
     /* ------------------------------------------------------------------------ */
 
-    function accountDropdown(){
-        $('.header-user .account-action > li').on('click',function(e){
-            if($(this).hasClass('active')){
-                $(this).removeClass('active');
-            }else{
-                $(this).addClass('active');
-            }
-        });
-        $(".header-right .account-action > li").on({
-            mouseenter: function (e) {
-                $(this).addClass('active');
-            },
-            mouseleave: function (e) {
-                $(this).removeClass('active');
-            }
-        });
-    }
+    // function accountDropdown(){
+    //     $('.header-user .account-action > li').on('click',function(e){
+    //         if($(this).hasClass('active')){
+    //             $(this).removeClass('active');
+    //         }else{
+    //             $(this).addClass('active');
+    //         }
+    //     });
+    //     $(".header-right .account-action > li").on({
+    //         mouseenter: function (e) {
+    //             $(this).addClass('active');
+    //         },
+    //         mouseleave: function (e) {
+    //             $(this).removeClass('active');
+    //         }
+    //     });
+    // }
 
-    accountDropdown();
+    // accountDropdown();
 
     /* ------------------------------------------------------------------------ */
     /*  MOBILE MENU
@@ -1937,5 +1937,9 @@ var nice = false;
 
     $('.dropdown-toggle').dropdown();
 
+    $('#houzez-gmap-full').click(function(){
+        $('.search_map_page').toggleClass('full-map-show');
+    });
+    
 })(jQuery);
 
