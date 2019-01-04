@@ -5,7 +5,7 @@
  * Date: 27/09/16
  * Time: 4:52 PM
  */
-global $post_meta_data ,$post;
+global $post_meta_data ,$post, $prop_features;
 
 $prop_id = get_post_meta( get_the_ID(), 'fave_property_id', true );
 
@@ -17,7 +17,7 @@ $prop_size = get_post_meta( get_the_ID(), 'fave_property_size', true );
 $prop_land = get_post_meta( get_the_ID(), 'fave_property_land', true );
 $prop_land_postfix = get_post_meta( get_the_ID(), 'fave_property_postfix', true );
 $bedrooms = get_post_meta( get_the_ID(), 'fave_property_bedrooms', true );
-$bathrooms = get_post_meta( get_the_ID(), 'fave_property_bathrooms', true );
+$bathrooms = get_post_meta( get_the_ID(), 'fave_search_bathrooms', true );
 $toilet = get_post_meta( get_the_ID(), 'fave_property_toilet', true );
 $guests = get_post_meta( get_the_ID(), 'fave_property_guests', true );
 $year_built = get_post_meta( get_the_ID(), 'fave_property_year', true );
@@ -109,6 +109,9 @@ if( !empty( $prop_id ) ||
     $prop_details = true;
 }
 $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
+
+$prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', array("fields" => "all"));
+
 ?>
 
 
@@ -142,8 +145,8 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                     $cond2 = ($pro_type[0]->slug == "for-rent-vacations") ? "block" : "none";
                     $cond3 = ($pro_type[0]->slug == "for-sale") ? "block" : "none";
                     ?>
-                    <p class="txt-h-light txt-lg for-rent-living" style="display: <?php echo $cond1;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_living_price ); ?></span> USD</p>
-                    <p class="txt-h-light txt-lg for-rent-vacations" style="display: <?php echo $cond2;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_vac_price ); ?></span> USD</p>
+                    <p class="txt-h-light txt-lg for-rent-living" style="display: <?php echo $cond1;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_living_price ); ?> /month </span> USD</p>
+                    <p class="txt-h-light txt-lg for-rent-vacations" style="display: <?php echo $cond2;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_vac_price ); ?> /night </span> USD</p>
                     <p class="txt-h-light txt-lg for-sale" style="display: <?php echo $cond3;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_price ); ?></span> USD</p>
                     
                     <div class="input-field">
@@ -215,9 +218,10 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                     <ul class="list-inline">
                         <li>
                             <div>
-                                 <?php for($i=1; $i<5; $i++) {?>
-                                    <i class="tz-ratting-full-sm"></i>
+                                <?php for($i=1; $i<5; $i++) {?>
+                                <i class="tz-ratting-full"></i>
                                 <?php } ?>
+                                <i class="tz-ratting-empty"></i>
                             </div>
                         </li>
                         <li>
@@ -331,7 +335,8 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                 <div class="col-xxs-12 sub-features">
                     <h2 class="txt-lg text-center">Features</h2>
                     <div class="flex-container flex-wrap txt-md text-center">
-                        <?php 
+                        <?php
+                        // $tax_terms = get_the_terms( get_the_ID(), 'property_feature' ); 
                         $terms = get_terms( array(
                             'taxonomy' => 'property_feature',
                             'hide_empty' => false,
@@ -374,12 +379,13 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                     <h2 class="txt-lg text-center">Services</h2>
                     <div class="flex-container flex-wrap txt-md text-center">
                         <?php 
-                        $terms = get_terms( array(
-                            'taxonomy' => 'services',
-                            'hide_empty' => false,
-                        ) );         
+                        $tax_terms = get_the_terms( get_the_ID(), 'services' );
+                        // $terms = get_terms( array(
+                        //     'taxonomy' => 'services',
+                        //     'hide_empty' => false,
+                        // ));         
                         ?>
-                        <?php foreach ($terms as $key => $cat_feature) { ?>
+                        <?php foreach ($tax_terms as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
                             <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); 
                             $cat_meta = get_option( "category_$term_id");
@@ -397,12 +403,13 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
                     <h2 class="txt-lg text-center">Featured Home Appliances</h2>
                     <div class="flex-container flex-wrap txt-md text-center">
                         <?php 
-                        $terms = get_terms( array(
-                            'taxonomy' => 'home_appliances',
-                            'hide_empty' => false,
-                        ) );         
+                        $tax_terms = get_the_terms( get_the_ID(), 'home_appliances' );
+                        // $terms = get_terms( array(
+                        //     'taxonomy' => 'home_appliances',
+                        //     'hide_empty' => false,
+                        // ) );         
                         ?>                      
-                        <?php foreach ($terms as $key => $cat_feature) { ?>
+                        <?php foreach ($tax_terms as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
                             <?php 
                             $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); 
