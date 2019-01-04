@@ -444,7 +444,7 @@ function my_scripts_and_styles() {
 
 
     wp_enqueue_style('bootstrap.min', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.8', 'all');
-    wp_enqueue_style('lightgallery.min', get_stylesheet_directory_uri() . '/css/lightgallery.min.css', array(), '3.3.8', 'all');
+    //wp_enqueue_style('lightgallery.min', get_stylesheet_directory_uri() . '/css/lightgallery.min.css', array(), '3.3.8', 'all');
     wp_enqueue_style('houzez-all', get_stylesheet_directory_uri() . '/css/all.min.css', array(), HOUZEZ_THEME_VERSION, 'all');
     wp_enqueue_style('houzez-main', get_stylesheet_directory_uri() . '/css/main' . $css_minify_prefix . '.css', array(), HOUZEZ_THEME_VERSION, 'all');
     wp_enqueue_style('bundle', get_stylesheet_directory_uri() . '/css/bundle.min.css', array(), '3.3.7', 'all');
