@@ -111,20 +111,6 @@ global $houzez_local;
 <?php } ?>
 
 <?php wp_footer(); ?>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        jQuery('#formSale').click(function () {
-            jQuery('.full-area').toggleClass('scrollTop');
-            jQuery('.banner-parallax').toggleClass('parallax_height');
-        });
 
-        jQuery('#rent_toggle_id').click(function () {
-            jQuery('.full-area').toggleClass('scrollTop');
-            jQuery('.banner-parallax').toggleClass('parallax_height');
-        });
-    })
-
-
-</script>
 </body>
 </html>

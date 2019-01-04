@@ -54,7 +54,7 @@ if (!empty($mp4)) {
                             '<?php echo esc_url( $ogv ); ?>'
                         ],
                         loop: <?php echo esc_attr( $video_loop ); ?>,
-                        mute: <?php echo esc_attr( $video_audio ); ?>
+                        mute: true
                     }
                 }
             ]

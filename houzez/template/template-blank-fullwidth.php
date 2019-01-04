@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Blank - Template
+ * Template Name: Blank Full Width - Template
  * Created by PhpStorm.
  * User: waqasriaz
  * Date: 14/07/16
@@ -23,14 +23,13 @@
 <body <?php body_class(); ?>>
 
 <div id="section-body">
-    <div class="container">
-
-        <?php
-        while ( have_posts() ): the_post();
-            the_content();
-        endwhile;
-        ?>
-    </div> <!--end container-->
+    
+    <?php
+    while ( have_posts() ): the_post();
+        the_content();
+    endwhile;
+    ?>
+    
 </div> <!--end #section-body-->
 
 <?php $copy_rights = houzez_option('copy_rights'); ?>

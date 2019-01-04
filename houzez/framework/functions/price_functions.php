@@ -30,7 +30,9 @@ if(!function_exists('houzez_number_shorten')) {
             }
         }
         //Match found or not found use the last defined value for divisor
-        return number_format($number / $divisor, $precision) . $shorthand;
+        $price = number_format($number / $divisor, 1);
+        $price = rtrim($price, '.0');
+        return $price . $shorthand;
     }
 }
 
@@ -134,6 +136,7 @@ if( !function_exists('houzez_get_invoice_price') ) {
 if( !function_exists('houzez_get_property_price') ) {
     function houzez_get_property_price ( $listing_price ) {
 
+    
         if( $listing_price ) {
             $currency_maker = currency_maker();
 
@@ -153,8 +156,16 @@ if( !function_exists('houzez_get_property_price') ) {
                     $listing_price = apply_filters( 'houzez_currency_switcher_filter', $listing_price );
                     return $listing_price;
                 }
-                //number_format() — Format a number with grouped thousands
-                $final_price = number_format ( $listing_price , $price_decimals , $price_decimal_point_separator , $price_thousands_separator );
+                
+                $indian_format = houzez_option('indian_format');
+                if($indian_format == 1) {
+                    $final_price = houzez_moneyFormatIndia ($listing_price);
+                } else {
+                    //number_format() — Format a number with grouped thousands
+                    $final_price = number_format ( $listing_price , $price_decimals , $price_decimal_point_separator , $price_thousands_separator );
+                }
+
+
             } else {
                 $final_price = houzez_number_shorten($listing_price, $price_decimals);
             }
@@ -169,6 +180,30 @@ if( !function_exists('houzez_get_property_price') ) {
         }
 
         return $listings_currency;
+    }
+}
+
+if(!function_exists('houzez_moneyFormatIndia')) {
+    function houzez_moneyFormatIndia($num) {
+        $explrestunits = "" ;
+        if(strlen($num)>3) {
+            $lastthree = substr($num, strlen($num)-3, strlen($num));
+            $restunits = substr($num, 0, strlen($num)-3); // extracts the last three digits
+            $restunits = (strlen($restunits)%2 == 1)?"0".$restunits:$restunits; // explodes the remaining digits in 2's formats, adds a zero in the beginning to maintain the 2's grouping.
+            $expunit = str_split($restunits, 2);
+            for($i=0; $i<sizeof($expunit); $i++) {
+                // creates each of the 2's group and adds a comma to the end
+                if($i==0) {
+                    $explrestunits .= (int)$expunit[$i].","; // if is first value , convert into integer
+                } else {
+                    $explrestunits .= $expunit[$i].",";
+                }
+            }
+            $thecash = $explrestunits.$lastthree;
+        } else {
+            $thecash = $num;
+        }
+        return $thecash; // writes the final format where $currency is the currency symbol.
     }
 }
 
@@ -194,8 +229,15 @@ if( !function_exists('houzez_get_property_price_map_pins') ) {
                     $listing_price = apply_filters( 'houzez_currency_switcher_filter', $listing_price );
                     return $listing_price;
                 }
-                //number_format() — Format a number with grouped thousands
-                $final_price = number_format ( $listing_price , $price_decimals , $price_decimal_point_separator , $price_thousands_separator );
+
+                $indian_format = houzez_option('indian_format');
+                if($indian_format == 1) {
+                    $final_price = houzez_moneyFormatIndia ($listing_price);
+                } else {
+                    //number_format() — Format a number with grouped thousands
+                    $final_price = number_format ( $listing_price , $price_decimals , $price_decimal_point_separator , $price_thousands_separator );
+                }
+
             } else {
                 $final_price = houzez_number_shorten($listing_price, $price_decimals);
             }
@@ -238,8 +280,15 @@ if( !function_exists('houzez_get_property_price_for_print') ) {
                     $listing_price = apply_filters( 'houzez_currency_switcher_filter', $listing_price );
                     return $listing_price;
                 }
-                //number_format() — Format a number with grouped thousands
-                $final_price = number_format ( $listing_price , $price_decimals , $price_decimal_point_separator , $price_thousands_separator );
+                
+                $indian_format = houzez_option('indian_format');
+                if($indian_format == 1) {
+                    $final_price = houzez_moneyFormatIndia ($listing_price);
+                } else {
+                    //number_format() — Format a number with grouped thousands
+                    $final_price = number_format ( $listing_price , $price_decimals , $price_decimal_point_separator , $price_thousands_separator );
+                }
+
             } else {
                 $final_price = houzez_number_shorten($listing_price, $price_decimals);
             }

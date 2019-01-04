@@ -11,7 +11,7 @@ $header_4_menu_align = houzez_option('header_4_menu_align');
 $top_bar = houzez_option('top_bar');
 
 $trans_class = '';
-if(!is_author()) {
+if(!is_author() && !is_404()) {
     $fave_main_menu_trans = get_post_meta( $post->ID, 'fave_main_menu_trans', true );
     if( $fave_main_menu_trans == 'yes' ) {
         $trans_class = 'houzez-header-transparent';

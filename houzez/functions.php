@@ -18,7 +18,7 @@ global $wp_version;
 */
 define( 'HOUZEZ_THEME_NAME', 'Houzez' );
 define( 'HOUZEZ_THEME_SLUG', 'houzez' );
-define( 'HOUZEZ_THEME_VERSION', '1.6.4.1' );
+define( 'HOUZEZ_THEME_VERSION', '1.6.5.1' );
 /**
 *	----------------------------------------------------------------------------------------------------------------------------------------------------
 *	Set up theme default and register various supported features.

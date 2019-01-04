@@ -697,15 +697,6 @@ Redux::setSection( $opt_name, array(
             'off'      => esc_html__( 'Disabled', 'houzez' ),
         ),
         array(
-            'id'       => 'video_audio',
-            'type'     => 'switch',
-            'title'    => esc_html__( 'Video Audio', 'houzez' ),
-            'subtitle' => esc_html__( 'Enable/Disable video audio on splash page and video header', 'houzez' ),
-            'default'  => 0,
-            'on'       => esc_html__( 'Enabled', 'houzez' ),
-            'off'      => esc_html__( 'Disabled', 'houzez' ),
-        ),
-        array(
             'id'       => 'images_overlay',
             'type'     => 'switch',
             'title'    => esc_html__( 'Images overlay ?', 'houzez' ),
@@ -2340,6 +2331,16 @@ Redux::setSection( $opt_name, array(
             'off'      => esc_html__( 'Disabled', 'houzez' ),
         ),
         array(
+            'id'       => 'indian_format',
+            'type'     => 'switch',
+            'title'    => esc_html__( 'Indian Format', 'houzez' ),
+            'desc'     => '',
+            'subtitle' => esc_html__( 'Enable Indian Currency format', 'houzez' ),
+            'default'  => 0,
+            'on'       => esc_html__( 'Enabled', 'houzez' ),
+            'off'      => esc_html__( 'Disabled', 'houzez' ),
+        ),
+        array(
             'id'		=> 'currency_symbol',
             'type'		=> 'text',
             'title'		=> esc_html__( 'Currency Symbol', 'houzez' ),
@@ -2366,7 +2367,13 @@ Redux::setSection( $opt_name, array(
             'type'		=> 'select',
             'title'		=> esc_html__( 'Number of decimal points?', 'houzez' ),
             'read-only'	=> false,
-            'required'  => array('multi_currency', '=', '0'),
+            //'required'  => array('multi_currency', '=', '0'),
+
+            'required' => array( 
+                array('multi_currency','=','0'), 
+                array('indian_format','=','0') 
+            ),
+
             'options'	=> array(
                 '0'	=> '0',
                 '1'	=> '1',
@@ -2388,7 +2395,12 @@ Redux::setSection( $opt_name, array(
             'type'		=> 'text',
             'title'		=> esc_html__( 'Decimal Point Separator', 'houzez' ),
             'read-only'	=> false,
-            'required'  => array('multi_currency', '=', '0'),
+            //'required'  => array('multi_currency', '=', '0'),
+
+            'required' => array( 
+                array('multi_currency','=','0'), 
+                array('indian_format','=','0') 
+            ),
             'default'	=> '.',
             'subtitle'	=> esc_html__( 'Provide the decimal point separator. For Example: .', 'houzez' ),
         ),
@@ -2397,7 +2409,12 @@ Redux::setSection( $opt_name, array(
             'type'		=> 'text',
             'title'		=> esc_html__( 'Thousands Separator', 'houzez' ),
             'read-only'	=> false,
-            'required'  => array('multi_currency', '=', '0'),
+            //'required'  => array('multi_currency', '=', '0'),
+
+            'required' => array( 
+                array('multi_currency','=','0'), 
+                array('indian_format','=','0') 
+            ),
             'default'	=> ',',
             'subtitle'	=> esc_html__( 'Provide the thousands separator. For Example: ,', 'houzez' ),
         )
@@ -4794,6 +4811,16 @@ Redux::setSection( $opt_name, array(
             'on'       => esc_html__( 'Yes', 'houzez' ),
             'off'      => esc_html__( 'No', 'houzez' ),
         ),
+        array(
+            'id'       => 'print_gr_code',
+            'type'     => 'switch',
+            'title'    => esc_html__( 'QR Code', 'houzez' ),
+            'desc'     => '',
+            'subtitle' => '',
+            'default'  => 1,
+            'on'       => esc_html__( 'Yes', 'houzez' ),
+            'off'      => esc_html__( 'No', 'houzez' ),
+        ),
     )
 ));
 
@@ -7052,6 +7079,7 @@ Redux::setSection( $opt_name, array(
                 'grid-view-3-col' => 'Grid View 3 col ( only for full width )',
                 'listing-style-2' => 'Listing Style 2',
                 'listing-style-2-grid-view' => 'Listing Style 2 Grid View',
+                'listing-style-2-grid-view-3-col' => 'Listing Style 2 Grid View 3 col ( only for full width )',
                 'listing-style-3' => 'Listing Style 3'
             ),
             'default' => 'list-view'
@@ -7297,6 +7325,7 @@ Redux::setSection( $opt_name, array(
                 'grid-view-3-col' => 'Grid View 3 col ( only for full width )',
                 'listing-style-2' => 'Listing Style 2',
                 'listing-style-2-grid-view' => 'Listing Style 2 Grid View',
+                'listing-style-2-grid-view-3-col' => 'Listing Style 2 Grid View 3 col ( only for full width )',
                 'listing-style-3' => 'Listing Style 3',
             ),
             'default' => 'list-view'

@@ -16,6 +16,8 @@ if( $listing_view == 'grid-view-3-col' ) {
     $listing_view_class = 'list-view listing-style-2';
 } else if( $listing_view == 'listing-style-2-grid-view' ) {
     $listing_view_class = 'grid-view listing-style-2-grid-view';
+} else if( $listing_view == 'listing-style-2-grid-view-3-col' ) {
+    $listing_view_class = 'grid-view grid-view-3-col listing-style-2-grid-view';
 } else {
     $listing_view_class = $listing_view;
 }
@@ -68,7 +70,6 @@ $active = "";
 $search_qry = apply_filters( 'houzez_search_parameters_2', $search_qry );
 
 $search_qry = houzez_prop_sort ( $search_qry );
-
 $wp_query = new WP_Query( $search_qry );
 ?>
 
@@ -124,7 +125,7 @@ $wp_query = new WP_Query( $search_qry );
                             if($listing_view == 'listing-style-3') {
                                 get_template_part('template-parts/property-for-listing-v3');
 
-                            } else if($listing_view == 'listing-style-2' || $listing_view == 'listing-style-2-grid-view') {
+                            } else if($listing_view == 'listing-style-2' || $listing_view == 'listing-style-2-grid-view' || $listing_view == 'listing-style-2-grid-view-3-col') {
                                 get_template_part('template-parts/property-for-listing', 'v2');
 
                             } else {     

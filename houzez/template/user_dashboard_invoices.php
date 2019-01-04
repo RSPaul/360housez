@@ -56,7 +56,9 @@ if( ! isset( $_GET['invoice_id']) ) {
             $fave_meta = houzez_get_invoice_meta(get_the_ID());
             get_template_part('template-parts/invoices');
 
-            $total += $fave_meta['invoice_item_price'];
+            if(!empty($fave_meta['invoice_item_price'])) {
+                $total += $fave_meta['invoice_item_price'];
+            }
 
         endwhile; endif;
 

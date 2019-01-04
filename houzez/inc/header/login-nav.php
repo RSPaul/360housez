@@ -143,7 +143,7 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
                     if( !empty($dashboard_msgs) ) {
                         echo '<li ' . esc_attr($ac_msgs) . '> <a href="' . esc_url($dashboard_msgs) . '"> <i class="fa fa-comments-o"></i>' . esc_html__('Messages', 'houzez') . houzez_messages_notification() . '</a></li>';
                     }
-                    if( !empty($dashboard_membership) && $enable_paid_submission == 'membership' ) {
+                    if( !empty($dashboard_membership) && $enable_paid_submission == 'membership' && houzez_check_role() ) {
                         echo '<li ' . esc_attr($ac_mem) . '> <a href="' . esc_url($dashboard_membership) . '"> <i class="fa fa-address-card-o"></i>' . esc_html__('Membership', 'houzez').'</a></li>';
                     }
                     if( !empty($dashboard_gdpr) ) {

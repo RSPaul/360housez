@@ -29,8 +29,10 @@ if( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'approved' ) {
 
 } elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'expired' ) {
     $qry_status = 'expired';
-}  elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'draft' ) {
+} elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'draft' ) {
     $qry_status = 'draft';
+} elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'on_hold' ) {
+    $qry_status = 'on_hold';
 } else {
     $qry_status = 'any';
 }

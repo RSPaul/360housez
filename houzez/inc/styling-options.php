@@ -36,7 +36,15 @@ function houzez_custom_styling() {
     $header_3_callus_bg_color = houzez_option('header_3_callus_bg_color');
 
     $body_typo = houzez_option('typo-body');
+    $typo_menu = houzez_option('typo-menu');
     $typo_headings = houzez_option('typo-headings');
+
+    /*$typo_menu['color']};
+    $typo_menu['font-family']
+    $typo_menu['font-size']
+    $typo_menu['font-weight']
+    $typo_menu['line-height']
+    $typo_menu['text-transform']*/
 
     $logo_desktop_dimensions = houzez_option('logo_desktop_dimensions');
     $desktop_logo_width = isset($logo_desktop_dimensions['width']) ? $logo_desktop_dimensions['width'] : '';
@@ -883,7 +891,7 @@ function houzez_custom_styling() {
         .my-property-menu a.active,
         .my-property-menu a:hover,
         .search-panel .advance-trigger {        
-            // color: {$houzez_primary_color};
+            color: {$houzez_primary_color};
         }
         .banner-caption h1,
         .banner-caption h2  {
@@ -960,7 +968,8 @@ function houzez_custom_styling() {
             border-color: transparent;
         }
         .houzez-module .module-title-nav .module-nav .btn,
-        #save_as_draft {
+        #save_as_draft,
+        #put_on_hold {
             color: {$houzez_primary_color};
             border: 1px solid {$houzez_primary_color};
             background-color: transparent;
@@ -1030,7 +1039,7 @@ function houzez_custom_styling() {
             .article-detail .article-title a:hover,
             .comments-block .article-title a:hover,
             .detail-block .list-features a:hover{
-                //color: {$houzez_primary_color_hover};
+                color: {$houzez_primary_color_hover};
                 text-decoration: none;
             }
             

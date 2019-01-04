@@ -11,17 +11,7 @@ $sticky_sidebar = houzez_option('sticky_sidebar');
 $sidebar_meta = houzez_get_sidebar_meta($post->ID);
 ?>
 
-<?php 
-if(is_page(3219)) {
- get_header('new');
-}
-else {
- get_header();
-}
- wp_head();
-?>
-
-
+<?php get_header(); ?>
 	<?php get_template_part( 'template-parts/page', 'title' ); ?>
 
 	<section class="section-detail-content default-page">

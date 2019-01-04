@@ -14,6 +14,7 @@ if ( !is_user_logged_in() ) {
 global $houzez_local, $current_user;
 wp_get_current_user();
 $userID = $current_user->ID;
+$is_paypal_live  =   houzez_option('paypal_api');
 
 $user_email = $current_user->user_email;
 $admin_email      =  get_bloginfo('admin_email');
@@ -213,6 +214,8 @@ else if( $enable_paid_submission == 'membership' ) {
                 }else{
                     houzez_update_membership_package( $userID, $pack_id );
                 }
+
+                delete_post_meta($pack_id, 'houzez_paypal_billing_plan_'.$is_paypal_live);
 
                 $invoiceID = houzez_generate_invoice( 'package', 'recurring', $pack_id, $date, $userID, 0, 0, '', $paymentMethod );
                 update_post_meta( $invoiceID, 'invoice_payment_status', 1 );

@@ -117,6 +117,7 @@ if( !function_exists('houzez_get_localization')) {
 			'pending'			=> esc_html__( 'Pending', 'houzez' ),
 			'expired'			=> esc_html__( 'Expired', 'houzez' ),
 			'draft'				=> esc_html__( 'Draft', 'houzez' ),
+			'on_hold'				=> esc_html__( 'On Hold', 'houzez' ),
 			'view_all_results'	=> esc_html__( 'View All Results', 'houzez' ),
 			'listins_found'		=> esc_html__( 'Listings found', 'houzez' ),
 			'auto_result_not_found'		=> esc_html__( 'We didn’t find any results', 'houzez' ),

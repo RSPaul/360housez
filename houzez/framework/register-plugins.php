@@ -62,7 +62,7 @@ function houzez_register_required_plugins() {
 			'slug'     				=> 'houzez-theme-functionality', // The plugin slug (typically the folder name)
 			'source'   				=> 'http://houzez.co/plugins/houzez-theme-functionality.zip', // The plugin source
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
-			'version' 				=> '1.5.4', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+			'version' 				=> '1.5.5', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
 			'force_activation' 		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
@@ -72,7 +72,7 @@ function houzez_register_required_plugins() {
 			'slug'     				=> 'houzez-login-register', // The plugin slug (typically the folder name)
 			'source'   				=> 'http://houzez.co/plugins/houzez-login-register.zip', // The plugin source
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
-			'version' 				=> '1.5.3', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+			'version' 				=> '1.5.4', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
 			'force_activation' 		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
@@ -82,7 +82,7 @@ function houzez_register_required_plugins() {
 			'slug'     				=> 'js_composer', // The plugin slug (typically the folder name)
 			'source'   				=> 'http://houzez.co/plugins/js_composer.zip', // The plugin source
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
-			'version' 				=> '5.5.5', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+			'version' 				=> '5.6', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
 			'force_activation' 		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
@@ -92,10 +92,16 @@ function houzez_register_required_plugins() {
 			'slug'     				=> 'revslider', // The plugin slug (typically the folder name)
 			'source'   				=> 'http://houzez.co/plugins/revslider.zip', // The plugin source
 			'required' 				=> false, // If false, the plugin is only 'recommended' instead of required
-			'version' 				=> '5.4.8', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+			'version' 				=> '5.4.8.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
 			'force_activation' 		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
+		),
+		array(
+			'name'     				=> 'Classic Editor', // The plugin name
+			'slug'     				=> 'classic-editor', // The plugin slug (typically the folder name)
+			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
+			'force_activation' 		=> true
 		),
 		array(
 			'name'     				=> 'Contact Form 7', // The plugin name

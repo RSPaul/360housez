@@ -967,8 +967,9 @@
 /* ihf property grid - price bar
 ----------------------------------------- */
 #ihf-main-container .title-bar-1 {
-    position: absolute;
-    top: 209px;
+    position: relative;
+    top: auto;
+    margin-bottom: 10px;
     z-index: 1;
     padding: 8px 15px;
 }

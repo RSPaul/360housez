@@ -5,7 +5,7 @@
  * Date: 11/06/16
  * Time: 11:08 PM
  */
-global $measurement_unit_adv_search, $houzez_local;
+global $measurement_unit_adv_search, $houzez_local, $post;
 
 if( $measurement_unit_adv_search == 'sqft' ) {
     $measurement_unit_adv_search = houzez_option('measurement_unit_sqft_text');
@@ -25,23 +25,46 @@ if( $state_city_area_dropdowns != 0 ) {
     $hide_empty = false;
 }
 
+$meta_states = get_post_meta($post->ID, 'fave_states', true);
+$meta_locations = get_post_meta($post->ID, 'fave_locations', true);
+$meta_types = get_post_meta($post->ID, 'fave_types', true);
+$meta_status = get_post_meta($post->ID, 'fave_status', true);
+$meta_labels = get_post_meta($post->ID, 'fave_labels', true);
+$meta_area = get_post_meta($post->ID, 'fave_area', true);
+
 if( isset( $_GET['status'] ) ) {
     $status = $_GET['status'];
+} elseif(!empty($meta_status)) {
+    $status = $meta_status;
 }
 if( isset( $_GET['type'] ) ) {
     $type = $_GET['type'];
+} elseif(!empty($meta_types)) {
+    $type = $meta_types;
 }
+
 if( isset( $_GET['location'] ) ) {
     $location = $_GET['location'];
+} elseif(!empty($meta_locations)) {
+    $location = $meta_locations;
 }
+
 if( isset( $_GET['area'] ) ) {
     $area = $_GET['area'];
+} elseif(!empty($meta_area)) {
+    $area = $meta_area;
 }
+
 if( isset( $_GET['state'] ) ) {
     $state = $_GET['state'];
+} elseif(!empty($meta_states)) {
+    $state = $meta_states;
 }
+
 if( isset( $_GET['label'] ) ) {
     $label = $_GET['label'];
+} elseif(!empty($meta_labels)) {
+    $label = $meta_labels;
 }
 if( isset( $_GET['country'] ) ) {
     $searched_country = $_GET['country'];

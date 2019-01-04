@@ -50,7 +50,8 @@ $approved = add_query_arg( 'prop_status', 'approved', $dashboard_listings );
 $pending = add_query_arg( 'prop_status', 'pending', $dashboard_listings );
 $expired = add_query_arg( 'prop_status', 'expired', $dashboard_listings );
 $draft = add_query_arg( 'prop_status', 'draft', $dashboard_listings );
-$ac_approved = $ac_pending = $ac_expired = $ac_all = $ac_draft = $ac_agents = $ac_agent_new = '';
+$on_hold = add_query_arg( 'prop_status', 'on_hold', $dashboard_listings );
+$ac_approved = $ac_pending = $ac_expired = $ac_all = $ac_draft = $ac_on_hold = $ac_agents = $ac_agent_new = '';
 
 if( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'approved' ) {
     $ac_approved = 'class=active';
@@ -64,6 +65,8 @@ if( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'approved' ) {
     $ac_approved = 'class=active';
 } elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'draft' ) {
     $ac_draft = 'class=active';
+} elseif( isset( $_GET['prop_status'] ) && $_GET['prop_status'] == 'on_hold' ) {
+    $ac_on_hold = 'class=active';
 } else {
     $ac_all = 'class=active';
 }
@@ -97,6 +100,7 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
                     <li '.esc_attr( $ac_pending ).'><a href="'.esc_url($pending).'" '.esc_attr($ac_pending).'>'.$houzez_local['pending'].'</a></li>
                     <li '.esc_attr( $ac_expired ).'><a href="'.esc_url($expired).'" '.esc_attr($ac_expired).'>'.$houzez_local['expired'].'</a></li>
                     <li '.esc_attr( $ac_draft ).'><a href="'.esc_url($draft).'" '.esc_attr($ac_draft).'>'.$houzez_local['draft'].'</a></li>
+                    <li '.esc_attr( $ac_on_hold ).'><a href="'.esc_url($on_hold).'" '.esc_attr($ac_on_hold).'>'.$houzez_local['on_hold'].'</a></li>
                 </ul>
                 </li>';
             }
@@ -118,7 +122,7 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
             if( !empty($dashboard_gdpr) ) {
                 echo '<li ' . esc_attr($ac_gdpr) . '> <a href="' . esc_url($dashboard_gdpr) . '"> <i class="fa fa-envelope"></i>' . esc_html__('GDPR Data Request', 'houzez').'</a></li>';
             }
-            if( !empty($dashboard_membership) && $enable_paid_submission == 'membership' ) {
+            if( !empty($dashboard_membership) && $enable_paid_submission == 'membership' && houzez_check_role() ) {
                 echo '<li ' . esc_attr($ac_mem) . '> <a href="' . esc_url($dashboard_membership) . '"> <i class="fa fa-address-card-o"></i>' . esc_html__('Membership', 'houzez').'</a></li>';
             }
 

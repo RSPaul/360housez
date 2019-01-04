@@ -172,7 +172,7 @@ $area_prefix_changeable = houzez_option('area_prefix_changeable');
                                 $input_field = '<input '.houzez_required_field_2($required_fields[$field_name]).' class="form-control" name="'.$field_name.'"'; 
 
                                 if( isset( $prop_meta_data['fave_'.$field_name] ) ) {
-                                    $input_field .= 'value="'.sanitize_text_field( $prop_meta_data['fave_'.$field_name][0] ).'"'; 
+                                    $input_field .= 'value="'.sanitize_text_field( esc_attr($prop_meta_data['fave_'.$field_name][0] )).'"'; 
                                 }
                                 $input_field .= 'placeholder="'.$field_placeholder.'">';
                                 
