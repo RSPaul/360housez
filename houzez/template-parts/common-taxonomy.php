@@ -16,6 +16,8 @@ if( $listing_view == 'grid-view-3-col' ) {
     $listing_view_class = 'grid-view';
 } else if( $listing_view == 'listing-style-2-grid-view' ) {
     $listing_view_class = 'grid-view listing-style-2-grid-view';
+} else if( $listing_view == 'listing-style-2-grid-view-3-col' ) {
+    $listing_view_class = 'grid-view grid-view-3-col listing-style-2-grid-view';
 } else if( $listing_view == 'listing-style-2' ) {
     $listing_view_class = 'list-view listing-style-2';
 } else {
@@ -72,7 +74,7 @@ if(!$number_of_prop){
                             if($listing_view == 'listing-style-3') {
                                 get_template_part('template-parts/property-for-listing-v3');
 
-                            } else if($listing_view == 'listing-style-2') {
+                            } else if($listing_view == 'listing-style-2' || $listing_view == 'listing-style-2-grid-view' || $listing_view == 'listing-style-2-grid-view-3-col') {
                                 get_template_part('template-parts/property-for-listing', 'v2');
 
                             } else {     

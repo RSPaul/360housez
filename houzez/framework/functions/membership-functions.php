@@ -1236,8 +1236,8 @@ if(!function_exists('houzez_create_billing_plan')) {
             'return_url' => $return_url,
             'cancel_url' => $cancel_url,
             'auto_bill_amount' => 'YES',
-            /*'initial_fail_amount_action' => 'CONTINUE',
-            'max_fail_attempts' => '0'*/
+            'initial_fail_amount_action' => 'CONTINUE',
+            'max_fail_attempts' => '0'
         );
 
         // Convert PHP array into json format
@@ -1536,7 +1536,7 @@ if( !function_exists('houzez_check_membership_expire_cron') ):
 
                 switch ( $billingPeriod ){
                     case 'Day':
-                        $seconds = 60*60*24;
+                        $seconds = 60*60*25;
                         break;
                     case 'Week':
                         $seconds = 60*60*24*7;

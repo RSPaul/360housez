@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Paypal IPN ( Recurring Payment )
+ * Template Name: Paypal Webhook ( Recurring Payment )
  * Created by PhpStorm.
  * User: waqasriaz
  * Date: 11/09/16
@@ -15,13 +15,20 @@ $headers = 'From: noreply  <noreply@'.$_SERVER['HTTP_HOST'].'>' . "\r\n".
 
 $webhook_data = file_get_contents('php://input');
 
-$resource_type = $webhook_data['resource_type'];
-$event_type = $webhook_data['event_type'];
-$state = $webhook_data['resource']['state'];
-$amount = $webhook_data['resource']['amount']['total'];
-$profile_id = $webhook_data['id'];
+$webhook_data = json_decode($webhook_data);
+
+$resource_type = $webhook_data->resource_type;
+$event_type = $webhook_data->event_type;
+$state = $webhook_data->resource->state;
+$amount = $webhook_data->resource->amount->total;
+$profile_id = $webhook_data->resource->billing_agreement_id;
+
+$paymentMethod = 'Paypal';
+
 
 if( $resource_type == "sale" && $event_type == "PAYMENT.SALE.COMPLETED" && $state == "completed" ) {
+      $time = time();
+      $date = date( 'Y-m-d H:i:s', $time );
       
       $user_id = houzez_retrive_user_by_profile($profile_id);
        
@@ -43,8 +50,8 @@ if( $resource_type == "sale" && $event_type == "PAYMENT.SALE.COMPLETED" && $stat
       houzez_save_user_packages_record($user_id);
       houzez_update_membership_package($user_id, $pack_id);
 
-      $invoiceID = houzez_generate_invoice( 'package', 'recurring', $pack_id, $date, $user_id, 0, 0, $txn_id, $paymentMethod );
-      update_post_meta( $invoiceID, 'invoice_payment_status', 1 );
+      //$invoiceID = houzez_generate_invoice( 'package', 'recurring', $pack_id, $date, $user_id, 0, 0, $txn_id, $paymentMethod );
+      //update_post_meta( $invoiceID, 'invoice_payment_status', 1 );
 
       $args  =array(
           'recurring_package_name' => get_the_title($pack_id),

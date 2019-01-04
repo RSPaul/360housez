@@ -43,6 +43,8 @@ $add_multiunits_link = add_query_arg( 'listing_id', $post_id, $add_multiunits );
 
 if( $property_status == 'publish' ) {
     $property_status = '<span class="label label-success">'.esc_html__('Approved', 'houzez').'</span>';
+} elseif( $property_status == 'on_hold' ) {
+    $property_status = '<span class="label label-success">'.$houzez_local['on_hold'].'</span>';
 } elseif( $property_status == 'pending' ) {
     $property_status = '<span class="label label-warning">'.esc_html__('Under Approved', 'houzez').'</span>';
 }  elseif( $property_status == 'expired' ) {
@@ -126,6 +128,12 @@ if( $property_status_text != 'expired' ) {
                         <li><a class="delete-property" data-id="<?php echo $post->ID; ?>" data-nonce="<?php echo wp_create_nonce('delete_my_property_nonce') ?>" onclicks="return confirm('<?php esc_html_e( 'Are you sure you want to delete?', 'houzez' ); ?>')" href="#"><i class="fa fa-close"></i> <?php esc_html_e('Delete', 'houzez');?></a></li>
 
                         <li><a href="#" class="clone-property" data-property="<?php echo $post->ID; ?>"><i class="fa fa-edit"></i> <?php esc_html_e('Duplicate', 'houzez');?></a></li>
+
+                        <?php if(houzez_is_published( $post->ID )) { ?>
+                        <li><a href="#" class="put-on-hold" data-property="<?php echo $post->ID; ?>"><i class="fa fa-stop"></i> <?php esc_html_e('Put On Hold', 'houzez');?></a></li>
+                        <?php } elseif (houzez_on_hold( $post->ID )) { ?>
+                            <li><a href="#" class="put-on-hold" data-property="<?php echo $post->ID; ?>"><i class="fa fa-play"></i> <?php esc_html_e('Go Live', 'houzez');?></a></li>
+                        <?php } ?>
 
                         <?php if( houzez_check_post_status( $post->ID ) ) { ?>
 

@@ -13,8 +13,6 @@
 
 /********************* META BOX DEFINITIONS ***********************/
 
-
-
 add_filter( 'rwmb_meta_boxes', 'houzez_register_metaboxes' );
 
 if( !function_exists( 'houzez_register_metaboxes' ) ) {
@@ -405,7 +403,7 @@ if( !function_exists( 'houzez_register_metaboxes' ) ) {
         * ============================================================================================*/
         $meta_boxes[] = array(
             'id' => 'property-meta-box',
-            'title' => esc_html__('Property Data', 'houzez'),
+            'title' => esc_html__('Property', 'houzez'),
             'pages' => array('property'),
             'tabs' => array(
                 'property_details' => array(
@@ -652,6 +650,8 @@ if( !function_exists( 'houzez_register_metaboxes' ) ) {
                     'std' => '25.686540,-80.431345,15',
                     'style' => 'width: 100%; height: 410px',
                     'address_field' => "{$houzez_prefix}property_map_address",
+                    'api_key'       => houzez_option('googlemap_api_key'),
+                    'language' => get_locale(),
                     'columns' => 12,
                     'tab' => 'property_map',
                 ),
@@ -2376,7 +2376,7 @@ endif;
 /*------------------------------------------------------------------------
 * Meta for rental, wpbookingcalendar plugin required
 *-----------------------------------------------------------------------*/
-add_filter( 'houzez_theme_meta', 'houzez_theme_meta_rental_filter' );
+add_filter( 'houzez_theme_meta', 'houzez_theme_meta_rental_filter', 8, 1 );
 
 function houzez_theme_meta_rental_filter( $meta_boxes ) {
 

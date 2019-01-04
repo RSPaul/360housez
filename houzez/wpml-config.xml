@@ -55,6 +55,19 @@
 		<custom-field action="copy">fave_package_price</custom-field>
 		<custom-field action="copy">fave_package_stripe_id</custom-field>
 
+		<custom-field action="translate">fave_page_title</custom-field>
+		<custom-field action="translate">fave_page_breadcrumb</custom-field>
+		<custom-field action="translate">fave_page_sidebar</custom-field>
+		
+		<custom-field action="translate">fave_header_type</custom-field>
+		<custom-field action="translate">fave_header_full_screen</custom-field>
+		<custom-field action="translate">fave_page_header_revslider</custom-field>
+		<custom-field action="translate">fave_map_city</custom-field>
+		<custom-field action="translate">fave_header_full_screen_type</custom-field>
+		<custom-field action="translate">fave_page_header_search</custom-field>
+		<custom-field action="translate">fave_page_header_image</custom-field>
+		<custom-field action="translate">fave_main_menu_trans</custom-field>
+
 		<custom-field action="translate">fave_page_header_title</custom-field>
 		<custom-field action="translate">fave_page_header_subtitle</custom-field>
 		

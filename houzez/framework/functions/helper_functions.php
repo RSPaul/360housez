@@ -26,11 +26,7 @@ if( !function_exists('houzez_container_needed') ) {
             'template/template-payment.php',
             'template/template-thankyou.php',
             'template/user_dashboard_messages.php',
-            'template/properties-parallax.php',
-            'template-parts/search_result_template.php',
-            'template-parts/property_detail_template.php',
-            'template-parts/property-listing-style3-fullwidth.php',
-           
+            'template/properties-parallax.php'
         ) ) ) {
             return false;
         }
@@ -363,6 +359,24 @@ if( !function_exists('houzez_check_post_status')) {
             return false;
         }
         return true;
+    }
+}
+
+if( !function_exists('houzez_is_published')) {
+    function houzez_is_published( $post_id ) {
+        if( get_post_status( $post_id ) == 'publish' ) {
+            return true;
+        }
+        return false;
+    }
+}
+
+if( !function_exists('houzez_on_hold')) {
+    function houzez_on_hold( $post_id ) {
+        if( get_post_status( $post_id ) == 'on_hold' ) {
+            return true;
+        }
+        return false;
     }
 }
 
@@ -703,7 +717,7 @@ endif;
 /* --------------------------------------------------------------------------
  * Metabox map filter
  ---------------------------------------------------------------------------*/
-if( !function_exists('houzez_metabox_map_filter') ) {
+/*if( !function_exists('houzez_metabox_map_filter') ) {
     function houzez_metabox_map_filter() {
 
         $googlemap_ssl = houzez_option('googlemap_ssl');
@@ -716,7 +730,7 @@ if( !function_exists('houzez_metabox_map_filter') ) {
         }
     }
     add_filter('rwmb_google_maps_url', 'houzez_metabox_map_filter');
-}
+}*/
 
 /* --------------------------------------------------------------------------
  * Remove Recent Comment Style
@@ -778,7 +792,7 @@ if ( ! function_exists( 'houzez_add_opengraph' ) ) {
     function houzez_add_opengraph() {
         global $post; // Ensures we can use post variables outside the loop
 
-        if(!is_author()) {
+        if(!is_author() && !is_404()) {
             $content = $post->post_content;
             $content = preg_replace('/\[.+\]/', '', $content);
             $content = apply_filters('the_content', $content);
@@ -1212,20 +1226,20 @@ if( !function_exists( 'houzez_pagination' ) ){
 
             echo '<div class="pagination-main '.$half_map_class.'">';
             echo '<ul class="pagination">';
-            echo ( $paged > 2 && $paged > $range+1 && $showitems < $pages ) ? '<li><a class="waves-effect" data-houzepagi="1" rel="First" href="'.get_pagenum_link(1).'"><span aria-hidden="true"><i class="tz-chevron-left"></i></span></a></li>' : '';
-            echo ( $paged > 1 ) ? '<li><a class="waves-effect" data-houzepagi="'.$prev.'" rel="Prev" href="'.get_pagenum_link($prev).'"><span aria-hidden="true"><i class="tz-chevron-left"></i></span></a></li>' : '<li class="disabled"><a class="waves-effect" aria-label="Previous"><span aria-hidden="true"><i class="tz-chevron-left"></i></span></a></li>';
+            echo ( $paged > 2 && $paged > $range+1 && $showitems < $pages ) ? '<li><a data-houzepagi="1" rel="First" href="'.get_pagenum_link(1).'"><span aria-hidden="true"><i class="fa fa-angle-double-left"></i></span></a></li>' : '';
+            echo ( $paged > 1 ) ? '<li><a data-houzepagi="'.$prev.'" rel="Prev" href="'.get_pagenum_link($prev).'"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>' : '<li class="disabled"><a aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>';
             for ( $i = 1; $i <= $pages; $i++ ) {
                 if ( 1 != $pages &&( !( $i >= $paged+$range+1 || $i <= $paged-$range-1 ) || $pages <= $showitems ) )
                 {
                     if ( $paged == $i ){
-                        echo '<li class="active"><a class="waves-effect" data-houzepagi="'.$i.'" href="'.get_pagenum_link($i).'">'.$i.' <span class="sr-only"></span></a></li>';
+                        echo '<li class="active"><a data-houzepagi="'.$i.'" href="'.get_pagenum_link($i).'">'.$i.' <span class="sr-only"></span></a></li>';
                     } else {
-                        echo '<li><a class="waves-effect" data-houzepagi="'.$i.'" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
+                        echo '<li><a data-houzepagi="'.$i.'" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
                     }
                 }
             }
-            echo ( $paged < $pages ) ? '<li><a class="waves-effect" data-houzepagi="'.$next.'" rel="Next" href="'.get_pagenum_link($next).'"><span aria-hidden="true"><i class="tz-chevron-right"></i></span></a></li>' : '';
-            echo ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages ) ? '<li><a class="waves-effect" data-houzepagi="'.$pages.'" rel="Last" href="'.get_pagenum_link( $pages ).'"><span aria-hidden="true"><i class="tz-chevron-right"></i></span></a></li>' : '';
+            echo ( $paged < $pages ) ? '<li><a data-houzepagi="'.$next.'" rel="Next" href="'.get_pagenum_link($next).'"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>' : '';
+            echo ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages ) ? '<li><a data-houzepagi="'.$pages.'" rel="Last" href="'.get_pagenum_link( $pages ).'"><span aria-hidden="true"><i class="fa fa-angle-double-right"></i></span></a></li>' : '';
             echo '</ul>';
             echo '</div>';
 
@@ -1255,20 +1269,20 @@ if( !function_exists( 'houzez_halpmap_ajax_pagination' ) ){
 
             echo '<div class="pagination-main half_map_ajax_pagi">';
             echo '<ul class="pagination">';
-            echo ( $paged > 2 && $paged > $range+1 && $showitems < $pages ) ? '<li><a class="waves-effect" data-houzepagi="1" rel="First" href="'.get_pagenum_link(1).'"><span aria-hidden="true"><i class="tz-chevron-left"></i></span></a></li>' : '';
-            echo ( $paged > 1 ) ? '<li><a class="waves-effect" data-houzepagi="'.$prev.'" rel="Prev" href="'.get_pagenum_link($prev).'"><span aria-hidden="true"><i class="tz-chevron-left"></i></span></a></li>' : '<li class="disabled"><a class="waves-effect" aria-label="Previous"><span aria-hidden="true"><i class="tz-chevron-left"></i></span></a></li>';
+            echo ( $paged > 2 && $paged > $range+1 && $showitems < $pages ) ? '<li><a data-houzepagi="1" rel="First" href="'.get_pagenum_link(1).'"><span aria-hidden="true"><i class="fa fa-angle-double-left"></i></span></a></li>' : '';
+            echo ( $paged > 1 ) ? '<li><a data-houzepagi="'.$prev.'" rel="Prev" href="'.get_pagenum_link($prev).'"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>' : '<li class="disabled"><a aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>';
             for ( $i = 1; $i <= $pages; $i++ ) {
                 if ( 1 != $pages &&( !( $i >= $paged+$range+1 || $i <= $paged-$range-1 ) || $pages <= $showitems ) )
                 {
                     if ( $paged == $i ){
-                        echo '<li class="active"><a class="waves-effect" data-houzepagi="'.$i.'" href="'.get_pagenum_link($i).'">'.$i.' <span class="sr-only"></span></a></li>';
+                        echo '<li class="active"><a data-houzepagi="'.$i.'" href="'.get_pagenum_link($i).'">'.$i.' <span class="sr-only"></span></a></li>';
                     } else {
-                        echo '<li><a class="waves-effect" data-houzepagi="'.$i.'" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
+                        echo '<li><a data-houzepagi="'.$i.'" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
                     }
                 }
             }
-            echo ( $paged < $pages ) ? '<li><a class="waves-effect" data-houzepagi="'.$next.'" rel="Next" href="'.get_pagenum_link($next).'"><span aria-hidden="true"><i class="tz-chevron-right"></i></span></a></li>' : '';
-            echo ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages ) ? '<li><a class="waves-effect" data-houzepagi="'.$pages.'" rel="Last" href="'.get_pagenum_link( $pages ).'"><span aria-hidden="true"><i class="tz-chevron-right"></i></span></a></li>' : '';
+            echo ( $paged < $pages ) ? '<li><a data-houzepagi="'.$next.'" rel="Next" href="'.get_pagenum_link($next).'"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>' : '';
+            echo ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages ) ? '<li><a data-houzepagi="'.$pages.'" rel="Last" href="'.get_pagenum_link( $pages ).'"><span aria-hidden="true"><i class="fa fa-angle-double-right"></i></span></a></li>' : '';
             echo '</ul>';
             echo '</div>';
 
@@ -1293,7 +1307,7 @@ if( !function_exists( 'houzez_loadmore' ) ) {
                     <?php echo wp_kses( $more_link, $allowed_html_array); ?>
                 </div>
             </div>
-        <?php   endif;
+        <?php endif;
     }
 }
 
@@ -1699,6 +1713,19 @@ if( !function_exists('houzez_property_size_by_id') ) {
             $prop_size = houzez_get_listing_size_unit( $propID ).' '.houzez_get_listing_area_size( $propID );
         } else {
             $prop_size = houzez_get_listing_area_size( $propID ).' '.houzez_get_listing_size_unit( $propID );
+        }
+        return  $prop_size;
+    }
+}
+
+if( !function_exists('houzez_property_land_area_by_id') ) {
+    function houzez_property_land_area_by_id( $propID, $position ) {
+
+        // Since v1.3.0
+        if( $position == 'before' ) {
+            $prop_size = houzez_get_land_size_unit( $propID ).' '.houzez_get_land_area_size( $propID );
+        } else {
+            $prop_size = houzez_get_land_area_size( $propID ).' '.houzez_get_land_size_unit( $propID );
         }
         return  $prop_size;
     }

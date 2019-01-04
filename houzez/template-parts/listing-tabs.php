@@ -43,9 +43,9 @@ $tab_2 = houzez_get_term_by( 'slug', $listings_tab_2, 'property_status' );
         </ul>
     </div>
     <div class="sort-tab table-cell text-right">
-        <!-- <?php //esc_html_e( 'Sort by:', 'houzez' ); ?> -->
+        <?php esc_html_e( 'Sort by:', 'houzez' ); ?>
         <select id="sort_properties" class="selectpicker bs-select-hidden" title="" data-live-search-style="begins" data-live-search="false">
-            <option value=""><?php esc_html_e( 'Sort by', 'houzez' ); ?></option>
+            <option value=""><?php esc_html_e( 'Default Order', 'houzez' ); ?></option>
             <option <?php if( $sortby == 'a_price' ) { echo "selected"; } ?> value="a_price"><?php esc_html_e( 'Price (Low to High)', 'houzez' ); ?></option>
             <option <?php if( $sortby == 'd_price' ) { echo "selected"; } ?> value="d_price"><?php esc_html_e( 'Price (High to Low)', 'houzez' ); ?></option>
             <?php if( $what_to_show != 'x_rand_featured_first' && $what_to_show != 'x_featured_first') { ?>

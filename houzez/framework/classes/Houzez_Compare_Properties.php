@@ -96,7 +96,7 @@ class Houzez_Compare_Properties {
 
                                 <figure class="compare-thumb compare-property" property-id="<?php echo $key; ?>"">
                                     <?php echo get_the_post_thumbnail( (double) $key, 'houzez-widget-prop', array( 'class' => 'compare-property-img' ) ); ?>
-                                    <button class="btn-trash compare-property-remove"><i class="tz-minus-sm"></i></button>
+                                    <button class="btn-trash compare-property-remove"><i class="fa fa-trash"></i></button>
                                 </figure>
 
                             <?php endif; ?>
@@ -113,7 +113,7 @@ class Houzez_Compare_Properties {
                     </div>
                     <button type="button" class="btn btn-primary btn-block compare-properties-button basket"><?php esc_html_e( 'Compare', 'houzez' ); ?></button>
                 </div>
-                <button class="btn btn-primary panel-btn left_icon_btn"><i class="tz-chevron-left-sm"></i></button>
+                <button class="btn btn-primary panel-btn"><i class="fa fa-angle-left"></i></button>
         <?php endif; ?>
         </div>
 <?php

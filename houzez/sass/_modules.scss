@@ -1344,6 +1344,9 @@ body.transparent-yes .banner-caption {
     @extend %full-width;
     @extend %full-height;
 }
+.team-block:hover > a {
+    display: none;
+}
 @media (max-width: 768px) {
     .team-block:hover .team-caption-before,
     .team-block:hover .team-caption-after,

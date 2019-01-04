@@ -984,6 +984,26 @@ if ( ! function_exists('houzez_custom_post_status') ) {
     add_action( 'init', 'houzez_custom_post_status', 1 );
 }
 
+/*-----------------------------------------------------------------------------------*/
+// Add custom post status Hold
+/*-----------------------------------------------------------------------------------*/
+if ( ! function_exists('houzez_custom_post_status_on_hold') ) {
+    function houzez_custom_post_status_on_hold() {
+
+        $args = array(
+            'label'                     => _x( 'On Hold', 'Status General Name', 'houzez' ),
+            'label_count'               => _n_noop( 'On Hold (%s)',  'On Hold (%s)', 'houzez' ),
+            'public'                    => true,
+            'show_in_admin_all_list'    => true,
+            'show_in_admin_status_list' => true,
+            'exclude_from_search'       => false,
+        );
+        register_post_status( 'on_hold', $args );
+
+    }
+    add_action( 'init', 'houzez_custom_post_status_on_hold', 1 );
+}
+
 add_action( 'wp_ajax_houzez_save_search', 'houzez_save_search' );
 if( !function_exists('houzez_save_search') ) {
     function houzez_save_search() {
@@ -1702,6 +1722,7 @@ if( !function_exists('houzez_property_search_2') ) {
         $keyword_field = houzez_option('keyword_field');
         $beds_baths_search = houzez_option('beds_baths_search');
         $show_featured_on_top = houzez_option('show_featured_on_top');
+        $property_id_prefix = houzez_option('property_id_prefix');
 
         $search_criteria = '=';
         if( $beds_baths_search == 'greater') {
@@ -1742,7 +1763,7 @@ if( !function_exists('houzez_property_search_2') ) {
 
                 $propid_array = array(
                     'key' => 'fave_property_id',
-                    'value' => $meta_keywork,
+                    'value' => str_replace($property_id_prefix, "", $meta_keywork),
                     'type' => 'CHAR',
                     'compare' => '=',
                 );
@@ -1802,6 +1823,7 @@ if( !function_exists('houzez_property_search_2') ) {
         // Property ID
         if (isset($_GET['property_id']) && !empty($_GET['property_id'])) {
             $propid = sanitize_text_field($_GET['property_id']);
+            $propid = str_replace($property_id_prefix, "", $propid);
             $meta_query[] = array(
                 'key' => 'fave_property_id',
                 'value' => $propid,
@@ -2042,7 +2064,7 @@ if( !function_exists('houzez_property_search_2') ) {
             $search_query['tax_query'] = $tax_query;
         }
         if($show_featured_on_top != 0 ) {
-            $search_query['orderby'] = 'meta_value';
+            $search_query['orderby'] = 'meta_value date';
             $search_query['meta_key'] = 'fave_featured';
             $search_query['order'] = 'DESC';
         }
@@ -2112,6 +2134,9 @@ if( !function_exists('houzez_header_map_listings') ) {
 
         $keyword_field = houzez_option('keyword_field');
         $beds_baths_search = houzez_option('beds_baths_search');
+        $property_id_prefix = houzez_option('property_id_prefix');
+
+        $property_id = str_replace($property_id_prefix, "", $property_id);
 
         $search_criteria = '=';
         if( $beds_baths_search == 'greater') {
@@ -2154,7 +2179,7 @@ if( !function_exists('houzez_header_map_listings') ) {
                 );
                 $propid_array = array(
                     'key' => 'fave_property_id',
-                    'value' => $meta_keywork,
+                    'value' => str_replace($property_id_prefix, "", $meta_keywork),
                     'type' => 'CHAR',
                     'compare' => '=',
                 );
@@ -2542,7 +2567,6 @@ add_action( 'wp_ajax_nopriv_houzez_half_map_listings', 'houzez_half_map_listings
 add_action( 'wp_ajax_houzez_half_map_listings', 'houzez_half_map_listings' );
 if( !function_exists('houzez_half_map_listings') ) {
     function houzez_half_map_listings() {
-        
         //check_ajax_referer('houzez_map_ajax_nonce', 'security');
         $meta_query = array();
         $tax_query = array();
@@ -2598,6 +2622,9 @@ if( !function_exists('houzez_half_map_listings') ) {
             $listing_view = $_GET['half_map_style'];
         }
 
+        $property_id_prefix = houzez_option('property_id_prefix');
+        $property_id = str_replace($property_id_prefix, "", $property_id);
+
         $search_criteria = '=';
         if( $beds_baths_search == 'greater') {
             $search_criteria = '>=';
@@ -2640,7 +2667,7 @@ if( !function_exists('houzez_half_map_listings') ) {
 
                 $propid_array = array(
                     'key' => 'fave_property_id',
-                    'value' => $meta_keywork,
+                    'value' => str_replace($property_id_prefix, "", $meta_keywork),
                     'type' => 'CHAR',
                     'compare' => '=',
                 );
@@ -3141,6 +3168,7 @@ if( !function_exists( 'houzez_prop_sort' ) ){
         } else if ( $sort_by == 'featured' ) {
             $query_args['meta_key'] = 'fave_featured';
             $query_args['meta_value'] = '1';
+            $query_args['orderby'] = 'meta_value date';
         } else if ( $sort_by == 'a_date' ) {
             $query_args['orderby'] = 'date';
             $query_args['order'] = 'ASC';
@@ -3148,16 +3176,18 @@ if( !function_exists( 'houzez_prop_sort' ) ){
             $query_args['orderby'] = 'date';
             $query_args['order'] = 'DESC';
         } else if ( $sort_by == 'featured_first' ) {
-            $query_args['orderby'] = 'meta_value';
+            $query_args['orderby'] = 'meta_value date';
             $query_args['meta_key'] = 'fave_featured';
-            $query_args['order'] = 'DESC';
+            //$query_args['order'] = 'DESC';
         } else if ( $sort_by == 'featured_top' ) {
-            $query_args['orderby'] = 'meta_value';
+            $query_args['orderby'] = 'meta_value date';
             $query_args['meta_key'] = 'fave_featured';
-            $query_args['order'] = 'DESC';
+            //$query_args['order'] = 'DESC';
         }
-
         return $query_args;
+
+        //$q = new WP_Query( array( 'orderby' => array( 'title' => 'DESC', 'menu_order' => 'ASC' ) ) );
+
     }
 }
 
@@ -3462,6 +3492,7 @@ if( !function_exists('houzez_create_print')) {
         $prop_id = get_post_meta( $property_id, 'fave_property_id', true );
         $prop_price = get_post_meta( $property_id, 'fave_property_price', true );
         $prop_size = get_post_meta( $property_id, 'fave_property_size', true );
+        $land_area = get_post_meta( $property_id, 'fave_property_land', true );
         $bedrooms = get_post_meta( $property_id, 'fave_property_bedrooms', true );
         $bathrooms = get_post_meta( $property_id, 'fave_property_bathrooms', true );
         $year_built = get_post_meta( $property_id, 'fave_property_year', true );
@@ -3509,6 +3540,7 @@ if( !function_exists('houzez_create_print')) {
         $print_features = houzez_option('print_features');
         $print_floorplans = houzez_option('print_floorplans');
         $print_gallery = houzez_option('print_gallery');
+        $print_gr_code = houzez_option('print_gr_code');
         ?>
 
         <section id="section-body">
@@ -3539,7 +3571,10 @@ if( !function_exists('houzez_create_print')) {
                             <div class="print-main-image">
                                 <?php if( !empty($full_img) ) { ?>
                                     <img src="<?php echo esc_url( $full_img ); ?>" alt="<?php echo esc_attr($title); ?>">
+                                    
+                                    <?php if($print_gr_code != 0) { ?>
                                     <img class="qr-image" src="https://chart.googleapis.com/chart?chs=105x104&cht=qr&chl=<?php echo esc_url( get_permalink($property_id) ); ?>&choe=UTF-8" title="<?php echo esc_attr($title); ?>" />
+                                    <?php } ?>
                                 <?php } ?>
                             </div>
                         </div>
@@ -3599,6 +3634,9 @@ if( !function_exists('houzez_create_print')) {
                                     }
                                     if( !empty( $prop_size ) ) {
                                         echo '<li><strong>'.esc_html__( 'Property Size:', 'houzez'). '</strong> '.houzez_property_size_by_id( $property_id, 'after' ).'</li>';
+                                    }
+                                    if( !empty( $land_area ) ) {
+                                        echo '<li><strong>'.esc_html__( 'Land Area:', 'houzez'). '</strong> '.houzez_property_land_area_by_id( $property_id, 'after' ).'</li>';
                                     }
                                     if( !empty( $bedrooms ) ) {
                                         echo '<li><strong>'.esc_html__( 'Bedrooms:', 'houzez').'</strong> '.esc_attr( $bedrooms ).'</li>';
@@ -4682,6 +4720,40 @@ if ( !function_exists( 'houzez_property_clone' ) ) {
                 wp_die('Post creation failed, could not find original post: ' . $post_id);
             }
 
+        }
+
+    }
+}
+
+// houzez_property_on_hold
+add_action( 'wp_ajax_houzez_property_on_hold', 'houzez_property_on_hold' );
+
+if ( !function_exists( 'houzez_property_on_hold' ) ) {
+    function houzez_property_on_hold() {
+
+        if ( isset( $_POST['propID'] ) ) {
+
+            global $wpdb;
+            if (! isset( $_POST['propID'] ) ) {
+                wp_die('No post to put on hold has been supplied!');
+            }
+            $post_id = absint( $_POST['propID'] );
+            
+            $post_status = get_post_status( $post_id );
+
+            if($post_status == 'publish') { 
+                $post = array(
+                    'ID'            => $post_id,
+                    'post_status'   => 'on_hold'
+                );
+            } elseif ($post_status == 'on_hold') {
+                $post = array(
+                    'ID'            => $post_id,
+                    'post_status'   => 'publish'
+                );
+            }
+            $post_id =  wp_update_post($post);
+            wp_die();
         }
 
     }

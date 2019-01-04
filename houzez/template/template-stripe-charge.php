@@ -29,7 +29,78 @@ $stripe = array(
 );
 \Stripe\Stripe::setApiKey($stripe['secret_key']);
 
-$input = @file_get_contents("php://input");
+/*--------------------------------------------------------------
+* Webhook Start
+---------------------------------------------------------------*/
+global $wp_filesystem;
+if (empty($wp_filesystem)) {
+    require_once (ABSPATH . '/wp-admin/includes/file.php');
+    WP_Filesystem();
+}
+$input =  $wp_filesystem->get_contents('php://input');
+$input_json_decode = json_decode($input);
+
+if($input_json_decode != '') {
+    $input_json_decode = json_decode($input);
+
+    $array = get_object_vars($input_json_decode->data);
+    foreach($array as $key=>$value){
+        $customer_stripe_id= $value->customer;
+    }
+
+    if($input_json_decode->type=='invoice.payment_failed'){   
+        $args=array('meta_key'    => 'fave_stripe_user_profile', 
+                    'meta_value'  => $customer_stripe_id
+                );
+        $customers=get_users( $args ); 
+        foreach ( $customers as $user ) {
+            update_user_meta( $user->ID, 'fave_stripe_user_profile', '' );
+        }       
+    }
+    
+    
+    // Charge Recurring
+    if($input_json_decode->type=='invoice.payment_succeeded'){
+        $args=array('meta_key'      => 'fave_stripe_user_profile', 
+                    'meta_value'    => $customer_stripe_id
+        );
+        
+        $update_user_id =   0;
+        $customers=get_users( $args ); 
+        foreach ( $customers as $user ) {
+            $update_user_id = $user->ID;
+        } 
+        $pack_id = intval (get_user_meta($update_user_id, 'package_id',true));
+
+        if($update_user_id!=0 && $pack_id!=0){
+            houzez_save_user_packages_record($update_user_id);
+            if( houzez_check_user_existing_package_status($update_user_id, $pack_id) ){
+                houzez_downgrade_package( $update_user_id, $pack_id );
+                houzez_update_membership_package($update_user_id, $pack_id);
+            }else{
+                houzez_update_membership_package($update_user_id, $pack_id);
+            }    
+        
+        }else{
+           // echo 'no user exist';           
+        } 
+        
+        $args = array(
+            'recurring_package_name' => get_the_title($pack_id),
+            'merchant'               => 'Stripe'
+        );
+        houzez_email_type( $user->user_email, 'recurring_payment', $args );
+           
+    }
+    
+    http_response_code(200); 
+    exit();
+}
+
+/*---------------------------
+* End webhook
+---------------------------------------------------------------------*/
+
 
 
 if( is_email($_POST['stripeEmail']) ) {  // done

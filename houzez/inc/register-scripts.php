@@ -261,7 +261,7 @@ if( !function_exists('houzez_scripts') ) {
         /* Register Styles
          * ----------------------*/
         wp_enqueue_style('bootstrap.min', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.5', 'all');
-        //wp_enqueue_style('font-awesome.min', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all');
+        wp_enqueue_style('font-awesome.min', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all');
         wp_enqueue_style('houzez-all', get_template_directory_uri() . '/css/all.min.css', array(), HOUZEZ_THEME_VERSION, 'all');
         wp_enqueue_style('houzez-main', get_template_directory_uri() . '/css/main' . $css_minify_prefix . '.css', array(), HOUZEZ_THEME_VERSION, 'all');
 
@@ -293,9 +293,9 @@ if( !function_exists('houzez_scripts') ) {
 
         if (is_page_template('template/property-listings-map.php') || is_page_template('template/submit_property.php') || is_page_template('template/submit_property_without_login.php') || $header_type == 'property_map' || is_singular('property') || is_singular('houzez_agency') || $content_has_map_shortcode || $enable_radius_search != 0) {
             if (esc_html($googlemap_ssl) == 'yes' || is_ssl()) {
-                wp_enqueue_script('google-map', 'https://maps-api-ssl.google.com/maps/api/js?libraries=places&language=' . get_locale() . '&key=' . esc_html($googlemap_api_key), array('jquery'), '1.0', false);
+                wp_enqueue_script('google-map', 'https://maps.googleapis.com/maps/api/js?libraries=places&language=' . get_locale() . '&key=' . esc_html($googlemap_api_key), array('jquery'), '1.0', false);
             } else {
-                wp_enqueue_script('google-map', 'http://maps.googleapis.com/maps/api/js?libraries=places&language=' . get_locale() . '&key=' . esc_html($googlemap_api_key), array('jquery'), '1.0', false);
+                wp_enqueue_script('google-map', 'https://maps.googleapis.com/maps/api/js?libraries=places&language=' . get_locale() . '&key=' . esc_html($googlemap_api_key), array('jquery'), '1.0', false);
             }
             wp_enqueue_script('google-map-info-box', get_template_directory_uri() . '/js/infobox' . $js_minify_prefix . '.js', array('google-map'), '1.1.9', false);
 

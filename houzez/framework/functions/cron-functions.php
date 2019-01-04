@@ -63,7 +63,7 @@ if( !function_exists('houzez_setup_daily_membership_check_schedule') ):
 
         if( $enable_paid_submission == "membership" ) {
             if (!wp_next_scheduled('houzez_check_membership_expire')) {
-                wp_schedule_event(time(), 'twicedaily', 'houzez_check_membership_expire');
+                wp_schedule_event(time(), 'daily', 'houzez_check_membership_expire');
             }
         }
     }

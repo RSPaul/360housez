@@ -247,6 +247,32 @@ jQuery(document).ready( function($) {
 
         });
 
+        //Put On Hold
+        $( '.put-on-hold' ).on( 'click', function( e ) {
+            e.preventDefault();
+            var $this = $( this );
+            var propid = $this.data( 'property' );
+            $.ajax({
+                url: ajax_url,
+                data: {
+                    'action': 'houzez_property_on_hold',
+                    'propID': propid
+                },
+                method: 'POST',
+                dataType: "JSON",
+
+                beforeSend: function( ) {
+                    houzez_processing_modal(processing_text);
+                },
+                success: function( response ) {
+                    window.location.reload();
+                },
+                complete: function(){
+                }
+            });
+
+        });
+
         //Re listings
         $( 'a.relist-free' ).on( 'click', function( e ) {
             e.preventDefault();

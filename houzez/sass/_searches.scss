@@ -443,6 +443,7 @@
     }
     .form-control {
         font-weight: 400;
+        height: 50px;
     }
     .single-search-inner {
         @extend %display-table-cell;
