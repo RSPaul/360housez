@@ -961,7 +961,7 @@ table {
   line-height: 22px;
   padding: 0 7px;
   font-size: 12px;
-  font-family: roboto; }
+  font-family: aileronsemibold, "Helvetica Neue", Helvetica, Arial !important; }
 
 .gm-marker {
   position: relative;

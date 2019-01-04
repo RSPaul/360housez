@@ -35,6 +35,9 @@ if( !empty( $header_type ) && $header_type != 'none' ) {
 
     } elseif( $header_type == 'video' ) {
         get_template_part( 'template-parts/page-headers/video' );
+    } elseif( $header_type=='property_search'){        
+        get_template_part( 'template-parts/page-headers/property-search' );
+
     }
 
 }

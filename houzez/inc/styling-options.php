@@ -891,7 +891,7 @@ function houzez_custom_styling() {
         .my-property-menu a.active,
         .my-property-menu a:hover,
         .search-panel .advance-trigger {        
-            color: {$houzez_primary_color};
+            //color: {$houzez_primary_color};
         }
         .banner-caption h1,
         .banner-caption h2  {
@@ -1039,7 +1039,7 @@ function houzez_custom_styling() {
             .article-detail .article-title a:hover,
             .comments-block .article-title a:hover,
             .detail-block .list-features a:hover{
-                color: {$houzez_primary_color_hover};
+                //color: {$houzez_primary_color_hover};
                 text-decoration: none;
             }
             

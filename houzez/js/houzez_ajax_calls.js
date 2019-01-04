@@ -1373,7 +1373,7 @@ jQuery(document).ready(function ($) {
                         }
 
                     } else {
-                        $messages.empty().append('<p class="error text-danger"><i class="fa fa-close"></i> '+ response.msg +'</p>');
+                        $messages.empty().append('<p class="error text-danger"><i class="tz-close-sm"></i> '+ response.msg +'</p>');
                     }
                     if(houzez_reCaptcha == 1) {
                         houzezReCaptchaReset();
@@ -1404,7 +1404,7 @@ jQuery(document).ready(function ($) {
                     if( response.success ) {
                         $messages.empty().append('<p class="success text-success"><i class="fa fa-check"></i> '+ response.msg +'</p>');
                     } else {
-                        $messages.empty().append('<p class="error text-danger"><i class="fa fa-close"></i> '+ response.msg +'</p>');
+                        $messages.empty().append('<p class="error text-danger"><i class="tz-close-sm"> '+ response.msg +'</p>');
                     }
                     if(houzez_reCaptcha == 1) {
                         houzezReCaptchaReset();
@@ -1440,7 +1440,7 @@ jQuery(document).ready(function ($) {
                     if( response.success ) {
                         $('#houzez_msg_reset').empty().append('<p class="success text-success"><i class="fa fa-check"></i> '+ response.msg +'</p>');
                     } else {
-                        $('#houzez_msg_reset').empty().append('<p class="error text-danger"><i class="fa fa-close"></i> '+ response.msg +'</p>');
+                        $('#houzez_msg_reset').empty().append('<p class="error text-danger"><i class="tz-close-sm"> '+ response.msg +'</p>');
                     }
                 },
                 error: function(xhr, status, error) {
@@ -1484,7 +1484,7 @@ jQuery(document).ready(function ($) {
                             jQuery('#password_reset_msgs').empty().append('<p class="success text-success"><i class="fa fa-check"></i> '+ data.msg +'</p>');
                             jQuery('#oldpass, #newpass, #confirmpass').val('');
                         } else {
-                            jQuery('#password_reset_msgs').empty().append('<p class="error text-danger"><i class="fa fa-close"></i> '+ data.msg +'</p>');
+                            jQuery('#password_reset_msgs').empty().append('<p class="error text-danger"><i class="tz-close-sm"> '+ data.msg +'</p>');
                         }
                     },
                     error: function(errorThrown) {
@@ -1500,7 +1500,7 @@ jQuery(document).ready(function ($) {
         }
 
         /* ------------------------------------------------------------------------ */
-        /*	Paypal single listing payment
+        /*  Paypal single listing payment
          /* ------------------------------------------------------------------------ */
         $('#houzez_complete_order').click(function(e) {
             e.preventDefault();
@@ -1544,7 +1544,7 @@ jQuery(document).ready(function ($) {
 
 
         /* ------------------------------------------------------------------------ */
-        /*	Paypal payment function
+        /*  Paypal payment function
          /* ------------------------------------------------------------------------ */
         var fave_paypal_payment = function( property_id, is_prop_featured, is_prop_upgrade ) {
 
@@ -1568,7 +1568,7 @@ jQuery(document).ready(function ($) {
         }
 
         /* ------------------------------------------------------------------------ */
-        /*	Select Membership payment
+        /*  Select Membership payment
          /* ------------------------------------------------------------------------ */
 
         var houzez_membership_data = function(currnt) {
@@ -1625,7 +1625,7 @@ jQuery(document).ready(function ($) {
                     if( response.success ) {
                         houzez_membership_data(currnt);
                     } else {
-                        $messages.empty().append('<p class="error text-danger"><i class="fa fa-close"></i> '+ response.msg +'</p>');
+                        $messages.empty().append('<p class="error text-danger"><i class="tz-close-sm"></i> '+ response.msg +'</p>');
                     }
                 },
                 error: function(xhr, status, error) {
