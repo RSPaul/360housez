@@ -118,7 +118,8 @@ if( houzez_is_dashboard() ) {
 							'container_class' => '',
 							'menu_class' => '',
 							'menu_id' => 'menu-main-menu',
-							'depth' => 4
+							'depth' => 4,
+							'walker' => new WP_houzez_walker_nav_menu()
 						));
 					endif;
 					?>
@@ -324,7 +325,8 @@ if (houzez_search_needed()) {
 							'container_class' => '',
 							'menu_class' => '',
 							'menu_id' => 'menu-main-menu',
-							'depth' => 4
+							'depth' => 4,
+							'walker' => new WP_houzez_walker_nav_menu()
 						));
 					endif;
 					?>
