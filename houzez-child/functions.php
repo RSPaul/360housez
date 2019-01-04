@@ -3783,7 +3783,7 @@ add_filter( 'nav_menu_link_attributes', function($atts) {
 
     if ( $current_url ==  $atts['href']) {
         
-        $atts['class'] = "active waves-effect";
+        $atts['class'] = "active";
     } else {
         
         $atts['class'] = "waves-effect";

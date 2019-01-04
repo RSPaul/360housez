@@ -147,7 +147,10 @@ if (houzez_search_needed()) {
 
 	if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
 		
-		get_template_part('template-parts/advanced-search/tz-advance-search');    	
+		if ($adv_search == 'show' || $adv_search == 'hide_show') {
+		
+			get_template_part('template-parts/advanced-search/tz-advance-search');
+		}
 	} 
 } ?>
 <!--end section header-->
@@ -342,7 +345,20 @@ if (houzez_search_needed()) {
 			</div>
 		</div>
 	</div>
+
+<?php 
+if (houzez_search_needed()) {
 	
+	$adv_search_enable = get_post_meta($post->ID, 'fave_adv_search_enable', true);
+
+	if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
+		
+		if ($adv_search == 'show' || $adv_search == 'hide_show') {
+		
+			get_template_part('template-parts/advanced-search/tz-advance-search');
+		}
+	} 
+} ?>	
 </section>
 <!--end section header-->
 

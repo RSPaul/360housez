@@ -26,21 +26,26 @@ class WP_houzez_walker_nav_menu extends Walker_Nav_menu {
 
         $output .= "<li class='nav-item $active_class $dropdown_class " .  implode(" ", $item->classes) . "'>";
 
+        if( !$args->walker->has_children && $depth == 0 ) {
 
-        if( $args->walker->has_children && $depth == 0 ) {
-            $output .= '<a href="' . esc_url($permalink) . '" class="'. $anchor_active.' nav-link dropdown-trigger ' . $dropdown_link_class . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+            $output .= '<a href="' . esc_url($permalink) . '" class=" nav-link waves-effect ">'. $title. '</a>';
+        } else {            
+
+            if( $args->walker->has_children && $depth == 0 ) {
+                $output .= '<a href="' . esc_url($permalink) . '" class=" nav-link dropdown-trigger waves-effect ' . $dropdown_link_class . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+            }
+            else {
+                $output .= '<a href="' . esc_url($permalink) . '" class=" nav-link">';
+            }
+
+            $output .= $title;
+
+            if( $description != '' && $depth == 0 ) {
+                $output .= '<small class="description">' . $description . '</small>';
+            }
+
+            $output .= '</a>';
         }
-        else {
-            $output .= '<a href="' . esc_url($permalink) . '" class="'. $anchor_active.' nav-link">';
-        }
-
-        $output .= $title;
-
-        if( $description != '' && $depth == 0 ) {
-            $output .= '<small class="description">' . $description . '</small>';
-        }
-
-        $output .= '</a>';
     }
 
     function end_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
