@@ -3735,9 +3735,9 @@ add_filter('houzez_property_filter', 'houzez_property_filter');
 function add_header_style($sections){
 
 // key should be numeric for this field
-$sections[4]['fields'][39]['options']['7']  = 'TZ Header Style';
+$sections[4]['fields'][38]['options']['7']  = 'TZ Header Style';
+$sections[4]['fields'][41]['required']  = array('header_style', '!=', '7' );
 $sections[4]['fields'][42]['required']  = array('header_style', '!=', '7' );
-$sections[4]['fields'][43]['required']  = array('header_style', '!=', '7' );
 // 'required' => array('header_style', '!=', '7' ),
 
 return $sections;
