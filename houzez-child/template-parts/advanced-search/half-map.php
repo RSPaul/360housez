@@ -73,7 +73,6 @@ if ($adv_show_hide['keyword'] != 1) {
 ?>
 
 
-
 <!-- SEARCHING NAVBAR -->
     <div class="navbar searching-navbar" id="sticky_navbar">
         <form>
