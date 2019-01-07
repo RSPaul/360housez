@@ -145,6 +145,7 @@ if( houzez_is_dashboard() ) {
 if (houzez_search_needed()) {
 	
 	$adv_search_enable = get_post_meta($post->ID, 'fave_adv_search_enable', true);
+	$adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
 
 	if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
 		
