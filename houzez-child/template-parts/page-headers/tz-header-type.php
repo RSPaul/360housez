@@ -120,7 +120,7 @@ if (!empty($img_url[0])) {
 
             event.preventDefault();
 
-            $(".rent-half").hide('slow');
+            $(".content_style").hide('slow');
             
             $(".visible-left").animate({
                 width: '100%'
@@ -141,7 +141,7 @@ if (!empty($img_url[0])) {
         $(".show-rent-options").click(function (event) {
 
             event.preventDefault();
-            
+
             $("p.show-rent-options").addClass('residence_vacation');
             $(".rent-info-text").hide();
             $(".rent-options").fadeIn('slow');
@@ -164,7 +164,7 @@ if (!empty($img_url[0])) {
                 $('.rent-price').html('Price /month <span class="txt-xs txt-op-60">(USD $)</span>');
             }
 
-            $(".half-area").hide('slow');
+            $(".content_style").hide('slow');
             $('.visible-right').animate({
                 width: '100%'
             }, 1200);
@@ -181,44 +181,46 @@ if (!empty($img_url[0])) {
 
         $(".go_back.left").click(function(){
             
-            $(".banner-inner-right").animate({
+            $(".visible-right").animate({
                 width: '50%'
             }, 1100);
             
-            $('.banner-inner-left').animate({
+            $('.visible-left').animate({
                 width: '50%'
             }, 1200);
             
-            $(".banner-inner-right").show();
+            $(".visible-right").show();
             
             setTimeout(function () {
                  $(".full-area").fadeOut("fast");
             },50);
 
             setTimeout(function () {               
-                $(".half-area").show('slow');
+                
+                $(".content_left, .content_right").show('slow');
             }, 1100);          
 
         });
 
         $(".go_back.right").click(function(){
             
-            $(".banner-inner-right").animate({
+            $(".visible-right").animate({
                 width: '50%'
             }, 1100);
             
-            $('.banner-inner-left').animate({
+            $('.visible-left').animate({
                 width: '50%'
             }, 1200);
             
-            $(".banner-inner-left").show();
+            $(".visible-left").show();
             
             setTimeout(function () {
                  $(".full-area").fadeOut("fast");
             },50);
 
             setTimeout(function () {               
-                $(".half-area").show('slow');
+                
+                $(".content_left, .content_right").show('slow');
             }, 1100);          
 
         });
