@@ -174,9 +174,9 @@ $selected_radius = $_GET['radius'];
 $checked = true;
 ?>
 <!--start advanced search section-->
-<div class="advanced-search advance-search-header houzez-adv-price-range <?php echo esc_attr($class); ?>" data-sticky='<?php echo esc_attr($sticky); ?>'>
+<!-- <div class="advanced-search advance-search-header houzez-adv-price-range <?php echo esc_attr($class); ?>" data-sticky='<?php echo esc_attr($sticky); ?>'>
     <div class="<?php echo esc_attr($search_width); ?>">
-        <div class="default_show half-part-left">
+        <div class="default_show half-part-left"> -->
             <!-- <div class="half-area">
                 <h3 class="show-rent-options"><?php echo $tz_right_button_text; ?></h3>
                 <p class="show-rent-options">
@@ -219,7 +219,6 @@ $checked = true;
             </div>
             
             
-        </div>
-        
+        <!-- </div>        
     </div>
-</div>
+</div> -->
