@@ -116,27 +116,32 @@ if (!empty($img_url[0])) {
         });
 
 
-        $(".sale-options").click(function () {
-            $(".half-area").hide('slow');
+        $(".sale-options").click(function (event) {
 
-            $(".banner-inner-left").animate({
+            event.preventDefault();
+
+            $(".rent-half").hide('slow');
+            
+            $(".visible-left").animate({
                 width: '100%'
             }, 1200);
             
-            $(".banner-inner-right").animate({
+            $(".visible-right").animate({
                 width: '0%'
             }, 1100);
             
             $('.banner-search-main').show();
             
             setTimeout(function () {
-                $(".banner-inner-right").hide();                
+                $(".visible-right").hide();                
                 $(".full-area").fadeIn("slow");
             }, 1100);
         });
 
-        $(".show-rent-options").click(function () {
+        $(".show-rent-options").click(function (event) {
 
+            event.preventDefault();
+            
             $("p.show-rent-options").addClass('residence_vacation');
             $(".rent-info-text").hide();
             $(".rent-options").fadeIn('slow');
@@ -160,16 +165,16 @@ if (!empty($img_url[0])) {
             }
 
             $(".half-area").hide('slow');
-            $('.banner-inner-right').animate({
+            $('.visible-right').animate({
                 width: '100%'
             }, 1200);
-            $(".banner-inner-left").animate({
+            $(".visible-left").animate({
                 width: '0%'
             }, 1100);
             $('.banner-search-main').show();
             
             setTimeout(function () {
-                $(".banner-inner-left").hide();
+                $(".visible-left").hide();
                 $(".full-area").fadeIn("slow");
             }, 1100);
         });
