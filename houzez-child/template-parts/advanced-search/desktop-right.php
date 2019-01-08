@@ -192,7 +192,7 @@ $checked = true;
                 </p>
             </div> -->
 
-            <div class="content" style="height: inherit; width:inherit; text-align:center;">
+            <div class="content rent-half" style="height: inherit; width:inherit; text-align:center;">
                 <a id="slide-to-left" href="#" class="show-rent-options"><h3><?php echo $tz_right_button_text; ?></h3></a>
                 <p class="show-rent-options">
                   <span class="rent-info-text">
