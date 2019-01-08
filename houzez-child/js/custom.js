@@ -1976,6 +1976,8 @@ var nice = false;
                 // Expanding the background
                 $('.bottom-line').delay(730).animate({"height": "46vh"}, 700);
             });
+
+            
             
         } else {
             // Find out the wrapper width in order to slide out each half
