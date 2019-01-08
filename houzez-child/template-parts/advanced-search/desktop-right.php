@@ -193,18 +193,20 @@ $checked = true;
             </div> -->
 
             <div class="content rent-half" style="height: inherit; width:inherit; text-align:center;">
-                <a id="slide-to-left" href="#" class="show-rent-options"><h3><?php echo $tz_right_button_text; ?></h3></a>
-                <p class="show-rent-options">
-                  <span class="rent-info-text">
-                    <?php echo $tz_right_info_text; ?>
-                  </span>
-                  <span class="rent-vacation rent-options" style="display: none;" data-val="for-rent-vacations">
-                    <?php echo $tz_right_sec_text_1; ?>
-                  </span>
-                  <span class="rent-residence rent-options" style="display: none;" data-val="for-rent-living">
-                    <?php echo $tz_right_sec_text_2; ?>
-                  </span>
-                </p>
+                <div class="content_style content_right">
+                  <a id="slide-to-left" href="#" class="show-rent-options"><h3><?php echo $tz_right_button_text; ?></h3></a>
+                  <p class="show-rent-options">
+                    <span class="rent-info-text">
+                      <?php echo $tz_right_info_text; ?>
+                    </span>
+                    <span class="rent-vacation rent-options" style="display: none;" data-val="for-rent-vacations">
+                      <?php echo $tz_right_sec_text_1; ?>
+                    </span>
+                    <span class="rent-residence rent-options" style="display: none;" data-val="for-rent-living">
+                      <?php echo $tz_right_sec_text_2; ?>
+                    </span>
+                  </p>
+                </div>
             </div>
             <div class="full-area" style="display: none;">
                 <h3><?php echo $tz_right_button_text; ?>

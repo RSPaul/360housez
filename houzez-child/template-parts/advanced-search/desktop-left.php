@@ -179,8 +179,10 @@ $checked = true;
                 <p><?php echo $tz_left_info_text; ?></p>
             </div> -->
             <div class="content sale-half" style="height: inherit; width:inherit; text-align:center;">
-                <a id="slide-to-right" class="sale-options" href="#"><h3><?php echo $tz_left_button_text; ?></h3></a>
-                <p><?php echo $tz_left_info_text; ?></p>
+                <div class="content_style content_left">
+                  <a id="slide-to-right" class="sale-options" href="#"><h3><?php echo $tz_left_button_text; ?></h3></a>
+                  <p><?php echo $tz_left_info_text; ?></p>
+                </div>
             </div>
             <div class="full-area" style="display: none;">
                 <h3><?php echo $tz_left_button_text; ?> 
