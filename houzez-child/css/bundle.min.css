@@ -10345,7 +10345,8 @@ button.map-control span {
 @media screen and (min-width:624px) {
 	.searching-navbar .main-search-inputs a[role=button] {
 		padding: .625rem;
-		margin-left: .625rem
+		margin-left: .625rem;
+		line-height: inherit;
 	}
 	.searching-navbar .main-search-inputs #toggle-map {
 		display: inline-block
@@ -11254,6 +11255,13 @@ body.home .property-card .property-card-body {
     float: left;
     width: 100%;
 }
+.full-area form #sticky_navbar #advanced-search-menu2 label {
+    margin-bottom: 8px;
+    overflow-wrap: break-word;
+    text-align: left;
+    float: left;
+    width: 100%;
+}
 .banner_inner form #sticky_navbar #advanced-search-menu3 label {
     margin-bottom: 8px;
     overflow-wrap: break-word;
@@ -11293,22 +11301,103 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 	    <?php } ?>
 	    opacity: <?php echo esc_attr($page_image_opacity); ?>;
     }
-.default_show.half-part-left h3 {
+.full-area h3 {
     padding: 10px;
     box-shadow: 0px 1px 2px #a7a7a7;
 }
-.default_show.half-part-left .half-area p {padding: 10px 0 0;}
-.default_show.half-part-left h3 span {
+.full-area .half-area p {padding: 10px 0 0;}
+.full-area h3 span {
     font-size: 15px;
 }
-.default_show.half-part-left .full-area form {margin: 10px;padding: 10px 10px 25px;}
-.default_show.half-part-left h3 {margin:0;}
-.default_show.half-part-left{
+.full-area form {margin: 0px;padding: 0px;}
+.full-area h3 {margin:0;}
+.full-area{
   position:absolute;  width:100%;
 }
-.default_show.half-part-left .full-area {
-    /*background: rgba(255,255,255,0.5);*/ text-align: center; 
-    max-width: 80%; width: 100%; margin:6% auto 0;
+.full-area .navbar.searching-navbar {
+    border: none;
+    background: rgba(255,255,255,0.7);
+}
+.full-area form #sticky_navbar .price-filter .input-field.no-label {
+    float: left;
+    width: 130px;
+}
+.full-area form #sticky_navbar .price-filter {
+    max-width: 300px;
+}
+.full-area form #sticky_navbar #advanced-search-menu3 label {
+    margin-bottom: 8px;
+    overflow-wrap: break-word;
+    text-align: left;
+    float: left;
+    width: 100%;
+}
+.full-area form #sticky_navbar .filter-title.txt-h-medium.txt-md {
+    text-align: left;
+}
+.full-area {
+   /* background: rgba(255,255,255,0.5);*/
+	text-align: center;
+	max-width: 80%;
+	width: 100%;
+	margin: 8% auto 0;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+p.show-rent-options.residence_vacation {
+    padding: 0;
+    margin: 0;
+}
+p.show-rent-options span.rent-options {
+    border-right: 1px solid #000;
+    padding: 13px 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+p.show-rent-options span.rent-options:last-child {
+    border-right: none;
+}
+.content_style{
+	background: rgba(255,255,255,0.5);
+    position: absolute;
+    width: 80%;
+    line-height: initial;
+}
+.content_style.content_left {
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+}
+.content_style.content_right {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+.content_style a {
+    text-align: center;
+}
+.content_style a h3 {
+    box-shadow: 0px 1px 2px #a7a7a7;
+    margin: 0px;
+    padding: 10px 0px;
+    font-size: 25px;
+    text-transform: none;
+}
+.content_style p {
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 13px 0px;
+    line-height: initial;
+
+}
+
+
+.btn-group.bootstrap-select {
+	display: none !important;
 }
 .default_show.half-part-left .half-area  {
     text-align: center; background: rgba(255,255,255,0.5);   right:0; float:right;  max-width: 80%; width: 100%; margin-top:41%;
@@ -11361,8 +11450,9 @@ ul.list-inline.mobile-login .user i {
 .full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3{
 	position: relative;
 }
-.default_show.half-part-left .full-area h3 {
+.full-area h3 {
     background: rgba(255,255,255,0.5);
+    font-size: 25px;
 }
 .select-dropdown.dropdown-content {
     top: 32px !important;
@@ -11885,7 +11975,7 @@ header.tz-header-type .visible-right .header-right {
 }*/
 
 /* Only for demostration purpose. However, take into account the element vertical position */
-		a#slide-to-left, a#slide-to-right{
+		/*a#slide-to-left, a#slide-to-right{
 			display: inline-block;
 			margin-top: 20vh;
 			opacity: 1;
@@ -11894,4 +11984,4 @@ header.tz-header-type .visible-right .header-right {
 			a#slide-to-left, a#slide-to-right{
 				margin-top: 50vh;	
 			}
-		}
+		}*/
