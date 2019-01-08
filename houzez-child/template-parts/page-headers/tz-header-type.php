@@ -134,7 +134,7 @@ if (!empty($img_url[0])) {
             
             setTimeout(function () {
                 $(".visible-right").hide();                
-                $(".full-area").fadeIn("slow");
+                $(".sale-options").parents(".sale-half").next(".full-area").fadeIn("slow");
             }, 1100);
         });
 
@@ -175,7 +175,7 @@ if (!empty($img_url[0])) {
             
             setTimeout(function () {
                 $(".visible-left").hide();
-                $(".full-area").fadeIn("slow");
+                $(".rent-options").parents(".rent-half").next(".full-area").fadeIn("slow");
             }, 1100);
         });
 
@@ -185,12 +185,30 @@ if (!empty($img_url[0])) {
                 $('.visible-right').delay(650).animate({"width": "100%"}, 500);
                 $('.visible-left').delay(650).animate({"width": "100%"}, 500);
                 $('.visible-right').show();
+
+                setTimeout(function () {
+                     $(".full-area").fadeOut("fast");
+                },50);
+
+                setTimeout(function () {               
+                    
+                    $(".content_left, .content_right").show('slow');
+                }, 1100);
             });
 
             $(".go_back.right").click(function(){
                 $('.visible-right').delay(650).animate({"width": "100%"}, 500);
                 $('.visible-left').delay(650).animate({"width": "100%"}, 500);
                 $('.visible-left').show();
+
+                setTimeout(function () {
+                     $(".full-area").fadeOut("fast");
+                },50);
+
+                setTimeout(function () {               
+                    
+                    $(".content_left, .content_right").show('slow');
+                }, 1100);                          
             });
 
         } else {
