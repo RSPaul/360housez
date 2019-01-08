@@ -11743,7 +11743,7 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 		left: 0px;
 	}
 	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu3, .searching-navbar #advanced-search-menu {
-	    height: 77vh;
+	    height: 70vh;
 	    overflow-x: hidden;
 	}
 	.searching-navbar #advanced-search-menu div.search-col.six{
@@ -11780,6 +11780,9 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	    display: inline-block;
 	    margin-right: 10px;
 	    font-size: 12px;
+	}
+	.full-area {
+	    margin: 10% auto 0;
 	}
 
 
@@ -11884,7 +11887,7 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	header.tz-header-type .container-fluid div.divisive-line {
 	  position: absolute;
 	  z-index: 3;
-	  margin-top: 42vh;
+	  margin-top: 46vh;
 	  width: 100%;
 	  height: 1px;
 	  background-color: black;
@@ -11942,6 +11945,13 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	.content_style {
 	    position: relative;
 	    width: 100%;
+	}
+	.searching-navbar .main-search-inputs a[role=button]{
+		line-height: inherit;
+	}
+	.main-search-inputs button.bd-black.waves-effect.waves-color-1{
+		padding: .375rem;
+		line-height: inherit;
 	}
 
 
