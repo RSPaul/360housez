@@ -1943,3 +1943,77 @@ var nice = false;
 
 })(jQuery);
 
+// TZ Header Type
+(function($){
+    function tzHeaderAlign() { 
+        
+        if  (window.matchMedia('(max-width: 767px)').matches){
+            // Find out the wrapper height in order to slide out each half
+            var slideH = $('.tz-header-wrapper').height();
+            
+            // Button Left/Up (Sale)    
+            $('#slide-to-right').click(function(e){
+                e.preventDefault();
+                // Setting this half in front
+                $('.visible-left').css("z-index","2");
+                // Animating the divisive line (scale to "0")
+                $('.divisive-line').addClass("animate");
+                // Sliding up the opposite half
+                $('.visible-right').delay(650).animate({"top": -slideH}, 800);
+                // Expanding the background
+                $('.bottom-line').delay(660).animate({"height": "46vh"}, 700);
+            });
+            // Button Right/Bottom (Rent)
+            $('#slide-to-left').click(function(e){
+                e.preventDefault();
+                // Setting this half in front
+                $('.visible-right').css("z-index","2");
+                // Animating the divisive line (scale to "0")
+                $('.divisive-line').addClass("animate");
+                // Sliding up the two halfs
+                $('.visible-right').delay(650).animate({"top": -slideH/2}, 500);
+                $('.visible-left').delay(720).animate({"top": -slideH}, 800);
+                // Expanding the background
+                $('.bottom-line').delay(730).animate({"height": "46vh"}, 700);
+            });
+            
+        } else {
+            // Find out the wrapper width in order to slide out each half
+            var slideW = $('.tz-header-wrapper').width() / 2;
+            
+            // Button Left/Up (Sale)    
+            $('#slide-to-right').click(function(e){
+                e.preventDefault();
+                // Setting the opposite half in front
+                $('.visible-right').css("z-index","2");
+                // Animating the divisive line (scale to "0")
+                $('.divisive-line').addClass("animate");
+                // Animating the text (buttons)
+                $('.tz-slides a').delay(200).animate({"opacity": "0"}, 80);
+                // Making the image of the selected action have the full width
+                $('.visible-left').delay(650).animate({"width": "100%"}, 500);
+                // Sliding the opposite half
+                $('.visible-right').delay(650).animate({"right": -slideW}, 500);    
+            });
+            // Button Right/Bottom (Rent)
+            $('#slide-to-left').click(function(e){
+                e.preventDefault();
+                // Setting the opposite half in front
+                $('.visible-left').css("z-index","2");
+                // Animating the divisive line (scale to "0")
+                $('.divisive-line').addClass("animate");
+                // Animating the text (buttons)
+                $('.tz-slides a').delay(200).animate({"opacity": "0"}, 80);
+                // Making the image of the selected action have the full width
+                $('.visible-right').delay(650).animate({"width": "100%"}, 500);
+                // Sliding the opposite half
+                $('.visible-left').delay(650).animate({"left": -slideW}, 500);  
+            });
+        }
+    }
+    /* Call the function */
+    tzHeaderAlign();
+    /* Attach the function to the resize event listener */
+    window.addEventListener('resize', tzHeaderAlign, false);  
+})(jQuery);
+
