@@ -75,136 +75,35 @@ if (!empty($img_url[0])) {
 
 <div class="header-media-wrap">
     <div class="header-media">
-        <div class="banner-parallax <?php echo esc_attr($fave_header_full_screen); ?>" 
-        <?php
-        if (!empty($image_height)) {
-            echo "style='$image_height'";
-        };
-        ?>>
-            <!--<div class="banner-caption" >
-                <?php if ($page_head_search != 'yes') { ?>
-                    <h1><?php echo esc_attr($splash_welcome_text); ?></h1>
-                    <h2><?php echo esc_attr($page_head_subtitle); ?></h2>
-                <?php } ?>
-            </div>-->
 
-            <div class="banner-bg-wrap">
-                <div class="banner_inner banner-inner-left" style="background-image:url(<?php echo $tz_left_image; ?>); background-size: cover;">                    
-                    <div class="banner-inner-content search-bar search-salebar">
-                        <?php
-                        get_template_part('template-parts/advanced-search/desktop-left');
-                        // if (houzez_search_needed()) {
-                        //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
-                        //         if ($adv_search_pos == 'under_banner') {
-                        //             if ($adv_search == 'show' || $adv_search == 'hide_show') {
-                        //             }
-                        //         }
-                        //     }
-                        // }
+        <!--My TZ Header Type start here = Add .tz-header-type class to put styles in this header-->      
+            <header class="tz-header-type">
+                <div class="container-fluid">
+                    <!-- Middle dividing line -->
+                    <div class="divisive-line"></div>
 
-                        // if (houzez_search_needed()) {
-                        //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
-                        //         if ($adv_search_pos == 'under_banner') {
-                        //             if ($adv_search == 'show' || $adv_search == 'hide_show') {
-                        //                 get_template_part('template-parts/advanced-search', 'undermenu');
-                        //             }
-                        //         }
-                        //     } else {
-                        //         if (!is_home() && !is_singular('post')) {
-                        //             if ($search_enable != 0 && $search_position == 'under_banner') {
-                        //                 if ($search_pages == 'only_home') {
-
-                        //                     if (is_front_page()) {
-                        //                         get_template_part('template-parts/advanced-search', 'undermenu');
-                        //                     }
-                        //                 } elseif ($search_pages == 'all_pages') {
-                        //                     get_template_part('template-parts/advanced-search', 'undermenu');
-                        //                 } elseif ($search_pages == 'only_innerpages') {
-                        //                     if (!is_front_page()) {
-                        //                         get_template_part('template-parts/advanced-search', 'undermenu');
-                        //                     }
-                        //                 }
-                        //             }
-                        //         }
-                        //     }
-                        // }
-                        ?>
-
-                        
-
-
-                    </div>
-                </div>
-
-                <div class="banner_inner banner-inner-right" style="background-image:url(<?php echo $tz_right_image; ?>); background-size: cover;">
-                    <div class="banner-inner-content search-bar search-rentbar">
-                        <div class="right_rent_part">
-                            <?php
-                            get_template_part('template-parts/advanced-search/desktop-right');
-                            // if (houzez_search_needed()) {
-                            //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
-                            //         if ($adv_search_pos == 'under_banner') {
-                            //             if ($adv_search == 'show' || $adv_search == 'hide_show') {
-                            //             }
-                            //         }
-                            //     }
-                            // }
-                            // if (houzez_search_needed()) {
-                            //     if ((!empty($adv_search_enable) && $adv_search_enable != 'global')) {
-                            //         if ($adv_search_pos == 'under_banner') {
-                            //             if ($adv_search == 'show' || $adv_search == 'hide_show') {
-                            //                 get_template_part('template-parts/advanced-search', 'undermenu');
-                            //             }
-                            //         }
-                            //     } else {
-                            //         if (!is_home() && !is_singular('post')) {
-                            //             if ($search_enable != 0 && $search_position == 'under_banner') {
-                            //                 if ($search_pages == 'only_home') {
-
-                            //                     if (is_front_page()) {
-                            //                         get_template_part('template-parts/advanced-search', 'undermenu');
-                            //                     }
-                            //                 } elseif ($search_pages == 'all_pages') {
-                            //                     get_template_part('template-parts/advanced-search', 'undermenu');
-                            //                 } elseif ($search_pages == 'only_innerpages') {
-                            //                     if (!is_front_page()) {
-                            //                         get_template_part('template-parts/advanced-search', 'undermenu');
-                            //                     }
-                            //                 }
-                            //             }
-                            //         }
-                            //     }
-                            // }
-                            ?>
+                    <div class="tz-header-wrapper">
+                        <!-- Left/Up side (Sale)-->
+                        <div class="visible-left">
+                            <div class="tz-slides header-left" style="background-image:url(<?php echo $tz_left_image; ?>); background-size: cover; background-position: left top;">
+                                <?php get_template_part('template-parts/advanced-search/desktop-left'); ?>
+                            </div>                  
+                        </div>
+                        <!-- Right/Bottom side (Rent)-->
+                        <div class="visible-right">
+                            <div class="tz-slides header-right" style="background-image: url(<?php echo $tz_right_image; ?>); background-size: cover; background-position: right top;">
+                                <?php get_template_part('template-parts/advanced-search/desktop-right'); ?>
+                            </div>                  
                         </div>
                     </div>
+
+                    <!-- Bottom background line -->
+                    <div class="bottom-line"></div>
                 </div>
+            </header>
+            <!-- My TZ Header Type ends here -->
 
-            </div>
-        </div>
     </div>
-
-
-    <?php
-//    if ($adv_search_which_header_show['header_image'] != 0) {
-//        if ($adv_search_over_header_pages == 'only_home') {
-//            if (is_front_page()) {
-//                get_template_part('template-parts/advanced-search/desktop', 'type2');
-//            }
-//        } else if ($adv_search_over_header_pages == 'all_pages') {
-//            get_template_part('template-parts/advanced-search/desktop', 'type2');
-//        } else if ($adv_search_over_header_pages == 'only_innerpages') {
-//            if (!is_front_page()) {
-//                get_template_part('template-parts/advanced-search/desktop', 'type2');
-//            }
-//        } else if ($adv_search_over_header_pages == 'specific_pages') {
-//            if (is_page($adv_search_selected_pages)) {
-//                get_template_part('template-parts/advanced-search/desktop', 'type2');
-//            }
-//        }
-//    }
-    ?>
-
 </div>
 
 <script>

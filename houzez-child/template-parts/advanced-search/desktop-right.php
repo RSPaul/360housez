@@ -177,7 +177,7 @@ $checked = true;
 <div class="advanced-search advance-search-header houzez-adv-price-range <?php echo esc_attr($class); ?>" data-sticky='<?php echo esc_attr($sticky); ?>'>
     <div class="<?php echo esc_attr($search_width); ?>">
         <div class="default_show half-part-left">
-            <div class="half-area">
+            <!-- <div class="half-area">
                 <h3 class="show-rent-options"><?php echo $tz_right_button_text; ?></h3>
                 <p class="show-rent-options">
                   <span class="rent-info-text">
@@ -190,14 +190,21 @@ $checked = true;
                     <?php echo $tz_right_sec_text_2; ?>
                   </span>
                 </p>
-                <!-- <p class="rent-options" style="display: none;">
-                  <span class="rent-vacation">
+            </div> -->
+
+            <div class="content" style="height: inherit; width:inherit; text-align:center;">
+                <a id="slide-to-left" href="#" class="show-rent-options"><h3><?php echo $tz_right_button_text; ?></h3></a>
+                <p class="show-rent-options">
+                  <span class="rent-info-text">
+                    <?php echo $tz_right_info_text; ?>
+                  </span>
+                  <span class="rent-vacation rent-options" style="display: none;" data-val="for-rent-vacations">
                     <?php echo $tz_right_sec_text_1; ?>
                   </span>
-                  <span class="rent-residence">
-                    <?php echo $tz_right_sec_text_1; ?>
+                  <span class="rent-residence rent-options" style="display: none;" data-val="for-rent-living">
+                    <?php echo $tz_right_sec_text_2; ?>
                   </span>
-                </p> -->
+                </p>
             </div>
             <div class="full-area" style="display: none;">
                 <h3><?php echo $tz_right_button_text; ?>

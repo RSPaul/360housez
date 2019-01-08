@@ -174,8 +174,12 @@ $checked = true;
 <div class="advanced-search advance-search-header houzez-adv-price-range <?php echo esc_attr($class); ?>" data-sticky='<?php echo esc_attr($sticky); ?>'>
     <div class="<?php echo esc_attr($search_width); ?>">
         <div class="default_show half-part-left">
-            <div class="half-area sale-options">
+            <!-- <div class="half-area sale-options">
                 <h3><?php echo $tz_left_button_text; ?></h3>
+                <p><?php echo $tz_left_info_text; ?></p>
+            </div> -->
+            <div class="content" style="height: inherit; width:inherit; text-align:center;">
+                <a id="slide-to-right" href="#"><h3><?php echo $tz_left_button_text; ?></h3></a>
                 <p><?php echo $tz_left_info_text; ?></p>
             </div>
             <div class="full-area" style="display: none;">

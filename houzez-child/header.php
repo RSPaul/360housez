@@ -18,6 +18,20 @@ $houzez_local = houzez_get_localization();
 
     </head>
 
+    <?php $search_enable = houzez_option('main-search-enable');
+            $search_position = houzez_option('search_position');
+            $search_pages = houzez_option('search_pages');
+
+            if (houzez_search_needed()) {
+                $adv_search_enable = get_post_meta($post->ID, 'fave_adv_search_enable', true);
+                $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
+                $adv_search_pos = get_post_meta($post->ID, 'fave_adv_search_pos', true);
+                
+                if ($adv_search == 'show' || $adv_search == 'hide_show') {
+                    $banner_class = "tz-class";
+                }
+            }
+            ?>
 
     <body <?php body_class(); ?>>
         <div id="fb-root"></div>
@@ -34,15 +48,7 @@ $houzez_local = houzez_get_localization();
             ?>
 
             <?php
-            $search_enable = houzez_option('main-search-enable');
-            $search_position = houzez_option('search_position');
-            $search_pages = houzez_option('search_pages');
-
-            if (houzez_search_needed()) {
-                $adv_search_enable = get_post_meta($post->ID, 'fave_adv_search_enable', true);
-                $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
-                $adv_search_pos = get_post_meta($post->ID, 'fave_adv_search_pos', true);
-            }
+            
 
             if (isset($_GET['search_pos'])) {
                 $search_enable = 1;
