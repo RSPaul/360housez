@@ -11675,6 +11675,15 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	#houzez-gmap-main.stick_map{
 		width: 41% !important;
 	}
+	.main-navbar {
+	    height: 5rem;
+	    line-height: 4.5rem;
+	}
+	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
+	    position: relative;
+	    height: 320px;
+	    overflow-x: hidden;
+	}
 }
 
 @media (min-width: 1367px) and (max-width: 1440px){
@@ -11683,6 +11692,15 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	}
 	#houzez-gmap-main.stick_map{
 		width: 41% !important;
+	}
+	.main-navbar {
+	    height: 5rem;
+	    line-height: 4.5rem;
+	}
+	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
+	    position: relative;
+	    height: 440px;
+	    overflow-x: hidden;
 	}
 }
 
@@ -11693,6 +11711,15 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	}
 	#houzez-gmap-main.stick_map{
 		width: 40% !important;
+	}
+	.main-navbar {
+	    height: 5.5rem;
+	    line-height: 5rem;
+	}
+	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
+	    position: relative;
+	    height: 440px;
+	    overflow-x: hidden;
 	}
 }
 
