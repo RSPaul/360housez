@@ -83,7 +83,7 @@ if ($adv_show_hide['keyword'] != 1) {
 
                                 <div class="mini-logo show">
                                     <a href="#!" class="sidenav-trigger" data-target="sidenav-menu">
-                                        <img src="<?php echo bloginfo('template_url'); ?>/images/condensed-logo-menu.svg" alt="Menu" title="Menu"/>
+                                        <img src="<?php echo bloginfo('template_url'); ?>/images/condensed-logo-menu.png" alt="Menu" title="Menu"/>
                                     </a>
                                 </div> 
                             
