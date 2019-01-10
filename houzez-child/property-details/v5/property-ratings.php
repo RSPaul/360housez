@@ -46,7 +46,7 @@ $agent_forms_terms_gdpr_agreement = houzez_option('agent_forms_terms_gdpr_agreem
 
             <h2 class="txt-lg text-center"><span class="txt-h-light"><?php
                 if ( $prop_total_reviews == 0 ) {
-                    echo "No";;
+                    esc_html_e( 'No Review', 'houzez' );
                 } elseif ( $prop_total_reviews == 1 ) {
                     echo $prop_total_reviews;
                 } else {
@@ -167,6 +167,19 @@ $agent_forms_terms_gdpr_agreement = houzez_option('agent_forms_terms_gdpr_agreem
                 }
             ?>
         </div>
+        <?php } else { ?>
+
+            <div class="col-xxs-12 col-xxs-offset-0 col-md-8 col-md-offset-2 col-xl-6 col-xl-offset-3">
+
+                <h2 class="txt-lg text-center"> <?php echo esc_html_e( 'No Review', 'houzez' );; ?></h2>
+                    <ul class="list-inline text-center">
+                        <li class="txt-sm">  
+                            <input class="rating-display-only" name="rating" value="<?php echo $rating; ?>" type="number" min="0" max="5" step=1 data-size="md" class="rating">
+                            (<span class="txt-h-medium"><?php echo round($rating, 2); ?></span> <?php esc_html_e('out of', 'houzez');?> <span class="txt-h-medium">5</span>)
+                        </li>
+                    </ul>
+                <div class="txt-xs txt-color-1 text-right"><a href="#review-this-property"><span class="waves-effect">Write a review</span></a></div>
+        </div>
         <?php } ?>
         <!--Reviews container ends here-->
         <!-- Write a review -->
@@ -221,6 +234,7 @@ $agent_forms_terms_gdpr_agreement = houzez_option('agent_forms_terms_gdpr_agreem
                                     <span>I have read and accept the <a href="" target="_blank">privacy policy</a>.</span>
                                 </label>
                             </div>
+                            <div class="form_messages"></div>
                             <!-- <a type="button" class="waves-effect waves-color-1 btn bd-black">Send review</a> -->
                             <button type="button" class="property_rating waves-effect waves-color-1 btn bd-black"><?php esc_html_e('Send review', 'houzez'); ?></button>
                             <div class="data-protection-eu-alert">

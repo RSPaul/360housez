@@ -2997,9 +2997,13 @@ if( !function_exists('houzez_half_map_listings') ) {
             $prop->price = houzez_listing_price_v1();
             $prop->pricePin = houzez_listing_price_map_pins();
 
-            $prop->for_sale = get_post_meta( get_the_ID(), 'fave_property_price', true );
-            $prop->for_rent_living = get_post_meta( get_the_ID(), 'fave_property_sec_price', true );
-            $prop->for_rent_vacations = get_post_meta( get_the_ID(), 'fave_property_third_price', true );
+            // $prop->for_sale = get_post_meta( get_the_ID(), 'fave_property_price', true );
+            // $prop->for_rent_living = get_post_meta( get_the_ID(), 'fave_property_sec_price', true );
+            // $prop->for_rent_vacations = get_post_meta( get_the_ID(), 'fave_property_third_price', true );
+
+            $prop->for_rent_living = houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_sec_price', true ) ) ); 
+            $prop->for_rent_vacations = houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_third_price', true ) ) ); 
+            $prop->for_sale = houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_price', true ) ) ); 
             
             $prop->property_size = get_post_meta( get_the_ID(), 'fave_property_size', true );
             $prop->status = houzez_taxonomy_simple('property_status');

@@ -41,6 +41,9 @@ if( isset($_GET['prop_featured']) && $_GET['prop_featured'] == 'no' ) {
 }
 
 $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
+
+$enable_disable_save_search = houzez_option('enable_disable_save_search');
+
 ?>
 <style type="text/css">
     .bootstrap-select {
@@ -51,7 +54,6 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
     }
 </style>
 
-<?php get_template_part('template-parts/advanced-search/half-map'); ?>
 <!-- MAIN CONTENT OF PAGE -->
     <main class="map-active search_map_page">
         <div class="container-fluid">
@@ -61,7 +63,10 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
                         <div class="save-search sort-results flex-container col-xxs-12">
                             <div>
                                 <span class="txt-sm tabs-title"> <span></span> Results</span>
-                                <a href="#!" class="bd-black waves-effect waves-color-1 txt-sm" role="button">Save</a>
+                                <?php if( $enable_disable_save_search != 0 ) { ?>
+                                    <a href="#!" class="bd-black waves-effect waves-color-1 txt-sm" id="save_search_click" role="button"><?php esc_html_e( 'Save', 'houzez' ); ?></a>
+                                <?php } ?>
+                                <?php get_template_part('template-parts/advanced-search/half-map'); ?>
                             </div>
                             <form autocomplete="off" method="get" id="half_map_search_form" class="save_search_form" action="#">
                                 <div>                                   

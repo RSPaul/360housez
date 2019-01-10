@@ -72,10 +72,9 @@ if ($adv_show_hide['keyword'] != 1) {
 }
 ?>
 
-
 <!-- SEARCHING NAVBAR -->
-    <div class="navbar searching-navbar" id="sticky_navbar">
-        <form>
+<div class="navbar searching-navbar" id="sticky_navbar">
+    <form autocomplete="off" method="get" class="save_search_form" action="#">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xxs-12">
@@ -600,6 +599,10 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </a>
                                     </div>  
                                 </div>
+                                <input type="hidden" name="search_args" value="">
+                                <input type="hidden" name="search_URI" value="<?php echo $_SERVER['REQUEST_URI'] ?>">
+                                <input type="hidden" name="action" value='houzez_save_search'>
+                                <input type="hidden" name="houzez_save_search_ajax" value="<?php echo wp_create_nonce('houzez-save-search-nounce')?>">
                             </div>
                         </div>
                     </div>
