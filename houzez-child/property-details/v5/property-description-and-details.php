@@ -145,10 +145,15 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                     $cond2 = ($pro_type[0]->slug == "for-rent-vacations") ? "block" : "none";
                     $cond3 = ($pro_type[0]->slug == "for-sale") ? "block" : "none";
                     ?>
-                    <p class="txt-h-light txt-lg for-rent-living" style="display: <?php echo $cond1;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_living_price ); ?> /month </span> USD</p>
-                    <p class="txt-h-light txt-lg for-rent-vacations" style="display: <?php echo $cond2;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_vac_price ); ?> /night </span> USD</p>
-                    <p class="txt-h-light txt-lg for-sale" style="display: <?php echo $cond3;?>">From <span class="txt-h-medium"><?php echo esc_attr( $prop_price ); ?></span> USD</p>
+                    <?php 
                     
+                    
+                    
+                    ?>
+                    <p class="txt-h-light txt-lg for-rent-living" style="display: <?php echo $cond1;?>">From <span class="txt-h-medium"><?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_sec_price', true ) ) );  ?> /month </span> USD</p>
+                    <p class="txt-h-light txt-lg for-rent-vacations" style="display: <?php echo $cond2;?>">From <span class="txt-h-medium"><?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_third_price', true ) ) );  ?> /night </span> USD</p>
+                    <p class="txt-h-light txt-lg for-sale" style="display: <?php echo $cond3;?>">From <span class="txt-h-medium"><?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_price', true ) ) );  ?></span> USD</p>
+                    <?php if(count($pro_type) > 1) { ?>
                     <div class="input-field">
                         <ul class="list-inline">
                             <li>
@@ -166,6 +171,7 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                             </li>   
                         </ul>
                     </div>
+                <?php } ?>
                 </div>
             </div>
             <!-- .row-main-features-->
@@ -239,19 +245,19 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                         if( $prop_detail_share != 0 ) { ?>
                             <li class="share-social">   
                                 <ul>
-                                    <li><a href="whatsapp://send?text=<?php echo site_url(); ?>"  data-action="share/whatsapp/share" class="no-style" role="button"><i class="tz-whatsapp waves-effect waves-circle"></i></a></li>
-                                    <li><a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink())?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-facebook waves-effect waves-circle"></i></a></li>
-                                    <li><a href="https://twitter.com/intent/tweet?text=<?php echo urlencode(get_the_title()); ?>&url=<?php echo urlencode(get_permalink()); ?>&via=<?php echo urlencode($twitter_user ? $twitter_user : get_bloginfo('name')) ?>" onclick="if(!document.getElementById(\'td_social_networks_buttons\')){window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;}" class="no-style" role="button"><i class="tz-twitter waves-effect waves-circle"></i></a></li>
-                                    <li><a href="http://plus.google.com/share?url=<?php echo urlencode( get_permalink() ) ?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-googleplus waves-effect waves-circle"></i></a></li>
-                                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode( get_permalink() ) ?>&title=<?php echo urlencode( get_the_title() ) ?>&source=<?php echo urlencode( home_url( '/' ) )?> " onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-linkedin waves-effect waves-circle"></i></a></li>
-                                    <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo urlencode( get_permalink() ) ?>&amp;media=<?php echo (!empty($image[0]) ? $image[0] : '') ?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-pinterest waves-effect waves-circle"></i></a></li>
+                                    <li><a target="_blank" href="whatsapp://send?text=<?php echo site_url(); ?>"  data-action="share/whatsapp/share" class="no-style" role="button"><i class="tz-whatsapp waves-effect waves-circle"></i></a></li>
+                                    <li><a target="_blank" href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(get_permalink())?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-facebook waves-effect waves-circle"></i></a></li>
+                                    <li><a target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo urlencode(get_the_title()); ?>&url=<?php echo urlencode(get_permalink()); ?>&via=<?php echo urlencode($twitter_user ? $twitter_user : get_bloginfo('name')) ?>" onclick="if(!document.getElementById(\'td_social_networks_buttons\')){window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;}" class="no-style" role="button"><i class="tz-twitter waves-effect waves-circle"></i></a></li>
+                                    <li><a target="_blank" href="http://plus.google.com/share?url=<?php echo urlencode( get_permalink() ) ?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-googleplus waves-effect waves-circle"></i></a></li>
+                                    <li><a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode( get_permalink() ) ?>&title=<?php echo urlencode( get_the_title() ) ?>&source=<?php echo urlencode( home_url( '/' ) )?> " onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-linkedin waves-effect waves-circle"></i></a></li>
+                                    <li><a target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php echo urlencode( get_permalink() ) ?>&amp;media=<?php echo (!empty($image[0]) ? $image[0] : '') ?>" onclick="window.open(this.href, \'mywin\',\'left=50,top=50,width=600,height=350,toolbar=0\'); return false;" class="no-style" role="button"><i class="tz-pinterest waves-effect waves-circle"></i></a></li>
                                     <li><a href="mailto:example.com?subject=<?php echo urlencode( get_the_title() )?>&body=<?php echo urlencode( get_permalink() ) ?>" class="no-style" role="button"><i class="tz-mail  waves-effect waves-circle"></i></a></li>
                                 </ul>
                             </li>
                         <li class="btn-share-social"><a href="#!" id="share-btn" class="no-style" role="button"><i class="tz-share waves-effect waves-circle"></i></a></li>
                         <?php } ?>
                         <?php if( $print_property_button != 0 ) { ?>
-                        <li class="print-btn"><a href="#!" class="no-style" role="button"><i class="tz-printer waves-effect waves-circle houzez-print" data-propid="<?php echo esc_attr( $post->ID );?>"></i></a></li>
+                        <li class="print-btn"><a target="_blank" href="#!" class="no-style" role="button"><i class="tz-printer waves-effect waves-circle houzez-print" data-propid="<?php echo esc_attr( $post->ID );?>"></i></a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -288,25 +294,50 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                             <?php 
                             // echo $current_area = houzez_option('measurement_unit');
                             $area_prefix = houzez_option('area_prefix_default');
+                            $wp_near_size_posfix1=get_post_meta(get_the_ID(), 'wp_near_size_posfix1', true);
+                            $wp_near_size_posfix2=get_post_meta(get_the_ID(), 'wp_near_size_posfix2', true);
+                            $wp_near_size_posfix3=get_post_meta(get_the_ID(), 'wp_near_size_posfix3', true);
+                            
                             if($fave_property_sea) { ?>
                                 <li class="flex-item">
-                                    <p><?php echo esc_attr( $fave_property_sea ); echo "&nbsp;"; echo esc_attr($area_prefix); ?></p>
+                                    <p><?php echo esc_attr( $fave_property_sea ); echo "&nbsp;"; 
+                                            echo esc_attr($area_prefix); 
+                                        
+                                    ?></p>
                                     <p class="text-uppercase">Distance to the sea</p>
                                     <p class="txt-info">Straight line</p>
                                 </li>
                             <?php } 
                             ?>
                             <li class="flex-item">
-                                <p><?php echo esc_attr( $near_beach1 ); echo "&nbsp;"; echo esc_attr($area_prefix); ?></p>
+                                <p><?php echo esc_attr( $near_beach1 ); echo "&nbsp;"; 
+                                if($wp_near_size_posfix1 == "") {
+                                    echo esc_attr($area_prefix); 
+                                }else{
+                                    echo esc_attr($wp_near_size_posfix1); 
+                                }
+                                ?></p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach1_name; ?></a>
                             </li>
                             <li class="flex-item">
-                                <p><?php echo esc_attr( $near_beach2 ); echo "&nbsp;"; echo esc_attr($area_prefix);?> </p>
+                                <p><?php echo esc_attr( $near_beach2 ); echo "&nbsp;"; 
+                                if($wp_near_size_posfix2 == "") {
+                                    echo esc_attr($area_prefix); 
+                                }else{
+                                    echo esc_attr($wp_near_size_posfix2); 
+                                }
+                                ?> </p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach2_name; ?></a>
                                 <p class="txt-info">Nearby beaches</p>
                             </li>
                             <li class="flex-item">
-                                <p><?php echo esc_attr( $near_beach3 ); echo "&nbsp;"; echo esc_attr($area_prefix); ?></p>
+                                <p><?php echo esc_attr( $near_beach3 ); echo "&nbsp;"; 
+                                if($wp_near_size_posfix3 == "") {
+                                    echo esc_attr($area_prefix); 
+                                }else{
+                                    echo esc_attr($wp_near_size_posfix3); 
+                                }
+                                ?></p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach3_name; ?></a>
                             </li>
                         </ul>
@@ -375,17 +406,14 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                         <?php } ?>   
                     </div>
                 <!-- Home Appliance Services -->
+                <?php 
+                $tax_terms = get_the_terms( get_the_ID(), 'services' );                        
+                if($tax_terms) { ?>
                 <div class="col-xxs-12 sub-services">
                     <h2 class="txt-lg text-center">Services</h2>
                     <div class="flex-container flex-wrap txt-md text-center">
                         <?php 
-                        $tax_terms = get_the_terms( get_the_ID(), 'services' );
-                        // $terms = get_terms( array(
-                        //     'taxonomy' => 'services',
-                        //     'hide_empty' => false,
-                        // ));         
-                        ?>
-                        <?php foreach ($tax_terms as $key => $cat_feature) { ?>
+                        foreach ($tax_terms as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
                             <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); 
                             $cat_meta = get_option( "category_$term_id");
@@ -397,18 +425,15 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                         <?php } ?>
                     </div>
                 </div>
-                
+                <?php } ?>
+                <?php 
+                $tax_terms = get_the_terms( get_the_ID(), 'home_appliances' );        
+                if($tax_terms) { ?>   
                 <!-- Home Appliance Sub-section -->
                 <div class="col-xxs-12 sub-appliances">
                     <h2 class="txt-lg text-center">Featured Home Appliances</h2>
                     <div class="flex-container flex-wrap txt-md text-center">
-                        <?php 
-                        $tax_terms = get_the_terms( get_the_ID(), 'home_appliances' );
-                        // $terms = get_terms( array(
-                        //     'taxonomy' => 'home_appliances',
-                        //     'hide_empty' => false,
-                        // ) );         
-                        ?>                      
+                                        
                         <?php foreach ($tax_terms as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
                             <?php 
@@ -422,6 +447,7 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                         <?php } ?>                      
                     </div>
                 </div>
+                 <?php } ?>
             </div>
             <a class="txt-h-light txt-info text-center btn-block" data-toggle="collapse" href="#collapse-other-features" aria-expanded="false">
                 <span class="waves-effect">Show all <i class="tz-chevron-down-sm"></i></span>
