@@ -145,6 +145,7 @@ if( $fave_property_map  == 1) { ?>
 <?php } ?>
 <?php
 $wp_booking_hbook = get_post_meta($post->ID, 'wp_booking_hbook', true);
+$wp_booking_section_title = get_post_meta($post->ID, 'wp_booking_section_title', true);
 $booking_shortcode = get_post_meta($post->ID, 'wp_booking_hbook_shortcode', true);
 $booking_shortcode2 = get_post_meta($post->ID, 'wp_booking_hbook_shortcode2', true);
 
@@ -156,7 +157,7 @@ if(!empty($booking_shortcode)) {
             <hr>
             <div class="row">
                 <div class="col-xxs-12">
-                    <h2 class="txt-lg text-center">Online Booking</h2>
+                    <h2 class="txt-lg text-center"><?php echo $wp_booking_section_title; ?></h2>
                     <div class="booking-code">
                         <!--Example content - DELETE-->
                         <style>
