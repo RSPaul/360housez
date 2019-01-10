@@ -1379,6 +1379,33 @@ if( !function_exists('houzez_property_filter') ) {
             );
         }
 
+        $beaches = get_post_meta( $page_id, 'fave_beaches', false );
+        if ( ! empty( $beaches ) && is_array( $beaches ) ) {
+            $tax_query[] = array(
+                'taxonomy' => 'beaches',
+                'field' => 'slug',
+                'terms' => $beaches
+            );
+        }
+
+        $services = get_post_meta( $page_id, 'fave_services', false );
+        if ( ! empty( $services ) && is_array( $services ) ) {
+            $tax_query[] = array(
+                'taxonomy' => 'services',
+                'field' => 'slug',
+                'terms' => $services
+            );
+        }
+        
+        $home_appliances = get_post_meta( $page_id, 'fave_home_appliances', false );
+        if ( ! empty( $home_appliances ) && is_array( $home_appliances ) ) {
+            $tax_query[] = array(
+                'taxonomy' => 'home_appliances',
+                'field' => 'slug',
+                'terms' => $home_appliances
+            );
+        }
+
         if( !isset( $_GET['tab'] ) ) {
             $status = get_post_meta($page_id, 'fave_status', false);
             if (!empty($status) && is_array($status)) {

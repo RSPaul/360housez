@@ -10,6 +10,7 @@ $post_meta_data     = get_post_custom($post->ID);
 $prop_images        = get_post_meta( get_the_ID(), 'fave_property_images', false );
 $prop_address       = get_post_meta( get_the_ID(), 'fave_property_map_address', true );
 $prop_featured      = get_post_meta( get_the_ID(), 'fave_featured', true );
+$price_upon_request = get_post_meta( get_the_ID(), 'fave_property_price_upon_request', true );
 $listing_agent = houzez_get_property_agent( $post->ID );
 $disable_agent = houzez_option('disable_agent');
 $disable_date = houzez_option('disable_date');
@@ -135,55 +136,61 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                 <?php endif ?>
 
             </ul>
-            <?php if ( !empty($prop_sale_price) ) { ?>
-            <p class="card-price txt-h-light txt-txt">
-                <!-- Before-price-label -->
-                <?php 
-                $prop_price_pre = get_post_meta($post->ID, 'fave_property_price_prefix', true);
-                $prop_price_post = get_post_meta($post->ID, 'fave_property_price_postfix', true);
-                echo $prop_price_pre; ?> 
-                
-                <!-- Price -->
-                <span class="txt-h-medium">
-                    <?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_price', true ) ) ); ?>
-                </span>
-
-                <!-- After-price-label -->
-                <?php if ( !empty($prop_price_post) ) { echo "/".$prop_price_post; } ?> 
-
-                <!-- Use this icon with tooltip when the property has been marked (in backend) as an opportunity -->
-                <?php if (get_post_meta($post->ID, 'fave_property_oppurtunity', true)) {
+            <?php if ( $price_upon_request ) { ?>
+                <a href="#!" target="_blank">
+                    <span class="txt-h-medium">Price Upon Request</span>
+                </a>
+            <?php } else { ?>
+                <?php if ( !empty($prop_sale_price) ) { ?>
+                <p class="card-price txt-h-light txt-txt">
+                    <!-- Before-price-label -->
+                    <?php 
+                    $prop_price_pre = get_post_meta($post->ID, 'fave_property_price_prefix', true);
+                    $prop_price_post = get_post_meta($post->ID, 'fave_property_price_postfix', true);
+                    echo $prop_price_pre; ?> 
                     
-                    echo '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="right"></i>';
-                } ?>
+                    <!-- Price -->
+                    <span class="txt-h-medium">
+                        <?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_price', true ) ) ); ?>
+                    </span>
 
-            </p>                
-            <?php } ?>
+                    <!-- After-price-label -->
+                    <?php if ( !empty($prop_price_post) ) { echo "/".$prop_price_post; } ?> 
 
-            <?php if ( !empty($prop_rent_price) ) { ?>
-            <p class="card-price txt-h-light txt-txt">
-                <!-- Before-price-label -->
-                <?php 
-                $prop_price_sec_pre = get_post_meta($post->ID, 'fave_property_sec_price_prefix', true);
-                $prop_price_sec_post = get_post_meta($post->ID, 'fave_property_price_postfix', true);
-                echo $prop_price_sec_pre; ?> 
+                    <!-- Use this icon with tooltip when the property has been marked (in backend) as an opportunity -->
+                    <?php if (get_post_meta($post->ID, 'fave_property_oppurtunity', true)) {
+                        
+                        echo '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="right"></i>';
+                    } ?>
 
-                <span class="txt-h-medium">
-                    <?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_sec_price', true ) ) ); ?>
-                </span> 
-                
-                <!-- after-price-label -->
-                <?php if ( !empty($prop_price_sec_post) ) {
-                    echo "/".$prop_price_sec_post;
-                } ?>
+                </p>                
+                <?php } ?>
 
-                <!-- Use this icon with tooltip when the property has been marked (in backend) as an opportunity -->
-                <?php if (get_post_meta($post->ID, 'fave_property_oppurtunity', true)) {
+                <?php if ( !empty($prop_rent_price) ) { ?>
+                <p class="card-price txt-h-light txt-txt">
+                    <!-- Before-price-label -->
+                    <?php 
+                    $prop_price_sec_pre = get_post_meta($post->ID, 'fave_property_sec_price_prefix', true);
+                    $prop_price_sec_post = get_post_meta($post->ID, 'fave_property_price_postfix', true);
+                    echo $prop_price_sec_pre; ?> 
+
+                    <span class="txt-h-medium">
+                        <?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_sec_price', true ) ) ); ?>
+                    </span> 
                     
-                    echo '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="right"></i>';
-                } ?>
-            </p>                
-            <?php } ?>
+                    <!-- after-price-label -->
+                    <?php if ( !empty($prop_price_sec_post) ) {
+                        echo "/".$prop_price_sec_post;
+                    } ?>
+
+                    <!-- Use this icon with tooltip when the property has been marked (in backend) as an opportunity -->
+                    <?php if (get_post_meta($post->ID, 'fave_property_oppurtunity', true)) {
+                        
+                        echo '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="right"></i>';
+                    } ?>
+                </p>                
+                <?php } 
+            } ?>
 
         </div>
         <div class="property-card-footer">
