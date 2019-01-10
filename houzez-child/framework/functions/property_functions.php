@@ -3150,7 +3150,7 @@ if( !function_exists( 'houzez_prop_sort' ) ){
             $sort_by = $_GET['sortby'];
         } else {
 
-            if ( is_page_template( array( 'template/property-listing-template.php', 'template/property-listing-template-style2.php', 'template/property-listing-fullwidth.php', 'template/property-listing-style2-fullwidth.php', 'template/property-listing-template-style3.php', 'template/property-listing-template-style3-fullwidth.php' ))) {
+            if ( is_page_template( array( 'template/property-listing-template.php', 'template/property-listing-template-style2.php', 'template/property-listing-fullwidth.php', 'template/property-listing-style2-fullwidth.php', 'template/property-listing-template-style3.php', 'template/property-listing-template-style3-fullwidth.php', 'template-parts/property-listing-style3-fullwidth.php' ))) {
                 $sort_by = get_post_meta( get_the_ID(), 'fave_properties_sort', true );
 
             } else if( is_page_template( array( 'template/template-search.php' )) ) {
