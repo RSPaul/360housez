@@ -11681,6 +11681,15 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 .save-search #save_search_click::after{
 	content: none;
 }
+.section-detail-content {
+	padding: 40px 0 0;
+}
+
+
+
+
+
+
 
 
 
