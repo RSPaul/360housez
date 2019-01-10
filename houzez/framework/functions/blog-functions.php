@@ -36,7 +36,7 @@ if ( ! function_exists( 'houzez_comments_callback' ) ) {
                     <?php comment_text(); ?>
                 <?php endif; ?>
                 <?php edit_comment_link( esc_html__( 'Edit', 'houzez' ), ' ' ); ?>
-                <?php comment_reply_link( array_merge( $args, array( 'reply_text' => wp_kses(__( 'Reply <i class="fa fa-angle-right"></i>', 'houzez' ), $allowed_html_array ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+                <?php comment_reply_link( array_merge( $args, array( 'reply_text' => wp_kses(__( 'Reply <i class="tz-chevron-right"></i>', 'houzez' ), $allowed_html_array ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
             </div>
         </li>
 

@@ -438,7 +438,7 @@ msgid "Edit"
 msgstr "modifier"
 
 #: ../framework/functions/blog-functions.php:39
-msgid "Reply <i class=\"fa fa-angle-right\"></i>"
+msgid "Reply <i class=\"tz-chevron-right\"></i>"
 msgstr "Répondre <i class = \"fa-angle-droit\"> </ i>"
 
 #: ../framework/functions/cron-functions.php:285
@@ -649,11 +649,11 @@ msgid "Load More"
 msgstr "Charger plus"
 
 #: ../framework/functions/helper_functions.php:1183
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-left\"></i></span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-left\"></i></span>"
 msgstr "<span aria-hidden = \"vrai\"> <i class = \"fa-angle-gauche\"> </ i> </ span>"
 
 #: ../framework/functions/helper_functions.php:1184
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-right\"></i></span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-right\"></i></span>"
 msgstr "<span aria-hidden = \"vrai\"> <i class = \"fa-angle-droit\"> </ i> </ span>"
 
 #: ../framework/functions/helper_functions.php:1222

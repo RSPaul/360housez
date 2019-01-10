@@ -84,7 +84,7 @@ $houzez_threads = $wpdb->get_results( $message_query );
             <td data-label="Actions">
                 <div class="my-actions">
                     <div class="btn-group">
-                        <a href="<?php echo esc_url( $thread_link ); ?>" class="btn btn-primary"><?php esc_html_e('Reply', 'houzez');?> <i class="fa fa-angle-right"></i></a>
+                        <a href="<?php echo esc_url( $thread_link ); ?>" class="btn btn-primary"><?php esc_html_e('Reply', 'houzez');?> <i class="tz-chevron-right"></i></a>
                     </div>
                 </div>
             </td>

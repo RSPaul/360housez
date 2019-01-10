@@ -62,7 +62,7 @@ $infobox_trigger    = '';
                     </div>
                     <div class="cell">
                         <div class="phone">
-                            <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-primary"> <?php esc_html_e( 'Details', 'houzez' ); ?> <i class="fa fa-angle-right fa-right"></i></a>
+                            <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-primary"> <?php esc_html_e( 'Details', 'houzez' ); ?> <i class="tz-chevron-right fa-right"></i></a>
                         </div>
                     </div>
                 </div>

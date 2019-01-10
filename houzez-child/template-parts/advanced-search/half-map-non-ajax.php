@@ -154,7 +154,7 @@ if ($adv_show_hide['keyword'] != 1) {
                         
                         <div class="main-search-inputs flex-container">
                             <div class="input-field no-label action-filter">
-                                <select required name="status" class="status-left disabled-status">
+                                <select required name="status" class="status-left disabled-status" disabled="disabled">
                                     <?php
                                     // All Option
                                     echo '<option value="">What do you need?</option>';

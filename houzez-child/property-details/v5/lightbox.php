@@ -95,12 +95,12 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
                         </div>
                     </div>
                     <div class="lightbox-slide-nav visible-xs">
-                        <button class="lightbox-arrow-left lightbox-arrow"><i class="fa fa-angle-left"></i></button>
+                        <button class="lightbox-arrow-left lightbox-arrow"><i class="tz-chevron-left"></i></button>
                         <p class="lightbox-nav-title">
                             <?php the_title(); ?>
                             <?php if( !empty($prop_address) ) {  echo '- '. esc_attr( $prop_address ); } ?>
                         </p>
-                        <button class="lightbox-arrow-right lightbox-arrow"><i class="fa fa-angle-right"></i></button>
+                        <button class="lightbox-arrow-right lightbox-arrow"><i class="tz-chevron-right"></i></button>
                     </div>
                 </div>
             </div>

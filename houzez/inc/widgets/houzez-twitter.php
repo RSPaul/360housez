@@ -135,7 +135,7 @@ class houzez_Twitter extends WP_Widget {
 
 								    // Navigation
 									nav : true,
-									navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+									navText : ["<i class='tz-chevron-left'></i>","<i class='tz-chevron-right'></i>"],
 								    rewindNav : true,
 								    dots:false,
 

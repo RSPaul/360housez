@@ -442,7 +442,7 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: ../framework/functions/blog-functions.php:39
-msgid "Reply <i class=\"fa fa-angle-right\"></i>"
+msgid "Reply <i class=\"tz-chevron-right\"></i>"
 msgstr "Antwort <i class = \"fa fa-winkel-rechts\"> </ i>"
 
 #: ../framework/functions/cron-functions.php:285
@@ -653,11 +653,11 @@ msgid "Load More"
 msgstr "Mehr laden"
 
 #: ../framework/functions/helper_functions.php:1183
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-left\"></i></span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-left\"></i></span>"
 msgstr "<span aria-hidden = \"wahr\"> <i class = \"fa fa-winkel-links\"> </ i> </ span>"
 
 #: ../framework/functions/helper_functions.php:1184
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-right\"></i></span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-right\"></i></span>"
 msgstr "<span aria-hidden = \"wahr\"> <i class = \"fa fa-winkel-rechts\"> </ i> </ span>"
 
 #: ../framework/functions/helper_functions.php:1222
