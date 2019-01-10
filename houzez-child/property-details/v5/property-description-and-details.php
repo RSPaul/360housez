@@ -301,8 +301,11 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                             if($fave_property_sea) { ?>
                                 <li class="flex-item">
                                     <p><?php echo esc_attr( $fave_property_sea ); echo "&nbsp;"; 
+                                        if($wp_near_size_posfix1 == "") {
                                             echo esc_attr($area_prefix); 
-                                        
+                                        }else{
+                                            echo esc_attr($wp_near_size_posfix1); 
+                                        }
                                     ?></p>
                                     <p class="text-uppercase">Distance to the sea</p>
                                     <p class="txt-info">Straight line</p>
