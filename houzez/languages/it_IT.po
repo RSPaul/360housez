@@ -525,8 +525,8 @@ msgid "Edit"
 msgstr "Modificare"
 
 #: ../framework/functions/blog-functions.php:39
-msgid "Reply <i class=\"fa fa-angle-right\"></i>"
-msgstr "Rispondi <i class = \"fa fa-angle-right\"> </ i>"
+msgid "Reply <i class=\"tz-chevron-right\"></i>"
+msgstr "Rispondi <i class = \"tz-chevron-right\"> </ i>"
 
 #: ../framework/functions/cron-functions.php:307
 #: ../framework/functions/helper_functions.php:1282
@@ -803,14 +803,14 @@ msgid "Load More"
 msgstr "Carica altro"
 
 #: ../framework/functions/helper_functions.php:1243
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-left\"></i></span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-left\"></i></span>"
 msgstr ""
-"<span aria-hidden = \"true\"> <i class = \"fa fa-angle-left\"> </ i> </ span>"
+"<span aria-hidden = \"true\"> <i class = \"tz-chevron-left\"> </ i> </ span>"
 
 #: ../framework/functions/helper_functions.php:1244
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-right\"></i></span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-right\"></i></span>"
 msgstr ""
-"<span aria-hidden = \"true\"> <i class = \"fa fa-angle-right\"> </ i> </ "
+"<span aria-hidden = \"true\"> <i class = \"tz-chevron-right\"> </ i> </ "
 "span>"
 
 #: ../framework/functions/helper_functions.php:1367

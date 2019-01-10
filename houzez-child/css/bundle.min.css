@@ -11661,7 +11661,13 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 	background: #f5f5f5;
 	color: #000;
 }
-
+.banner-slider {
+    display: inline-block !important;
+    width: 100%;
+}
+.banner-module .caption-desktop .btn-detail i {
+	font-size: 12px !important;
+}
 
 
 
