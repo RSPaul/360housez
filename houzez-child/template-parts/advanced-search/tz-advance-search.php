@@ -78,10 +78,11 @@ if( isset($_SESSION['appliance']) && !empty($_SESSION['appliance']) ) {
     $appliances = $_GET['appliance'];
 }
 
- ?>
+$adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
+?>
 
 <!-- SEARCHING NAVBAR fixed with .stycky-navbar class-->
-<div class="navbar searching-navbar" id="sticky_navbar">
+<div class="navbar searching-navbar" <?=$adv_search == 'hide_show' ? 'style= "display: none;"' : ''?> id="sticky_navbar">
 	<form method="get" autocomplete="off" action="<?php echo esc_url(houzez_get_search_template_link()); ?>">
 		<div class="container-fluid">
 			<div class="row">
@@ -553,7 +554,6 @@ if( isset($_SESSION['appliance']) && !empty($_SESSION['appliance']) ) {
 		</div>
 	</form>
 </div>
-
 
 <script>
     window.onscroll = function() {myFunction()};

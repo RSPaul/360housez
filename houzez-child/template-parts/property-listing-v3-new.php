@@ -74,7 +74,7 @@ if ( sizeof( $get_comments ) != 0 ) {
         $status   = get_post_meta( $post->ID, 'fave_property_status', true );
 			 ?>
 			<p class="card-type-status txt-h-medium txt-sm txt-gray-1 text-uppercase">
-				<?php echo $prop_types[0]->name; ?> | 
+				<?php echo $prop_types[0]->name; ?> 
 				<?php if (!empty($status)) {
 					
 				echo '| 

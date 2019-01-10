@@ -92,10 +92,15 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
         $prop_bath     = get_post_meta( $post->ID, 'fave_property_bathrooms', true );
         $prop_size     = get_post_meta( $post->ID, 'fave_property_size', true );
         $prop_guests   = get_post_meta( $post->ID, 'fave_property_guests', true );
+        $status   = get_post_meta( $post->ID, 'fave_property_status', true );   
              ?>
             <p class="card-type-status txt-h-medium txt-sm txt-gray-1 text-uppercase">
-                <?php echo $prop_types[0]->name; ?> | 
-                <span class="txt-h-light"><?php echo $prop_status[0]->name; ?></span>
+                <?php echo $prop_types[0]->name; ?> 
+                <?php if (!empty($status)) {
+                    
+                echo '| 
+                <span class="txt-h-light">'.$status.'</span>';
+                } ?>
             </p>
             <ul class="card-main-features last-child-no-border flex-container txt-sm text-center">
 

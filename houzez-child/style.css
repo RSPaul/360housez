@@ -28,3 +28,4 @@ li.my-profile.open ul {
     right: 0px;
     left: -200px;
 }
+.navbar.sticky_sec { display: block !important; }
