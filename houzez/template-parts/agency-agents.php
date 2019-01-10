@@ -95,11 +95,11 @@ $agents = $wp_user_query->get_results();
             <!--start pagination-->
             <!--<div class="pagination-main">
                 <ul class="pagination">
-                    <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+                    <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true"><i class="tz-chevron-left"></i></span></a></li>
                     <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li><a aria-label="Next" href="#"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>
+                    <li><a aria-label="Next" href="#"><span aria-hidden="true"><i class="tz-chevron-right"></i></span></a></li>
                 </ul>
             </div>-->
             <!--end pagination-->

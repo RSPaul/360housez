@@ -509,7 +509,7 @@ msgid "Edit"
 msgstr "Dodaj"
 
 #: ../framework/functions/blog-functions.php:39
-msgid "Reply <i class=\"fa fa-angle-right\"></i>"
+msgid "Reply <i class=\"tz-chevron-right\"></i>"
 msgstr "Odgovori"
 
 #: ../framework/functions/cron-functions.php:285
@@ -730,12 +730,12 @@ msgid "Load More"
 msgstr "Učitaj više"
 
 #: ../framework/functions/helper_functions.php:1183
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-left\"></i></span>"
-msgstr "<span aria-hidden=\"true\"><i class=\"fa fa-angle-left\"></i></span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-left\"></i></span>"
+msgstr "<span aria-hidden=\"true\"><i class=\"tz-chevron-left\"></i></span>"
 
 #: ../framework/functions/helper_functions.php:1184
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-right\"></i></span>"
-msgstr "<span aria-hidden=\"true\"><i class=\"fa fa-angle-right\"></i></span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-right\"></i></span>"
+msgstr "<span aria-hidden=\"true\"><i class=\"tz-chevron-right\"></i></span>"
 
 #: ../framework/functions/helper_functions.php:1222
 #: ../framework/functions/helper_functions.php:1544

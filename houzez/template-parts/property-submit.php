@@ -229,13 +229,13 @@ if( is_page_template( 'template/submit_property.php' ) ) {
 
             <div class="steps-nav">
                 <div class="btn-left btn-back action">
-                    <button type="button" class="btn"><i class="fa fa-angle-left"></i></button> <span><?php esc_html_e('Back', 'houzez'); ?></span>
+                    <button type="button" class="btn"><i class="tz-chevron-left"></i></button> <span><?php esc_html_e('Back', 'houzez'); ?></span>
                 </div>
                 <div class="btn-right btn-next action">
-                    <span><?php esc_html_e('Next', 'houzez'); ?></span> <button type="button" class="btn"><i class="fa fa-angle-right"></i></button>
+                    <span><?php esc_html_e('Next', 'houzez'); ?></span> <button type="button" class="btn"><i class="tz-chevron-right"></i></button>
                 </div>
                 <div class="btn-right action btn-submit btn-step-submit">
-                    <span><?php esc_html_e('Submit Property', 'houzez'); ?></span> <button id="add_new_property" type="submit" class="btn"><i class="fa fa-angle-right"></i></button>
+                    <span><?php esc_html_e('Submit Property', 'houzez'); ?></span> <button id="add_new_property" type="submit" class="btn"><i class="tz-chevron-right"></i></button>
                 </div>
             </div>
             </div>

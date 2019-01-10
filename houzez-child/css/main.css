@@ -12562,6 +12562,8 @@ label[for="gdpr_agreement"] {
 .banner-video {
   overflow: hidden;
   height: 600px;
+  display: inline-block;
+  width: 100%;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -12690,6 +12692,7 @@ label[for="gdpr_agreement"] {
   bottom: 0;
   left: auto;
   z-index: 2;
+  line-height: inherit;
 }
 
 .banner-module .caption-desktop .btn-detail .fa {

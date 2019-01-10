@@ -87,7 +87,7 @@ get_template_part( 'template-parts/dashboard', 'menu' ); ?>
                                                 </div>
                                                 <div class="my-actions">
                                                     <div class="btn-group">
-                                                        <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php echo esc_html__('Details', 'houzez');?> <i class="fa fa-angle-right"></i></a>
+                                                        <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php echo esc_html__('Details', 'houzez');?> <i class="tz-chevron-right"></i></a>
                                                     </div>
                                                     <div class="btn-group">
                                                         <a data-propid="<?php echo intval( $post->ID ); ?>" href="#" class="btn btn-action remove_fav"><i class="fa fa-close"></i></a>

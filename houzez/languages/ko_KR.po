@@ -442,8 +442,8 @@ msgid "Edit"
 msgstr "편집하다"
 
 #: ../framework/functions/blog-functions.php:39
-msgid "Reply <i class=\"fa fa-angle-right\"></i>"
-msgstr "대답 <i class = \"fa fa-angle-right\"> </ i>"
+msgid "Reply <i class=\"tz-chevron-right\"></i>"
+msgstr "대답 <i class = \"tz-chevron-right\"> </ i>"
 
 #: ../framework/functions/cron-functions.php:285
 msgid "If you do not wish to be notified anymore please enter your account and delete the saved search.Thank you!"
@@ -653,12 +653,12 @@ msgid "Load More"
 msgstr "더로드하기"
 
 #: ../framework/functions/helper_functions.php:1183
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-left\"></i></span>"
-msgstr "<span aria-hidden = \"true\"> <class = \"fa fa-angle-left\"> </ i> </ span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-left\"></i></span>"
+msgstr "<span aria-hidden = \"true\"> <class = \"tz-chevron-left\"> </ i> </ span>"
 
 #: ../framework/functions/helper_functions.php:1184
-msgid "<span aria-hidden=\"true\"><i class=\"fa fa-angle-right\"></i></span>"
-msgstr "<span aria-hidden = \"true\"> <i class = \"fa fa-angle-right\"> </ i> </ span>"
+msgid "<span aria-hidden=\"true\"><i class=\"tz-chevron-right\"></i></span>"
+msgstr "<span aria-hidden = \"true\"> <i class = \"tz-chevron-right\"> </ i> </ span>"
 
 #: ../framework/functions/helper_functions.php:1222
 #: ../framework/functions/helper_functions.php:1544

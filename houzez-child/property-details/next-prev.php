@@ -39,7 +39,7 @@
                                             <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
                                         </div>
                                         <div class="media-body media-middle">
-                                            <h3 class="media-heading"><a href="<?php the_permalink(); ?>"><i class="fa fa-angle-left"></i> <?php esc_html_e('PREVIOUS PROPERTY', 'houzez'); ?></a></h3>
+                                            <h3 class="media-heading"><a href="<?php the_permalink(); ?>"><i class="tz-chevron-left"></i> <?php esc_html_e('PREVIOUS PROPERTY', 'houzez'); ?></a></h3>
                                             <h4><?php the_title(); ?></h4>
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@
                                     <!-- <div class="next-box pull-right">
                                         <div class="media">
                                             <div class="media-body media-middle text-right">
-                                                <h3 class="media-heading"><a href="<?php the_permalink(); ?>"><?php esc_html_e('NEXT PROPERTY', 'houzez'); ?> <i class="fa fa-angle-right"></i></a></h3>
+                                                <h3 class="media-heading"><a href="<?php the_permalink(); ?>"><?php esc_html_e('NEXT PROPERTY', 'houzez'); ?> <i class="tz-chevron-right"></i></a></h3>
                                                 <h4><?php the_title(); ?></h4>
                                             </div>
                                             <div class="media-right">
