@@ -170,11 +170,11 @@ add_filter( 'body_class', 'my_neat_body_class');
 function my_neat_body_class( $classes ) {
     
     $adv_search = get_post_meta(get_the_ID(), 'fave_adv_search', true);
-    if (houzez_search_needed()) {
-        if ($adv_search == 'show' || $adv_search == 'hide_show') {
+    $header_type = get_post_meta(get_the_ID(), 'fave_header_type', true);
+
+    if ($header_type == 'tz_header_style') {
             
-            $classes[] = 'tz-header';
-        }       
+        $classes[] = 'tz-header';
     }
     if ( is_page(1672))
         $classes[] = 'search-result-page';
@@ -3214,7 +3214,7 @@ if (!function_exists('houzez_register_metaboxes')) {
                     'type' => 'select',
                     'options' => array(
                         'under_menu' => esc_html__('Under Navigation', 'houzez'),
-                        'under_banner' => esc_html__('Under Banners ( Sliders, Map, Video etc )', 'houzez')
+                        // 'under_banner' => esc_html__('Under Banners ( Sliders, Map, Video etc )', 'houzez')
                     ),
                     'std' => array('under_menu'),
                     'desc' => ''
