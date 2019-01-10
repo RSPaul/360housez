@@ -724,11 +724,17 @@ if (!function_exists('houzez_register_metaboxes')) {
         $prop_types = array();
         $prop_status = array();
         $prop_features = array();
+        $prop_home_appliances = array();
+        $prop_beaches = array();
+        $prop_services = array();
         $prop_neighborhood = array();
         $agent_categories = array();
         $agent_cities = array();
 
         houzez_get_terms_array('property_feature', $prop_features);
+        houzez_get_terms_array('home_appliances', $prop_home_appliances);
+        houzez_get_terms_array('beaches', $prop_beaches);
+        houzez_get_terms_array('services', $prop_services);
         houzez_get_terms_array('property_status', $prop_status);
         houzez_get_terms_array('property_type', $prop_types);
         houzez_get_terms_array('property_city', $prop_locations);
@@ -2686,7 +2692,34 @@ if (!function_exists('houzez_register_metaboxes')) {
                     'type' => 'select',
                     'options' => $prop_features,
                     'desc' => '',
-                    'columns' => 12,
+                    'columns' => 6,
+                    'multiple' => true
+                ),
+                array(
+                    'name' => esc_html__('Services', 'houzez'),
+                    'id' => $houzez_prefix . 'services',
+                    'type' => 'select',
+                    'options' => $prop_services,
+                    'desc' => '',
+                    'columns' => 6,
+                    'multiple' => true
+                ),
+                array(
+                    'name' => esc_html__('Home Appliances', 'houzez'),
+                    'id' => $houzez_prefix . 'home_appliances',
+                    'type' => 'select',
+                    'options' => $prop_home_appliances,
+                    'desc' => '',
+                    'columns' => 6,
+                    'multiple' => true
+                ),
+                array(
+                    'name' => esc_html__('Beaches', 'houzez'),
+                    'id' => $houzez_prefix . 'beaches',
+                    'type' => 'select',
+                    'options' => $prop_beaches,
+                    'desc' => '',
+                    'columns' => 6,
                     'multiple' => true
                 ),
                 array(
