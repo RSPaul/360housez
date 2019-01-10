@@ -21,6 +21,7 @@ $google_map_address_url = "http://maps.google.com/?q=".$google_map_address;
 $price_policy_setting=get_post_meta(get_the_ID(), 'wp_price_policy', true);
 $price_section_title=get_post_meta(get_the_ID(),'wp_price_section_title', true);
 $price_content=get_post_meta(get_the_ID(), 'wp_price_content', true);
+
 global $post;
 $booking_shortcode = get_post_meta($post->ID, 'fave_booking_shortcode', true);
 
@@ -65,7 +66,7 @@ $wp_season_content = get_post_meta($post->ID, 'wp_season_content', true);
         <hr>
         <div class="row">
             <div class="col-xxs-12">
-                <h2 class="txt-lg text-center">Pricing policy</h2>
+                <h2 class="txt-lg text-center"><?php echo $price_section_title; ?></h2>
                 <div class="pricing-policy-code">
                     <?php 
                     $content = $price_content;
