@@ -57,7 +57,7 @@ if( $fave_header_full_screen == 'yes') {
                             </div>
 
                         <?php } ?>
-                        <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-detail"><?php esc_html_e( 'Details', 'houzez' ); ?> <i class="fa fa-angle-right"></i></a>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-detail"><?php esc_html_e( 'Details', 'houzez' ); ?> <i class="tz-chevron-right"></i></a>
                         <div class="item-body">
                             <div class="body-left">
                                 <div class="price">
@@ -113,7 +113,7 @@ if( $fave_header_full_screen == 'yes') {
                                     <?php echo houzez_listing_price_v1(); ?>
                                 </div>
                             </div>
-                            <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-detail table-cell"><i class="fa fa-angle-right"></i></a>
+                            <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-detail table-cell"><i class="tz-chevron-right"></i></a>
                         </div>
                     </div>
                     <?php

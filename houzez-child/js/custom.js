@@ -40,7 +40,7 @@ var nice = false;
             smartSpeed: 700,
             slideBy: 1,
             nav: true,
-            navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"]
+            navText : ["<i class='tz-chevron-left'></i>","<i class='tz-chevron-right'></i>"]
 
         });
     }
@@ -1340,7 +1340,7 @@ var nice = false;
             items:1,
             smartSpeed: 1000,
             nav: true,
-            navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+            navText : ["<i class='tz-chevron-left'></i>","<i class='tz-chevron-right'></i>"],
             addClassActive: true,
             callbacks: true,
             responsive:{
@@ -1470,7 +1470,7 @@ var nice = false;
             smartSpeed: 700,
             slideBy: 1,
             nav: true,
-            navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+            navText : ["<i class='tz-chevron-left'></i>","<i class='tz-chevron-right'></i>"],
         });
     }
 
@@ -1744,7 +1744,7 @@ var nice = false;
                 nav: false,
                 stopOnHover : true,
                 autoHeight : true,
-                navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+                navText : ["<i class='tz-chevron-left'></i>","<i class='tz-chevron-right'></i>"],
                 //rewindNav : true,
                 //rewindSpeed: 100,
                 responsive : {

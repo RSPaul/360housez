@@ -1320,8 +1320,8 @@ if ( !function_exists( 'houzez_pagination' ) ):
             'format' => '',
             'total' => $wp_query->max_num_pages,
             'current' => $current,
-            'prev_text' => wp_kses(__( '<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>', 'houzez' ), $allowed_html_array),
-            'next_text' => wp_kses(__( '<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>', 'houzez' ), $allowed_html_array),
+            'prev_text' => wp_kses(__( '<span aria-hidden="true"><i class="tz-chevron-left"></i></span>', 'houzez' ), $allowed_html_array),
+            'next_text' => wp_kses(__( '<span aria-hidden="true"><i class="tz-chevron-right"></i></span>', 'houzez' ), $allowed_html_array),
             'type' => 'array'
         );
         if ( $wp_rewrite->using_permalinks() )

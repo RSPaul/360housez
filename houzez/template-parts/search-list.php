@@ -189,7 +189,7 @@ if ( isset( $search_args_decoded['date_query'] ) && is_array( $search_args_decod
     <li>
         <div class="my-actions">
             <div class="btn-group">
-                <a target="_blank" href="<?php echo esc_url( add_query_arg( $user_args, $search_uri ) ); ?>" class="btn btn-primary"><?php esc_html_e( 'Search', 'houzez' ); ?> <i class="fa fa-angle-right"></i></a>
+                <a target="_blank" href="<?php echo esc_url( add_query_arg( $user_args, $search_uri ) ); ?>" class="btn btn-primary"><?php esc_html_e( 'Search', 'houzez' ); ?> <i class="tz-chevron-right"></i></a>
             </div>
         </div>
     </li>

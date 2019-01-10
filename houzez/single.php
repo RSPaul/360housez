@@ -45,8 +45,8 @@ $blog_author_box = houzez_option('blog_author_box');
                                         'link_before'      => '<span>',
                                         'link_after'       => '</span>',
                                         'next_or_number'   => 'next',
-                                        'nextpagelink'     => '<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>',
-                                        'previouspagelink' => '<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>',
+                                        'nextpagelink'     => '<span aria-hidden="true"><i class="tz-chevron-right"></i></span>',
+                                        'previouspagelink' => '<span aria-hidden="true"><i class="tz-chevron-left"></i></span>',
                                         'pagelink'         => '%',
                                         'echo'             => 1
                                     );

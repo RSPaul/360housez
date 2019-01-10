@@ -87,7 +87,7 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                 <div class="info-row price"><?php echo houzez_listing_price_v1(); ?></div>
 
                 <div class="info-row phone text-right">
-                    <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-primary"><?php esc_html_e( 'Details', 'houzez' ); ?> <i class="fa fa-angle-right fa-right"></i></a>
+                    <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-primary"><?php esc_html_e( 'Details', 'houzez' ); ?> <i class="tz-chevron-right fa-right"></i></a>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                 </div>
                 <div class="cell">
                     <div class="phone">
-                        <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-primary"> <?php esc_html_e( 'Details', 'houzez' ); ?> <i class="fa fa-angle-right fa-right"></i></a>
+                        <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn btn-primary"> <?php esc_html_e( 'Details', 'houzez' ); ?> <i class="tz-chevron-right fa-right"></i></a>
                     </div>
                 </div>
             </div>
