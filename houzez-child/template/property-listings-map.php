@@ -53,7 +53,7 @@ $enable_disable_save_search = houzez_option('enable_disable_save_search');
         display: none;
     }
 </style>
-
+<?php get_template_part('template-parts/advanced-search/half-map'); ?>
 <!-- MAIN CONTENT OF PAGE -->
     <main class="map-active search_map_page">
         <div class="container-fluid">
@@ -66,7 +66,7 @@ $enable_disable_save_search = houzez_option('enable_disable_save_search');
                                 <?php if( $enable_disable_save_search != 0 ) { ?>
                                     <a href="#!" class="bd-black waves-effect waves-color-1 txt-sm" id="save_search_click" role="button"><?php esc_html_e( 'Save', 'houzez' ); ?></a>
                                 <?php } ?>
-                                <?php get_template_part('template-parts/advanced-search/half-map'); ?>
+                                <?php //get_template_part('template-parts/advanced-search/half-map'); ?>
                             </div>
                             <form autocomplete="off" method="get" id="half_map_search_form" class="save_search_form" action="#">
                                 <div>                                   

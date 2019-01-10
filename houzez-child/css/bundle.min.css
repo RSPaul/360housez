@@ -11668,8 +11668,19 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 .banner-module .caption-desktop .btn-detail i {
 	font-size: 12px !important;
 }
+.save-search #save_search_click {
+    line-height: inherit;
+    cursor: pointer;
+    padding: .375rem;
+    margin-left: .625rem;
+    margin-top: -.3125rem;
+    display: inline-block;
+    position: unset;
 
-
+}
+.save-search #save_search_click::after{
+	content: none;
+}
 
 
 
