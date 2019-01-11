@@ -414,11 +414,6 @@
 						<div class="booking-code">
 							
 							<!--Example content - DELETE-->
-							<style>
-								.booking-code{
-									text-align: center;
-								}
-							</style>
 							Shortcodes here
 							<!--DELETE UP HERE-->
 							
@@ -437,20 +432,6 @@
 					<h2 class="txt-lg text-center">Seasons</h2>
 					<div class="seasons-code">
 						
-						<!--Example content - DELETE-->
-						<style>
-							.seasons-code table{ margin: 0 auto;}
-							.seasons-code .tg  {border-collapse:collapse;border-spacing:0; max-width: 70%; margin: rem-calc(30) auto rem-calc(50) auto;}
-							.seasons-code .tg td{font-size: rem-calc(12);padding:rem-calc(10) rem-calc(5);border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-							.seasons-code .tg th{font-size: rem-calc(12);font-weight:normal;padding:rem-calc(10) rem-calc(5);border-style:solid;border-width:3px;overflow:hidden;word-break:normal;}
-							.seasons-code .tg .tg-zv4m{border-color:#ffffff;text-align:left;vertical-align:top}
-							.seasons-code .tg .tg-22sb{background-color:#f8ff00;border-color:#ffffff;text-align:left;vertical-align:top}
-							.seasons-code .tg .tg-aw21{font-weight:bold;border-color:#ffffff;text-align:center;vertical-align:top}
-							.seasons-code .tg .tg-hvao{background-color:#c0c0c0;border-color:#ffffff;text-align:left;vertical-align:top}
-							.seasons-code .tg .tg-e166{background-color:#fffc9e;border-color:#ffffff;text-align:left;vertical-align:top}
-							.seasons-code .tg .tg-br1l{font-weight:bold;background-color:#c0c0c0;color:#ffffff;border-color:#ffffff;text-align:center;vertical-align:top}
-							.seasons-code .tg .tg-ofj5{border-color:#ffffff;text-align:right;vertical-align:top}
-						</style>
 						<table class="tg table table-condensed">
 							<tr>
 								<th class="tg-zv4m"></th>

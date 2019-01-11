@@ -4,11 +4,6 @@
  */
 get_header(); ?>
 
-<style type="text/css">
-	
-
-</style>
-
 <!-- SEARCHING NAVBAR -->
 	<div class="navbar searching-navbar">
 		<form>
