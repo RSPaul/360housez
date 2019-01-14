@@ -114,7 +114,7 @@ if ( sizeof( $get_comments ) != 0 ) {
 
 			</ul>
       <?php if ( $price_upon_request ) { ?>
-          <a href="#!" target="_blank">
+          <a href="#!" target="_blank" class="popup-upon-request">
               <span class="txt-h-medium">Price Upon Request</span>
           </a>
       <?php } else { ?>			
