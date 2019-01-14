@@ -4,6 +4,7 @@ $post_meta_data     = get_post_custom($post->ID);
 $prop_images        = get_post_meta( get_the_ID(), 'fave_property_images', false );
 $prop_address       = get_post_meta( get_the_ID(), 'fave_property_map_address', true );
 $prop_featured      = get_post_meta( get_the_ID(), 'fave_featured', true );
+$price_upon_request = get_post_meta( get_the_ID(), 'fave_property_price_upon_request', true );
 $listing_agent = houzez_get_property_agent( $post->ID );
 $disable_agent = houzez_option('disable_agent');
 $disable_date = houzez_option('disable_date');
@@ -113,7 +114,8 @@ if ( sizeof( $get_comments ) != 0 ) {
 				<?php endif ?>
 
 			</ul>
-      <?php if ( $price_upon_request ) { ?>
+      <?php 
+      if ( $price_upon_request ) { ?>
           <a href="#!" target="_blank" class="popup-upon-request">
               <span class="txt-h-medium">Price Upon Request</span>
           </a>
