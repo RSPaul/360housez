@@ -137,7 +137,7 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
 
             </ul>
             <?php if ( $price_upon_request ) { ?>
-                <a href="#!" target="_blank">
+                <a href="#!" target="_blank" class="popup-upon-request">
                     <span class="txt-h-medium">Price Upon Request</span>
                 </a>
             <?php } else { ?>
