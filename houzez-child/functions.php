@@ -730,6 +730,20 @@ if (!function_exists('houzez_register_metaboxes')) {
         $prop_neighborhood = array();
         $agent_categories = array();
         $agent_cities = array();
+        $prop_status2 = array(
+                        'New' => 'New',
+                         'Newly Remodeled' => 'Newly Remodeled',
+                         'Renovated' => 'Renovated',
+                         'Used' => 'Used',
+                         'Under Construction' => 'Under Construction',
+                         'Project' => 'Project'
+                    );
+        
+        $prop_furniture = array(
+                        '0' => esc_html__('Furnished', 'houzez'),
+                        '1' => esc_html__('Unfurnished ', 'houzez'),
+                        '2' => esc_html__('Semi Furnished ', 'houzez')
+                    );
 
         houzez_get_terms_array('property_feature', $prop_features);
         houzez_get_terms_array('home_appliances', $prop_home_appliances);
@@ -2642,7 +2656,7 @@ if (!function_exists('houzez_register_metaboxes')) {
                     'multiple' => true
                 ),
                 array(
-                    'name' => esc_html__('Status', 'houzez'),
+                    'name' => esc_html__('Action', 'houzez'),
                     'id' => $houzez_prefix . 'status',
                     'type' => 'select',
                     'options' => $prop_status,
@@ -2718,6 +2732,24 @@ if (!function_exists('houzez_register_metaboxes')) {
                     'id' => $houzez_prefix . 'beaches',
                     'type' => 'select',
                     'options' => $prop_beaches,
+                    'desc' => '',
+                    'columns' => 6,
+                    'multiple' => true
+                ),
+                array(
+                    'name' => esc_html__('Status', 'houzez'),
+                    'id' => $houzez_prefix . 'status2',
+                    'type' => 'select',
+                    'options' => $prop_status2,
+                    'desc' => '',
+                    'columns' => 6,
+                    'multiple' => true
+                ),
+                array(
+                    'name' => esc_html__('Furniture', 'houzez'),
+                    'id' => $houzez_prefix . 'furniture',
+                    'type' => 'select',
+                    'options' => $prop_furniture,
                     'desc' => '',
                     'columns' => 6,
                     'multiple' => true
