@@ -11706,7 +11706,13 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 .search-result-page .navbar.main-navbar {
     display: none;
 }
-
+#houzez-gmap-main .map-next-prev-actions li a:hover, #houzez-gmap-main .map-next-prev-actions li a:focus {
+    color: #000;
+    outline: none;
+}
+#houzez-gmap-main .map-next-prev-actions ul{
+	padding: 0px;
+}
 
 
 
