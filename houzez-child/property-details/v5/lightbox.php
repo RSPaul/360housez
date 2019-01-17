@@ -29,12 +29,15 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
 } elseif ( $agent_display_option == 'author_info' ) {
     $prop_agent_email = get_the_author_meta( 'email' );
 }
+$virtual_tour         = get_post_meta( $post->ID, 'fave_virtual_tour', true );
 ?>
 <div id="lightbox-popup-main" class="fade">
     <div class="lightbox-popup">
         <div class="popup-inner">
             <div class="lightbox-left">
 
+                
+               
                 <div class="lightbox-header">
                     <div class="header-title">
                         <p>
@@ -75,9 +78,7 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
                 <div class="gallery-area">
                     <div class="slider-placeholder">
                         <div class="loader-inner">
-
                             <span class="fa fa-spin fa-spinner"></span> <?php esc_html_e('Loading Slider...', 'houzez');?>
-
                         </div>
                     </div>
                     <?php if( !empty( $prop_agent_email ) && $enableDisable_agent_forms != 0 ) { ?>
@@ -85,15 +86,23 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
                     <div class="expand-icon lightbox-expand hidden-xs"></div>
                         <?php } ?>
                     <?php } ?>
-                    <div class="gallery-inner">
-                        <div class="lightbox-slide slide-animated owl-carousel owl-theme">
-                            <?php if( !empty( $prop_gallery_images ) ) { ?>
-                                <?php foreach( $prop_gallery_images as $img_id ): ?>
-                                    <div class="item"> <?php echo wp_get_attachment_image( $img_id, 'houzez-imageSize1170_738' ); ?> </div>
-                                <?php endforeach; ?>
-                            <?php } ?>
-                        </div>
+                    
+                    <div id="propert_gallery" class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                        <?php if( !empty( $prop_gallery_images ) ) { ?>
+                        <?php foreach( $prop_gallery_images as $img_id ): ?>
+                            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                <?php 
+                                $url = wp_get_attachment_image_src( $img_id, 'houzez-imageSize1170_738' ); 
+                                if($url) { ?>
+                                    <a href="<?= $url[0]; ?>" data-caption="" data-width="<?=$url[1] ?>" data-height="<?=$url[2]?>" itemprop="contentUrl">
+                                        <img src="<?= $url[0]; ?>" itemprop="thumbnail" alt="Image description">
+                                      </a>
+                                <?php } ?>
+                            </figure>
+                        <?php endforeach; ?>
+                        <?php } ?>
                     </div>
+                    
                     <div class="lightbox-slide-nav visible-xs">
                         <button class="lightbox-arrow-left lightbox-arrow"><i class="tz-chevron-left"></i></button>
                         <p class="lightbox-nav-title">
@@ -131,3 +140,74 @@ if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
         </div>
     </div>
 </div>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" id="harinder" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="myGallery" id="gallery_360">
+                <?php echo $virtual_tour; ?>
+            </div> 

@@ -273,19 +273,19 @@ houzez_count_property_views( $post->ID );
 
 <script>
     jQuery(function($){
-        $("body").on("click",".gallery_directory ul li.custom_media a", function(){
-            $("#property_myModal .myGallery").hide();
-            var get_attr_data=$(this).attr('id');
-            var get_attr_alt=$(this).attr('alt');
-            $("#property_myModal modal-title").html(get_attr_alt);            
-            if(get_attr_data=="video"){
-                var video_datasrc=$("#video_gallery_content").attr("data-src");                
-                $("#video_gallery_content").attr("src",video_datasrc);                
-            }
+        // $("body").on("click",".gallery_directory ul li.custom_media a", function(){
+        //     $("#property_myModal .myGallery").hide();
+        //     var get_attr_data=$(this).attr('id');
+        //     var get_attr_alt=$(this).attr('alt');
+        //     $("#property_myModal modal-title").html(get_attr_alt);            
+        //     if(get_attr_data=="video"){
+        //         var video_datasrc=$("#video_gallery_content").attr("data-src");                
+        //         $("#video_gallery_content").attr("src",video_datasrc);                
+        //     }
 
-            $("#gallery_"+get_attr_data).show();
-            $('#property_myModal').modal('show');
-        });
+        //     $("#gallery_"+get_attr_data).show();
+        //     $('#property_myModal').modal('show');
+        // });
         $("body").on("click","div#property_myModal button.close", function(){
             $("#video_gallery_content").attr("src",'');
         });
@@ -317,21 +317,21 @@ houzez_count_property_views( $post->ID );
                     <?php } ?>
                 <!-- </ul> -->
             <!-- </div> -->
-            <ul id="lightgallery" class="list-unstyled row">
+            <!-- <ul id="lightgallery" class="list-unstyled row">
                 <?php if( !empty( $prop_images ) ) { ?>
                         <?php foreach( $prop_images as $img_id ): ?>                            
                             <li>
                                 <a href="#">
-                                    <!-- <img class="img-responsive" src="img/thumb-1.jpg"> -->
+                                    <img class="img-responsive" src="img/thumb-1.jpg">
                                     <?php echo wp_get_attachment_image( $img_id, 'houzez-imageSize1170_738' ); ?>
                                 </a>
                             </li>
                         <?php endforeach; ?>
                     <?php } ?>
-            </ul>
-            <div class="myGallery" id="gallery_video">
+            </ul> -->
+            <!-- <div class="myGallery" id="gallery_video">
                 <iframe id="video_gallery_content" data-src="<?php echo $prop_video_url . '?autoplay=1'; ?>" style="height: 360px; width: 100%;"></iframe>
-            </div>
+            </div> -->
             <div class="myGallery" id="gallery_360">
                 <?php echo $virtual_tour; ?>
             </div> 

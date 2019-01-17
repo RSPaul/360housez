@@ -4207,6 +4207,87 @@ jQuery(document).ready(function ($) {
         t.stopPropagation()
     })
 
+    var container = [];
+
+    // Loop over gallery items and push it to the array
+    $('#propert_gallery').find('figure').each(function() {
+        var $link = $(this).find('a'),
+          item = {
+            src: $link.attr('href'),
+            w: $link.data('width'),
+            h: $link.data('height'),
+            title: $link.data('caption')
+          };
+        container.push(item);
+    });
+
+    // property images gallery
+    $('.popup-trigger2').on('click',function(e) {
+        e.preventDefault();
+
+         var $pswp = $('.pswp')[0],
+          options = {
+            index: $(this).parent('figure').index(),
+            bgOpacity: 0.85,
+            showHideOpacity: true
+          };
+
+        // Initialize PhotoSwipe
+        var gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, container, options);
+        gallery.init();
+        // $('#lightbox-popup-main').addClass('active').addClass('in');
+
+    });
+
+    // property video
+    $('.custom_media_video').on('click',function(e) {
+        e.preventDefault();
+
+        var video_datasrc=$("#pro_video_content").attr("data-src");     
+     
+        var items = [
+            {
+                html: '<div><iframe id="video_gallery_content2" src="'+video_datasrc+'" style="height: 580px; width: 100%;border:0px;"></iframe></div>'
+            }
+        ];
+
+        var $pswp = $('.pswp')[0],
+        options = {
+            index: $(this).parent('figure').index(),
+            bgOpacity: 0.85,
+            showHideOpacity: true
+        };
+
+        // initialise as usual
+        var gallery = new PhotoSwipe( $pswp, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+        $("#video_gallery_content2").attr("src", video_datasrc); 
+
+    });
+
+    $('.custom_media_360').on('click',function(e) {
+        e.preventDefault();
+
+        var video_datasrc=$("#gallery_360").html(); 
+     
+        var items = [
+            {
+                html: '<div>'+video_datasrc+'</div>'
+            }
+        ];
+
+        var $pswp = $('.pswp')[0],
+        options = {
+            index: $(this).parent('figure').index(),
+            bgOpacity: 0.85,
+            showHideOpacity: true
+        };
+
+        // initialise as usual
+        var gallery = new PhotoSwipe( $pswp, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+
+    });
     
 
 
