@@ -58,7 +58,7 @@ function my_comments_filter() {
     if ($post_types) {
         echo '<select name="post_type" id="filter-by-post-type">';
         echo '<option value="">' . __('All post types', 'houzezhouzez') . '</option>';
-        $post_selected = $_GET['post_type'];
+        $post_selected = (isset($_GET['post_type'])) ? $_GET['post_type'] : "";
         foreach ($post_types as $post_type) {
             $label = $post_type->label;
             $name = $post_type->name;
@@ -4103,3 +4103,58 @@ endif;
 
 add_action( 'edited_beaches', 'houzez_save_beaches_meta_fields', 10, 2 );
 add_action( 'create_beaches', 'houzez_save_beaches_meta_fields', 10, 2 );
+
+
+// filter for comments section to filter by property
+function comments_filter_byproperty() {
+    
+    echo '<select name="property_id" id="filter-by-property-id">';
+    echo '<option value="">' . __('All properties', 'houzezhouzez') . '</option>';
+    $post_selected = (isset($_GET['property_id'])) ? $_GET['property_id'] : "";
+
+    $args = array(
+        'post_type'=> 'property',
+        'post_status' => 'publish',
+        'order'    => 'ASC',
+        'posts_per_page' => -1 
+    );              
+
+    $the_query = new WP_Query( $args );
+    if($the_query->have_posts() ) {
+
+        while ( $the_query->have_posts() ) {
+            $the_query->the_post();
+            $post_id = get_the_ID(); 
+            $post_title = get_the_title(); 
+            if ($post_id == $post_selected) {
+                echo '<option value="' . $post_id . '" selected="selected">' . $post_title . '</option>';
+            } else {
+                echo '<option value="' . $post_id . '">' . $post_title . '</option>';
+            }
+        } 
+    }
+    echo '</select>';
+    
+}
+
+// we add our action to the 'restrict_manage_comments' hook so that our new select field get listet at the comments page
+add_action('restrict_manage_comments', 'comments_filter_byproperty');
+add_action( 'current_screen', 'wpse_72210_comments_exclude_lazy_hook', 10, 2 );
+/**
+ * Delay hooking our clauses filter to ensure it's only applied when needed.
+ */
+function wpse_72210_comments_exclude_lazy_hook( $screen ) {
+    if ( $screen->id != 'edit-comments' )
+        return;
+
+    // Check if our Query Var is defined    
+    if( isset( $_GET['property_id'] ) )
+        add_action( 'pre_get_comments', 'wpse_63422_list_comments_from_specific_post', 10, 1 );
+}
+
+/**
+ * Only display comments of specific post_id
+ */ 
+function wpse_63422_list_comments_from_specific_post( $clauses ) {
+    $clauses->query_vars['post_id'] = $_GET['property_id'];
+}
