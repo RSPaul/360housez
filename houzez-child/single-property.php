@@ -332,7 +332,7 @@ houzez_count_property_views( $post->ID );
             <!-- <div class="myGallery" id="gallery_video">
                 <iframe id="video_gallery_content" data-src="<?php echo $prop_video_url . '?autoplay=1'; ?>" style="height: 360px; width: 100%;"></iframe>
             </div> -->
-            <div class="myGallery" id="gallery_360">
+            <div class="myGallery" id="gallery_360" style="display: none;">
                 <?php echo $virtual_tour; ?>
             </div> 
       </div>      

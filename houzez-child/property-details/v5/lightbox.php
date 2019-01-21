@@ -93,8 +93,9 @@ $virtual_tour         = get_post_meta( $post->ID, 'fave_virtual_tour', true );
                             <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                                 <?php 
                                 $url = wp_get_attachment_image_src( $img_id, 'houzez-imageSize1170_738' ); 
+                                $cap = wp_get_attachment_caption( $img_id );
                                 if($url) { ?>
-                                    <a href="<?= $url[0]; ?>" data-caption="" data-width="<?=$url[1] ?>" data-height="<?=$url[2]?>" itemprop="contentUrl">
+                                    <a href="<?= $url[0]; ?>" data-caption="<?=$cap;?>" data-width="<?=$url[1] ?>" data-height="<?=$url[2]?>" itemprop="contentUrl">
                                         <img src="<?= $url[0]; ?>" itemprop="thumbnail" alt="Image description">
                                       </a>
                                 <?php } ?>
@@ -172,7 +173,7 @@ $virtual_tour         = get_post_meta( $post->ID, 'fave_virtual_tour', true );
 
                 <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <!-- <button class="pswp__button pswp__button--share" title="Share"></button> -->
 
                 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 
@@ -208,6 +209,6 @@ $virtual_tour         = get_post_meta( $post->ID, 'fave_virtual_tour', true );
     </div>
 
 </div>
-<div class="myGallery" id="gallery_360">
-                <?php echo $virtual_tour; ?>
-            </div> 
+<div class="myGallery" id="gallery_360" style="display: none;">
+    <?php echo $virtual_tour; ?>
+</div> 
