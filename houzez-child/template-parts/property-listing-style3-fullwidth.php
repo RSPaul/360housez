@@ -182,7 +182,7 @@ $current_page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		var sticky = header.offsetTop;
 
 		function myFunction() {
-		  if (window.pageYOffset > sticky) {
+		  if (window.pageYOffset > sticky && header) {
 		    header.classList.add("sticky_sec");
 		  } else {
 		    header.classList.remove("sticky_sec");
