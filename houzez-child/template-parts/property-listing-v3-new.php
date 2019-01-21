@@ -25,7 +25,10 @@ $comments_meta_table = $wpdb->commentmeta;
 $comments_query 		 = "SELECT * FROM $comments_table as comment INNER JOIN $comments_meta_table AS meta WHERE comment.comment_post_ID = $post->ID AND meta.meta_key = 'rating' AND meta.comment_id = comment.comment_ID AND ( comment.comment_approved = 1 OR comment.user_id = $userID )";
 
 $get_comments = $wpdb->get_results( $comments_query );
-
+$prop_total_reviews = 0;
+$voters = 0;
+$totalStars = 0;
+$rating = 0;
 if ( sizeof( $get_comments ) != 0 ) {
     foreach ( $get_comments as $comment ) {
         if ( $comment->comment_approved == 1 ) {
