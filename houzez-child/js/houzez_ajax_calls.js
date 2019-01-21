@@ -4268,6 +4268,8 @@ jQuery(document).ready(function ($) {
     $('.custom_media_360').on('click',function(e) {
         e.preventDefault();
 
+        $("#gallery_360").show();
+
         var video_datasrc=$("#gallery_360").html(); 
      
         var items = [
@@ -4275,6 +4277,8 @@ jQuery(document).ready(function ($) {
                 html: '<div>'+video_datasrc+'</div>'
             }
         ];
+
+         $("#gallery_360").hide();
 
         var $pswp = $('.pswp')[0],
         options = {
@@ -4286,6 +4290,7 @@ jQuery(document).ready(function ($) {
         // initialise as usual
         var gallery = new PhotoSwipe( $pswp, PhotoSwipeUI_Default, items, options);
         gallery.init();
+       
 
     });
     
