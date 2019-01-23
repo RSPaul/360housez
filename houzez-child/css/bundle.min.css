@@ -11713,7 +11713,9 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 #houzez-gmap-main .map-next-prev-actions ul{
 	padding: 0px;
 }
-
+.modal-backdrop {
+    z-index: 99999;
+}
 
 
 
