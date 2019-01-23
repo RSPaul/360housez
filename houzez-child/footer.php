@@ -112,21 +112,21 @@ global $houzez_local;
     </div> <!--Start in header end #section-body-->
 <?php } ?>
 
-<?php wp_footer(); ?>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     jQuery(document).ready(function() {
-        jQuery('#formSale').click(function () {
-            jQuery('.full-area').toggleClass('scrollTop');
-            jQuery('.banner-parallax').toggleClass('parallax_height');
-        });
+       jQuery('.form-group').on('keyup', '[name="min-price"]', function(event) {
+           
+            jQuery('[name="min-price"]').val(jQuery('[name="min-price"]').val());
+       });
 
-        jQuery('#rent_toggle_id').click(function () {
-            jQuery('.full-area').toggleClass('scrollTop');
-            jQuery('.banner-parallax').toggleClass('parallax_height');
-        });
-    })
+       jQuery('.form-group').on('keyup', '[name="max_price"]', function(event) {
+           
+            jQuery('[name="max_price"]').val(jQuery('[name="max_price"]').val());
+       });
+    });
 
 
-</script> -->
+</script>
+<?php wp_footer(); ?>
 </body>
 </html>

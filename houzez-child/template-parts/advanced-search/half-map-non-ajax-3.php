@@ -220,7 +220,7 @@ if ($adv_show_hide['keyword'] != 1) {
 
                             </div>
                             <div class="input-field no-label multiple-select type-filter">
-                                <select multiple name="type">
+                                <select multiple name="type[]">
                                     <option value="" disabled selected>Type</option>
                                     <?php
                                         // All Option
@@ -257,7 +257,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <!-- Price /labelAfterPrice -->
                                 <span>Price <span class="txt-xs txt-op-60">(USD $)</span></span>                                     
                                 <div class="input-field no-label">
-                                    <input class="money-format" name="min-price" type="text" placeholder="Min.">
+                                    <input class="money-format" name="min-price" type="text" placeholder="Min." value="<?php echo $_SESSION['min-price']?>">
                                     <?php // houzez_adv_searches_min_price(); ?>
                                     <label for="search_min_price">Price Min.</label>
                                     
@@ -305,7 +305,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                 <div class="search-col one flex-container">
                                     <!-- Inner field for Type in mobile-->
                                     <div class="input-field no-label multiple-select inner-type-filter">
-                                        <select multiple name="type">
+                                        <select multiple name="type[]">
                                             <option value="" disabled selected>Type</option>
                                             <?php
                                                 // All Option
@@ -359,7 +359,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                         <!-- Price /labelAfterPrice -->
                                         <span>Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>                                     
                                         <div class="input-field no-label">
-                                            <input class="money-format" name="min-price" type="text" placeholder="Min.">
+                                            <input class="money-format" name="min-price" type="text" placeholder="Min." value="<?php echo $_SESSION['min-price']?>">
                                             <label for="inner_search_min_price">Price Min.</label>
                                         </div>
                                         <div class="input-field no-label">

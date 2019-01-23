@@ -3895,22 +3895,29 @@ if( !function_exists('houzez_get_search_template_link') ) {
     }
 }
 
+session_start();
 add_action( 'init', 'maintain_advance_search' );
 function maintain_advance_search() {
+    // echo "get maintain_advance_search";
   if (isset($_GET['maintain_advance_search'])) {
         
         // echo "<pre>";
         // print_r($_GET);
         // echo "</pre>";
+        // die('here');
         foreach ($_GET as $key => $value) {
             if ( !empty($value) ) {
                 
                 $_SESSION[$key] = $value;
             }
         }
-        // die('here');
+ 
   }
 }
+        // echo "get session maintain_advance_search";
+        // echo "<pre>";
+        // print_r( $_SESSION );
+        // echo "</pre>";
 
 function add_tz_property_detail_header($sections) {
 
