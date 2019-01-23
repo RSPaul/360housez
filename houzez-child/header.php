@@ -117,7 +117,3 @@ $houzez_local = houzez_get_localization();
                     get_template_part('template-parts/compare-panel');
                 }
                 ?>
-                <h1>Here</h1>
-            <a target="_blank" class="popup-upon-request">
-                <span class="txt-h-medium">Price Upon Request</span>
-            </a>
