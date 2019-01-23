@@ -9883,7 +9883,7 @@ body.search-result-page .searching-navbar::before {
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 100%
+	height: 100%;
 }
 
 .property-card .property-card-wrapper .property-card-body .card-title a:hover {
@@ -11085,7 +11085,7 @@ button.map-control span {
     margin: 0 17px 15px 0px;
 }*/
 .go-detail img {
-    height: 335px;
+    height: 100%;
     width: 100%;
 }
 /*.property-card.featured-property:nth-child(4n) {
@@ -11713,7 +11713,9 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 #houzez-gmap-main .map-next-prev-actions ul{
 	padding: 0px;
 }
-
+.modal-backdrop {
+    z-index: 99999;
+}
 
 
 

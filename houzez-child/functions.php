@@ -4133,10 +4133,13 @@ function comments_filter_byproperty() {
             $the_query->the_post();
             $post_id = get_the_ID(); 
             $post_title = get_the_title(); 
-            if ($post_id == $post_selected) {
-                echo '<option value="' . $post_id . '" selected="selected">' . $post_title . '</option>';
-            } else {
-                echo '<option value="' . $post_id . '">' . $post_title . '</option>';
+            $comment_cnt = get_comments_number( $post_id );
+            if($comment_cnt) {
+                if ($post_id == $post_selected) {
+                    echo '<option value="' . $post_id . '" selected="selected">' . $post_title . '</option>';
+                } else {
+                    echo '<option value="' . $post_id . '">' . $post_title . '</option>';
+                }
             }
         } 
     }
