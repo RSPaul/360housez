@@ -693,4 +693,5 @@ if ($adv_show_hide['keyword'] != 1) {
             header2.className += " stick_map";
         },3000);
 */
+
     </script>
