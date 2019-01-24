@@ -2232,7 +2232,8 @@ jQuery(document).ready(function ($) {
                 //     '</div>' +
                 //     '</div>';
                 // console.log("prop>>>>>>>>>>>>>>", prop)
-                infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' +
+                
+infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' +
                     '<div class="property-card-header">' +
                     '<a href="#!" role="button" class="btn-close" title="Close">' +
                     '<i class="tz-close-sm"></i>' +
@@ -2751,7 +2752,7 @@ jQuery(document).ready(function ($) {
         }
 
 
-        var houzez_half_map_listings = function(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_half_map, current_page ) {
+        var houzez_half_map_listings = function(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_half_map, current_page, guest, search_sea_distance, rules ) {
             var headerMapSecurity = $('#securityHouzezHeaderMap').val();
             var ajax_container = $('#houzez_ajax_container');
             var total_results = $('.map-module-half .tabs-title span');
@@ -2759,7 +2760,7 @@ jQuery(document).ready(function ($) {
             if( current_page != undefined ) {
                 paged = current_page;
             }
-
+         
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -2783,6 +2784,7 @@ jQuery(document).ready(function ($) {
                     'min_area': min_area,
                     'max_area': max_area,
                     'features': features,
+                    'rules': rules,
                     'publish_date': publish_date,
                     'search_lat': search_lat,
                     'search_long': search_long,
@@ -2792,6 +2794,8 @@ jQuery(document).ready(function ($) {
                     'sort_half_map': sort_half_map,
                     'custom_fields_values': custom_fields_array,
                     'security': headerMapSecurity,
+                    'guest': guest,
+                    'search_sea_distance': search_sea_distance,
 
                     'paged': paged,
                     'post_per_page': search_no_posts
@@ -3177,7 +3181,10 @@ jQuery(document).ready(function ($) {
                 var search_radius = HOUZEZ_ajaxcalls_vars.search_radius;
                 var search_location = HOUZEZ_ajaxcalls_vars.search_location;
                 var use_radius = HOUZEZ_ajaxcalls_vars.use_radius;
-
+                var guest = HOUZEZ_ajaxcalls_vars.guest;
+                var search_sea_distance = HOUZEZ_ajaxcalls_vars.search_sea_distance;
+                var rules = HOUZEZ_ajaxcalls_vars.search_rules;
+                
                 var custom_fields_array = [];
                 /*===================== Custom Fileds ===============================*/
                 $.each(search_custom_fields, function(key, value){
@@ -3185,8 +3192,9 @@ jQuery(document).ready(function ($) {
                     custom_fields_array.push(value);
 
                 });
-
-                houzez_half_map_listings(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_by );
+               
+                houzez_half_map_listings(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_by, 1, guest, search_sea_distance, rules );
+               
 
             } else {
                 houzez_header_listing_map();
@@ -4294,6 +4302,4 @@ jQuery(document).ready(function ($) {
 
     });
     
-
-
 }); // end document ready

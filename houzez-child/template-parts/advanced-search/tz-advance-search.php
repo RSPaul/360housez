@@ -185,7 +185,6 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
             <div class="advanced-search-filters flex-container flex-wrap">
                 <div class="search-col one flex-container">
                     <!-- Inner field for Type in mobile-->
-                    <input type="hidden" name="maintain_advance_search" value="get">
                     <div class="input-field no-label multiple-select inner-type-filter">
                         <select multiple name="type">
                             <option value="" disabled selected>Type</option>
@@ -208,6 +207,7 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
                                 ?>
 
                         </select>
+                        <input type="hidden" name="maintain_advance_search" value="get">
                         <label for="search_type">Type</label>
 
                         <?php /*if( $adv_show_hide['type'] != 1 ) { ?>
@@ -319,15 +319,15 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
                         </div>
                     </div>
                     <div class="input-field no-label sea-distance-filter">
-                        <select>
+                        <select name="search_sea_distance">
                             <option value="" disabled selected>Distance to the sea</option>
                             <option value="any">Any</option>
-                            <option value="1">- 100 m </option>
-                            <option value="2">- 300 m </option>
-                            <option value="3">- 500 m</option>
-                            <option value="4">- 1 km</option>
-                            <option value="4">1 - 5 km</option>
-                            <option value="4">+ 5 km</option>
+                            <option value="100">- 100 m </option>
+                            <option value="300">- 300 m </option>
+                            <option value="500">- 500 m</option>
+                            <option value="1000">- 1 km</option>
+                            <option value="5000">1 - 5 km</option>
+                            <option value="50000">+ 5 km</option>
                         </select>
                         <label for="search_sea_distance">Distance to the sea</label>
                     </div>
@@ -335,10 +335,10 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
                         <p class="filter-title txt-h-medium txt-md">Rules</p>
                         <ul>
                             <li>
-                                <label for="rule1"><input type="checkbox" class="filled-in"><span>Pets allowed</span></label>
+                                <label ><input type="checkbox" name="rules[]" class="filled-in" value="pets"><span>Pets allowed</span></label>
                             </li>
                             <li>
-                                <label for="rule2"><input type="checkbox" class="filled-in"><span>No security deposit</span></label>
+                                <label ><input type="checkbox" name="rules[]" class="filled-in" value="no_security"><span>No security deposit</span></label>
                             </li>
                         </ul>
                     </div>
@@ -555,7 +555,6 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
 		</div>
 	</form>
 </div>
-
 <script>
     window.onscroll = function() {myFunction()};
 

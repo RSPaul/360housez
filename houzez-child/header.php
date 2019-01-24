@@ -117,3 +117,5 @@ $houzez_local = houzez_get_localization();
                     get_template_part('template-parts/compare-panel');
                 }
                 ?>
+             
+
