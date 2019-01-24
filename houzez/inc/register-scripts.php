@@ -86,6 +86,7 @@ if( !function_exists('houzez_scripts') ) {
         $search_property_id = isset($_GET['property_id']) ? sanitize_text_field($_GET['property_id']) : '';
         $search_publish_date = isset($_GET['publish_date']) ? sanitize_text_field($_GET['publish_date']) : '';
         $sort_by = isset($_GET['sortby']) ? sanitize_text_field($_GET['sortby']) : $sort_halfmap;
+        $guest = isset($_GET['guest']) ? sanitize_text_field($_GET['guest']) : '';
 
         $search_location = isset($_GET['search_location']) ? esc_attr($_GET['search_location']) : false;
         $use_radius = 'on';
@@ -458,6 +459,7 @@ if( !function_exists('houzez_scripts') ) {
                 'pharmacies' => esc_html__('Pharmacies', 'houzez'),
                 'hospitals' => esc_html__('Hospitals', 'houzez'),
                 'sort_by' => $sort_by,
+                // 'guest' => $guest,
                 'measurement_updating_msg' => esc_html__('Updating, Please wait...', 'houzez'),
                 'autosearch_text' => esc_html__('Searching...', 'houzez'),
                 'currency_updating_msg' => esc_html__('Updating Currency, Please wait...', 'houzez'),

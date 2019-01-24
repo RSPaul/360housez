@@ -2569,7 +2569,6 @@ add_action( 'wp_ajax_nopriv_houzez_half_map_listings', 'houzez_half_map_listings
 add_action( 'wp_ajax_houzez_half_map_listings', 'houzez_half_map_listings' );
 if( !function_exists('houzez_half_map_listings') ) {
     function houzez_half_map_listings() {
-
         //check_ajax_referer('houzez_map_ajax_nonce', 'security');
         $meta_query = array();
         $tax_query = array();
@@ -2589,6 +2588,7 @@ if( !function_exists('houzez_half_map_listings') ) {
 
         $sort_by = isset($_POST['sort_half_map']) ? $_POST['sort_half_map'] : '';
         $features = isset($_POST['features']) ? $_POST['features'] : '';
+        $rules = isset($_POST['rules']) ? $_POST['rules'] : '';
         $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
         $country = isset($_POST['country']) ? ($_POST['country']) : '';
         $location = isset($_POST['location']) ? ($_POST['location']) : '';
@@ -2615,7 +2615,8 @@ if( !function_exists('houzez_half_map_listings') ) {
         $search_lat = isset($_POST['search_lat']) ? (float) $_POST['search_lat'] : false;
         $search_long = isset($_POST['search_long']) ? (float) $_POST['search_long'] : false;
         $search_radius = isset($_POST['search_radius']) ? (int) $_POST['search_radius'] : false;
-
+        $guest = isset($_POST['guest']) ? (int) $_POST['guest'] : false;
+        $search_sea_distance = isset($_POST['search_sea_distance']) ? (int) $_POST['search_sea_distance'] : false;
         $prop_locations = array();
         houzez_get_terms_array( 'property_city', $prop_locations );
 
@@ -2847,6 +2848,29 @@ if( !function_exists('houzez_half_map_listings') ) {
                 'terms' => $labels
             );
         }
+        //rules logic
+        if( !empty( $rules ) ) {
+            foreach ($rules as $rule):
+                if($rule == 'pets') {                    
+                    $rule_pets = sanitize_text_field($rule);
+                    $meta_query[] = array(
+                        'key' => 'wp_rules_pets_enable',
+                        'value'   => 'allowed',
+                        'type'    => 'CHAR',
+                        'compare' => $search_criteria,
+                    );
+
+                } else if ($rule == 'no_security') {
+                    $rule_security = sanitize_text_field($rule);
+                    $meta_query[] = array(
+                        'key' => 'wp_rules_security',
+                        'value'   => 'no',
+                        'type'    => 'CHAR',
+                        'compare' => $search_criteria,
+                    );
+                }
+            endforeach;
+        }
 
         // bedrooms logic
         if( !empty( $bedrooms ) && $bedrooms != 'any'  ) {
@@ -2865,6 +2889,28 @@ if( !function_exists('houzez_half_map_listings') ) {
             $meta_query[] = array(
                 'key' => 'fave_property_bathrooms',
                 'value'   => $bathrooms,
+                'type'    => 'CHAR',
+                'compare' => $search_criteria,
+            );
+        }
+
+        // search_sea_distance logic
+        if( !empty( $search_sea_distance ) && $search_sea_distance != 'any'  ) {
+            $search_sea_distance = sanitize_text_field($search_sea_distance);
+            $meta_query[] = array(
+                'key' => 'fave_property_sea',
+                'value'   => $search_sea_distance,
+                'type'    => 'CHAR',
+                'compare' => $search_criteria,
+            );
+        }
+
+        // guest logic
+        if( !empty( $guest ) && $guest != 'any'  ) {
+            $guest = sanitize_text_field($guest);
+            $meta_query[] = array(
+                'key' => 'fave_property_guests',
+                'value'   => $guest,
                 'type'    => 'CHAR',
                 'compare' => $search_criteria,
             );

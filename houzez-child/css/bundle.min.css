@@ -11716,7 +11716,12 @@ li.dropdown.account-actions ul.dropdown-menu li ul.dropdown-menu li.active a {
 .modal-backdrop {
     z-index: 99999;
 }
-
+.search_map_page hr {
+    width: 100%;
+}
+.search_map_page.map-active hr {
+	width: 96%;
+}
 
 
 
