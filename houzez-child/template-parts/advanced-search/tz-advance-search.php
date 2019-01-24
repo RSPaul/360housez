@@ -207,6 +207,7 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
                                 ?>
 
                         </select>
+                        <input type="hidden" name="maintain_advance_search" value="get">
                         <label for="search_type">Type</label>
 
                         <?php /*if( $adv_show_hide['type'] != 1 ) { ?>
@@ -554,7 +555,6 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
 		</div>
 	</form>
 </div>
-
 <script>
     window.onscroll = function() {myFunction()};
 

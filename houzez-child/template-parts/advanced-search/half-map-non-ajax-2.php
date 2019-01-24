@@ -221,6 +221,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                     <!-- </div> -->
                                 <?php } */?>
                             </div>
+                            <input type="hidden" name="maintain_advance_search" value="get">
                             <div class="form-group flex-container price-filter">
                                 <!-- Price /labelAfterPrice -->
                                 <span class="rent-price">Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>                                     

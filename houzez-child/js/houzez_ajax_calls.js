@@ -2232,7 +2232,8 @@ jQuery(document).ready(function ($) {
                 //     '</div>' +
                 //     '</div>';
                 // console.log("prop>>>>>>>>>>>>>>", prop)
-                infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' +
+                
+infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' +
                     '<div class="property-card-header">' +
                     '<a href="#!" role="button" class="btn-close" title="Close">' +
                     '<i class="tz-close-sm"></i>' +
@@ -2254,9 +2255,9 @@ jQuery(document).ready(function ($) {
                     '<span class="txt-h-medium">'+prop.property_size+' <span class="txt-h-light">'+prop.area_prefix+'</span></span> <span class="text-uppercase">Area</span>' +
                     '</li>' +
                     '</ul>' +
-                    '<p class="card-price txt-h-light">'+((prop.status == "For Sale") ? 'From <span class="txt-h-medium">'+prop.for_sale+'</span> USD' : "" ) + 
-                    ((prop.status == "For Rent : Living") ? 'From <span class="txt-h-medium">'+prop.for_rent_living+'</span> USD / month' : "" ) + '' +
-                    ((prop.status == "For Rent : Vacations") ? 'From <span class="txt-h-medium">'+prop.for_rent_vacations+'</span> USD / night' : "" )  + '' +
+                    '<p class="card-price txt-h-light">'+((prop.status == "for-sale") ? 'From <span class="txt-h-medium">'+prop.for_sale+'</span> ' +  ((prop.prop_price_post != "") ? prop.prop_price_post : "" )    + ' ' : "" ) + 
+                    ((prop.status == "for-rent-living") ? 'From <span class="txt-h-medium">'+prop.for_rent_living+'</span> '+((prop.prop_price_post != "") ?  prop.prop_price_post : "" )+' ' : "" ) + '' +
+                    ((prop.status == "for-rent-vacations") ? 'From <span class="txt-h-medium">'+prop.for_rent_vacations+'</span> '+((prop.prop_price_post != "") ?  prop.prop_price_post : "" )+' ' : "" )  + '' +
                     ((prop.oppurtunity && prop.oppurtunity == 1) ? '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="left"></i>' : "" );                 
 
                     infoboxContent.innerHTML += '</p></div>' +
@@ -4301,6 +4302,4 @@ jQuery(document).ready(function ($) {
 
     });
     
-
-
 }); // end document ready

@@ -354,6 +354,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <!-- </div> -->
                                         <?php } */ ?>
                                     </div>
+                                    <input type="hidden" name="maintain_advance_search" value="get">
                                     <!-- Inner field for Price in mobile-->
                                     <div class="form-group flex-container inner-price-filter">
                                         <!-- Price /labelAfterPrice -->

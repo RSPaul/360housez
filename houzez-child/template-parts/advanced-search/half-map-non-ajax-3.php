@@ -436,6 +436,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <label for="search_max_area">Max. <span class="txt-xs txt-op-60">(m&#178)</span></label>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="maintain_advance_search" value="get">
                                     <div class="input-field no-label sea-distance-filter">
                                         <select name="search_sea_distance">
                                             <option value="" disabled selected>Distance to the sea</option>

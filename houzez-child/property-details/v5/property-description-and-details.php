@@ -112,9 +112,11 @@ $hide_detail_prop_fields = houzez_option('hide_detail_prop_fields');
 
 $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', array("fields" => "all"));
 
+$search_status = "";
+if(count($_SESSION)) {
+    $search_status = $_SESSION["status"];
+}
 ?>
-
-
 <?php
     if( $prop_details ) { ?>
 
@@ -141,19 +143,14 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
             <div class="row row-price">
                 <div class="col-xs-12">
                     <?php
-                    $cond1 = ($pro_type[0]->slug == "for-rent-living") ? "block" : "none";  
-                    $cond2 = ($pro_type[0]->slug == "for-rent-vacations") ? "block" : "none";
-                    $cond3 = ($pro_type[0]->slug == "for-sale") ? "block" : "none";
-                    ?>
-                    <?php 
-                    
-                    
-                    
-                    ?>
+                    $cond1 = ($search_status == "for-rent-living") ? "block" : "none";  
+                    $cond2 = ($search_status == "for-rent-vacations") ? "block" : "none";
+                    $cond3 = ($search_status == "for-sale") ? "block" : "none";
+                    ?>                    
                     <p class="txt-h-light txt-lg for-rent-living" style="display: <?php echo $cond1;?>">From <span class="txt-h-medium"><?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_sec_price', true ) ) );  ?> /month </span> USD</p>
                     <p class="txt-h-light txt-lg for-rent-vacations" style="display: <?php echo $cond2;?>">From <span class="txt-h-medium"><?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_third_price', true ) ) );  ?> /night </span> USD</p>
                     <p class="txt-h-light txt-lg for-sale" style="display: <?php echo $cond3;?>">From <span class="txt-h-medium"><?php echo houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_price', true ) ) );  ?></span> USD</p>
-                    <?php if(count($pro_type) > 1) { ?>
+                    <?php if(count($pro_type) > 1 && $search_status == "") { ?>
                     <div class="input-field">
                         <ul class="list-inline">
                             <li>
@@ -165,8 +162,6 @@ $prop_features        = wp_get_post_terms( get_the_ID(), 'property_feature', arr
                                     <?php foreach ($pro_type as $key => $value) {
                                        echo  '<option value="'.$value->slug.'">'.$value->name.'</option>';                                        
                                     } ?>
-                                    <!-- <option value="rent_vacations" selected>For Rent: Vacations</option>
-                                    <option value="for_sale">For Sale</option> -->
                                 </select>
                             </li>   
                         </ul>
