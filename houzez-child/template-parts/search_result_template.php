@@ -93,6 +93,7 @@ get_header(); ?>
 											<label for="inner_search_max_price">Price Max.</label>
 										</div>
 									</div>
+									<input type="hidden" name="maintain_advance_search" value="get">
 									<div class="input-field no-label guests-filter">
 										<select id="search_guests">
 											<option value="" disabled selected>Guests</option>

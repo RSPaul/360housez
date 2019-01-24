@@ -268,6 +268,7 @@ if ($adv_show_hide['keyword'] != 1) {
                 <div class="row">
                     <div class="col-xxs-12">
                         <div id="advanced-search-menu2" class="collapse"  aria-expanded="false">
+                            <input type="hidden" name="maintain_advance_search" value="get">
                             <!-- Use class to show filters according to the action .for-rent-living-filters / .for-rent-vacations-filters / .for-sale-filters  -->
                             <div class="advanced-search-filters flex-container flex-wrap">
                                 <div class="search-col one flex-container">

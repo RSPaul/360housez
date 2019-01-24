@@ -3031,9 +3031,18 @@ if( !function_exists('houzez_half_map_listings') ) {
             $prop->for_rent_living = houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_sec_price', true ) ) ); 
             $prop->for_rent_vacations = houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_third_price', true ) ) ); 
             $prop->for_sale = houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_price', true ) ) ); 
+
+            $prop->prop_price_post = get_post_meta(get_the_ID(), 'fave_property_price_postfix', true);
             
             $prop->property_size = get_post_meta( get_the_ID(), 'fave_property_size', true );
-            $prop->status = houzez_taxonomy_simple('property_status');
+
+            $search_status = "";
+            if(count($_SESSION)) {
+                $search_status = $_SESSION["status"];
+            }
+
+            $prop->status = $search_status;
+
             $prop->area_prefix = houzez_option('area_prefix_default');
             $prop->search_status = $status;
             $prop->oppurtunity = get_post_meta( get_the_ID(), 'fave_property_oppurtunity', true );

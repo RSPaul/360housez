@@ -3911,13 +3911,9 @@ function maintain_advance_search() {
                 $_SESSION[$key] = $value;
             }
         }
- 
-  }
+    }
 }
-        // echo "get session maintain_advance_search";
-        // echo "<pre>";
-        // print_r( $_SESSION );
-        // echo "</pre>";
+
 
 function add_tz_property_detail_header($sections) {
 

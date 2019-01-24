@@ -185,6 +185,7 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
             <div class="advanced-search-filters flex-container flex-wrap">
                 <div class="search-col one flex-container">
                     <!-- Inner field for Type in mobile-->
+                    <input type="hidden" name="maintain_advance_search" value="get">
                     <div class="input-field no-label multiple-select inner-type-filter">
                         <select multiple name="type">
                             <option value="" disabled selected>Type</option>
