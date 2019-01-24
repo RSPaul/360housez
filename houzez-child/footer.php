@@ -112,6 +112,22 @@ global $houzez_local;
     </div> <!--Start in header end #section-body-->
 <?php } ?>
 
+<?php wp_footer(); ?>
+<!-- <script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('#formSale').click(function () {
+            jQuery('.full-area').toggleClass('scrollTop');
+            jQuery('.banner-parallax').toggleClass('parallax_height');
+        });
+
+        jQuery('#rent_toggle_id').click(function () {
+            jQuery('.full-area').toggleClass('scrollTop');
+            jQuery('.banner-parallax').toggleClass('parallax_height');
+        });
+    })
+
+
+</script> -->
 <script type="text/javascript">
     jQuery(document).ready(function() {
        jQuery('.form-group').on('keyup', '[name="min-price"]', function(event) {
@@ -127,6 +143,5 @@ global $houzez_local;
 
 
 </script>
-<?php wp_footer(); ?>
 </body>
 </html>

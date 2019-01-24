@@ -47,6 +47,11 @@ if( isset( $_GET['country'] ) ) {
     $searched_country = $_GET['country'];
 }
 
+if( isset( $_GET['guest'] ) ) {
+    $guest = $_GET['guest'];
+}
+
+
 $keyword_field = houzez_option('keyword_field');
 
 if( $keyword_field == 'prop_title' ) {
@@ -286,16 +291,11 @@ if ($adv_show_hide['keyword'] != 1) {
                                         <select id="search_guests">
                                             <option value="" disabled selected>Guests</option>
                                             <option value="any">Any</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
+                                            <?php for ($i=1; $i <= 10; $i++) { 
+                                                ?>
+                                            <option value="<?=$i?>" <?php if($i == $guest ) { echo 'selected'; } ?> ><?=$i?></option>
+                                                
+                                            <?php } ?>
                                         </select>
                                         <label for="search_guests">Guests</label>
                                     </div>
