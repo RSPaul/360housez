@@ -116,115 +116,107 @@ if (!empty($img_url[0])) {
         });
 
 
-        $(".sale-options").click(function (event) {
-
-            event.preventDefault();
-
-            $(".content_style").hide('slow');
-            
-            $(".visible-left").animate({
-                width: '100%'
-            }, 1200);
-            
-            $(".visible-right").animate({
-                width: '0%'
-            }, 1100);
-            
-            $('.banner-search-main').show();
-            
-            setTimeout(function () {
-                $(".visible-right").hide();                
-                $(".sale-options").parents(".sale-half").next(".full-area").fadeIn("slow");
-            }, 1100);
-        });
-
-        $(".show-rent-options").click(function (event) {
-
-            event.preventDefault();
-
-            $("p.show-rent-options").addClass('residence_vacation');
-            $(".rent-info-text").hide();
-            $(".rent-options").fadeIn('slow');
-
-        });
-
-        $(document).on("click", ".rent-options", function () {
-
-            let status = $(this).attr('data-val');
-            $('.selectpicker1').selectpicker();
-            $('.status-select').hide();
-            $('.'+status).show();
-            $('.selectpicker1').selectpicker('val', status);
-            $('.staval').val(status);
-            
-            if ( status == 'for-rent-vacations' ) {
-
-                $('.rent-price').html('Price /night <span class="txt-xs txt-op-60">(USD $)</span>');
-            } else {
-
-                $('.rent-price').html('Price /month <span class="txt-xs txt-op-60">(USD $)</span>');
-            }
-
-            $(".content_style").hide('slow');
-            $('.visible-right').animate({
-                width: '100%'
-            }, 1200);
-            $(".visible-left").animate({
-                width: '0%'
-            }, 1100);
-            $('.banner-search-main').show();
-            
-            setTimeout(function () {
-                $(".visible-left").hide();
-                $(".rent-options").parents(".rent-half").next(".full-area").fadeIn("slow");
-            }, 1100);
-        });
-
-
         if  (window.matchMedia('(max-width: 767px)').matches){
-            $(".go_back.left").click(function(){
-                $('.visible-right').delay(650).animate({"width": "100%"}, 500);
-                $('.visible-left').delay(650).animate({"width": "100%"}, 500);
-                $('.visible-right').show();
-
-                setTimeout(function () {
-                     $(".full-area").fadeOut("fast");
-                },50);
-
-                setTimeout(function () {               
-                    
-                    $(".content_left, .content_right").show('slow');
-                }, 1100);
-            });
-
-            $(".go_back.right").click(function(){
-                $('.visible-right').delay(650).animate({"width": "100%"}, 500);
-                $('.visible-left').delay(650).animate({"width": "100%"}, 500);
-                $('.visible-left').show();
-
-                setTimeout(function () {
-                     $(".full-area").fadeOut("fast");
-                },50);
-
-                setTimeout(function () {               
-                    
-                    $(".content_left, .content_right").show('slow');
-                }, 1100);                          
-            });
-
-        } else {
-
-            $(".go_back.left").click(function(){
+            // Find out the wrapper height in order to slide out each half
+            var slideH = $('.tz-header-wrapper').height();
             
-                $(".visible-right").animate({
-                    width: '50%'
+            // Button Left/Up (Sale)    
+            $(".sale-options").click(function (event) {
+                event.preventDefault();
+                // Setting this half in front
+                $('.visible-left').css("z-index","2");
+                // Animating the divisive line (scale to "0")
+                $('.divisive-line').addClass("animate");
+                // Sliding up the opposite half
+                $('.visible-right').delay(650).animate({"top": -slideH}, 800);
+                // Expanding the background
+                $('.bottom-line').delay(660).animate({"height": "46vh"}, 700);
+            });
+            // Button Right/Bottom (Rent)
+            $(document).on("click", ".rent-options", function (event) {
+                event.preventDefault();
+                // Setting this half in front
+                $('.visible-right').css("z-index","2");
+                // Animating the divisive line (scale to "0")
+                $('.divisive-line').addClass("animate");
+                // Sliding up the two halfs
+                $('.visible-right').delay(650).animate({"top": -slideH/2}, 500);
+                $('.visible-left').delay(720).animate({"top": -slideH}, 800);
+                // Expanding the background
+                $('.bottom-line').delay(730).animate({"height": "46vh"}, 700);
+            });
+            
+        } else {
+            // Find out the wrapper width in order to slide out each half
+            var slideW = $('.tz-header-wrapper').width() / 2;
+            
+            // Button Left/Up (Sale)    
+            $(".sale-options").click(function (event) {
+                event.preventDefault();
+                // Setting the opposite half in front
+                $('.visible-right').css("z-index","2");
+                $(".content_style").hide('slow');
+                // Animating the divisive line (scale to "0")
+                $('.divisive-line').delay(650).addClass("animate");
+                $('.visible-left').delay(650).animate({"width": "100%"}, 500);
+                // Sliding the opposite half
+                $('.visible-right').delay(650).animate({"right": -slideW}, 500); 
+
+                setTimeout(function () {
+                    $(".visible-right").hide();                
+                    $(".sale-options").parents(".sale-half").next(".full-area").fadeIn("slow");
                 }, 1100);
+
+            });
+
+            $(".show-rent-options").click(function (event) {
+                event.preventDefault();
+                $("p.show-rent-options").addClass('residence_vacation');
+                $(".rent-info-text").hide();
+                $(".rent-options").fadeIn('slow');
+            });
+
+            // Button Right/Bottom (Rent)
+            $(document).on("click", ".rent-options", function () {
+                let status = $(this).attr('data-val');
+                $('.selectpicker1').selectpicker();
+                $('.status-select').hide();
+                $('.'+status).show();
+                $('.staval').val(status);
+                $('.selectpicker1').selectpicker('val', status);
                 
-                $('.visible-left').animate({
-                    width: '50%'
-                }, 1200);
+                if ( status == 'for-rent-vacations' ) {
+
+                    $('.rent-price').html('Price /night <span class="txt-xs txt-op-60">(USD $)</span>');
+                } else {
+
+                    $('.rent-price').html('Price /month <span class="txt-xs txt-op-60">(USD $)</span>');
+                }
+                // Setting the opposite half in front
+                $('.visible-left').css("z-index","2");
+                $(".content_style").hide('slow');
+                // Animating the divisive line (scale to "0")
+                $('.divisive-line').delay(650).addClass("animate");
+                $('.visible-right').delay(650).animate({"width": "100%"}, 500);
+                // Sliding the opposite half
+                $('.visible-left').delay(650).animate({"left": -slideW}, 500); 
+
+                setTimeout(function () {
+                    $(".visible-left").hide();
+                    $(".rent-options").parents(".rent-half").next(".full-area").fadeIn("slow");
+                }, 1100);
+
+            });
+
+            $(".go_back.left").click(function(){            
+               
+                $('.visible-right').delay(650).animate({"right": "0", "width": "50%"}, 500); 
                 
+                $('.visible-left').delay(650).animate({"width": "50%"}, 500); 
+
                 $(".visible-right").show();
+
+                $('.divisive-line').delay(650).removeClass("animate");
                 
                 setTimeout(function () {
                      $(".full-area").fadeOut("fast");
@@ -239,28 +231,191 @@ if (!empty($img_url[0])) {
 
             $(".go_back.right").click(function(){
                 
-                $(".visible-right").animate({
-                    width: '50%'
-                }, 1100);
+                $('.visible-right').delay(650).animate({"width": "50%"}, 500);
                 
-                $('.visible-left').animate({
-                    width: '50%'
-                }, 1200);
-                
+                $('.visible-left').delay(650).animate({"width": "50%", "left": "0"}, 500); 
+
                 $(".visible-left").show();
-                
+
+                $('.divisive-line').delay(650).removeClass("animate");
+
                 setTimeout(function () {
                      $(".full-area").fadeOut("fast");
                 },50);
 
-                setTimeout(function () {               
+                setTimeout(function () {              
                     
                     $(".content_left, .content_right").show('slow');
                 }, 1100);          
 
             });
+
+
 
         }
+
+
+
+
+        // var slideW = $('.tz-header-wrapper').width() / 2;
+
+        // $(".sale-options").click(function (event) {
+
+        //     event.preventDefault();
+
+        //     $(".content_style").hide('slow');
+            
+        //     $('.visible-right').css("z-index","2");
+
+        //     $('.divisive-line').addClass("animate");
+
+        //     $('.tz-slides a').delay(200).animate({"opacity": "0"}, 80);
+
+        //     $('.visible-left').delay(650).animate({"width": "100%"}, 500);
+  
+        //     $('.visible-right').delay(650).animate({"right": -slideW}, 500);
+
+           
+
+        //     $('.banner-search-main').show();
+
+        //     setTimeout(function () {
+        //         $(".visible-right").hide();                
+        //         $(".sale-options").parents(".sale-half").next(".full-area").fadeIn("slow");
+        //     }, 1100);
+        // });
+
+        // $(".show-rent-options").click(function (event) {
+
+        //     event.preventDefault();
+
+        //     $("p.show-rent-options").addClass('residence_vacation');
+        //     $(".rent-info-text").hide();
+        //     $(".rent-options").fadeIn('slow');
+
+        // });
+
+        // $(document).on("click", ".rent-options", function () {
+
+        //     let status = $(this).attr('data-val');
+        //     $('.selectpicker1').selectpicker();
+        //     $('.status-select').hide();
+        //     $('.'+status).show();
+        //     $('.selectpicker1').selectpicker('val', status);
+            
+        //     if ( status == 'for-rent-vacations' ) {
+
+        //         $('.rent-price').html('Price /night <span class="txt-xs txt-op-60">(USD $)</span>');
+        //     } else {
+
+        //         $('.rent-price').html('Price /month <span class="txt-xs txt-op-60">(USD $)</span>');
+        //     }
+
+        //     $(".content_style").hide('slow');
+            
+        //     $('.visible-left').css("z-index","2");
+    
+        //     $('.divisive-line').addClass("animate");
+  
+        //     $('.tz-slides a').delay(200).animate({"opacity": "0"}, 80);
+        
+        //     $('.visible-right').delay(650).animate({"width": "100%"}, 500);
+         
+        //     $('.visible-left').delay(650).animate({"left": -slideW}, 500);
+
+        //     $('.banner-search-main').show();
+
+        //     setTimeout(function () {
+        //         $(".visible-left").hide();
+        //         $(".rent-options").parents(".rent-half").next(".full-area").fadeIn("slow");
+        //     }, 1100);
+        // });
+
+
+        // if  (window.matchMedia('(max-width: 767px)').matches){
+        //     $(".go_back.left").click(function(){
+        //         $('.visible-right').delay(650).animate({"width": "100%"}, 500);
+        //         $('.visible-left').delay(650).animate({"width": "100%"}, 500);
+        //         $('.visible-right').show();
+
+        //         setTimeout(function () {
+        //              $(".full-area").fadeOut("fast");
+        //         },50);
+
+        //         setTimeout(function () {               
+        //             $(".visible-left").show();
+        //             $(".content_left, .content_right").show('slow');
+        //         }, 1100);
+        //     });
+
+        //     $(".go_back.right").click(function(){
+        //         $('.visible-right').delay(650).animate({"width": "100%"}, 500);
+        //         $('.visible-left').delay(650).animate({"width": "100%"}, 500);
+        //         $('.visible-left').show();
+
+        //         setTimeout(function () {
+        //              $(".full-area").fadeOut("fast");
+        //         },50);
+
+        //         setTimeout(function () {               
+        //             $(".visible-right").show();
+        //             $(".content_left, .content_right").show('slow');
+        //         }, 1100);                          
+        //     });
+
+        // } else {
+
+        //     $(".go_back.left").click(function(){
+            
+        //         $(".visible-right").animate({
+        //             width: '50%'
+        //         }, 1100);
+                
+        //         $('.visible-left').animate({
+        //             width: '50%'
+        //         }, 1200);
+                
+        //         $(".visible-right").show();
+
+        //         $('.divisive-line').removeClass("animate");
+                
+        //         setTimeout(function () {
+        //              $(".full-area").fadeOut("fast");
+        //         },50);
+
+        //         setTimeout(function () {               
+                    
+        //             $(".content_left, .content_right").show('slow');
+        //         }, 1100);          
+
+        //     });
+
+        //     $(".go_back.right").click(function(){
+                
+        //         $(".visible-right").animate({
+        //             width: '50%'
+        //         }, 1100);
+                
+        //         $('.visible-left').animate({
+        //             width: '50%'
+        //         }, 1200);
+                
+        //         $(".visible-left").show();
+                
+        //         $('.divisive-line').removeClass("animate");
+
+        //         setTimeout(function () {
+        //              $(".full-area").fadeOut("fast");
+        //         },50);
+
+        //         setTimeout(function () {               
+                    
+        //             $(".content_left, .content_right").show('slow');
+        //         }, 1100);          
+
+        //     });
+
+        // }
 
 
 

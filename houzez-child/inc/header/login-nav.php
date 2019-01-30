@@ -83,7 +83,7 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
 
 <?php if( is_user_logged_in() ) { ?>
 
-   <li class="dropdown account-actions"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo esc_attr( $display_name ); ?> <i class="tz-user"></i></a>
+   <li class="dropdown account-actions"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><!-- <?php //echo esc_attr( $display_name ); ?> <i class="tz-user"></i> -->My Account</a>
         
         <ul class="dropdown-menu">
             <?php
