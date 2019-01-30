@@ -155,6 +155,7 @@ if (!empty($img_url[0])) {
             $('.status-select').hide();
             $('.'+status).show();
             $('.selectpicker1').selectpicker('val', status);
+            $('.staval').val(status);
             
             if ( status == 'for-rent-vacations' ) {
 

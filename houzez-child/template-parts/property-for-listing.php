@@ -61,10 +61,11 @@ if ( sizeof( $get_comments ) != 0 ) {
 }
 
 
-$search_status = "";
+$search_status = "null";
 if(count($_SESSION)) {
     $search_status = $_SESSION["status"];
 }
+
 if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigger = 'infobox_trigger'; }
 ?>
 <div id="ID-<?php the_ID(); ?>" class="property-card featured-property infobox_trigger <?php echo esc_attr($feat_class); ?> item-<?php echo sanitize_title(get_the_title())?>">
@@ -146,7 +147,7 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                     <span class="txt-h-medium">Price Upon Request</span>
                 </a>
             <?php } else { ?>
-                <?php if ( !empty($prop_sale_price) && $search_status == "for-sale" ) { ?>
+                <?php if ( !empty($prop_sale_price) && ($search_status == "for-sale" || $search_status == "null") ) { ?>
                 <p class="card-price txt-h-light txt-txt">
                     <!-- Before-price-label -->
                     <?php 
@@ -171,7 +172,7 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                 </p>                
                 <?php } ?>
 
-                <?php if ( !empty($prop_rent_price) && $search_status == "for-rent-living" ) { ?>
+                <?php if ( !empty($prop_rent_price) && ($search_status == "for-rent-living" || $search_status == "null") ) { ?>
                 <p class="card-price txt-h-light txt-txt">
                     <!-- Before-price-label -->
                     <?php 
@@ -189,15 +190,14 @@ if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigge
                     } ?>
 
                     <!-- Use this icon with tooltip when the property has been marked (in backend) as an opportunity -->
-                    <?php if (get_post_meta($post->ID, 'fave_property_oppurtunity', true)) {
-                        
+                    <?php if (get_post_meta($post->ID, 'fave_property_oppurtunity', true)) {                        
                         echo '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="right"></i>';
                     } ?>
                 </p>                
                 <?php } ?>
 
 
-            <?php if ( !empty($prop_rent_vaca_price) && $search_status == "for-rent-vacations" ) { ?>
+            <?php if ( !empty($prop_rent_vaca_price) && ($search_status == "for-rent-vacations" || $search_status == "null") ) { ?>
             <p class="card-price txt-h-light txt-txt">
                 <!-- Before-price-label -->
                 <?php 
