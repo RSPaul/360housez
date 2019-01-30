@@ -128,5 +128,20 @@ global $houzez_local;
 
 
 </script> -->
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+       jQuery('.form-group').on('keyup', '[name="min-price"]', function(event) {
+           
+            jQuery('[name="min-price"]').val(jQuery('[name="min-price"]').val());
+       });
+
+       jQuery('.form-group').on('keyup', '[name="max_price"]', function(event) {
+           
+            jQuery('[name="max_price"]').val(jQuery('[name="max_price"]').val());
+       });
+    });
+
+
+</script>
 </body>
 </html>

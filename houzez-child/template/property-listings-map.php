@@ -44,6 +44,8 @@ $sortby = get_post_meta($post->ID, 'fave_properties_sort_halfmap', true);
 
 $enable_disable_save_search = houzez_option('enable_disable_save_search');
 
+
+
 ?>
 
 <?php get_template_part('template-parts/advanced-search/half-map'); ?>

@@ -221,6 +221,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                     <!-- </div> -->
                                 <?php } */?>
                             </div>
+                            <input type="hidden" name="maintain_advance_search" value="get">
                             <div class="form-group flex-container price-filter">
                                 <!-- Price /labelAfterPrice -->
                                 <span class="rent-price">Price /night <span class="txt-xs txt-op-60">(USD $)</span></span>                                     
@@ -418,15 +419,15 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </div>
                                     </div>
                                     <div class="input-field no-label sea-distance-filter">
-                                        <select>
+                                        <select name="search_sea_distance">
                                             <option value="" disabled selected>Distance to the sea</option>
                                             <option value="any">Any</option>
-                                            <option value="1">- 100 m </option>
-                                            <option value="2">- 300 m </option>
-                                            <option value="3">- 500 m</option>
-                                            <option value="4">- 1 km</option>
-                                            <option value="4">1 - 5 km</option>
-                                            <option value="4">+ 5 km</option>
+                                            <option value="100">- 100 m </option>
+                                            <option value="300">- 300 m </option>
+                                            <option value="500">- 500 m</option>
+                                            <option value="1000">- 1 km</option>
+                                            <option value="5000">1 - 5 km</option>
+                                            <option value="50000">+ 5 km</option>
                                         </select>
                                         <label for="search_sea_distance">Distance to the sea</label>
                                     </div>
@@ -434,10 +435,10 @@ if ($adv_show_hide['keyword'] != 1) {
                                         <p class="filter-title txt-h-medium txt-md">Rules</p>
                                         <ul>
                                             <li>
-                                                <label for="rule1"><input type="checkbox" class="filled-in"><span>Pets allowed</span></label>
+                                                <label ><input type="checkbox" name="rules[]" class="filled-in" value="pets"><span>Pets allowed</span></label>
                                             </li>
                                             <li>
-                                                <label for="rule2"><input type="checkbox" class="filled-in"><span>No security deposit</span></label>
+                                                <label ><input type="checkbox" name="rules[]" class="filled-in" value="no_security"><span>No security deposit</span></label>
                                             </li>
                                         </ul>
                                     </div>

@@ -577,7 +577,7 @@ if( !function_exists('houzez_update_property_from_draft') ) {
 
         $updated_property = array(
             'ID' => $property_id,
-            'post_type'	=> 'property',
+            'post_type' => 'property',
             'post_status' => $prop_status
         );
         $prop_id = wp_update_post( $updated_property );
@@ -590,7 +590,7 @@ if( !function_exists('houzez_relist_free') ) {
         $propID = $_POST['propID'];
         $updated_property = array(
             'ID' => $propID,
-            'post_type'	=> 'property',
+            'post_type' => 'property',
             'post_status' => 'publish',
             'post_date'     => current_time( 'mysql' ),
             'post_date_gmt'     => current_time( 'mysql' ),
@@ -611,7 +611,7 @@ if( !function_exists('save_property_as_draft') ) {
         $userID = $current_user->ID;
 
         $new_property = array(
-            'post_type'	=> 'property'
+            'post_type' => 'property'
         );
 
         $submission_action = isset($_POST['update_property']) ? $_POST['update_property'] : '';
@@ -1676,27 +1676,27 @@ if( !function_exists('houzez_radius_filter_callback') ) {
         }
 
         $sql = $wpdb->prepare( "SELECT $wpdb->posts.ID,
-				( %s * acos(
-					cos( radians(%s) ) *
-					cos( radians( latitude.meta_value ) ) *
-					cos( radians( longitude.meta_value ) - radians(%s) ) +
-					sin( radians(%s) ) *
-					sin( radians( latitude.meta_value ) )
-				) )
-				AS distance, latitude.meta_value AS latitude, longitude.meta_value AS longitude
-				FROM $wpdb->posts
-				INNER JOIN $wpdb->postmeta
-					AS latitude
-					ON $wpdb->posts.ID = latitude.post_id
-				INNER JOIN $wpdb->postmeta
-					AS longitude
-					ON $wpdb->posts.ID = longitude.post_id
-				WHERE 1=1
-					AND ($wpdb->posts.post_status = 'publish' )
-					AND latitude.meta_key='houzez_geolocation_lat'
-					AND longitude.meta_key='houzez_geolocation_long'
-				HAVING distance < %s
-				ORDER BY $wpdb->posts.menu_order ASC, distance ASC",
+                ( %s * acos(
+                    cos( radians(%s) ) *
+                    cos( radians( latitude.meta_value ) ) *
+                    cos( radians( longitude.meta_value ) - radians(%s) ) +
+                    sin( radians(%s) ) *
+                    sin( radians( latitude.meta_value ) )
+                ) )
+                AS distance, latitude.meta_value AS latitude, longitude.meta_value AS longitude
+                FROM $wpdb->posts
+                INNER JOIN $wpdb->postmeta
+                    AS latitude
+                    ON $wpdb->posts.ID = latitude.post_id
+                INNER JOIN $wpdb->postmeta
+                    AS longitude
+                    ON $wpdb->posts.ID = longitude.post_id
+                WHERE 1=1
+                    AND ($wpdb->posts.post_status = 'publish' )
+                    AND latitude.meta_key='houzez_geolocation_lat'
+                    AND longitude.meta_key='houzez_geolocation_long'
+                HAVING distance < %s
+                ORDER BY $wpdb->posts.menu_order ASC, distance ASC",
             $earth_radius,
             $search_lat,
             $search_long,
@@ -2081,7 +2081,7 @@ add_filter('houzez_search_parameters_2', 'houzez_property_search_2');
 
 
 /*-----------------------------------------------------------------------------------*/
-/*	Get Properties for Header Map
+/*  Get Properties for Header Map
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_ajax_nopriv_houzez_header_map_listings', 'houzez_header_map_listings' );
 add_action( 'wp_ajax_houzez_header_map_listings', 'houzez_header_map_listings' );
@@ -2563,13 +2563,12 @@ if( !function_exists('houzez_header_map_listings') ) {
 
 
 /*-----------------------------------------------------------------------------------*/
-/*	Get Properties for Half Map listings
+/*  Get Properties for Half Map listings
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_ajax_nopriv_houzez_half_map_listings', 'houzez_half_map_listings' );
 add_action( 'wp_ajax_houzez_half_map_listings', 'houzez_half_map_listings' );
 if( !function_exists('houzez_half_map_listings') ) {
     function houzez_half_map_listings() {
-
         //check_ajax_referer('houzez_map_ajax_nonce', 'security');
         $meta_query = array();
         $tax_query = array();
@@ -2589,6 +2588,7 @@ if( !function_exists('houzez_half_map_listings') ) {
 
         $sort_by = isset($_POST['sort_half_map']) ? $_POST['sort_half_map'] : '';
         $features = isset($_POST['features']) ? $_POST['features'] : '';
+        $rules = isset($_POST['rules']) ? $_POST['rules'] : '';
         $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
         $country = isset($_POST['country']) ? ($_POST['country']) : '';
         $location = isset($_POST['location']) ? ($_POST['location']) : '';
@@ -2615,7 +2615,8 @@ if( !function_exists('houzez_half_map_listings') ) {
         $search_lat = isset($_POST['search_lat']) ? (float) $_POST['search_lat'] : false;
         $search_long = isset($_POST['search_long']) ? (float) $_POST['search_long'] : false;
         $search_radius = isset($_POST['search_radius']) ? (int) $_POST['search_radius'] : false;
-
+        $guest = isset($_POST['guest']) ? (int) $_POST['guest'] : false;
+        $search_sea_distance = isset($_POST['search_sea_distance']) ? (int) $_POST['search_sea_distance'] : false;
         $prop_locations = array();
         houzez_get_terms_array( 'property_city', $prop_locations );
 
@@ -2847,6 +2848,29 @@ if( !function_exists('houzez_half_map_listings') ) {
                 'terms' => $labels
             );
         }
+        //rules logic
+        if( !empty( $rules ) ) {
+            foreach ($rules as $rule):
+                if($rule == 'pets') {                    
+                    $rule_pets = sanitize_text_field($rule);
+                    $meta_query[] = array(
+                        'key' => 'wp_rules_pets_enable',
+                        'value'   => 'allowed',
+                        'type'    => 'CHAR',
+                        'compare' => $search_criteria,
+                    );
+
+                } else if ($rule == 'no_security') {
+                    $rule_security = sanitize_text_field($rule);
+                    $meta_query[] = array(
+                        'key' => 'wp_rules_security',
+                        'value'   => 'no',
+                        'type'    => 'CHAR',
+                        'compare' => $search_criteria,
+                    );
+                }
+            endforeach;
+        }
 
         // bedrooms logic
         if( !empty( $bedrooms ) && $bedrooms != 'any'  ) {
@@ -2865,6 +2889,28 @@ if( !function_exists('houzez_half_map_listings') ) {
             $meta_query[] = array(
                 'key' => 'fave_property_bathrooms',
                 'value'   => $bathrooms,
+                'type'    => 'CHAR',
+                'compare' => $search_criteria,
+            );
+        }
+
+        // search_sea_distance logic
+        if( !empty( $search_sea_distance ) && $search_sea_distance != 'any'  ) {
+            $search_sea_distance = sanitize_text_field($search_sea_distance);
+            $meta_query[] = array(
+                'key' => 'fave_property_sea',
+                'value'   => $search_sea_distance,
+                'type'    => 'CHAR',
+                'compare' => $search_criteria,
+            );
+        }
+
+        // guest logic
+        if( !empty( $guest ) && $guest != 'any'  ) {
+            $guest = sanitize_text_field($guest);
+            $meta_query[] = array(
+                'key' => 'fave_property_guests',
+                'value'   => $guest,
                 'type'    => 'CHAR',
                 'compare' => $search_criteria,
             );
@@ -3033,10 +3079,17 @@ if( !function_exists('houzez_half_map_listings') ) {
             $prop->for_sale = houzez_get_property_price( doubleval( get_post_meta( get_the_ID(), 'fave_property_price', true ) ) ); 
             
             $prop->property_size = get_post_meta( get_the_ID(), 'fave_property_size', true );
-            $prop->status = houzez_taxonomy_simple('property_status');
+            $search_status = "";
+            if(count($_SESSION)) {
+                $search_status = $_SESSION["status"];
+            }
+
+            $prop->status = $search_status;
             $prop->area_prefix = houzez_option('area_prefix_default');
             $prop->search_status = $status;
             $prop->oppurtunity = get_post_meta( get_the_ID(), 'fave_property_oppurtunity', true );
+
+            $prop->prop_price_post = get_post_meta(get_the_ID(), 'fave_property_price_postfix', true);
 
             $prop->icon = $prop->retinaIcon = get_template_directory_uri() . '/images/map/pin-single-family.png';
             foreach( $prop_type as $term_id ) {
@@ -3138,7 +3191,7 @@ if( !function_exists( 'houzez_favorites' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	Properties sorting
+/*  Properties sorting
 /*-----------------------------------------------------------------------------------*/
 if( !function_exists( 'houzez_prop_sort' ) ){
 
@@ -3247,7 +3300,7 @@ if( !function_exists('houzez_remove_property_thumbnail') ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	 Upload property gallery images
+/*   Upload property gallery images
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_ajax_houzez_property_img_upload', 'houzez_property_img_upload' );    // only for logged in user
 add_action( 'wp_ajax_nopriv_houzez_property_img_upload', 'houzez_property_img_upload' );
@@ -3308,7 +3361,7 @@ if( !function_exists( 'houzez_property_img_upload' ) ) {
 
 
 /*-----------------------------------------------------------------------------------*/
-/*	 Upload property gallery images
+/*   Upload property gallery images
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_ajax_houzez_property_attachment_upload', 'houzez_property_attachment_upload' );    // only for logged in user
 add_action( 'wp_ajax_nopriv_houzez_property_attachment_upload', 'houzez_property_attachment_upload' );
@@ -3368,7 +3421,7 @@ if( !function_exists( 'houzez_property_attachment_upload' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	Houzez get ajax single property
+/*  Houzez get ajax single property
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_ajax_nopriv_houzez_get_single_property', 'houzez_get_single_property' );
 add_action( 'wp_ajax_houzez_get_single_property', 'houzez_get_single_property' );
@@ -3455,7 +3508,7 @@ if( !function_exists('houzez_get_single_property') ) {
 
 
 /*-----------------------------------------------------------------------------------*/
-/*	Houzez Print Property
+/*  Houzez Print Property
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_ajax_nopriv_houzez_create_print', 'houzez_create_print' );
 add_action( 'wp_ajax_houzez_create_print', 'houzez_create_print' );
@@ -3943,8 +3996,8 @@ if( !function_exists('houzez_generate_invoice') ):
         $price_featured_submission = floatval( $price_featured_submission );
 
         $args = array(
-            'post_title'	=> 'Invoice ',
-            'post_status'	=> 'publish',
+            'post_title'    => 'Invoice ',
+            'post_status'   => 'publish',
             'post_type'     => 'houzez_invoice'
         );
         $inserted_post_id =  wp_insert_post( $args );
@@ -4003,7 +4056,7 @@ if( !function_exists('houzez_generate_invoice') ):
 endif;
 
 /*-----------------------------------------------------------------------------------*/
-/*	Houzez Invoice Filter
+/*  Houzez Invoice Filter
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_ajax_nopriv_houzez_invoices_ajax_search', 'houzez_invoices_ajax_search' );
 add_action( 'wp_ajax_houzez_invoices_ajax_search', 'houzez_invoices_ajax_search' );
@@ -4116,7 +4169,7 @@ if( !function_exists('houzez_get_property_agent') ) {
 
         $agent_display_option = get_post_meta( $prop_id, 'fave_agent_display_option', true );
         $prop_agent_display = get_post_meta( $prop_id, 'fave_agents', true );
-		$listing_agent = '';
+        $listing_agent = '';
         $prop_agent_num = $agent_num_call = $prop_agent = $prop_agent_link = $property_agent = '';
         if( $prop_agent_display != '-1' && $agent_display_option == 'agent_info' ) {
 
@@ -4313,7 +4366,7 @@ if ( !function_exists( 'houzez_get_auto_complete_search' ) ) {
             $terms_table = $wpdb->terms;
             $term_taxonomy = $wpdb->term_taxonomy;
             $data = $wpdb->get_results( "SELECT DISTINCT * FROM $terms_table as term INNER JOIN $term_taxonomy AS term_taxonomy
-				ON term.term_id=term_taxonomy.term_id AND term.name LIKE '%$key%' AND ( term_taxonomy.taxonomy = 'property_area' OR term_taxonomy.taxonomy = 'property_city' OR term_taxonomy.taxonomy = 'property_state' )" );
+                ON term.term_id=term_taxonomy.term_id AND term.name LIKE '%$key%' AND ( term_taxonomy.taxonomy = 'property_area' OR term_taxonomy.taxonomy = 'property_city' OR term_taxonomy.taxonomy = 'property_state' )" );
 
             if ( sizeof( $data ) != 0 ) {
 
@@ -4729,7 +4782,7 @@ if ( !function_exists( 'houzez_property_clone' ) ) {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	Houzez Invoice Print Property
+/*  Houzez Invoice Print Property
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_ajax_nopriv_houzez_create_invoice_print', 'houzez_create_invoice_print' );
 add_action( 'wp_ajax_houzez_create_invoice_print', 'houzez_create_invoice_print' );

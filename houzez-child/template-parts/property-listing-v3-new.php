@@ -42,8 +42,12 @@ if ( sizeof( $get_comments ) != 0 ) {
         $rating = ( $totalStars / $voters );
     }
 }
-?>
 
+$search_status = "";
+if(count($_SESSION)) {
+    $search_status = $_SESSION["status"];
+}
+?>
 <div class="property-card <?php echo $prop_featured ? 'featured-property' : '';?>">
 	<div class="property-card-wrapper flex-container">
 		<div class="property-card-header">
@@ -123,7 +127,7 @@ if ( sizeof( $get_comments ) != 0 ) {
               <span class="txt-h-medium">Price Upon Request</span>
           </a>
       <?php } else { ?>			
-				<?php if ( !empty($prop_sale_price) ) { ?>
+				<?php if ( !empty($prop_sale_price)  && $search_status == "for-sale" ) { ?>
 				<p class="card-price txt-h-light txt-txt">
 					<!-- Before-price-label -->
 					<?php 
@@ -148,7 +152,7 @@ if ( sizeof( $get_comments ) != 0 ) {
 				</p>				
 				<?php } ?>
 
-				<?php if ( !empty($prop_rent_price) ) { ?>
+				<?php if ( !empty($prop_rent_price) && $search_status == "for-rent-living" ) { ?>
 				<p class="card-price txt-h-light txt-txt">
 					<!-- Before-price-label -->
 					<?php 
@@ -171,11 +175,9 @@ if ( sizeof( $get_comments ) != 0 ) {
 						echo '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="right"></i>';
 					} ?>
 				</p>				
-		  <?php } 
-		  } ?>
+		  <?php } ?>
 
-
-			<?php if ( !empty($prop_rent_vaca_price) ) { ?>
+		  <?php if ( !empty($prop_rent_vaca_price) && $search_status == "for-rent-vacations" ) { ?>
 			<p class="card-price txt-h-light txt-txt">
 				<!-- Before-price-label -->
 				<?php 
@@ -194,11 +196,15 @@ if ( sizeof( $get_comments ) != 0 ) {
 
 				<!-- Use this icon with tooltip when the property has been marked (in backend) as an opportunity -->
 				<?php if (get_post_meta($post->ID, 'fave_property_oppurtunity', true)) {
-					
 					echo '<i class="tz-arrow-down" title="The price has dropped" data-toggle="tooltip" data-placement="right"></i>';
 				} ?>
 			</p>				
 			<?php } ?>
+
+		<?php } ?>
+
+
+			
 
 		</div>
 		<div class="property-card-footer">
