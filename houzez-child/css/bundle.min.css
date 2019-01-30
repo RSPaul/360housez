@@ -24285,3 +24285,14 @@ header.tz-header-type .visible-right .header-right {
   width: 100%
 }*/
 
+/* Only for demostration purpose. However, take into account the element vertical position */
+		/*a#slide-to-left, a#slide-to-right{
+			display: inline-block;
+			margin-top: 20vh;
+			opacity: 1;
+		}
+		@media screen and (min-width: 768px) {
+			a#slide-to-left, a#slide-to-right{
+				margin-top: 50vh;	
+			}
+		}*/
