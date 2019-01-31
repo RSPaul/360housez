@@ -108,6 +108,8 @@ if ($adv_show_hide['keyword'] != 1) {
 
                                 <?php if( $adv_show_hide['status'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
+
+                                        <input type="hidden" name="status" class="staval" value="for-rent-living">
                                         <div class="form-group for-rent-living status-select" style="display: none;">
                                             <select class="selectpicker1 status-right1 disabled-status" name="status" data-live-search="false" data-live-search-style="begins" disabled="">
                                                 <?php
@@ -135,6 +137,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </div>
 
                                         <div class="form-group status-select for-rent-vacations" style="display: none;">
+                                            <!-- <input type="hidden" name="status" value="for-rent-vacations"> -->
                                             <select class="selectpicker1 status-right1 disabled-status" name="status" data-live-search="false" data-live-search-style="begins" disabled="">
                                                 <?php
                                                 // All Option
