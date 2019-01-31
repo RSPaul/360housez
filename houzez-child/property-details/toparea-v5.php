@@ -85,7 +85,7 @@ $prop_video_url = get_post_meta( get_the_ID(), 'fave_video_url', true );
                      <div class="gallery_directory">
                         <ul class="header-actions list-inline txt-lg ">
                             <li class="popup-trigger2" data-placement="bottom" data-toggle="tooltip" data-original-title="<?php esc_html_e( 'View Photos', 'houzez' ); ?>"> <a href="#gallery" class="bd-black waves-effect waves-color-1" data-toggle="tab">Photos</a></li>
-                            <li class="custom_media_video" id="pro_video_content" data-src="<?php echo $prop_video_url . '?autoplay=1'; ?>"><a id="video" class="bd-black waves-effect waves-color-1" alt="<?php the_title(); ?> Video" href="javascript:void(0)">Video</a></li>
+                            <li class="custom_media_video" id="pro_video_content" data-src="<?php echo $prop_video_url . '&autoplay=1'; ?>"><a id="video" class="bd-black waves-effect waves-color-1" alt="<?php the_title(); ?> Video" href="javascript:void(0)">Video</a></li>
                             <li class="custom_media_360"><a id="360" class="bd-black waves-effect waves-color-1" alt="<?php the_title(); ?> 360 Tours" href="javascript:void(0)">360</a></li>
 
                         </ul>
