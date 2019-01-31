@@ -203,14 +203,14 @@ if( isset( $_GET['agents'] ) && $_GET['agents'] == 'list' ) {
 
             <?php
             if( houzez_option('header_login') != 'no' ) {
-                echo '<a href="#" data-toggle="modal" data-target="#pop-login"><i class="fa fa-user hidden-md hidden-lg"></i> <span class="hidden-sm hidden-xs">'.esc_html__( 'Sign In / Register', 'houzez' ).'</span></a>';
+                echo '<a href="#" data-toggle="modal" data-target="#pop-login"><i class="fa fa-user hidden-md hidden-lg"></i> <span>'.esc_html__( 'Sign In / Register', 'houzez' ).'</span></a>';
             }
             if( $create_lisiting_enable != 0 ) {
                 if( $create_listing_button_required_login == 'yes' ) {
-                    echo '<a href="#" data-toggle="modal" data-target="#pop-login" class="btn btn-default hidden-xs hidden-sm">'.esc_html__( 'Create Listing', 'houzez' ).'</a>';
+                    echo '<a href="#" data-toggle="modal" data-target="#pop-login" class="btn btn-default">'.esc_html__( 'Create Listing', 'houzez' ).'</a>';
                 } else {
                     if( !empty($header_create_listing_template) && $header_create_listing_template != $home_link ) {
-                        echo '<a href="'.esc_url( $header_create_listing_template ).'" class="btn btn-default hidden-xs hidden-sm">'.esc_html__( 'Create Listing', 'houzez' ).'</a>';
+                        echo '<a href="'.esc_url( $header_create_listing_template ).'" class="btn btn-default">'.esc_html__( 'Create Listing', 'houzez' ).'</a>';
                     }
                 }
             }?>
