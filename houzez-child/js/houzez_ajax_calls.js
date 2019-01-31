@@ -2265,9 +2265,9 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
 
                     setInterval(function() {
                         $('.gm-ui-hover-effect').html('<i class="tz-close-sm"></i>')
-                    }, 300)
-
-                        
+                    }, 300)                        
+                    // console.log(">>>>>", $(".gm-style-pbc").parent("div").find('div:first').find('div').eq(2))
+                    // $(".gm-style-pbc").parent("div").find('div:first').find('div').eq(2).remove();
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
@@ -4282,7 +4282,7 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
      
         var items = [
             {
-                html: '<div><iframe id="video_gallery_content2" src="'+video_datasrc+'" style="height: 580px; width: 100%;border:0px;"></iframe></div>'
+                html: '<div style="height:100%;width:100%;"><iframe id="video_gallery_content2" src="'+video_datasrc+'" style="height: 100%; width: 100%;border:0px;"></iframe></div>'
             }
         ];
 
@@ -4309,7 +4309,7 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
      
         var items = [
             {
-                html: '<div>'+video_datasrc+'</div>'
+                html: '<div style="height:100%;width:100%;" >'+video_datasrc+'</div>'
             }
         ];
 

@@ -453,6 +453,8 @@ function my_scripts_and_styles() {
         }
     }
 
+    $search_sea_distance = "";
+
 
     wp_enqueue_style('bootstrap.min', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.8', 'all');
     //wp_enqueue_style('lightgallery.min', get_stylesheet_directory_uri() . '/css/lightgallery.min.css', array(), '3.3.8', 'all');
@@ -4609,7 +4611,6 @@ function maintain_advance_search() {
         // echo "</pre>";
         foreach ($_GET as $key => $value) {
             if ( !empty($value) ) {
-                
                 $_SESSION[$key] = $value;
             }
         }
