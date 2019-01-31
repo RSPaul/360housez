@@ -119,7 +119,9 @@ if (!empty($img_url[0])) {
         if  (window.matchMedia('(max-width: 767px)').matches){
             // Find out the wrapper height in order to slide out each half
             var slideH = $('.tz-header-wrapper').height();
-            
+            $('.visible-right').delay(650).animate({"right": "0", "width": "100%"}, 500); 
+            $('.visible-left').delay(650).animate({"width": "100%"}, 500); 
+
             // Button Left/Up (Sale)    
             $(".sale-options").click(function (event) {
                 event.preventDefault();
@@ -128,22 +130,90 @@ if (!empty($img_url[0])) {
                 // Animating the divisive line (scale to "0")
                 $('.divisive-line').addClass("animate");
                 // Sliding up the opposite half
-                $('.visible-right').delay(650).animate({"top": -slideH}, 800);
+                
+
+                $('.full-area h3').hide();
                 // Expanding the background
-                $('.bottom-line').delay(660).animate({"height": "46vh"}, 700);
+                $('.bottom-line').hide();
+                setTimeout(function () {
+                    $('#advanced-search-menu3').fadeIn("slow");
+                    $(".sale-options").parents(".sale-half").next(".full-area").fadeIn("slow");
+                    $('.visible-right').css({"display": "none"});
+                    $('#formSale').trigger('click');
+                }, 1100);
             });
-            // Button Right/Bottom (Rent)
-            $(document).on("click", ".rent-options", function (event) {
+
+            $(".go_back.left").click(function(){            
+                $('.visible-right').delay(650).animate({"right": "0", "width": "100%"}, 500); 
+                $('.visible-left').delay(650).animate({"width": "100%"}, 500); 
+                $(".visible-right").show();
+                $('.divisive-line').delay(650).removeClass("animate");
+                setTimeout(function () {
+                     $(".full-area").fadeOut("fast");
+                },50);
+                setTimeout(function () {               
+                    $(".content_left, .content_right").show('slow');
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    $('.bottom-line').fadeIn("slow");
+                }, 1100);          
+            });
+
+            $(".go_back.right").click(function(){
+                $('.visible-right').delay(650).animate({"width": "100%"}, 500);               
+                $('.visible-left').delay(650).animate({"width": "100%", "left": "0"}, 500); 
+                $(".visible-left").show();
+                $('.divisive-line').delay(650).removeClass("animate");
+                setTimeout(function () {
+                     $(".full-area").fadeOut("fast");
+                },50);
+                setTimeout(function () {              
+                    $(".content_left, .content_right").show('slow');
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    $('.bottom-line').fadeIn("slow");
+                }, 1100);          
+            });
+
+            $(".show-rent-options").click(function (event) {
                 event.preventDefault();
+                $("p.show-rent-options").addClass('residence_vacation');
+                $(".rent-info-text").hide();
+                $(".rent-options").fadeIn('slow');
+            });
+
+
+            // Button Right/Bottom (Rent)
+            $(document).on("click", ".rent-options", function () {
+                let status = $(this).attr('data-val');
+                $('.selectpicker1').selectpicker();
+                $('.status-select').hide();
+                $('.'+status).show();
+                $('.selectpicker1').selectpicker('val', status);
+                
+                if ( status == 'for-rent-vacations' ) {
+
+                    $('.rent-price').html('Price /night <span class="txt-xs txt-op-60">(USD $)</span>');
+                } else {
+
+                    $('.rent-price').html('Price /month <span class="txt-xs txt-op-60">(USD $)</span>');
+                }
                 // Setting this half in front
                 $('.visible-right').css("z-index","2");
                 // Animating the divisive line (scale to "0")
                 $('.divisive-line').addClass("animate");
                 // Sliding up the two halfs
-                $('.visible-right').delay(650).animate({"top": -slideH/2}, 500);
-                $('.visible-left').delay(720).animate({"top": -slideH}, 800);
+                //$('.visible-right').delay(650).animate({"top": "0"}, 500);
+                
+                $('.full-area h3').hide();
                 // Expanding the background
-                $('.bottom-line').delay(730).animate({"height": "46vh"}, 700);
+                $('.bottom-line').hide();
+                setTimeout(function () {
+                    $('#advanced-search-menu2').fadeIn("slow");
+                    $('.visible-right .header-right').fadeIn("fast");
+                    $(".rent-options").parents(".rent-half").next(".full-area").fadeIn("slow");
+                    $('.visible-left').css({"display": "none"}, "slow");
+                    $('#formSale').trigger('click');
+                }, 1100);
+
             });
             
         } else {

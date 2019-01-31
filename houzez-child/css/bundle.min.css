@@ -11762,8 +11762,12 @@ header.tz-header-type .tz-header-wrapper {
     position: relative;
     width: 100%;
 }
-
-
+.map-search-result .property-card-map .property-card-wrapper .property-card-body .card-main-features li:last-child {
+    border: none !important;
+}
+div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"] {
+	display: none !important;
+}
 
 
 
@@ -11962,8 +11966,8 @@ header.tz-header-type .tz-header-wrapper {
 		left: 0px;
 	}
 	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu3, .searching-navbar #advanced-search-menu {
-	    height: 140px;
-	    overflow-x: hidden;
+	    height: 100%;
+    	overflow-x: hidden;
 	}
 	.searching-navbar #advanced-search-menu div.search-col.six{
 		padding-bottom: 30px;
@@ -12019,6 +12023,7 @@ header.tz-header-type .tz-header-wrapper {
 	  margin-top: 46vh;
 	  width: 100%;
 	  height: 1px;
+	  left: 0px;
 	  background-color: black;
 	  -webkit-transition: .5s;
 	  -o-transition: .5s;
@@ -12042,9 +12047,10 @@ header.tz-header-type .tz-header-wrapper {
 	  background-color: #000
 	}
 	header.tz-header-type .tz-header-wrapper {
-	  overflow-y: hidden;
-	  position: relative;
-	  width: 100%
+	  overflow-y: unset;
+	    position: relative;
+	    width: 100%;
+	    height: 100%;
 	}
 	header.tz-header-type .tz-slides {
 	  height: 46vh;
@@ -12071,10 +12077,10 @@ header.tz-header-type .tz-header-wrapper {
 	header.tz-header-type .visible-right .header-right {
 	  width: 100%
 	}
-	.content_style {
+	/*.content_style {
 	    position: relative;
 	    width: 100%;
-	}
+	}*/
 	.searching-navbar .main-search-inputs a[role=button]{
 		line-height: inherit;
 	}
@@ -12082,6 +12088,97 @@ header.tz-header-type .tz-header-wrapper {
 		padding: .375rem;
 		line-height: inherit;
 	}
+	.content_style {
+	    width: 80%;
+	    left: 50% !important;
+	    right: auto !important;
+	    margin: 0 auto;
+	    transform: translate(-50%, -50%) !important;
+	}
+	.content_style p{
+		font-size: 14px;
+	}
+	.full-area {
+	    max-width: 100%;
+	    margin: 0 auto 0;
+	    width: 100%;
+	    top: 0;
+	    height: 100vh;
+	    position: relative;
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col.one>.form-group, .searching-navbar #advanced-search-menu3 div.search-col.one>div {
+	    margin-bottom: 4px;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col.one>.form-group, .searching-navbar #advanced-search-menu2 div.search-col.one>div {
+	    margin-bottom: 4px;
+	}
+	.full-area form #sticky_navbar .filter-title.txt-h-medium.txt-md {
+	    text-align: left;
+	    line-height: inherit;
+	    margin-top: 10px;
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col.one {
+		padding-bottom: 5px;
+		margin-bottom: 0px;
+		padding-top: 10px;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col.one {
+		padding-bottom: 5px;
+		margin-bottom: 0px;
+		padding-top: 10px;
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) {
+	    border-bottom: 1px solid rgba(255, 255, 255, .3);
+	    padding-bottom: 10px;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col:not(.one) {
+	    border-bottom: 1px solid rgba(255, 255, 255, .3);
+	    padding-bottom: 10px;
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col.two ul li {
+	    width: 45%;
+	    float: left;
+	    margin-right: 10px;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col.two ul li {
+	    width: 45%;
+	    float: left;
+	    margin-right: 10px;
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col.three .status-filters {
+	    width: 45%;
+	    float: left;
+	    margin-right: 10px;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col.three .status-filters {
+	    width: 45%;
+	    float: left;
+	    margin-right: 10px;
+	}
+	.searching-navbar #advanced-search-menu3 div.search-col.three .furniture-filters {
+	    width: 46%;
+	    float: left;
+	}
+	.searching-navbar #advanced-search-menu2 div.search-col.three .furniture-filters {
+	    width: 46%;
+	    float: left;
+	}
+	.searching-navbar #advanced-search-menu3 i {
+	    display: none;
+	}
+	.searching-navbar #advanced-search-menu2 i {
+	    display: none;
+	}
+	.dropdown-content li, .select-dropdown.dropdown-content li {
+		display: inline-flex;
+	}
+	.go_back {
+		margin-left: 10px;
+	}
+	button.sidenav-btn{
+		top: 22px;
+	}
+
 
 
 

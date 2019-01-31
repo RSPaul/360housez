@@ -2684,7 +2684,6 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
         var houzez_header_listing_map = function(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array ) {
             var headerMapSecurity = $('#securityHouzezHeaderMap').val();
             var initial_city = HOUZEZ_ajaxcalls_vars.header_map_selected_city;
-
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -2752,7 +2751,7 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
         }
 
 
-        var houzez_half_map_listings = function(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_half_map, current_page, guest, search_sea_distance, rules ) {
+        var houzez_half_map_listings = function(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_half_map, current_page, guest, search_sea_distance, rules, appliance, status_filters, furniture_filters, service_filters ) {
             var headerMapSecurity = $('#securityHouzezHeaderMap').val();
             var ajax_container = $('#houzez_ajax_container');
             var total_results = $('.map-module-half .tabs-title span');
@@ -2760,7 +2759,7 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
             if( current_page != undefined ) {
                 paged = current_page;
             }
-         
+       console.log('features featuresfeatures', features);
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -2796,6 +2795,10 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
                     'security': headerMapSecurity,
                     'guest': guest,
                     'search_sea_distance': search_sea_distance,
+                    'appliance': appliance,
+                    'status_filters': status_filters,
+                    'furniture_filters': furniture_filters,
+                    'service_filters': service_filters,
 
                     'paged': paged,
                     'post_per_page': search_no_posts
@@ -2910,10 +2913,27 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
             max_area  = current_form.find('input[name="max-area"]').val();
             keyword   = current_form.find('input[name="keyword"]').val();
             publish_date   = current_form.find('input[name="publish_date"]').val();
-            features = current_form.find('.features-list input[type=checkbox]:checked').map(function(_, el) {
+            features = current_form.find('.features-filters input[type=checkbox]:checked').map(function(_, el) {
                 return $(el).val();
             }).toArray();
-
+            guest = current_form.find('select[name="guest"]').val();
+            search_sea_distance = current_form.find('select[name="search_sea_distance"]').val();
+            rules = current_form.find('.rules-filters input[type=checkbox]:checked').map(function(_, el) {
+                return $(el).val();
+            }).toArray();
+            appliance = current_form.find('.appliances-filters input[type=checkbox]:checked').map(function(_, el) {
+                return $(el).val();
+            }).toArray();
+            status_filters = current_form.find('.status-filters input[type=checkbox]:checked').map(function(_, el) {
+                return $(el).val();
+            }).toArray();
+            furniture_filters = current_form.find('.furniture-filters input[type=checkbox]:checked').map(function(_, el) {
+                return $(el).val();
+            }).toArray();
+            service_filters = current_form.find('.sevices-filters input[type=checkbox]:checked').map(function(_, el) {
+                return $(el).val();
+            }).toArray();
+            console.log('features ', features);
             //Radius Search
             search_lat  = current_form.find('input[name="lat"]').val();
             search_long  = current_form.find('input[name="lng"]').val();
@@ -2942,11 +2962,14 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
             
             /*================== End Custom Fields ================================*/
 
-            markerCluster.clearMarkers();
+            if(markerCluster) markerCluster.clearMarkers();
 
             if(current_tempalte == 'template/property-listings-map.php') {
                 var sort_half_map = $("#houzez_sort_half_map").val();
-                houzez_half_map_listings(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_half_map, current_page );
+
+                //houzez_half_map_listings(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_by, 1, guest, search_sea_distance, rules, appliance );
+
+                houzez_half_map_listings(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_half_map, current_page, guest, search_sea_distance, rules, appliance, status_filters, furniture_filters, service_filters );
             } else {
                 houzez_header_listing_map(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array );
             }
@@ -3184,6 +3207,10 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
                 var guest = HOUZEZ_ajaxcalls_vars.guest;
                 var search_sea_distance = HOUZEZ_ajaxcalls_vars.search_sea_distance;
                 var rules = HOUZEZ_ajaxcalls_vars.search_rules;
+                var appliance = HOUZEZ_ajaxcalls_vars.search_appliance;
+                var status_filters = HOUZEZ_ajaxcalls_vars.status_filters;
+                var furniture_filters = HOUZEZ_ajaxcalls_vars.furniture_filters;
+                var service_filters = HOUZEZ_ajaxcalls_vars.service_filters;
                 
                 var custom_fields_array = [];
                 /*===================== Custom Fileds ===============================*/
@@ -3193,7 +3220,7 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
 
                 });
                
-                houzez_half_map_listings(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_by, 1, guest, search_sea_distance, rules );
+                houzez_half_map_listings(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_by, 1, guest, search_sea_distance, rules, appliance, status_filters, furniture_filters, service_filters );
                
 
             } else {

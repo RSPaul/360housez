@@ -2048,6 +2048,20 @@ if( !function_exists('houzez_property_search_2') ) {
             }
         }
 
+        if (isset($_GET['appliance']) && !empty($_GET['appliance'])) {
+            if (is_array($_GET['appliance'])) {
+                $appliances = $_GET['appliance'];
+
+                foreach ($appliances as $appliance):
+                    $tax_query[] = array(
+                        'taxonomy' => 'home_appliances',
+                        'field' => 'slug',
+                        'terms' => $appliance
+                    );
+                endforeach;
+            }
+        }
+
         $meta_count = count($meta_query);
 
         if ($meta_count > 0 || !empty($keyword_array)) {
@@ -2589,6 +2603,10 @@ if( !function_exists('houzez_half_map_listings') ) {
         $sort_by = isset($_POST['sort_half_map']) ? $_POST['sort_half_map'] : '';
         $features = isset($_POST['features']) ? $_POST['features'] : '';
         $rules = isset($_POST['rules']) ? $_POST['rules'] : '';
+        $appliances = isset($_POST['appliance']) ? $_POST['appliance'] : '';
+        $status_filter = isset($_POST['status_filters']) ? $_POST['status_filters'] : '';
+        $furniture_filters = isset($_POST['furniture_filters']) ? $_POST['furniture_filters'] : '';
+        $service_filters = isset($_POST['service_filters']) ? $_POST['service_filters'] : '';
         $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
         $country = isset($_POST['country']) ? ($_POST['country']) : '';
         $location = isset($_POST['location']) ? ($_POST['location']) : '';
@@ -2872,6 +2890,46 @@ if( !function_exists('houzez_half_map_listings') ) {
             endforeach;
         }
 
+        //Appliances logic
+        if (isset($appliances) && !empty($appliances)) {
+            if (is_array($appliances)) {
+                foreach ($appliances as $appliance):
+                    $tax_query[] = array(
+                        'taxonomy' => 'home_appliances',
+                        'field' => 'slug',
+                        'terms' => $appliance
+                    );
+                endforeach;
+            }           
+        }
+
+        //Satus filters logic
+        if (isset($status_filters) && !empty($status_filters)) {
+            if (is_array($status_filters)) {
+                foreach ($status_filters as $status_filter):
+                    $tax_query[] = array(
+                        'taxonomy' => 'property_label',
+                        'field' => 'slug',
+                        'terms' => $status_filter
+                    );
+                endforeach;
+            }           
+        }
+
+        //Service filters logic
+        if (isset($service_filters) && !empty($service_filters)) {
+            if (is_array($service_filters)) {
+                foreach ($service_filters as $service_filter):
+                    $tax_query[] = array(
+                        'taxonomy' => 'services',
+                        'field' => 'slug',
+                        'terms' => $service_filter
+                    );
+                endforeach;
+            }           
+        }
+        
+
         // bedrooms logic
         if( !empty( $bedrooms ) && $bedrooms != 'any'  ) {
             $bedrooms = sanitize_text_field($bedrooms);
@@ -3036,7 +3094,8 @@ if( !function_exists('houzez_half_map_listings') ) {
 
 
         $query_args = new WP_Query( $query_args );
-
+        // print_r($query_args);
+        // die();
         $properties = array();
 
         ob_start();
