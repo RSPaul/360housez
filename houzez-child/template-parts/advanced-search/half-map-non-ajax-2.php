@@ -28,6 +28,44 @@ if( $state_city_area_dropdowns != 0 ) {
 if( isset( $_GET['status'] ) ) {
     $status = $_GET['status'];
 }
+
+if( isset($_SESSION['guest']) && !empty($_SESSION['guest']) ) {
+    $guest = $_SESSION['guest'];
+} else if( isset( $_GET['guest'] ) ) {
+    $guest = $_GET['guest'];
+}
+
+if( isset($_SESSION['search_sea_distance']) && !empty($_SESSION['search_sea_distance']) ) {
+    $search_sea_distance = $_SESSION['search_sea_distance'];
+} else if( isset( $_GET['search_sea_distance'] ) ) {
+    $search_sea_distance = $_GET['search_sea_distance'];
+}
+
+if( isset($_SESSION['rules']) && !empty($_SESSION['rules']) ) {
+    $rules = $_SESSION['rules'];
+} else if( isset( $_GET['rules'] ) ) {
+    $rules = $_GET['rules'];
+}
+
+if( isset($_SESSION['feature']) && !empty($_SESSION['feature']) ) {
+    $appliances = $_SESSION['feature'];
+} else if( isset( $_GET['feature'] ) ) {
+    $appliances = $_GET['feature'];
+}
+
+if( isset($_SESSION['service']) && !empty($_SESSION['service']) ) {
+    $services = $_SESSION['service'];
+} else if( isset( $_GET['service'] ) ) {
+    $services = $_GET['service'];
+}
+
+$propStatus = array();
+if( isset($_SESSION['prop-status']) && !empty($_SESSION['prop-status']) ) {
+    $propStatus = $_SESSION['prop-status'];
+} else if( isset( $_GET['prop-status'] ) ) {
+    $propStatus = $_GET['prop-status'];
+}
+
 if( isset( $_GET['type'] ) ) {
     $type = $_GET['type'];
 }
@@ -348,20 +386,15 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </div>
                                     </div>
                                     <div class="input-field no-label guests-filter">
-                                        <select>
+                                        <select name="guest">
                                             <option value="" disabled selected>Guests</option>
                                             <option value="any">Any</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
+                                            <?php for ($i=1; $i <= 10; $i++) { 
+                                                ?>
+                                            <option value="<?=$i?>" <?php if($i == $guest ) { echo 'selected'; } ?> ><?=$i?></option>
+                                                
+                                            <?php } ?>
+                                        </select>s
                                         <label for="search_guests">Guests</label>
                                     </div>
                                     <div class="input-field no-label rooms-filter">
@@ -423,14 +456,21 @@ if ($adv_show_hide['keyword'] != 1) {
                                     </div>
                                     <div class="input-field no-label sea-distance-filter">
                                         <select name="search_sea_distance">
-                                            <option value="" disabled selected>Distance to the sea</option>
-                                            <option value="any">Any</option>
-                                            <option value="100">- 100 m </option>
-                                            <option value="300">- 300 m </option>
-                                            <option value="500">- 500 m</option>
-                                            <option value="1000">- 1 km</option>
-                                            <option value="5000">1 - 5 km</option>
-                                            <option value="50000">+ 5 km</option>
+                                            <option value="" disabled>Distance to the sea</option>
+                                            <option value="any" <?php if($sea_
+                                             == 'any' ) { echo 'selected'; } ?>>Any</option>
+                                            <option value="100" <?php if($sea_
+                                             == '100' ) { echo 'selected'; } ?>>- 100 m </option>
+                                            <option value="300" <?php if($sea_
+                                             == '300' ) { echo 'selected'; } ?>>- 300 m </option>
+                                            <option value="500" <?php if($sea_
+                                             == '500' ) { echo 'selected'; } ?>>- 500 m</option>
+                                            <option value="1000" <?php if($sea_
+                                             == '1000' ) { echo 'selected'; } ?>>- 1 km</option>
+                                            <option value="5000" <?php if($sea_
+                                             == '5000' ) { echo 'selected'; } ?>>1 - 5 km</option>
+                                            <option value="5000" <?php if($sea_
+                                             == '5000' ) { echo 'selected'; } ?>>+ 5 km</option>
                                         </select>
                                         <label for="search_sea_distance">Distance to the sea</label>
                                     </div>
@@ -438,10 +478,18 @@ if ($adv_show_hide['keyword'] != 1) {
                                         <p class="filter-title txt-h-medium txt-md">Rules</p>
                                         <ul>
                                             <li>
-                                                <label ><input type="checkbox" name="rules[]" class="filled-in" value="pets"><span>Pets allowed</span></label>
+                                                <label ><input type="checkbox" name="rules[]" class="filled-in" value="pets"
+                                                    <?php foreach ($rules as $rule) {
+                                                        if($rule == 'pets') echo 'checked="checked"';
+                                                    } ?>
+                                                    ><span>Pets allowed</span></label>
                                             </li>
                                             <li>
-                                                <label ><input type="checkbox" name="rules[]" class="filled-in" value="no_security"><span>No security deposit</span></label>
+                                                <label ><input type="checkbox" name="rules[]" class="filled-in " value="no_security"
+                                                    <?php foreach ($rules as $rule) {
+                                                        if($rule == 'no_security') 'checked="checked"';
+                                                    } ?>
+                                                    ><span>No security deposit</span></label>
                                             </li>
                                         </ul>
                                     </div>
@@ -500,24 +548,39 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-status-filters" class="collapse in">
-                                            <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="New"><span>New</span></label>
-                                            </li>
-                                            <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Newly Remodeled"><span>Newly Remodeled</span></label>
-                                            </li>
-                                            <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Renovated"><span>Renovated</span></label>
-                                            </li>
-                                            <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Used"><span>Used</span></label>
-                                            </li>
-                                            <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Under Construction"><span>Under Construction</span></label>
-                                            </li>
-                                            <li>
-                                                <label><input class="filled-in" name="prop-status[]" type="checkbox" value="Project"><span>Project</span></label>
-                                            </li>
+                                            <?php
+
+                                                $prop_status = get_terms(
+                                                    array(
+                                                        "property_label"
+                                                    ),
+                                                    array(
+                                                        'orderby' => 'name',
+                                                        'order' => 'ASC',
+                                                        'hide_empty' => false,
+                                                        //'parent' => 0
+                                                    )
+                                                );
+                                                
+                                                $checked_feature = '';
+                                                $features_count = 0;
+                                                $count = 0;
+                                                if (!empty($prop_status)) {
+                                                    // print_r($prop_status);
+                                                    foreach ($prop_status as $status):
+                                                        // if( $features_limit != -1 ) {
+                                                        //     if ( $count == $features_limit ) break;
+                                                        // }
+                                                        $checked = in_array($status->slug,$propStatus) ? ' checked="checked"' : '';
+                                                        //echo '<input type="checkbox" name="Filter[]" value="Steak" id="Filter"'.$checked.'/>';
+                                                        echo '<li><label>';
+                                                        echo '<input name="prop-status[]" class="filled-in" type="checkbox" '.$checked.' value="' . esc_attr( $status->slug ) . '">';
+                                                        echo '<span>' . esc_attr( $status->name ). '</span>';
+                                                        echo '</label></li>';
+                                                        $count++;
+                                                    endforeach;
+                                                }
+                                                ?>
                                         </ul>
                                     </div>
                                     <div  class="furniture-filters">
@@ -551,16 +614,18 @@ if ($adv_show_hide['keyword'] != 1) {
                                             </div>
                                         </div>
                                         <ul id="collapse-services-filters" class="collapse in">
-                                             <?php
+                                            <?php
                                             $terms = get_terms( array(
                                                 'taxonomy' => 'services',
                                                 'hide_empty' => false,
                                             ) );    
                                             if(count($terms)) {
-                                                foreach ($terms as $key => $value) { ?>
+                                                foreach ($terms as $key => $value) { 
+                                                    $checked = in_array($value->slug,$services) ? ' checked="checked"' : '';
+                                                    ?>
                                                     <li>
-                                                        <label>
-                                                            <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>">
+                                                        <label for="status1">
+                                                            <input type="checkbox" name="service[]"  id="service<?php echo $key; ?>" class="filled-in"  value="<?php echo esc_attr( $value->slug ); ?>" <?php echo $checked; ?>>
                                                             <span><?php echo $value->name; ?> </span>
                                                         </label>
                                                     </li>
@@ -581,11 +646,11 @@ if ($adv_show_hide['keyword'] != 1) {
                                         </div>
                                         <?php if( $adv_show_hide['status'] != 1 ) { ?>
                                     <!-- <div class="col-md-3 col-sm-6 col-xs-6"> -->
-                                        <div class="form-group">
+                                        <div class="form-group appliances-filters">
                                             <ul name="home_appliances">
                                                 <?php
 
-                                                $prop_features = get_terms(
+                                                $home_appliances = get_terms(
                                                     array(
                                                         "home_appliances"
                                                     ),
@@ -600,14 +665,16 @@ if ($adv_show_hide['keyword'] != 1) {
                                                 $checked_feature = '';
                                                 $features_count = 0;
                                                 $count = 0;
-                                                if (!empty($prop_features)) {
-                                                    // print_r($prop_features);
-                                                    foreach ($prop_features as $feature):
+                                                if (!empty($home_appliances)) {
+                                                    // print_r($home_appliances);
+                                                    foreach ($home_appliances as $feature):
                                                         // if( $features_limit != -1 ) {
                                                         //     if ( $count == $features_limit ) break;
                                                         // }
+                                                        $checked = in_array($feature->slug,$appliances) ? ' checked="checked"' : '';
+                                                        //echo '<input type="checkbox" name="Filter[]" value="Steak" id="Filter"'.$checked.'/>';
                                                         echo '<li><label>';
-                                                        echo '<input name="feature[]" class="filled-in" type="checkbox" '.checked( $checked_feature, $feature->slug, false ).' value="' . esc_attr( $feature->slug ) . '">';
+                                                        echo '<input name="feature[]" class="filled-in" type="checkbox" '.$checked.' value="' . esc_attr( $feature->slug ) . '">';
                                                         echo '<span>' . esc_attr( $feature->name ). '</span>';
                                                         echo '</label></li>';
                                                         $count++;
