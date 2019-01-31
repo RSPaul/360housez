@@ -546,6 +546,10 @@ function my_scripts_and_styles() {
             'search_state' => $search_state,
             'search_city' => $search_city,
             'search_feature' => $search_feature,
+            'search_appliance' => $search_appliance,
+            'status_filters' => $status_filters,
+            'furniture_filters' => $furniture_filters,
+            'service_filters' => $service_filters,
             'search_rules' => $search_rules,
             'search_area' => $search_area,
             'search_status' => $search_status,
@@ -688,12 +692,20 @@ if( !function_exists('houzez_scripts') ) {
 
         $search_feature = array();
         $search_rules = array();
+        $search_appliance = array();
+        $status_filters = array();
+        $furniture_filters = array();
+        $service_filters = array();
         $enable_radius_search = houzez_option('enable_radius_search');
         $enable_radius_search_halfmap = houzez_option('enable_radius_search_halfmap');
         $search_result_page = houzez_option('search_result_page');
         $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
-        $search_feature = isset($_GET['feature']) ? ($_GET['feature']) : $meta_features;
+        $search_appliance = isset($_GET['appliance']) ? ($_GET['appliance']) : '';
+        $status_filters = isset($_GET['prop-status']) ? ($_GET['prop-status']) : '';
+        $furniture_filters = isset($_GET['furniture']) ? ($_GET['furniture']) : '';
+        $service_filters = isset($_GET['services']) ? ($_GET['services']) : '';
         $search_rules = isset($_GET['rules']) ? ($_GET['rules']) : '';
+        $search_rules = isset($_GET['appliance']) ? ($_GET['appliance']) : '';
         $search_country = isset($_GET['country']) ? sanitize_text_field($_GET['country']) : '';
         $search_state = isset($_GET['state']) ? sanitize_text_field($_GET['state']) : $meta_states;
         $search_city = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : $meta_locations;
@@ -1057,6 +1069,10 @@ if( !function_exists('houzez_scripts') ) {
                 'search_city' => $search_city,
                 'search_feature' => $search_feature,
                 'search_rules' => $search_rules,
+                'search_appliance' => $search_appliance,
+                'status_filters' => $status_filters,
+                'furniture_filters' => $furniture_filters,
+                'service_filter' => $service_filter,
                 'search_area' => $search_area,
                 'search_status' => $search_status,
                 'search_label' => $search_label,
