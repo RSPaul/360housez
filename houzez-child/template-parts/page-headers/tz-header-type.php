@@ -211,10 +211,16 @@ if (!empty($img_url[0])) {
                     $('.visible-right .header-right').fadeIn("fast");
                     $(".rent-options").parents(".rent-half").next(".full-area").fadeIn("slow");
                     $('.visible-left').css({"display": "none"}, "slow");
-                    $('#formSale').trigger('click');
+                    $('#rent_toggle_id').trigger('click');
                 }, 1100);
 
             });
+
+            // $('#formSale').click(function(){
+            //     $('#advanced-search-menu3').slideToggle();
+            // });
+
+
             
         } else {
             // Find out the wrapper width in order to slide out each half
@@ -320,9 +326,20 @@ if (!empty($img_url[0])) {
 
             });
 
+            $("#rent_toggle_id").click(function(){
+                $(".go_back.right").toggleClass("position_back");
+            });
+
+            $("#formSale").click(function(){
+                $(".go_back.left").toggleClass("position_back");
+            });
 
 
         }
+
+
+        
+        
 
 
 

@@ -316,6 +316,7 @@ if ($adv_show_hide['keyword'] != 1) {
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col-xxs-12">
                         <div id="advanced-search-menu3" class="collapse"  aria-expanded="false">
@@ -718,9 +719,15 @@ if ($adv_show_hide['keyword'] != 1) {
                                     </div>  
                                 </div>
                             </div>
-                        </div>
+
+                            
+
+                        </div><!--advance search 3 div close here-->
+
                     </div>
-                </div>
+                </div><!--row close here-->
+
+
             </div>
     </div>  
 
