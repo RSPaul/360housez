@@ -53,7 +53,7 @@ $prop_video_url = get_post_meta( get_the_ID(), 'fave_video_url', true );
 ?>
 
 
-<div class="property-detail-header">
+<div class="container-fluid property-detail-header">
     <div class="row">
         <div class="col-xxs-12">
             <div class="hd-wrapper flex-container" style="background: url('<?php echo esc_url( $featured_img ); ?>')">
@@ -97,7 +97,7 @@ $prop_video_url = get_post_meta( get_the_ID(), 'fave_video_url', true );
 </div>
 
 <div class="property-detail-fixed-nav bg-white sticky-navbar" id="sticky_navbar">
-    <!-- <div class="container-fluid"> -->
+    <div class="container-fluid">
     <div class="row">
         <div class="col-xxs-12">
             <div class="fixed-inner-wrapp bg-black">
@@ -170,7 +170,7 @@ $prop_video_url = get_post_meta( get_the_ID(), 'fave_video_url', true );
             </div>
         </div>
     </div>
-    <!-- </div> -->
+    </div>
 </div>
 
 <script>

@@ -8118,8 +8118,8 @@ span.waves-effect:hover {
 	right: 0;
 	z-index: 4;
 	background-color: rgba(255, 255, 255, .85);
-	height: 5.5rem;
-	line-height: 5.5rem;
+	height: 7.5rem;
+	line-height: 7.5rem;
 	margin-bottom: 0
 }
 
@@ -11290,7 +11290,7 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
     display: none;
 }
 .main-navbar nav .navbar-nav > li.login-btn > a{
-	text-transform: uppercase !important;
+	text-transform: capitalize !important;
 }
 .tabs a:hover{
 	background: #ebebeb !important;
@@ -11346,12 +11346,12 @@ body.property-template-default .advanced-search.advance-search-header.houzez-adv
 	text-align: center;
 	max-width: 80%;
 	width: 100%;
-	margin: 7% auto 0;
+	margin: 0px auto 0px;
 	position: absolute;
 	width: 100%;
-	top: 0;
+	top: 50%;
 	left: 50%;
-	transform: translate(-50%, 0);
+	transform: translate(-50%, -50%);
 }
 p.show-rent-options.residence_vacation {
     padding: 0;
@@ -11442,6 +11442,7 @@ ul.list-inline.mobile-login .user i {
     text-align: left !important;
     cursor: pointer;
     float: left !important;
+    position: absolute;
 }
 .go_back.left {
 	z-index: 999;
@@ -11454,8 +11455,23 @@ ul.list-inline.mobile-login .user i {
 	top: 5px;
 }
 .full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3{
-	position: relative;
+	position: absolute;
+	height: 340px;
+	overflow-x: hidden !important;
 }
+/*.go_back.right.position_back {
+    position: absolute;
+    top: 442px;
+}*/
+.go_back.position_back {
+	position: absolute;
+    top: 448px;
+}
+/*.full-area .home_search_form #advanced-search-menu3 {
+	position: absolute;
+	height: 360px;
+	overflow-x: hidden;	
+}*/
 .full-area h3 {
     background: rgba(255,255,255,0.5);
     font-size: 25px;
@@ -11777,6 +11793,27 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 
 /*responsive css start here*/
 
+@media (min-width: 1200px) and (max-width: 1280px) {
+
+.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
+	    position: absolute;
+	    height: 260px !important;
+	    overflow-x: hidden;
+	}
+	.go_back.position_back {
+	    top: 375px;
+	}
+	[type="checkbox"] + span:not(.lever) {
+		font-size: 13px;
+	}
+	.go_back.right.position_back {
+	    top: 360px !important;
+	}
+
+
+
+}
+
 @media (min-width: 1281px) and (max-width: 1366px){
 	#houzez-gmap-main.stick_map{
 		width: 41% !important;
@@ -11786,10 +11823,21 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	    line-height: 4.5rem;
 	}
 	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
-	    position: relative;
-	    height: 320px;
+	    position: absolute;
+	    height: 200px !important;
 	    overflow-x: hidden;
 	}
+	.go_back.position_back {
+	    top: 315px;
+	}
+	[type="checkbox"] + span:not(.lever) {
+		font-size: 13px;
+	}
+	.go_back.right.position_back {
+	    top: 300px !important;
+	}
+
+
 }
 
 @media (min-width: 1367px) and (max-width: 1440px){
@@ -11804,10 +11852,17 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	    line-height: 4.5rem;
 	}
 	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
-	    position: relative;
-	    height: 440px;
+	    position: absolute;
+	    height: 250px !important;
 	    overflow-x: hidden;
 	}
+	.go_back.position_back {
+	    top: 365px;
+	}
+	[type="checkbox"] + span:not(.lever) {
+		font-size: 14px;
+	}
+
 }
 
 
@@ -11823,10 +11878,15 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	    line-height: 5rem;
 	}
 	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
-	    position: relative;
-	    height: 440px;
+	    position: absolute;
+	    height: 250px !important;
 	    overflow-x: hidden;
 	}
+	.go_back.position_back {
+	    top: 365px;
+	}
+
+
 }
 
 @media (min-width: 1601px) and (max-width: 1680px){
@@ -11835,6 +11895,21 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	}
 	#houzez-gmap-main.stick_map{
 		width: 38% !important;
+	}
+	.go_back.position_back {
+	    top: 432px;
+	}
+	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
+		height: 330px !important;
+	}
+
+}
+
+@media (min-width: 1681px) and (max-width: 1920px) {
+	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3{
+		position: absolute;
+		height: 340px !important;
+		overflow-x: hidden !important;
 	}
 
 }
@@ -11968,6 +12043,10 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	.searching-navbar #advanced-search-menu2, .searching-navbar #advanced-search-menu3, .searching-navbar #advanced-search-menu {
 	    height: 100%;
     	overflow-x: hidden;
+	}
+	.full-area .searching-navbar #advanced-search-menu, .full-area .searching-navbar #advanced-search-menu2, .full-area .searching-navbar #advanced-search-menu3 {
+		position: relative !important;
+		height: 100%;
 	}
 	.searching-navbar #advanced-search-menu div.search-col.six{
 		padding-bottom: 30px;
@@ -12105,6 +12184,7 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	    top: 0;
 	    height: 100vh;
 	    position: relative;
+	    transform: translate(-50%, 0);
 	}
 	.searching-navbar #advanced-search-menu3 div.search-col.one>.form-group, .searching-navbar #advanced-search-menu3 div.search-col.one>div {
 	    margin-bottom: 4px;
@@ -12175,9 +12255,18 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	.go_back {
 		margin-left: 10px;
 	}
-	button.sidenav-btn{
-		top: 22px;
+	.header-media-wrap {
+		display: inline-block;
+		width: 100%;
 	}
+	.go_back.position_back {
+	    position: relative;
+	    top: 0;
+	}
+	.go_back {
+		margin-top: 0px !important;
+	}
+
 
 
 

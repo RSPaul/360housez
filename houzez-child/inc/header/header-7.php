@@ -265,7 +265,7 @@ if (houzez_search_needed()) {
 								<span class="bar bottom"></span>	
 							</button>
 							<?php get_template_part('inc/header/logo'); ?>
-							<span class="site-description txt-sm"> | <?php echo get_bloginfo();?></span>
+							<span class="site-description txt-sm"> | <?php echo get_bloginfo('description');?></span>
 						</div>
 							<?php
 							// Pages Menu

@@ -463,7 +463,7 @@ function my_scripts_and_styles() {
     wp_enqueue_style('bundle', get_stylesheet_directory_uri() . '/css/bundle.min.css', array(), '3.3.7', 'all');
     //wp_enqueue_style('font-awesome.min', get_stylesheet_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all');
     wp_enqueue_script('swipe', get_stylesheet_directory_uri() . '/js/jquery.touchSwipe.min.js', array('jquery'));
-    wp_enqueue_script('my-custom-script', get_stylesheet_directory_uri() . '/js/bundle.min.js', array('jquery'));
+    wp_enqueue_script('my-custom-script', get_stylesheet_directory_uri() . '/js/bundle.min.js', array('jquery'), '5.0.5');
     wp_enqueue_script('lightgallery-all.min', get_stylesheet_directory_uri() . '/js/lightgallery-all.min.js', array('jquery'));
 
     $after_login_redirect = houzez_option('login_redirect');

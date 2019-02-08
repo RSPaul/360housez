@@ -394,7 +394,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <option value="<?=$i?>" <?php if($i == $guest ) { echo 'selected'; } ?> ><?=$i?></option>
                                                 
                                             <?php } ?>
-                                        </select>s
+                                        </select>
                                         <label for="search_guests">Guests</label>
                                     </div>
                                     <div class="input-field no-label rooms-filter">
