@@ -180,7 +180,7 @@ $prop_video_url = get_post_meta( get_the_ID(), 'fave_video_url', true );
     var sticky = header.offsetTop;
 
     function myFunction() {
-        console.log('here ', sticky , window.pageYOffset);
+        // console.log('here ', sticky , window.pageYOffset);
       if (window.pageYOffset > 900) {
         header.classList.add("sticky_sec");
       } else {

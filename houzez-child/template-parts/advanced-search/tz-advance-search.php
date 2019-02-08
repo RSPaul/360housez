@@ -167,7 +167,7 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
                   
               </div>
               <div class="input-field no-label">
-                  <input id="search_max_price" class="money-format" name="max_price" type="text" placeholder="Max.">
+                  <input id="search_max_price" class="money-format" name="max-price" type="text" placeholder="Max.">
                   <?php //houzez_adv_searches_max_price(); ?>
                   <label for="search_max_price">Price Max.</label>
               </div>
@@ -257,7 +257,7 @@ $adv_search = get_post_meta($post->ID, 'fave_adv_search', true);
                             <label for="inner_search_min_price">Price Min.</label>
                         </div>
                         <div class="input-field no-label">
-                            <input class="money-format" name="max_price" type="text" placeholder="Max.">
+                            <input class="money-format" name="max-price" type="text" placeholder="Max.">
                             <label for="inner_search_max_price">Price Max.</label>
                         </div>
                     </div>
