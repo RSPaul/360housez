@@ -1136,7 +1136,7 @@ jQuery(document).ready(function ($) {
                     $this.children('i').remove();
                     $this.prepend('<i class="fa-left '+process_loader_spinner+'"></i>');
                 },
-                success: function(response) {
+                success: function(response) { 
                     if( response.success ) {
                         $result.empty().append(response.msg);
                         $form.find('input').val('');
@@ -2759,7 +2759,7 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
             if( current_page != undefined ) {
                 paged = current_page;
             }
-       console.log('features featuresfeatures', features);
+       console.log('features featuresfeatures', features, min_price, max_price);
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -2933,7 +2933,7 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
             service_filters = current_form.find('.sevices-filters input[type=checkbox]:checked').map(function(_, el) {
                 return $(el).val();
             }).toArray();
-            console.log('features ', features);
+            console.log('max_price ', max_price);
             //Radius Search
             search_lat  = current_form.find('input[name="lat"]').val();
             search_long  = current_form.find('input[name="lng"]').val();
@@ -3219,7 +3219,7 @@ infoboxContent.innerHTML = '<div class="property-card-wrapper flex-container">' 
                     custom_fields_array.push(value);
 
                 });
-               
+                console.log('min_price ', min_price, 'max_price ', max_price);
                 houzez_half_map_listings(keyword, country, state, location, area, status, type, label, property_id, bedrooms, bathrooms, min_price, max_price, min_area, max_area, features, publish_date, search_no_posts, search_lat, search_long, search_radius, search_location, use_radius, currency, custom_fields_array, sort_by, 1, guest, search_sea_distance, rules, appliance, status_filters, furniture_filters, service_filters );
                
 

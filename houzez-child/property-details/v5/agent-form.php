@@ -251,6 +251,7 @@ $agent_forms_terms_gdpr_agreement = houzez_option('agent_forms_terms_gdpr_agreem
                                 </div>
                                 <!-- <a type="button" class="waves-effect waves-color-1 btn">Send request</a> -->
                                 <button class="agent_contact_form btn waves-effect waves-color-1 btn">Send request</button>
+                                <div class="form_messages"></div>
                                 <div class="data-protection-eu-alert">
                                     <h6>Basic information about data protection:</h6>
                                     <p>

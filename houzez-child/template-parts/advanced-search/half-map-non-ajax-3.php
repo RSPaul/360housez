@@ -383,7 +383,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <label for="inner_search_min_price">Price Min.</label>
                                         </div>
                                         <div class="input-field no-label">
-                                            <input class="money-format" name="max_price" type="text" placeholder="Max.">
+                                            <input class="money-format" name="max-price" type="text" placeholder="Max.">
                                             <label for="inner_search_max_price">Price Max.</label>
                                         </div>
                                     </div>
