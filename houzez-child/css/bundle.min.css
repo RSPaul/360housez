@@ -10349,7 +10349,7 @@ button.map-control span {
 		line-height: inherit;
 	}
 	.searching-navbar .main-search-inputs #toggle-map {
-		display: inline-block
+		display: inline-block !important
 	}
 	.property-detail-information .row-price .input-field {
 		margin-top: -10px
@@ -11160,8 +11160,11 @@ button.map-control span {
 }*/
 #houzez-gmap-main.stick_map {
     position: fixed;
-    width: 33%;
+    width: 637.5px;
     top: 90px;
+}
+.search_map_page {
+    padding-top: 20px !important;
 }
 body.home .property-card .property-card-body {
     padding: 0 .5rem;
@@ -11816,7 +11819,7 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 
 @media (min-width: 1281px) and (max-width: 1366px){
 	#houzez-gmap-main.stick_map{
-		width: 41% !important;
+		width: 562.083px !important;
 	}
 	.main-navbar {
 	    height: 5rem;
@@ -11845,7 +11848,7 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 		font-size: 38px !important;
 	}
 	#houzez-gmap-main.stick_map{
-		width: 41% !important;
+		width: 592.917px !important;
 	}
 	.main-navbar {
 	    height: 5rem;
@@ -11871,7 +11874,7 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 		font-size: 42px !important;
 	}
 	#houzez-gmap-main.stick_map{
-		width: 40% !important;
+		width: 637.5px !important;
 	}
 	.main-navbar {
 	    height: 5.5rem;
@@ -11894,7 +11897,7 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 		font-size: 45px !important;
 	}
 	#houzez-gmap-main.stick_map{
-		width: 38% !important;
+		width: 637.5px !important;
 	}
 	.go_back.position_back {
 	    top: 432px;
@@ -11931,9 +11934,9 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 }
 
 @media (min-width: 768px) and (max-width: 991px){
-	body #toggle-map.toggle_map_right {
+/*	body #toggle-map.toggle_map_right {
 	    display: none !important;
-	}
+	}*/
 	.map-search-results.show-map.col-xs-12.col-sm-6.col-lg-5 {
 	    display: none;
 	}
@@ -12008,7 +12011,7 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	    display: none;
 	}
 	.mini-logo {
-	    margin-top: 5px;
+	    margin-top: 0px;
 	    width: 46px;
 	}
 	.searching-navbar #advanced-search-menu{
@@ -12066,9 +12069,9 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	.searching-navbar #advanced-search-menu3 div.search-col:not(.one) .filter-title{
 		text-align: left;
 	}
-	.map-search-result {
+/*	.map-search-result {
 	    display: none !important;
-	}
+	}*/
 	.default_show.half-part-left .half-area p.show-rent-options span.rent-options {
 	    border-right: 1px solid #000;
 	    padding: 12px 3px;
@@ -12266,6 +12269,14 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	.go_back {
 		margin-top: 0px !important;
 	}
+	.show-map #houzez-gmap-main.stick_map {
+	    position: fixed;
+	    width: 100%;
+	    top: 60px;
+	}
+	.searching-navbar .main-search-inputs #toggle-map {
+	    display: inline-block !important;
+	}
 
 
 
@@ -12288,7 +12299,21 @@ div[style="border-top-width: 24px; position: absolute; left: 155px; top: 351px;"
 	    margin-top: -11px;
 	    margin-left: 10px;
 	}
-
+	.searching-navbar .main-search-inputs #toggle-map {
+	    display: none !important;
+	}
+	.map-search-result.show-map.col-xs-12.col-sm-6.col-lg-5 {
+		display: none !important;
+	}
+	.save-search #save_search_click {
+		line-height: inherit;
+		cursor: pointer;
+		padding: 0.175rem;
+		margin-left: 0;
+		margin-top: 5px;
+		display: block;
+		position: unset;
+	}
 
 
 
