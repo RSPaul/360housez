@@ -188,12 +188,13 @@ $checked = true;
                 <h3><?php echo $tz_left_button_text; ?> 
                 <span><?php echo $tz_left_info_text; ?></span>
                 </h3>
-                <form method="get" autocomplete="off" action="<?php echo esc_url($search_template); ?>">
+                <form class="home_search_form" method="get" autocomplete="off" action="<?php echo esc_url($search_template); ?>">
                     <?php get_template_part('template-parts/advanced-search/half-map-non-ajax-3'); ?>
+                    <div class="go_back left" id="go_left">
+                      <i class="tz-arrow-left"></i> <span class="txt-xs txt-h-light">go back</span>
+                    </div>
                 </form>
-                <div class="go_back left" id="go_left">
-                    <i class="tz-arrow-left"></i> <span class="txt-xs txt-h-light">go back</span>
-                </div>
+                
             </div>
 
             

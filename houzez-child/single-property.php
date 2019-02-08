@@ -43,6 +43,7 @@ $property_layout = houzez_option('prop-content-layout');
 // echo $single_top_area;
 
 
+
 $property_reviews = houzez_option('property_reviews');
 $enable_next_prev_prop = houzez_option('enable_next_prev_prop');
 $map_in_section = houzez_option('map_in_section');
