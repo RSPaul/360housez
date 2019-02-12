@@ -1380,6 +1380,7 @@ if (!function_exists('houzez_register_metaboxes')) {
                         'hide_empty' => false,
                     ) );
         $beach_array = array();
+        $beach_array[""] = "Select";
            foreach ($beachs as $key => $value) {
                $beach_array[$value->term_id] = $value->name;
         }
@@ -4867,3 +4868,4 @@ function wpse_72210_comments_exclude_lazy_hook( $screen ) {
 function wpse_63422_list_comments_from_specific_post( $clauses ) {
     $clauses->query_vars['post_id'] = $_GET['property_id'];
 }
+

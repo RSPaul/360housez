@@ -148,8 +148,7 @@ $wp_booking_hbook = get_post_meta($post->ID, 'wp_booking_hbook', true);
 $wp_booking_section_title = get_post_meta($post->ID, 'wp_booking_section_title', true);
 $booking_shortcode = get_post_meta($post->ID, 'wp_booking_hbook_shortcode', true);
 $booking_shortcode2 = get_post_meta($post->ID, 'wp_booking_hbook_shortcode2', true);
-
-if(!empty($booking_shortcode)) {
+if(!empty($wp_booking_hbook == "enable")) {
 ?>
 <section class="property-detail-booking">
         <div id="online-booking" class="id-link"></div>

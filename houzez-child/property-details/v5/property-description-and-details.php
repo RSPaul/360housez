@@ -63,7 +63,6 @@ if(count($terms)) {
 }
 
 
-
 $icon_prop_id = houzez_option('icon_prop_id', false, 'url' );
 $icon_bedrooms = houzez_option('icon_bedrooms', false, 'url' );
 $icon_rooms = houzez_option('icon_rooms', false, 'url' );
@@ -308,6 +307,7 @@ if(count($_SESSION)) {
                             <?php } 
                             ?>
                             <li class="flex-item">
+                                <?php if(!empty($near_beach1_name) && !empty($near_beach1)) { ?>
                                 <p><?php echo esc_attr( $near_beach1 ); echo "&nbsp;"; 
                                 if($wp_near_size_posfix1 == "") {
                                     echo esc_attr($area_prefix); 
@@ -316,8 +316,10 @@ if(count($_SESSION)) {
                                 }
                                 ?></p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach1_name; ?></a>
+                                <?php } ?>
                             </li>
                             <li class="flex-item">
+                                <?php if(!empty($near_beach2_name) && !empty($near_beach2)) { ?>
                                 <p><?php echo esc_attr( $near_beach2 ); echo "&nbsp;"; 
                                 if($wp_near_size_posfix2 == "") {
                                     echo esc_attr($area_prefix); 
@@ -327,8 +329,10 @@ if(count($_SESSION)) {
                                 ?> </p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach2_name; ?></a>
                                 <p class="txt-info">Nearby beaches</p>
+                                <?php } ?>
                             </li>
                             <li class="flex-item">
+                                <?php if(!empty($near_beach3_name) && !empty($near_beach3)) { ?>
                                 <p><?php echo esc_attr( $near_beach3 ); echo "&nbsp;"; 
                                 if($wp_near_size_posfix3 == "") {
                                     echo esc_attr($area_prefix); 
@@ -337,6 +341,7 @@ if(count($_SESSION)) {
                                 }
                                 ?></p>
                                 <a href="#!" target="_blank"><span></span> <?php echo $near_beach3_name; ?></a>
+                                <?php } ?>
                             </li>
                         </ul>
                     </div>
@@ -365,17 +370,13 @@ if(count($_SESSION)) {
                     <h2 class="txt-lg text-center">Features</h2>
                     <div class="flex-container flex-wrap txt-md text-center">
                         <?php
-                        // $tax_terms = get_the_terms( get_the_ID(), 'property_feature' ); 
-                        $terms = get_terms( array(
-                            'taxonomy' => 'property_feature',
-                            'hide_empty' => false,
-                            'number' => 6,
-                            'offset' => 0
-                        ) );         
+                        $terms = get_the_terms( get_the_ID(), 'property_feature' ); 
+                        $terms1 = array_slice($terms, 0, 6);
+                        $terms2 = array_slice($terms, 6, 1000);        
                         ?>
-                        <?php foreach ($terms as $key => $cat_feature) { ?>
+                        <?php foreach ($terms1 as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
-                            <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
+                            <?php $get_feature_icons = get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
                             <div class="feature_<?php echo $term_id; ?>">
                                 <i class="<?php echo $get_feature_icons; ?>"></i>
                                 <p class="title"><?php echo $cat_feature->name; ?></p>
@@ -385,16 +386,8 @@ if(count($_SESSION)) {
                 </div>
             </div>
             <div class="row collapse" id="collapse-other-features">
-                 <div class="flex-container flex-wrap txt-md text-center">
-                        <?php 
-                        $terms = get_terms( array(
-                            'taxonomy' => 'property_feature',
-                            'hide_empty' => false,
-                            'number' => 1000,
-                            'offset' => 6
-                        ) );         
-                        ?>
-                        <?php foreach ($terms as $key => $cat_feature) { ?>
+                 <div class="flex-container flex-wrap txt-md text-center">                        
+                        <?php foreach ($terms2 as $key => $cat_feature) { ?>
                             <?php $term_id= $cat_feature->term_id;  ?> 
                             <?php $get_feature_icons=get_tax_meta($term_id, 'fave_prop_features_icon'); ?>               
                             <div class="feature_<?php echo $term_id; ?>">
@@ -474,11 +467,12 @@ if(count($_SESSION)) {
                             <?php } ?>
                         </ul>
                     </div>
-                    
+                    <?php if(count($own_rules_repeater)) { ?> 
                     <a class="txt-h-light txt-info text-center btn-block" data-toggle="collapse" href="#collapse-other-rules" aria-expanded="false">
                         <span class="waves-effect">Show all <i class="tz-chevron-down-sm"></i></span>
                         <span class="waves-effect">Show less <i class="tz-chevron-up-sm"></i></span>
                     </a>
+                <?php } ?>
                 </div>
             </div>    
         </section>
