@@ -135,9 +135,9 @@ global $houzez_local;
             jQuery('[name="min-price"]').val(jQuery('[name="min-price"]').val());
        });
 
-       jQuery('.form-group').on('keyup', '[name="max_price"]', function(event) {
+       jQuery('.form-group').on('keyup', '[name="max-price"]', function(event) {
            
-            jQuery('[name="max_price"]').val(jQuery('[name="max_price"]').val());
+            jQuery('[name="max-price"]').val(jQuery('[name="max-price"]').val());
        });
     });
 

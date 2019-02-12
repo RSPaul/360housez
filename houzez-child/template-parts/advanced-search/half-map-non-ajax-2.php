@@ -273,7 +273,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                     
                                 </div>
                                 <div class="input-field no-label">
-                                    <input class="money-format" name="max_price" type="text" placeholder="Max.">
+                                    <input class="money-format" name="max-price" type="text" placeholder="Max.">
                                     <?php //houzez_adv_searches_max_price(); ?>
                                     <label for="search_max_price">Price Max.</label>
                                 </div>
@@ -381,7 +381,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <label for="inner_search_min_price">Price Min.</label>
                                         </div>
                                         <div class="input-field no-label">
-                                            <input class="money-format" name="max_price" type="text" placeholder="Max.">
+                                            <input class="money-format" name="max-price" type="text" placeholder="Max.">
                                             <label for="inner_search_max_price">Price Max.</label>
                                         </div>
                                     </div>
@@ -394,7 +394,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <option value="<?=$i?>" <?php if($i == $guest ) { echo 'selected'; } ?> ><?=$i?></option>
                                                 
                                             <?php } ?>
-                                        </select>s
+                                        </select>
                                         <label for="search_guests">Guests</label>
                                     </div>
                                     <div class="input-field no-label rooms-filter">

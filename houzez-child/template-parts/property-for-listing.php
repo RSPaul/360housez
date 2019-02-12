@@ -20,7 +20,7 @@ $prop_status = get_the_terms( $post->ID, 'property_status' );
 
 $feat_class = '';
 if( $prop_featured == 1 ) {
-    $feat_class = "featured_prop";
+    $feat_class = "featured-property";
 }
 
 // $prop_status = get_post_meta($post->ID, 'fave_property_status');
@@ -60,6 +60,7 @@ if ( sizeof( $get_comments ) != 0 ) {
     }
 }
 
+//$featured_property_class = 'featured_property';
 
 $search_status = "null";
 if(count($_SESSION)) {
@@ -68,7 +69,7 @@ if(count($_SESSION)) {
 
 if( is_page_template( 'template/property-listings-map.php' ) ) { $infobox_trigger = 'infobox_trigger'; }
 ?>
-<div id="ID-<?php the_ID(); ?>" class="property-card featured-property infobox_trigger <?php echo esc_attr($feat_class); ?> item-<?php echo sanitize_title(get_the_title())?>">
+<div id="ID-<?php the_ID(); ?>" class="property-card <?php echo $featured_property_class; ?> infobox_trigger <?php echo esc_attr($feat_class); ?> item-<?php echo sanitize_title(get_the_title())?>">
     <div class="property-card-wrapper flex-container">
         <div class="property-card-header">
             <ul class="card-header-labels flex-container flex-wrap txt-h-medium txt-xs text-uppercase">

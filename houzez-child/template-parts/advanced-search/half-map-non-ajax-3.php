@@ -316,6 +316,7 @@ if ($adv_show_hide['keyword'] != 1) {
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col-xxs-12">
                         <div id="advanced-search-menu3" class="collapse"  aria-expanded="false">
@@ -382,7 +383,7 @@ if ($adv_show_hide['keyword'] != 1) {
                                             <label for="inner_search_min_price">Price Min.</label>
                                         </div>
                                         <div class="input-field no-label">
-                                            <input class="money-format" name="max_price" type="text" placeholder="Max.">
+                                            <input class="money-format" name="max-price" type="text" placeholder="Max.">
                                             <label for="inner_search_max_price">Price Max.</label>
                                         </div>
                                     </div>
@@ -718,9 +719,15 @@ if ($adv_show_hide['keyword'] != 1) {
                                     </div>  
                                 </div>
                             </div>
-                        </div>
+
+                            
+
+                        </div><!--advance search 3 div close here-->
+
                     </div>
-                </div>
+                </div><!--row close here-->
+
+
             </div>
     </div>  
 
